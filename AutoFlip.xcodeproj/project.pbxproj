@@ -21,6 +21,17 @@
 		11711FB21871F2CF00792D36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11711F941871F2CF00792D36 /* UIKit.framework */; };
 		11711FBA1871F2CF00792D36 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11711FB81871F2CF00792D36 /* InfoPlist.strings */; };
 		11711FBC1871F2CF00792D36 /* AutoFlipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11711FBB1871F2CF00792D36 /* AutoFlipTests.m */; };
+		11D0D115187202D1008CC7FD /* ChooseCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */; };
+		11D0D11818720332008CC7FD /* GetNotecardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D11718720332008CC7FD /* GetNotecardsViewController.m */; };
+		11D0D11E18720412008CC7FD /* Notecard.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D11D18720412008CC7FD /* Notecard.m */; };
+		11D0D12118720421008CC7FD /* Presentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D12018720421008CC7FD /* Presentation.m */; };
+		11D0D12418720431008CC7FD /* LibraryAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D12318720431008CC7FD /* LibraryAPI.m */; };
+		11D0D1281872075A008CC7FD /* PersistencyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D1271872075A008CC7FD /* PersistencyManager.m */; };
+		11D0D12B18721356008CC7FD /* PresentationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D12A18721356008CC7FD /* PresentationViewController.m */; };
+		11D0D13518722A93008CC7FD /* CardDeckTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D13418722A93008CC7FD /* CardDeckTableCell.m */; };
+		11D0D13B18722DD6008CC7FD /* drive.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D0D13A18722DD6008CC7FD /* drive.png */; };
+		11D0D13D18722E34008CC7FD /* dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D0D13C18722E34008CC7FD /* dropbox.png */; };
+		11D0D13F187231D8008CC7FD /* custom.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D0D13E187231D8008CC7FD /* custom.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +64,25 @@
 		11711FB71871F2CF00792D36 /* AutoFlipTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AutoFlipTests-Info.plist"; sourceTree = "<group>"; };
 		11711FB91871F2CF00792D36 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		11711FBB1871F2CF00792D36 /* AutoFlipTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoFlipTests.m; sourceTree = "<group>"; };
+		11D0D113187202D1008CC7FD /* ChooseCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCardsViewController.h; sourceTree = "<group>"; };
+		11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCardsViewController.m; sourceTree = "<group>"; };
+		11D0D11618720332008CC7FD /* GetNotecardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNotecardsViewController.h; sourceTree = "<group>"; };
+		11D0D11718720332008CC7FD /* GetNotecardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNotecardsViewController.m; sourceTree = "<group>"; };
+		11D0D11C18720412008CC7FD /* Notecard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notecard.h; sourceTree = "<group>"; };
+		11D0D11D18720412008CC7FD /* Notecard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notecard.m; sourceTree = "<group>"; };
+		11D0D11F18720421008CC7FD /* Presentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Presentation.h; sourceTree = "<group>"; };
+		11D0D12018720421008CC7FD /* Presentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Presentation.m; sourceTree = "<group>"; };
+		11D0D12218720431008CC7FD /* LibraryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryAPI.h; sourceTree = "<group>"; };
+		11D0D12318720431008CC7FD /* LibraryAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryAPI.m; sourceTree = "<group>"; };
+		11D0D1261872075A008CC7FD /* PersistencyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistencyManager.h; sourceTree = "<group>"; };
+		11D0D1271872075A008CC7FD /* PersistencyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistencyManager.m; sourceTree = "<group>"; };
+		11D0D12918721356008CC7FD /* PresentationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentationViewController.h; sourceTree = "<group>"; };
+		11D0D12A18721356008CC7FD /* PresentationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentationViewController.m; sourceTree = "<group>"; };
+		11D0D13318722A93008CC7FD /* CardDeckTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDeckTableCell.h; sourceTree = "<group>"; };
+		11D0D13418722A93008CC7FD /* CardDeckTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDeckTableCell.m; sourceTree = "<group>"; };
+		11D0D13A18722DD6008CC7FD /* drive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drive.png; sourceTree = "<group>"; };
+		11D0D13C18722E34008CC7FD /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropbox.png; sourceTree = "<group>"; };
+		11D0D13E187231D8008CC7FD /* custom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +112,9 @@
 		11711F841871F2CF00792D36 = {
 			isa = PBXGroup;
 			children = (
+				11D0D13E187231D8008CC7FD /* custom.png */,
+				11D0D13C18722E34008CC7FD /* dropbox.png */,
+				11D0D13A18722DD6008CC7FD /* drive.png */,
 				11711F961871F2CF00792D36 /* AutoFlip */,
 				11711FB51871F2CF00792D36 /* AutoFlipTests */,
 				11711F8F1871F2CF00792D36 /* Frameworks */,
@@ -112,11 +145,12 @@
 		11711F961871F2CF00792D36 /* AutoFlip */ = {
 			isa = PBXGroup;
 			children = (
+				11D0D12518720432008CC7FD /* API */,
+				11D0D11B18720345008CC7FD /* Controllers */,
+				11D0D11A18720342008CC7FD /* Views */,
+				11D0D11918720339008CC7FD /* Models */,
 				11711F9F1871F2CF00792D36 /* AppDelegate.h */,
 				11711FA01871F2CF00792D36 /* AppDelegate.m */,
-				11711FA21871F2CF00792D36 /* Main.storyboard */,
-				11711FA51871F2CF00792D36 /* ViewController.h */,
-				11711FA61871F2CF00792D36 /* ViewController.m */,
 				11711FA81871F2CF00792D36 /* Images.xcassets */,
 				11711F971871F2CF00792D36 /* Supporting Files */,
 			);
@@ -150,6 +184,53 @@
 				11711FB81871F2CF00792D36 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		11D0D11918720339008CC7FD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				11D0D11C18720412008CC7FD /* Notecard.h */,
+				11D0D11D18720412008CC7FD /* Notecard.m */,
+				11D0D11F18720421008CC7FD /* Presentation.h */,
+				11D0D12018720421008CC7FD /* Presentation.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		11D0D11A18720342008CC7FD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11D0D13318722A93008CC7FD /* CardDeckTableCell.h */,
+				11D0D13418722A93008CC7FD /* CardDeckTableCell.m */,
+				11711FA21871F2CF00792D36 /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		11D0D11B18720345008CC7FD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				11711FA51871F2CF00792D36 /* ViewController.h */,
+				11711FA61871F2CF00792D36 /* ViewController.m */,
+				11D0D11618720332008CC7FD /* GetNotecardsViewController.h */,
+				11D0D11718720332008CC7FD /* GetNotecardsViewController.m */,
+				11D0D113187202D1008CC7FD /* ChooseCardsViewController.h */,
+				11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */,
+				11D0D12918721356008CC7FD /* PresentationViewController.h */,
+				11D0D12A18721356008CC7FD /* PresentationViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		11D0D12518720432008CC7FD /* API */ = {
+			isa = PBXGroup;
+			children = (
+				11D0D12218720431008CC7FD /* LibraryAPI.h */,
+				11D0D12318720431008CC7FD /* LibraryAPI.m */,
+				11D0D1261872075A008CC7FD /* PersistencyManager.h */,
+				11D0D1271872075A008CC7FD /* PersistencyManager.m */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +310,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				11711FA91871F2CF00792D36 /* Images.xcassets in Resources */,
+				11D0D13F187231D8008CC7FD /* custom.png in Resources */,
 				11711F9B1871F2CF00792D36 /* InfoPlist.strings in Resources */,
+				11D0D13D18722E34008CC7FD /* dropbox.png in Resources */,
+				11D0D13B18722DD6008CC7FD /* drive.png in Resources */,
 				11711FA41871F2CF00792D36 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,8 +333,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D0D11818720332008CC7FD /* GetNotecardsViewController.m in Sources */,
+				11D0D12418720431008CC7FD /* LibraryAPI.m in Sources */,
+				11D0D1281872075A008CC7FD /* PersistencyManager.m in Sources */,
+				11D0D13518722A93008CC7FD /* CardDeckTableCell.m in Sources */,
 				11711FA71871F2CF00792D36 /* ViewController.m in Sources */,
+				11D0D115187202D1008CC7FD /* ChooseCardsViewController.m in Sources */,
+				11D0D11E18720412008CC7FD /* Notecard.m in Sources */,
+				11D0D12118720421008CC7FD /* Presentation.m in Sources */,
 				11711FA11871F2CF00792D36 /* AppDelegate.m in Sources */,
+				11D0D12B18721356008CC7FD /* PresentationViewController.m in Sources */,
 				11711F9D1871F2CF00792D36 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +552,7 @@
 				11711FC11871F2CF00792D36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		11711FC21871F2CF00792D36 /* Build configuration list for PBXNativeTarget "AutoFlipTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +561,7 @@
 				11711FC41871F2CF00792D36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
