@@ -8,15 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Presentation.h"
+#import "CardDeckViewController.h"
 
-@interface PresentationViewController : UIViewController
+@interface PresentationViewController : CardDeckViewController
 
-@property Presentation *presentation;
-
-@property (weak, nonatomic) IBOutlet UITextView *textArea;
-@property (weak, nonatomic) IBOutlet UINavigationItem *slideTitle;
-
-- (IBAction)nextSlide:(id)sender;
-- (IBAction)previousSlide:(id)sender;
 
 @end

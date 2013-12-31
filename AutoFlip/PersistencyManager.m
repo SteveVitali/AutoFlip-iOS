@@ -16,14 +16,13 @@
 
 @implementation PersistencyManager
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         NSData *data = [NSData dataWithContentsOfFile:[NSHomeDirectory() stringByAppendingString:@"/Documents/presentations.bin"]];
         presentations = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        if (presentations == nil)
-        {
+        
+        //if (presentations == nil) {
             NSLog(@"Nil shit nigga wassup");
             //we need some motherfuckin' presentations
             //going to initialize dummy presentation for now
@@ -31,8 +30,8 @@
             for(int i=0; i<10; i++) {
                 [presentations addObject:[[Presentation alloc] initWithRandomNotes:i+1]];
             }
-        //    [self savePresentations];
-        }
+            [self savePresentations];
+      //  }
     }
     return self;
 }
@@ -45,6 +44,6 @@
         NSString *filename = [NSHomeDirectory() stringByAppendingString:@"/Documents/presentations.bin"];
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:presentations];
         [data writeToFile:filename atomically:YES];
-    }
+}
 
 @end

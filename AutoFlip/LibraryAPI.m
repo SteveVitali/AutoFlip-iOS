@@ -5,6 +5,12 @@
 //  Created by Steve John Vitali on 12/30/13.
 //  Copyright (c) 2013 Steve John Vitali. All rights reserved.
 //
+//
+//ABOUT THIS CLASS:
+//It's mostly utility methods for things
+//It uses the "Facade" design pattern to encapsulate
+//the functionality of PersistencyManager/etc. but from
+//the outside it looks like it's all coming from LibraryAPI
 
 #import "LibraryAPI.h"
 #import "PersistencyManager.h"
@@ -44,5 +50,10 @@
 - (NSMutableArray *)getPresentations {
     return [persistencyManager getPresentations];
 }
+
+- (NSString *)appendBulletToString:(NSString *)str {
+    return [NSString stringWithFormat:@"\u2022 %@\n", str];
+}
+
 
 @end

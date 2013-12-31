@@ -54,4 +54,44 @@
     return self;
 }
 
+- (void)addCardAtIndex:(NSInteger)index {
+    [self.notecards addObject:[[Notecard alloc] initWithEmptyCard]];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.title forKey:@"title"];
+    [aCoder encodeObject:self.type forKey:@"type"];
+    [aCoder encodeObject:self.notecards forKey:@"notecards"];
+
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self)
+    {
+        _title = [aDecoder decodeObjectForKey:@"title"];
+        _type  = [aDecoder decodeObjectForKey:@"type"];
+        _notecards = [aDecoder decodeObjectForKey:@"notecards"];
+    }
+    return self;
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

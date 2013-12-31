@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Presentation : NSObject
+@interface Presentation : NSObject <NSCoding>
 
 @property NSMutableArray *notecards;
 @property NSString *title;
 @property NSString *type;
+
+- (void)addCardAtIndex:(NSInteger)index;
 
 - (id) initWithNotes:(NSMutableArray *)notecards;
 - (id)initWithRandomNotes:(int)num;

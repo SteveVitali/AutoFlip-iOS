@@ -23,6 +23,15 @@
     return self;
 }
 
+- (id)initWithEmptyCard {
+    self = [super init];
+    if (self) {
+        self.bullets = [[NSMutableArray alloc] init];
+        self.text = [[NSString alloc] init];
+    }
+    return self;
+}
+
 - (id)initWithRandomBullets {
     self = [super init];
     if (self) {
@@ -36,7 +45,33 @@
                           @"Bullet 6",
                          ]
                     ];
-        self.text = [self.bullets componentsJoinedByString:@"\n"];
+        self.text = [self getTextInBulletFormat];
+    }
+    return self;
+}
+
+- (NSString *)getTextInBulletFormat {
+    NSString *bulletedText;
+    for (int i=0; i<[self.bullets count]; i++) {
+        [self.bullets setObject:[NSString stringWithFormat:@"\u2022 %@\n", [self.bullets objectAtIndex:i]] atIndexedSubscript:i];
+    }
+    return [self.bullets componentsJoinedByString:@""];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.bullets forKey:@"bullets"];
+    [aCoder encodeObject:self.text forKey:@"text"];
+    
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self)
+    {
+        _bullets = [aDecoder decodeObjectForKey:@"bullets"];
+        _text  = [aDecoder decodeObjectForKey:@"text"];
     }
     return self;
 }

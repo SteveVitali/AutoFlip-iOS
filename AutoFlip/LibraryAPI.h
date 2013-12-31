@@ -14,5 +14,6 @@
 + (LibraryAPI *)sharedInstance;
 
 - (NSMutableArray *)getPresentations;
+- (NSString *)appendBulletToString:(NSString *)str;
 
 @end

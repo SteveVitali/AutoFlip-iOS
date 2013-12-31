@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GetNotecardsViewController : UITableViewController
+@interface GetNotecardsViewController : UIViewController
 
 
 @end

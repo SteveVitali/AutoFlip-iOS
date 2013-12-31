@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Notecard : NSObject
+@interface Notecard : NSObject <NSCoding>
 
 @property NSMutableArray *bullets;
 @property NSString *text;
 
 - (id)initWithBullets:(NSMutableArray *)bullets;
+- (id)initWithEmptyCard;
 - (id)initWithRandomBullets;
 
 @end

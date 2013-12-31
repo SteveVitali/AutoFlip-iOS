@@ -75,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="438" y="356"/>
         </scene>
-        <!--Get Notescards View Controller - Get Presentation Notes-->
+        <!--Get Notecards View Controller - Get Presentation Notes-->
         <scene sceneID="ygn-Bc-HAT">
             <objects>
-                <viewController id="4zf-aB-HN6" customClass="GetNotescardsViewController" sceneMemberID="viewController">
+                <viewController id="4zf-aB-HN6" customClass="GetNotecardsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jH2-6A-gQf"/>
                         <viewControllerLayoutGuide type="bottom" id="wIP-Pn-HZ8"/>
@@ -107,6 +107,9 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Write notes from scratch"/>
+                                <connections>
+                                    <segue destination="x40-BT-Z59" kind="push" id="55y-KK-Q7y"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -122,6 +125,115 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xod-eq-D4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="882" y="678"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tHr-Ru-Wzc">
+            <objects>
+                <viewController id="ROo-zw-RYr" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BRe-4w-j7I"/>
+                        <viewControllerLayoutGuide type="bottom" id="WI6-rz-JOf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r9Z-8M-ySL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lws-LM-tbU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1300" y="678"/>
+        </scene>
+        <!--Create Cards View Controller - Presentation Title-->
+        <scene sceneID="5Y0-3c-EHN">
+            <objects>
+                <viewController id="x40-BT-Z59" customClass="CreateCardsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hUg-3c-lff"/>
+                        <viewControllerLayoutGuide type="bottom" id="vcy-SM-Nay"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t9x-0N-6ex">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aEm-oG-Ykx">
+                                <rect key="frame" x="69" y="275" width="431" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2r4-uK-X2o">
+                                <rect key="frame" x="0.0" y="66" width="568" height="201"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tv-eE-nGV">
+                                <rect key="frame" x="20" y="275" width="30" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="&lt;"/>
+                                <connections>
+                                    <action selector="previousCard:" destination="x40-BT-Z59" eventType="touchUpInside" id="3Pj-GN-GOx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvD-02-8XV">
+                                <rect key="frame" x="518" y="275" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title=">">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextCard:" destination="x40-BT-Z59" eventType="touchUpInside" id="Lf9-Bz-ywW"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="idb-LL-R72">
+                                <rect key="frame" x="220" y="313" width="150" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aEm-oG-Ykx" firstAttribute="leading" secondItem="t9x-0N-6ex" secondAttribute="leading" constant="69" id="60u-1Z-UQe"/>
+                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="0tv-eE-nGV" secondAttribute="bottom" constant="11" id="IBB-j1-QEl"/>
+                            <constraint firstAttribute="centerX" secondItem="idb-LL-R72" secondAttribute="centerX" constant="-11" id="JFo-4R-eGC"/>
+                            <constraint firstItem="2r4-uK-X2o" firstAttribute="leading" secondItem="t9x-0N-6ex" secondAttribute="leading" id="KDo-1F-Lax"/>
+                            <constraint firstAttribute="trailing" secondItem="jvD-02-8XV" secondAttribute="trailing" constant="20" id="OUp-ur-dhn"/>
+                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="2r4-uK-X2o" secondAttribute="bottom" constant="53" id="Saj-ea-aUW"/>
+                            <constraint firstAttribute="trailing" secondItem="2r4-uK-X2o" secondAttribute="trailing" id="US0-KD-EFV"/>
+                            <constraint firstItem="idb-LL-R72" firstAttribute="top" secondItem="aEm-oG-Ykx" secondAttribute="bottom" constant="8" id="Vav-AU-wzw"/>
+                            <constraint firstItem="2r4-uK-X2o" firstAttribute="leading" secondItem="t9x-0N-6ex" secondAttribute="leading" id="XJV-D9-N1f"/>
+                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="idb-LL-R72" secondAttribute="bottom" constant="5" id="ZtH-fY-iBd"/>
+                            <constraint firstAttribute="trailing" secondItem="aEm-oG-Ykx" secondAttribute="trailing" constant="68" id="flE-Hc-zX5"/>
+                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="aEm-oG-Ykx" secondAttribute="bottom" constant="15" id="idJ-FN-nIi"/>
+                            <constraint firstAttribute="trailing" secondItem="2r4-uK-X2o" secondAttribute="trailing" id="inJ-8C-yfJ"/>
+                            <constraint firstItem="0tv-eE-nGV" firstAttribute="leading" secondItem="t9x-0N-6ex" secondAttribute="leading" constant="20" id="pkv-YT-YkD"/>
+                            <constraint firstItem="2r4-uK-X2o" firstAttribute="top" secondItem="hUg-3c-lff" secondAttribute="bottom" constant="2" id="tWO-wV-YpS"/>
+                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="jvD-02-8XV" secondAttribute="bottom" constant="15" id="tpi-Sf-yWz"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Presentation Title" id="klv-Js-4cG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ly2-lB-UI2">
+                            <connections>
+                                <action selector="saveCards:" destination="x40-BT-Z59" id="TSR-dh-mfs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="nextCard" destination="jvD-02-8XV" id="gUH-NA-Lsf"/>
+                        <outlet property="previousCard" destination="0tv-eE-nGV" id="veC-ht-m7F"/>
+                        <outlet property="progressBar" destination="idb-LL-R72" id="rDu-5H-vao"/>
+                        <outlet property="textArea" destination="2r4-uK-X2o" id="dTL-ic-Re8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="31d-IR-njV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1300" y="1349"/>
         </scene>
         <!--Choose Cards View Controller - Choose a Presentation Deck-->
         <scene sceneID="f8r-UC-uJa">
@@ -204,60 +316,85 @@
                         <viewControllerLayoutGuide type="bottom" id="sK1-0c-Tfy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="z8N-W3-VYQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Svf-Bf-E7y">
-                                <rect key="frame" x="0.0" y="66" width="320" height="461"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Svf-Bf-E7y">
+                                <rect key="frame" x="0.0" y="66" width="568" height="213"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PwL-uK-6j6">
-                                <rect key="frame" x="20" y="530" width="59" height="30"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FZ4-M3-BMM">
+                                <rect key="frame" x="0.0" y="71" width="568" height="214"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Previous">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PwL-uK-6j6">
+                                <rect key="frame" x="20" y="282" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="&lt;">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="previousSlide:" destination="fos-MX-0Bw" eventType="touchUpInside" id="gH2-Rs-bwO"/>
+                                    <action selector="previousCard:" destination="fos-MX-0Bw" eventType="touchUpInside" id="hFo-Nq-kQU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rB2-Xa-Dwc">
-                                <rect key="frame" x="268" y="530" width="32" height="30"/>
+                                <rect key="frame" x="518" y="282" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next">
+                                <state key="normal" title=">">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="nextSlide:" destination="fos-MX-0Bw" eventType="touchUpInside" id="XyZ-Eq-zUb"/>
+                                    <action selector="nextCard:" destination="fos-MX-0Bw" eventType="touchUpInside" id="bWW-TB-2CZ"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ld5-3m-CTr">
+                                <rect key="frame" x="209" y="298" width="150" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="sK1-0c-Tfy" firstAttribute="top" secondItem="Svf-Bf-E7y" secondAttribute="bottom" constant="41" id="2qP-31-HN7"/>
                             <constraint firstItem="Svf-Bf-E7y" firstAttribute="leading" secondItem="z8N-W3-VYQ" secondAttribute="leading" id="32E-5E-qFr"/>
+                            <constraint firstAttribute="trailing" secondItem="FZ4-M3-BMM" secondAttribute="trailing" id="6dy-cK-Tnh"/>
                             <constraint firstAttribute="trailing" secondItem="rB2-Xa-Dwc" secondAttribute="trailing" constant="20" id="92P-H6-PBa"/>
-                            <constraint firstItem="Svf-Bf-E7y" firstAttribute="top" secondItem="30C-fV-0Iz" secondAttribute="bottom" constant="1" id="b9o-3U-gD2"/>
-                            <constraint firstItem="PwL-uK-6j6" firstAttribute="top" secondItem="Svf-Bf-E7y" secondAttribute="bottom" constant="2" id="dk9-bI-z9w"/>
+                            <constraint firstAttribute="centerX" secondItem="FZ4-M3-BMM" secondAttribute="centerX" id="K3f-3y-10f"/>
+                            <constraint firstAttribute="centerX" secondItem="Ld5-3m-CTr" secondAttribute="centerX" id="QI2-V9-7oZ"/>
+                            <constraint firstItem="Svf-Bf-E7y" firstAttribute="top" secondItem="30C-fV-0Iz" secondAttribute="bottom" constant="2" id="VUo-bO-H5S"/>
+                            <constraint firstItem="sK1-0c-Tfy" firstAttribute="top" secondItem="FZ4-M3-BMM" secondAttribute="bottom" constant="35" id="YSA-sW-vpc"/>
+                            <constraint firstItem="Svf-Bf-E7y" firstAttribute="top" secondItem="30C-fV-0Iz" secondAttribute="bottom" constant="2" id="b9o-3U-gD2"/>
+                            <constraint firstItem="FZ4-M3-BMM" firstAttribute="top" secondItem="30C-fV-0Iz" secondAttribute="bottom" constant="7" id="dQ2-It-lhR"/>
+                            <constraint firstItem="PwL-uK-6j6" firstAttribute="top" secondItem="Svf-Bf-E7y" secondAttribute="bottom" constant="3" id="dk9-bI-z9w"/>
                             <constraint firstItem="sK1-0c-Tfy" firstAttribute="top" secondItem="PwL-uK-6j6" secondAttribute="bottom" constant="8" id="j1t-8w-Pvz"/>
+                            <constraint firstItem="sK1-0c-Tfy" firstAttribute="top" secondItem="Ld5-3m-CTr" secondAttribute="bottom" constant="20" id="j34-If-dPg"/>
                             <constraint firstItem="sK1-0c-Tfy" firstAttribute="top" secondItem="rB2-Xa-Dwc" secondAttribute="bottom" constant="8" id="nxA-DY-Y4j"/>
-                            <constraint firstItem="sK1-0c-Tfy" firstAttribute="top" secondItem="Svf-Bf-E7y" secondAttribute="bottom" constant="40" id="rdL-o8-HVI"/>
+                            <constraint firstItem="sK1-0c-Tfy" firstAttribute="top" secondItem="Svf-Bf-E7y" secondAttribute="bottom" constant="41" id="rdL-o8-HVI"/>
                             <constraint firstItem="PwL-uK-6j6" firstAttribute="leading" secondItem="z8N-W3-VYQ" secondAttribute="leading" constant="20" id="vAw-YN-9II"/>
                             <constraint firstAttribute="trailing" secondItem="Svf-Bf-E7y" secondAttribute="trailing" id="wgR-p4-vnV"/>
+                            <constraint firstItem="FZ4-M3-BMM" firstAttribute="leading" secondItem="z8N-W3-VYQ" secondAttribute="leading" id="zG1-t0-Jla"/>
                         </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" title="Slide Title" id="j7R-ad-GK3"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="nextCard" destination="rB2-Xa-Dwc" id="QaG-nz-UJ8"/>
+                        <outlet property="previousCard" destination="PwL-uK-6j6" id="7Ae-nQ-zuZ"/>
                         <outlet property="slideTitle" destination="j7R-ad-GK3" id="Krl-Wu-nmS"/>
-                        <outlet property="textArea" destination="Svf-Bf-E7y" id="P28-4L-Xxb"/>
+                        <outlet property="textArea" destination="FZ4-M3-BMM" id="WYx-AN-yMR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOR-a2-1tH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1314" y="-18"/>
+            <point key="canvasLocation" x="1300" y="24"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

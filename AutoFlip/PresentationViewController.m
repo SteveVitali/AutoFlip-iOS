@@ -10,7 +10,6 @@
 #import "Presentation.h"
 
 @interface PresentationViewController () {
-    NSInteger cardIndex;
     //etc.
 }
 
@@ -23,7 +22,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        cardIndex = 0;
     }
     return self;
 }
@@ -32,24 +30,22 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self reloadSlide];
+
 }
 
-- (void)reloadSlide {
-    self.textArea.text = [[self.presentation.notecards objectAtIndex:cardIndex] text];
-   // self.title = [NSString ]
+- (void)reloadCard {
+    [super reloadCard];
+    //etc.
 }
 
-- (IBAction)nextSlide:(id)sender
+- (IBAction)nextCard:(id)sender
 {
-    cardIndex++;
-    [self reloadSlide];
+    [super nextCard:sender];
 }
 
-- (IBAction)previousSlide:(id)sender
+- (IBAction)previousCard:(id)sender
 {
-    cardIndex--;
-    [self reloadSlide];
+    [super previousCard:sender];
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,5 +53,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end
