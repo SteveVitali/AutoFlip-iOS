@@ -156,14 +156,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aEm-oG-Ykx">
-                                <rect key="frame" x="69" y="275" width="431" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2r4-uK-X2o">
-                                <rect key="frame" x="0.0" y="66" width="568" height="201"/>
+                                <rect key="frame" x="0.0" y="66" width="568" height="221"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -171,7 +165,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tv-eE-nGV">
-                                <rect key="frame" x="20" y="275" width="30" height="34"/>
+                                <rect key="frame" x="20" y="281" width="30" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="&lt;"/>
@@ -180,7 +174,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvD-02-8XV">
-                                <rect key="frame" x="518" y="275" width="30" height="30"/>
+                                <rect key="frame" x="518" y="283" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title=">">
@@ -191,28 +185,24 @@
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="idb-LL-R72">
-                                <rect key="frame" x="220" y="313" width="150" height="2"/>
+                                <rect key="frame" x="201" y="303" width="150" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="aEm-oG-Ykx" firstAttribute="leading" secondItem="t9x-0N-6ex" secondAttribute="leading" constant="69" id="60u-1Z-UQe"/>
-                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="0tv-eE-nGV" secondAttribute="bottom" constant="11" id="IBB-j1-QEl"/>
+                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="0tv-eE-nGV" secondAttribute="bottom" constant="5" id="IBB-j1-QEl"/>
                             <constraint firstAttribute="centerX" secondItem="idb-LL-R72" secondAttribute="centerX" constant="-11" id="JFo-4R-eGC"/>
                             <constraint firstItem="2r4-uK-X2o" firstAttribute="leading" secondItem="t9x-0N-6ex" secondAttribute="leading" id="KDo-1F-Lax"/>
                             <constraint firstAttribute="trailing" secondItem="jvD-02-8XV" secondAttribute="trailing" constant="20" id="OUp-ur-dhn"/>
-                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="2r4-uK-X2o" secondAttribute="bottom" constant="53" id="Saj-ea-aUW"/>
+                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="2r4-uK-X2o" secondAttribute="bottom" constant="33" id="Saj-ea-aUW"/>
                             <constraint firstAttribute="trailing" secondItem="2r4-uK-X2o" secondAttribute="trailing" id="US0-KD-EFV"/>
-                            <constraint firstItem="idb-LL-R72" firstAttribute="top" secondItem="aEm-oG-Ykx" secondAttribute="bottom" constant="8" id="Vav-AU-wzw"/>
                             <constraint firstItem="2r4-uK-X2o" firstAttribute="leading" secondItem="t9x-0N-6ex" secondAttribute="leading" id="XJV-D9-N1f"/>
                             <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="idb-LL-R72" secondAttribute="bottom" constant="5" id="ZtH-fY-iBd"/>
-                            <constraint firstAttribute="trailing" secondItem="aEm-oG-Ykx" secondAttribute="trailing" constant="68" id="flE-Hc-zX5"/>
-                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="aEm-oG-Ykx" secondAttribute="bottom" constant="15" id="idJ-FN-nIi"/>
                             <constraint firstAttribute="trailing" secondItem="2r4-uK-X2o" secondAttribute="trailing" id="inJ-8C-yfJ"/>
                             <constraint firstItem="0tv-eE-nGV" firstAttribute="leading" secondItem="t9x-0N-6ex" secondAttribute="leading" constant="20" id="pkv-YT-YkD"/>
                             <constraint firstItem="2r4-uK-X2o" firstAttribute="top" secondItem="hUg-3c-lff" secondAttribute="bottom" constant="2" id="tWO-wV-YpS"/>
-                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="jvD-02-8XV" secondAttribute="bottom" constant="15" id="tpi-Sf-yWz"/>
+                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="jvD-02-8XV" secondAttribute="bottom" constant="7" id="tpi-Sf-yWz"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>

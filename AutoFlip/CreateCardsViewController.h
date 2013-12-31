@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CardDeckViewController.h"
 
-@interface CreateCardsViewController : CardDeckViewController
+@interface CreateCardsViewController : CardDeckViewController <UITextViewDelegate>
 
 - (IBAction)saveCards:(id)sender;
 
