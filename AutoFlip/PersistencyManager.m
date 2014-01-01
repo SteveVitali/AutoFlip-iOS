@@ -26,12 +26,13 @@
             NSLog(@"Nil shit nigga wassup");
             //we need some motherfuckin' presentations
             //going to initialize dummy presentation for now
-            // presentations = [[NSMutableArray alloc] init];
+            presentations = [[NSMutableArray alloc] init];
             for(int i=0; i<10; i++) {
                 [presentations addObject:[[Presentation alloc] initWithRandomNotes:i+1]];
             }
             [self savePresentations];
         }
+        //NSLog(@"%@",[[[[presentations objectAtIndex:0] notecards] objectAtIndex:0] text]);
     }
     return self;
 }

@@ -30,6 +30,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.presentation = [[Presentation alloc] init];
+    [self.presentation addCardAtIndex:0];
+    self.textArea.text = @"";
+    
     [self registerForNotifications];
     if (self.presentation.notecards) NSLog(@"self presentation notecards");
     [self.textArea setDelegate:self];

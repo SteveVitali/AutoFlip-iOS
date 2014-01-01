@@ -31,9 +31,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.cardIndex = 0;
-    self.presentation = [[Presentation alloc] init];
-    [self.presentation addCardAtIndex:0];
-    self.textArea.text = @"";
     [self reloadCard];
 }
 
