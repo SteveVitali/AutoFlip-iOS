@@ -115,6 +115,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		116AE53F1874AD7E008EE410 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		11711F841871F2CF00792D36 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +158,7 @@
 		11711F961871F2CF00792D36 /* AutoFlip */ = {
 			isa = PBXGroup;
 			children = (
+				116AE53F1874AD7E008EE410 /* iPad */,
 				11D0D12518720432008CC7FD /* API */,
 				11D0D11B18720345008CC7FD /* Controllers */,
 				11D0D11A18720342008CC7FD /* Views */,
@@ -493,7 +501,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoFlip/AutoFlip-Prefix.pch";
 				INFOPLIST_FILE = "AutoFlip/AutoFlip-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -506,7 +516,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoFlip/AutoFlip-Prefix.pch";
 				INFOPLIST_FILE = "AutoFlip/AutoFlip-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
