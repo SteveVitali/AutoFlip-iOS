@@ -7,6 +7,7 @@
 //
 
 #import "CreateCardsViewController.h"
+#import "Notecard.h"
 
 @interface CreateCardsViewController ()
 
@@ -21,7 +22,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-
     }
     return self;
 }
@@ -31,8 +31,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self registerForNotifications];
+    if (self.presentation.notecards) NSLog(@"self presentation notecards");
     [self.textArea setDelegate:self];
     [self.textArea setText:@"\u2022 "];
+    
 }
 
 - (IBAction)nextCard:(id)sender {
@@ -42,6 +44,7 @@
         self.cardIndex++;
         [self.presentation addCardAtIndex:self.cardIndex];
         [self reloadCard];
+        [self.textArea setText:@"\u2022 "];
     }
 }
 
@@ -57,6 +60,12 @@
 
 - (IBAction)saveCards:(id)sender {
     [self.textArea resignFirstResponder];
+    Notecard *card = [self.presentation.notecards objectAtIndex:self.cardIndex];
+    card.text = [self.textArea text];
+    if (card) {
+        NSLog(@"not null %@", self.textArea.text);
+    }
+    NSLog(@"above^ %d", self.cardIndex);
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,7 +98,6 @@
         [textAreaContent setString:[self.textArea.text stringByAppendingString:@"\u2022 "]];
         [self.textArea setText:textAreaContent];
         cursorPosition.location++;
-        NSLog(@"yeeeee");
     }
 }
 
@@ -115,6 +123,9 @@
 
 }
 
-
+//TO DO STILL:
+//allow backspacing the bullet points
+//allow deck title to be added for presentation deck
+//get progress bar working
 
 @end

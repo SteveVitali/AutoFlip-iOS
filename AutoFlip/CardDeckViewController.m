@@ -22,9 +22,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.cardIndex = 0;
-        self.presentation = [[Presentation alloc] init];
-        self.textArea.text = @"";
     }
     return self;
 }
@@ -33,6 +30,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.cardIndex = 0;
+    self.presentation = [[Presentation alloc] init];
+    [self.presentation addCardAtIndex:0];
+    self.textArea.text = @"";
     [self reloadCard];
 }
 
@@ -43,6 +44,15 @@
     } else {
         [self.previousCard setEnabled:true];
     }
+    [self updateProgressBar];
+}
+
+- (void)updateProgressBar {
+    
+    float progress = (float)(self.cardIndex+1)/[self.presentation.notecards count];
+    NSLog(@"%f",progress);
+    NSLog(@"notecards count: %d",self.presentation.notecards.count);
+    [self.progressBar setProgress:progress];
 }
 
 - (IBAction)nextCard:(id)sender

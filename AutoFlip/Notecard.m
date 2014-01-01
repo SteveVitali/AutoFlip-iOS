@@ -9,8 +9,9 @@
 #import "Notecard.h"
 
 @interface Notecard () {
-    
+
 }
+- (NSString *)getTextInBulletFormat;
 @end
 
 @implementation Notecard
@@ -51,7 +52,6 @@
 }
 
 - (NSString *)getTextInBulletFormat {
-    NSString *bulletedText;
     for (int i=0; i<[self.bullets count]; i++) {
         [self.bullets setObject:[NSString stringWithFormat:@"\u2022 %@\n", [self.bullets objectAtIndex:i]] atIndexedSubscript:i];
     }

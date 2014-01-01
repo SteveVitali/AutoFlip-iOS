@@ -11,6 +11,14 @@
 
 @implementation Presentation
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.notecards = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 - (id)initWithNotes:(NSMutableArray *)notecards {
     self = [super init];
     if (self) {
