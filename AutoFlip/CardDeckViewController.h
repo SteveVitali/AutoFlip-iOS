@@ -15,6 +15,7 @@
 
 @property Presentation *presentation;
 
+@property (strong, nonatomic) IBOutlet UIView *masterView;
 @property (weak, nonatomic) IBOutlet UITextView *textArea;
 @property (weak, nonatomic) IBOutlet UINavigationItem *slideTitle;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;

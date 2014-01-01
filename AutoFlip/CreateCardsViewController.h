@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CardDeckViewController.h"
 
-@interface CreateCardsViewController : CardDeckViewController <UITextViewDelegate>
+@interface CreateCardsViewController : CardDeckViewController <UITextViewDelegate, UIScrollViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 - (IBAction)saveCards:(id)sender;
 
 @end

@@ -156,15 +156,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2r4-uK-X2o">
-                                <rect key="frame" x="0.0" y="66" width="568" height="221"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tv-eE-nGV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tv-eE-nGV">
                                 <rect key="frame" x="20" y="281" width="30" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -173,7 +165,7 @@
                                     <action selector="previousCard:" destination="x40-BT-Z59" eventType="touchUpInside" id="3Pj-GN-GOx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvD-02-8XV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvD-02-8XV">
                                 <rect key="frame" x="518" y="283" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -188,21 +180,30 @@
                                 <rect key="frame" x="201" y="303" width="150" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2r4-uK-X2o">
+                                <rect key="frame" x="0.0" y="66" width="568" height="221"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="0tv-eE-nGV" secondAttribute="bottom" constant="5" id="IBB-j1-QEl"/>
-                            <constraint firstAttribute="centerX" secondItem="idb-LL-R72" secondAttribute="centerX" constant="-11" id="JFo-4R-eGC"/>
-                            <constraint firstItem="2r4-uK-X2o" firstAttribute="leading" secondItem="t9x-0N-6ex" secondAttribute="leading" id="KDo-1F-Lax"/>
-                            <constraint firstAttribute="trailing" secondItem="jvD-02-8XV" secondAttribute="trailing" constant="20" id="OUp-ur-dhn"/>
-                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="2r4-uK-X2o" secondAttribute="bottom" constant="33" id="Saj-ea-aUW"/>
-                            <constraint firstAttribute="trailing" secondItem="2r4-uK-X2o" secondAttribute="trailing" id="US0-KD-EFV"/>
-                            <constraint firstItem="2r4-uK-X2o" firstAttribute="leading" secondItem="t9x-0N-6ex" secondAttribute="leading" id="XJV-D9-N1f"/>
-                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="idb-LL-R72" secondAttribute="bottom" constant="5" id="ZtH-fY-iBd"/>
-                            <constraint firstAttribute="trailing" secondItem="2r4-uK-X2o" secondAttribute="trailing" id="inJ-8C-yfJ"/>
-                            <constraint firstItem="0tv-eE-nGV" firstAttribute="leading" secondItem="t9x-0N-6ex" secondAttribute="leading" constant="20" id="pkv-YT-YkD"/>
-                            <constraint firstItem="2r4-uK-X2o" firstAttribute="top" secondItem="hUg-3c-lff" secondAttribute="bottom" constant="2" id="tWO-wV-YpS"/>
-                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="jvD-02-8XV" secondAttribute="bottom" constant="7" id="tpi-Sf-yWz"/>
+                            <constraint firstItem="2r4-uK-X2o" firstAttribute="leading" secondItem="t9x-0N-6ex" secondAttribute="leading" id="J7k-oR-Wsb"/>
+                            <constraint firstAttribute="centerX" secondItem="idb-LL-R72" secondAttribute="centerX" constant="8" id="MnX-he-62H"/>
+                            <constraint firstAttribute="trailing" secondItem="jvD-02-8XV" secondAttribute="trailing" constant="20" id="Mtu-n2-9a5"/>
+                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="jvD-02-8XV" secondAttribute="bottom" constant="7" id="O3T-yL-jYy"/>
+                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="0tv-eE-nGV" secondAttribute="bottom" constant="5" id="PSi-sT-PkX"/>
+                            <constraint firstItem="0tv-eE-nGV" firstAttribute="top" secondItem="2r4-uK-X2o" secondAttribute="bottom" constant="-6" id="RYb-eu-fjQ"/>
+                            <constraint firstItem="jvD-02-8XV" firstAttribute="top" secondItem="2r4-uK-X2o" secondAttribute="bottom" constant="-4" id="cHZ-9D-pSK"/>
+                            <constraint firstItem="idb-LL-R72" firstAttribute="top" secondItem="2r4-uK-X2o" secondAttribute="bottom" constant="16" id="dZM-np-pZ8"/>
+                            <constraint firstItem="2r4-uK-X2o" firstAttribute="top" secondItem="hUg-3c-lff" secondAttribute="bottom" constant="2" id="gMY-UD-H77"/>
+                            <constraint firstItem="vcy-SM-Nay" firstAttribute="top" secondItem="idb-LL-R72" secondAttribute="bottom" constant="15" id="m75-sw-NAy"/>
+                            <constraint firstAttribute="trailing" secondItem="2r4-uK-X2o" secondAttribute="trailing" id="nOz-fi-NSA"/>
+                            <constraint firstAttribute="centerX" secondItem="2r4-uK-X2o" secondAttribute="centerX" id="q8I-Uc-pg4"/>
+                            <constraint firstItem="0tv-eE-nGV" firstAttribute="leading" secondItem="t9x-0N-6ex" secondAttribute="leading" constant="20" id="yu1-eR-tx8"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -215,6 +216,7 @@
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="masterView" destination="t9x-0N-6ex" id="fX5-nW-feb"/>
                         <outlet property="nextCard" destination="jvD-02-8XV" id="gUH-NA-Lsf"/>
                         <outlet property="previousCard" destination="0tv-eE-nGV" id="veC-ht-m7F"/>
                         <outlet property="progressBar" destination="idb-LL-R72" id="rDu-5H-vao"/>
