@@ -30,14 +30,14 @@
 - (id)initWithRandomNotes:(int)num {
     self = [super init];
     if (self) {
-        self.notecards = [NSMutableArray arrayWithArray:
-                            @[
-                              [[Notecard alloc] initWithRandomBullets],
-                              [[Notecard alloc] initWithRandomBullets],
-                              [[Notecard alloc] initWithRandomBullets],
-                             ]
-                          ];
+        
+        self.notecards = [[NSMutableArray alloc] init];
+        for(int i=0; i<16; i++) {
+            [self.notecards addObject:[[Notecard alloc] initWithRandomBullets]];
+        }
+        
         self.title = [NSString stringWithFormat:@"Title of presentation %d", num];
+        //self.title = [[[self.notecards objectAtIndex:0] bullets] objectAtIndex:0];
         
         int randomIndex = arc4random() % 10 + 1 ;
         switch (randomIndex) {

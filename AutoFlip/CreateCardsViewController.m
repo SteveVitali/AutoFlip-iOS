@@ -35,7 +35,6 @@
     self.textArea.text = @"";
     
     [self registerForNotifications];
-    if (self.presentation.notecards) NSLog(@"self presentation notecards");
     [self.textArea setDelegate:self];
     [self.textArea setText:@"\u2022 "];
     

@@ -363,6 +363,7 @@
                     <connections>
                         <outlet property="nextCard" destination="rB2-Xa-Dwc" id="QaG-nz-UJ8"/>
                         <outlet property="previousCard" destination="PwL-uK-6j6" id="7Ae-nQ-zuZ"/>
+                        <outlet property="progressBar" destination="Ld5-3m-CTr" id="f31-Rc-neo"/>
                         <outlet property="slideTitle" destination="j7R-ad-GK3" id="Krl-Wu-nmS"/>
                         <outlet property="textArea" destination="FZ4-M3-BMM" id="WYx-AN-yMR"/>
                     </connections>
