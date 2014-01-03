@@ -41,41 +41,13 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     presentations = [[LibraryAPI sharedInstance] getPresentations];
-
+    self.searchResults = [NSMutableArray arrayWithCapacity:[presentations count]];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-
-    return [presentations count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    CardDeckTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    // Configure the cell...
-    Presentation *presentation = [presentations objectAtIndex:indexPath.row];
-    cell.title.text = presentation.title;
-    //Assuming the icon is a .png and is named the same as the "type"
-    cell.icon.image = [UIImage imageNamed:[presentation.type stringByAppendingString:@".png"]];
-    
-    return cell;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -96,11 +68,55 @@
     }
 }
 
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.searchResults count];
+        
+    } else {
+        return [presentations count];
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    Presentation *presentation;
+
+    CardDeckTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    // Configure the cell...
+    if (cell == nil) {
+        cell = [[CardDeckTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        presentation = [self.searchResults objectAtIndex:indexPath.row];
+    } else {
+        presentation = [presentations objectAtIndex:indexPath.row];
+    }
+    cell.title.text = presentation.title;
+    //Assuming the icon is a .png and is named the same as the "type"
+    cell.icon.image = [UIImage imageNamed:[presentation.type stringByAppendingString:@".png"]];
+    
+    return cell;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    chosenPresentation = [presentations objectAtIndex:indexPath.row];
-    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        chosenPresentation = [self.searchResults objectAtIndex:indexPath.row];
+    } else {
+        chosenPresentation = [presentations objectAtIndex:indexPath.row];
+    }
 }
 
 // Override to support conditional editing of the table view.
@@ -150,5 +166,58 @@
 }
 
  */
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+    
+    [self.searchResults removeAllObjects];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.title contains[c] %@",searchText];
+
+    self.searchResults = [NSMutableArray arrayWithArray:[presentations filteredArrayUsingPredicate:predicate]];
+}
+
+
+#pragma mark - UISearchBarDelegate methods
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+    [self handleSearch:searchBar];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    
+    [self handleSearch:searchBar];
+}
+
+- (void)handleSearch:(UISearchBar *)searchBar {
+    
+    NSLog(@"User searched for %@", searchBar.text);
+    [searchBar resignFirstResponder]; // if you want the keyboard to go away
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar {
+    
+    NSLog(@"User canceled search");
+    [searchBar resignFirstResponder]; // if you want the keyboard to go away
+}
+
+#pragma mark - UISearchDisplayController Delegate Methods
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    // Tells the table data source to reload when text changes
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    return YES;
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    // Tells the table data source to reload when scope bar selection changes
+    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
 
 @end

@@ -244,8 +244,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Search presentation decks..." id="kmf-8E-TMJ">
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="wDy-z2-Kgq">
                             <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="21i-NN-olK" id="bMp-qG-5LD"/>
+                            </connections>
+                        </searchBar>
+                        <searchBar key="tableFooterView" contentMode="redraw" id="NQZ-9G-UU4">
+                            <rect key="frame" x="0.0" y="632" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
@@ -302,9 +310,20 @@
                     </navigationItem>
                     <connections>
                         <outlet property="editButton" destination="U8f-JE-bcY" id="HLe-xL-Icb"/>
+                        <outlet property="searchBar" destination="wDy-z2-Kgq" id="9xw-W2-O7s"/>
+                        <outlet property="searchDisplayController" destination="KIa-bJ-qyc" id="Vz3-1z-ZoT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyb-Qx-K6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="KIa-bJ-qyc">
+                    <connections>
+                        <outlet property="delegate" destination="21i-NN-olK" id="Pgc-d9-BdH"/>
+                        <outlet property="searchBar" destination="wDy-z2-Kgq" id="L0N-Eu-mjk"/>
+                        <outlet property="searchContentsController" destination="21i-NN-olK" id="MSc-Tl-2i3"/>
+                        <outlet property="searchResultsDataSource" destination="21i-NN-olK" id="v1R-ad-mf9"/>
+                        <outlet property="searchResultsDelegate" destination="21i-NN-olK" id="pLa-9U-AQg"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="876" y="24"/>
         </scene>
@@ -373,9 +392,9 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="nextCard" destination="rB2-Xa-Dwc" id="QaG-nz-UJ8"/>
+                        <outlet property="presentationTitleNavBar" destination="j7R-ad-GK3" id="SpJ-J1-VKo"/>
                         <outlet property="previousCard" destination="PwL-uK-6j6" id="7Ae-nQ-zuZ"/>
                         <outlet property="progressBar" destination="Ld5-3m-CTr" id="f31-Rc-neo"/>
-                        <outlet property="slideTitle" destination="j7R-ad-GK3" id="Krl-Wu-nmS"/>
                         <outlet property="textArea" destination="FZ4-M3-BMM" id="WYx-AN-yMR"/>
                     </connections>
                 </viewController>

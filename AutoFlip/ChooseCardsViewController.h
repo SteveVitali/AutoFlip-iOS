@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChooseCardsViewController : UITableViewController
+@interface ChooseCardsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
+
+@property (strong,nonatomic) NSMutableArray *searchResults;
+@property IBOutlet UISearchBar *searchBar;
 
 - (IBAction)toggleEditing;
 
