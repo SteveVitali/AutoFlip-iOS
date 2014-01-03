@@ -11,7 +11,13 @@
 
 @interface CreateCardsViewController : CardDeckViewController <UITextViewDelegate, UIScrollViewDelegate>
 
+// Technically this is redundant, since these values are stored by superclass instance variable presentation
+// But I need to pass the values from the UITextFields through the segue somehow, and idk how else to do it then this.
+@property NSString *presentationTitle;
+@property NSString *presentationDescription;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 - (IBAction)saveCards:(id)sender;
 
 @end

@@ -37,6 +37,7 @@
         }
         
         self.title = [NSString stringWithFormat:@"Title of presentation %d", num];
+        self.description = [NSString stringWithFormat:@"Description of presentation %d", num];
         //self.title = [[[self.notecards objectAtIndex:0] bullets] objectAtIndex:0];
         
         int randomIndex = arc4random() % 10 + 1 ;

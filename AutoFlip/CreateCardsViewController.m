@@ -10,11 +10,14 @@
 #import "Notecard.h"
 
 @interface CreateCardsViewController ()
-
+{
+    float kbHeight;
+}
 @end
 
 @implementation CreateCardsViewController {
     NSInteger cardIndex;
+    NSInteger heightOfNavAndButtons;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -32,13 +35,22 @@
 	// Do any additional setup after loading the view.
     self.presentation = [[Presentation alloc] init];
     [self.presentation addCardAtIndex:0];
-    self.textArea.text = @"";
+    
+    // Set presentation title and description from stuff passed through segue
+    // I understand this code looks hilarious, but it works, damnit.
+    self.presentation.title = self.presentationTitle;
+    self.presentation.description = self.presentationDescription;
+    self.presentationTitleNavBar.title = self.presentationTitle;
     
     [self registerForNotifications];
     [self.textArea setDelegate:self];
     [self.textArea setText:@"\u2022 "];
     
     [self.scrollView setDelegate:self];
+    
+    // hardcoding it because not sure how to get programmatically
+    // for some reason self.presentationNavBar.frame.height doesn't work
+    heightOfNavAndButtons = 86;
     
 }
 
@@ -49,7 +61,7 @@
                                                  name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillBeHidden:)
-                                                 name:UIKeyboardWillHideNotification object:nil];
+                                                 name:UIKeyboardDidHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector (textAreaEdited)
                                                  name:UITextViewTextDidChangeNotification
@@ -62,7 +74,7 @@
                                                     name:UIKeyboardDidShowNotification
                                                   object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardWillHideNotification
+                                                    name:UIKeyboardDidHideNotification
                                                   object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UITextViewTextDidChangeNotification
@@ -139,67 +151,163 @@
 
 }
 
-- (void)textViewDidBeginEditing:(UITextField *)textField
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-
-}
-
-- (void)textViewDidEndEditing:(UITextField *)textField
-{
-
+    CGRect frame = [[UIScreen mainScreen] bounds];
+    
+    self.scrollView.frame = frame;
+    self.scrollView.bounds = frame;
+    self.scrollView.contentSize = CGSizeMake(frame.size.width * 2, frame.size.height);
 }
 
 
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
-    /*
+    // kbHeight gets "initialized" here because it needs the notification to get the kbHeight
+    kbHeight = [self getKeyboardHeight:aNotification];
+    self.scrollView.frame = CGRectMake(self.view.frame.origin.x,
+                                       self.view.frame.origin.y + heightOfNavAndButtons,
+                                       self.view.frame.size.width,
+                                       self.view.frame.size.height - kbHeight - heightOfNavAndButtons);
+}
+
+- (float)getKeyboardHeight:(NSNotification*)aNotification {
+    
     NSDictionary* info = [aNotification userInfo];
+
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-    self.scrollView.contentInset = contentInsets;
-    self.scrollView.scrollIndicatorInsets = contentInsets;
-    
-    // If active text field is hidden by keyboard, scroll it so it's visible
-    // Your app might not need or want this behavior.
-    // The code below was edited from the original apple docs code by some guy on stackoverflow
-    CGRect aRect = self.view.frame;
-    aRect.size.height -= kbSize.height; //just this line, I think
-    CGPoint origin = self.textArea.frame.origin;
-    origin.y -= self.scrollView.contentOffset.y;
-    if (!CGRectContainsPoint(aRect, origin) ) {
-        CGPoint scrollPoint = CGPointMake(0.0, self.textArea.frame.origin.y-(aRect.size.height));
-        [self.scrollView setContentOffset:scrollPoint animated:YES];
+    if(UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)){
+        return kbSize.width;
     }
-    NSLog(@"this runs");
-     */
+    return kbSize.height; //You're probably wondering where the 25 came from. It came from fuck you, that's where.
+                          //You're probably wondering what 25 I'm talking about; again, fuck you, that's what.
 }
 
 // Called when the UIKeyboardWillHideNotification is sent
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
- //   UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-  //  self.scrollView.contentInset = contentInsets;
-   // self.scrollView.scrollIndicatorInsets = contentInsets;
-   // NSLog(@"this asdfruns");
+    NSLog(@"this runs keyboard will hide");
+    // Make it bigger again:
+    self.scrollView.frame = CGRectMake(self.view.frame.origin.x,
+                                       self.view.frame.origin.y + heightOfNavAndButtons,
+                                       self.view.frame.size.width,
+                                       self.view.frame.size.height - heightOfNavAndButtons);
 
 }
 
-
-//scrollview delegate methods
-- (void)scrollViewDidScroll:(UIScrollView *)sender {
-    if (sender.contentOffset.x != 0) {
-        CGPoint offset = sender.contentOffset;
-        offset.x = 0;
-        sender.contentOffset = offset;
+// found most of this method on stackoverflow
+// should be called in textViewDidChange: and textViewDidChangeSelection:
+- (void)scrollToCursor
+{
+    int verticalPaddingBecauseFuckYou;
+    // if there is a selection cursor
+    if (self.textArea.selectedRange.location != NSNotFound) {
+        if (self.textArea.contentSize.height > self.view.frame.size.height - heightOfNavAndButtons - kbHeight - 10) {
+            if(UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)){
+                verticalPaddingBecauseFuckYou = 112;
+            } else {
+                verticalPaddingBecauseFuckYou = 64;
+            }
+            NSLog(@"frame size height %f",self.view.frame.size.height);
+            // work out how big the text view would be if the text only went up to the cursor
+            NSRange range;
+            range.location = self.textArea.selectedRange.location;
+            range.length = self.textArea.text.length - range.location;
+            NSString *string = [self.textArea.text stringByReplacingCharactersInRange:range withString:@""];
+            CGSize size = [string sizeWithFont:self.textArea.font constrainedToSize:self.textArea.bounds.size lineBreakMode:NSLineBreakByWordWrapping];
+            
+            // work out where that position would be relative to the textView's frame
+            CGRect viewRect = self.textArea.frame;
+            int scrollHeight = viewRect.origin.y + size.height;
+            NSLog(@"scrollHeight: %d",scrollHeight);
+            
+            // scroll to it, but not with scrollRectToVisible because it sucks and fuck you scrollRectToVisible
+            //[self.scrollView scrollRectToVisible:finalRect animated:YES];
+            //CGRect finalRect = CGRectMake(0, scrollHeight, 1, 32);
+            
+            CGPoint point = CGPointMake(1, scrollHeight - kbHeight + verticalPaddingBecauseFuckYou);
+            [self.scrollView setContentOffset:point animated: YES];
+        }
     }
 }
 
 
+// scrollview delegate method
+// disallow horizontal scrolling in the textview
+- (void)scrollViewDidScroll:(UIScrollView *)sender {
+    if (sender.contentOffset.x != 0) {
+        //CGPoint offset = sender.contentOffset;
+        //offset.x = 0;
+        //sender.contentOffset = offset;
+    }
+}
+
+// Whenever the text changes, the textView's size is updated (so it grows as more text
+// is added), and it also scrolls to the cursor.
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if (self.textArea.contentSize.height > heightOfNavAndButtons + self.view.frame.size.height - kbHeight) {
+        
+    self.textArea.frame = CGRectMake(self.textArea.frame.origin.x,
+                                    self.textArea.frame.origin.y,
+                                    self.textArea.frame.size.width,
+                                    self.textArea.contentSize.height);
+    }
+    
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.contentSize.width,
+                                             self.textArea.frame.size.height+200);
+    [self scrollToCursor];
+    
+    
+    CGSize temp = self.textArea.frame.size;
+    NSLog(@"dimensions of textaview: %f %f", temp.width, temp.height);
+}
+
+
+- (void)textViewDidChangeSelection:(UITextView *)aTextView
+{
+    [self scrollToCursor];
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [self scrollToCursor];
+}
+
+- (void)textViewDidEndEditing:(UITextField *)textField
+{
+    
+}
+
+
+/* in case these come in handy later:
+ NSLog(@"self.view frame: origin(%f, %f), dims(%f, %f)",
+ self.view.bounds.origin.x, self.view.bounds.origin.y,
+ self.view.bounds.size.width, self.view.bounds.size.height);
+ 
+ NSLog(@"self.scrollview frame: origin(%f, %f), dims(%f, %f)",
+ self.scrollView.frame.origin.x, self.scrollView.frame.origin.y,
+ self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+ 
+ 
+ NSLog(@"self.textArea frame: origin(%f, %f), dims(%f, %f)",
+ self.textArea.frame.origin.x, self.textArea.frame.origin.y,
+ self.textArea.frame.size.width, self.textArea.frame.size.height);
+ 
+ NSLog(@"self.textArea.contentSize frame: origin(%f, %f)",
+ self.textArea.contentSize.width, self.textArea.contentSize.height );
+ 
+ */
+
+
 //TO DO STILL:
-//allow backspacing the bullet points
-//allow deck title to be added for presentation deck
-//get progress bar working
+// allow deck title to be added for presentation deck
+//   Allow deck title to be edited
+// Allow individual cards to be deleted
+// Allow existing card sets to be opened and edited
+// Data validation:
+    // Make sure no deck name collisions; validate data in title/description fields.
 
 @end

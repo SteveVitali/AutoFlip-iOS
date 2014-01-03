@@ -12,6 +12,7 @@
 
 @property NSMutableArray *notecards;
 @property NSString *title;
+@property NSString *description;
 @property NSString *type;
 
 - (void)addCardAtIndex:(NSInteger)index;

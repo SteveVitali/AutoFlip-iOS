@@ -17,7 +17,7 @@
 
 @property (strong, nonatomic) IBOutlet UIView *masterView;
 @property (weak, nonatomic) IBOutlet UITextView *textArea;
-@property (weak, nonatomic) IBOutlet UINavigationItem *slideTitle;
+@property (weak, nonatomic) IBOutlet UINavigationItem *presentationTitleNavBar;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UIButton *previousCard;
 @property (weak, nonatomic) IBOutlet UIButton *nextCard;
