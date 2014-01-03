@@ -160,6 +160,11 @@
     self.scrollView.contentSize = CGSizeMake(frame.size.width * 2, frame.size.height);
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    //not sure why, but this fixes the glitch where it won't scroll after you rotate
+    [self textViewDidChange:self.textArea];
+}
+
 
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
@@ -257,7 +262,7 @@
     }
     
     self.scrollView.contentSize = CGSizeMake(self.scrollView.contentSize.width,
-                                             self.textArea.frame.size.height+200);
+                                             self.textArea.frame.size.height+50);
     [self scrollToCursor];
     
     
