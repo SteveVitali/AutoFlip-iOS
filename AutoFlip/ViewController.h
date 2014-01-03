@@ -10,4 +10,8 @@
 
 @interface ViewController : UIViewController
 
+- (IBAction)showMenu:(id)sender;
+
+- (void)pushCreateCardsView;
+
 @end

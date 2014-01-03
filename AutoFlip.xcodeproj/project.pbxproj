@@ -21,10 +21,10 @@
 		11711FB21871F2CF00792D36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11711F941871F2CF00792D36 /* UIKit.framework */; };
 		11711FBA1871F2CF00792D36 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11711FB81871F2CF00792D36 /* InfoPlist.strings */; };
 		11711FBC1871F2CF00792D36 /* AutoFlipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11711FBB1871F2CF00792D36 /* AutoFlipTests.m */; };
+		1194B23618772DB8008AD3AE /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194B23518772DB8008AD3AE /* KxMenu.m */; };
 		11A44137187360EA00FB5863 /* CreateCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A44136187360EA00FB5863 /* CreateCardsViewController.m */; };
 		11A4413A1873620400FB5863 /* CardDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A441391873620400FB5863 /* CardDeckViewController.m */; };
 		11D0D115187202D1008CC7FD /* ChooseCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */; };
-		11D0D11818720332008CC7FD /* GetNotecardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D11718720332008CC7FD /* GetNotecardsViewController.m */; };
 		11D0D11E18720412008CC7FD /* Notecard.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D11D18720412008CC7FD /* Notecard.m */; };
 		11D0D12118720421008CC7FD /* Presentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D12018720421008CC7FD /* Presentation.m */; };
 		11D0D12418720431008CC7FD /* LibraryAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D12318720431008CC7FD /* LibraryAPI.m */; };
@@ -67,14 +67,14 @@
 		11711FB71871F2CF00792D36 /* AutoFlipTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AutoFlipTests-Info.plist"; sourceTree = "<group>"; };
 		11711FB91871F2CF00792D36 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		11711FBB1871F2CF00792D36 /* AutoFlipTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoFlipTests.m; sourceTree = "<group>"; };
+		1194B23418772DB8008AD3AE /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMenu.h; sourceTree = "<group>"; };
+		1194B23518772DB8008AD3AE /* KxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMenu.m; sourceTree = "<group>"; };
 		11A44135187360EA00FB5863 /* CreateCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCardsViewController.h; sourceTree = "<group>"; };
 		11A44136187360EA00FB5863 /* CreateCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCardsViewController.m; sourceTree = "<group>"; };
 		11A441381873620400FB5863 /* CardDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDeckViewController.h; sourceTree = "<group>"; };
 		11A441391873620400FB5863 /* CardDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDeckViewController.m; sourceTree = "<group>"; };
 		11D0D113187202D1008CC7FD /* ChooseCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCardsViewController.h; sourceTree = "<group>"; };
 		11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCardsViewController.m; sourceTree = "<group>"; };
-		11D0D11618720332008CC7FD /* GetNotecardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNotecardsViewController.h; sourceTree = "<group>"; };
-		11D0D11718720332008CC7FD /* GetNotecardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNotecardsViewController.m; sourceTree = "<group>"; };
 		11D0D11C18720412008CC7FD /* Notecard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notecard.h; sourceTree = "<group>"; };
 		11D0D11D18720412008CC7FD /* Notecard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notecard.m; sourceTree = "<group>"; };
 		11D0D11F18720421008CC7FD /* Presentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Presentation.h; sourceTree = "<group>"; };
@@ -230,6 +230,8 @@
 		11D0D11A18720342008CC7FD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1194B23418772DB8008AD3AE /* KxMenu.h */,
+				1194B23518772DB8008AD3AE /* KxMenu.m */,
 				11D0D13318722A93008CC7FD /* CardDeckTableCell.h */,
 				11D0D13418722A93008CC7FD /* CardDeckTableCell.m */,
 				11711FA21871F2CF00792D36 /* Main.storyboard */,
@@ -243,8 +245,6 @@
 				11A4413B1873624F00FB5863 /* CardDeckViewControllers */,
 				11711FA51871F2CF00792D36 /* ViewController.h */,
 				11711FA61871F2CF00792D36 /* ViewController.m */,
-				11D0D11618720332008CC7FD /* GetNotecardsViewController.h */,
-				11D0D11718720332008CC7FD /* GetNotecardsViewController.m */,
 				11D0D113187202D1008CC7FD /* ChooseCardsViewController.h */,
 				11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */,
 				11DC90611874D39600C069D8 /* NewCardDeckViewController.h */,
@@ -364,13 +364,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11D0D11818720332008CC7FD /* GetNotecardsViewController.m in Sources */,
 				11D0D12418720431008CC7FD /* LibraryAPI.m in Sources */,
 				11A44137187360EA00FB5863 /* CreateCardsViewController.m in Sources */,
 				11D0D1281872075A008CC7FD /* PersistencyManager.m in Sources */,
 				11D0D13518722A93008CC7FD /* CardDeckTableCell.m in Sources */,
 				11711FA71871F2CF00792D36 /* ViewController.m in Sources */,
 				11D0D115187202D1008CC7FD /* ChooseCardsViewController.m in Sources */,
+				1194B23618772DB8008AD3AE /* KxMenu.m in Sources */,
 				11D0D11E18720412008CC7FD /* Notecard.m in Sources */,
 				11A4413A1873620400FB5863 /* CardDeckViewController.m in Sources */,
 				11D0D12118720421008CC7FD /* Presentation.m in Sources */,

@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IQ1-6F-V5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29" y="356"/>
+            <point key="canvasLocation" x="31" y="356"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -39,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0O-Zt-ndL">
-                                <rect key="frame" x="60" y="227" width="200" height="60"/>
+                                <rect key="frame" x="60" y="224" width="200" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -49,13 +49,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6M-BN-vfu">
-                                <rect key="frame" x="60" y="313" width="200" height="60"/>
+                                <rect key="frame" x="60" y="302" width="200" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Import Presentation Notes"/>
                                 <connections>
-                                    <segue destination="4zf-aB-HN6" kind="push" id="KQN-fF-dqc"/>
+                                    <action selector="showMenu:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9Ex-JC-non"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -70,79 +70,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Fy7-Ap-7I3"/>
+                    <connections>
+                        <segue destination="pdT-Q6-8Jf" kind="push" identifier="createCards" id="ZhR-A6-nKD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="438" y="356"/>
-        </scene>
-        <!--Get Notecards View Controller - Get Presentation Notes-->
-        <scene sceneID="ygn-Bc-HAT">
-            <objects>
-                <viewController id="4zf-aB-HN6" customClass="GetNotecardsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jH2-6A-gQf"/>
-                        <viewControllerLayoutGuide type="bottom" id="wIP-Pn-HZ8"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="6hw-8B-owB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AW9-bt-HXN">
-                                <rect key="frame" x="60" y="198" width="200" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Google Drive"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mO-lt-luz">
-                                <rect key="frame" x="60" y="249" width="200" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Dropbox"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="707-52-A0y">
-                                <rect key="frame" x="60" y="356" width="200" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Write notes from scratch"/>
-                                <connections>
-                                    <segue destination="pdT-Q6-8Jf" kind="push" id="Uqd-sj-GCo"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="0mO-lt-luz" secondAttribute="trailing" constant="60" id="RqL-zd-A11"/>
-                            <constraint firstAttribute="trailing" secondItem="AW9-bt-HXN" secondAttribute="trailing" constant="60" id="Syj-xQ-Q8r"/>
-                            <constraint firstItem="0mO-lt-luz" firstAttribute="leading" secondItem="6hw-8B-owB" secondAttribute="leading" constant="60" id="rk2-Nb-rQN"/>
-                            <constraint firstItem="AW9-bt-HXN" firstAttribute="leading" secondItem="6hw-8B-owB" secondAttribute="leading" constant="60" id="uHB-X1-tbl"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Get Presentation Notes" id="PvO-v7-Hq2"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xod-eq-D4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="882" y="678"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="tHr-Ru-Wzc">
-            <objects>
-                <viewController id="ROo-zw-RYr" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="BRe-4w-j7I"/>
-                        <viewControllerLayoutGuide type="bottom" id="WI6-rz-JOf"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="r9Z-8M-ySL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lws-LM-tbU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1300" y="678"/>
         </scene>
         <!--New Card Deck View Controller-->
         <scene sceneID="FHF-wb-GdN">
@@ -216,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f5o-X9-sIZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="1349"/>
+            <point key="canvasLocation" x="876" y="688"/>
         </scene>
         <!--Create Cards View Controller - Presentation Title-->
         <scene sceneID="5Y0-3c-EHN">
@@ -301,25 +235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31d-IR-njV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1683" y="1473"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="TZy-ga-7f1">
-            <objects>
-                <viewController id="Khh-99-Qwr" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9Gn-oU-EaZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="cbN-ld-tan"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8J9-Iz-uZr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hWM-iS-cCL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1762" y="739"/>
+            <point key="canvasLocation" x="1291" y="688"/>
         </scene>
         <!--Choose Cards View Controller - Choose a Presentation Deck-->
         <scene sceneID="f8r-UC-uJa">
@@ -391,7 +307,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyb-Qx-K6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="882" y="24"/>
+            <point key="canvasLocation" x="876" y="24"/>
         </scene>
         <!--Presentation View Controller - Slide Title-->
         <scene sceneID="w4L-63-709">
