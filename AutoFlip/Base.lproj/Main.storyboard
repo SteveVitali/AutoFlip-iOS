@@ -230,7 +230,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tv-eE-nGV">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tv-eE-nGV">
                                 <rect key="frame" x="20" y="58" width="30" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -239,18 +239,7 @@
                                     <action selector="previousCard:" destination="x40-BT-Z59" eventType="touchUpInside" id="3Pj-GN-GOx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvD-02-8XV">
-                                <rect key="frame" x="269" y="58" width="31" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title=">">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextCard:" destination="x40-BT-Z59" eventType="touchUpInside" id="Lf9-Bz-ywW"/>
-                                </connections>
-                            </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="idb-LL-R72">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="idb-LL-R72">
                                 <rect key="frame" x="85" y="74" width="149" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
@@ -272,20 +261,26 @@
                                     <constraint firstItem="2r4-uK-X2o" firstAttribute="leading" secondItem="71F-9v-GoE" secondAttribute="leading" id="lrN-Cq-Fr7"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gox-r5-4a2">
+                                <rect key="frame" x="270" y="58" width="30" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title=">"/>
+                                <connections>
+                                    <action selector="nextCard:" destination="x40-BT-Z59" eventType="touchUpInside" id="OBJ-Sf-Fnq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jvD-02-8XV" firstAttribute="top" secondItem="hUg-3c-lff" secondAttribute="bottom" constant="-4" id="1eH-p0-QSf"/>
-                            <constraint firstItem="jvD-02-8XV" firstAttribute="leading" secondItem="idb-LL-R72" secondAttribute="trailing" constant="35" id="5hZ-51-mzJ"/>
-                            <constraint firstItem="0tv-eE-nGV" firstAttribute="top" secondItem="hUg-3c-lff" secondAttribute="bottom" constant="-6" id="B8v-sa-s5w"/>
                             <constraint firstItem="0tv-eE-nGV" firstAttribute="leading" secondItem="t9x-0N-6ex" secondAttribute="leading" constant="20" id="Btr-3m-HMf"/>
                             <constraint firstItem="idb-LL-R72" firstAttribute="leading" secondItem="0tv-eE-nGV" secondAttribute="trailing" constant="35" id="HvZ-VH-2ta"/>
-                            <constraint firstAttribute="trailing" secondItem="jvD-02-8XV" secondAttribute="trailing" constant="20" id="UXO-LC-XDJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Gox-r5-4a2" secondAttribute="trailing" constant="20" id="NJU-lZ-hPi"/>
                             <constraint firstAttribute="centerX" secondItem="71F-9v-GoE" secondAttribute="centerX" id="blh-GH-Emr"/>
-                            <constraint firstItem="hUg-3c-lff" firstAttribute="top" secondItem="jvD-02-8XV" secondAttribute="bottom" constant="-28" id="dWS-n3-j6J"/>
                             <constraint firstAttribute="centerX" secondItem="idb-LL-R72" secondAttribute="centerX" id="gb6-92-DWl"/>
                             <constraint firstItem="idb-LL-R72" firstAttribute="top" secondItem="hUg-3c-lff" secondAttribute="bottom" constant="10" id="ixr-mN-S7X"/>
                             <constraint firstItem="71F-9v-GoE" firstAttribute="top" secondItem="hUg-3c-lff" secondAttribute="bottom" constant="20" id="vOS-8q-RDu"/>
+                            <constraint firstItem="Gox-r5-4a2" firstAttribute="leading" secondItem="idb-LL-R72" secondAttribute="trailing" constant="36" id="y0p-d1-3Ep"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Presentation Title" id="klv-Js-4cG">
@@ -298,7 +293,6 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="masterView" destination="t9x-0N-6ex" id="fX5-nW-feb"/>
-                        <outlet property="nextCard" destination="jvD-02-8XV" id="gUH-NA-Lsf"/>
                         <outlet property="presentationTitleNavBar" destination="klv-Js-4cG" id="kuS-y1-0eQ"/>
                         <outlet property="previousCard" destination="0tv-eE-nGV" id="veC-ht-m7F"/>
                         <outlet property="progressBar" destination="idb-LL-R72" id="rDu-5H-vao"/>

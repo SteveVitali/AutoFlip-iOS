@@ -61,7 +61,7 @@
                                                  name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillBeHidden:)
-                                                 name:UIKeyboardDidHideNotification object:nil];
+                                                 name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector (textAreaEdited)
                                                  name:UITextViewTextDidChangeNotification
@@ -74,7 +74,7 @@
                                                     name:UIKeyboardDidShowNotification
                                                   object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardDidHideNotification
+                                                    name:UIKeyboardWillHideNotification
                                                   object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UITextViewTextDidChangeNotification
