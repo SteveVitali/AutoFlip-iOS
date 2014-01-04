@@ -34,6 +34,15 @@
 		11D0D13B18722DD6008CC7FD /* drive.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D0D13A18722DD6008CC7FD /* drive.png */; };
 		11D0D13D18722E34008CC7FD /* dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D0D13C18722E34008CC7FD /* dropbox.png */; };
 		11D0D13F187231D8008CC7FD /* custom.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D0D13E187231D8008CC7FD /* custom.png */; };
+		11D11F431878A6620081B1CB /* MZFormSheetBackgroundWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F3A1878A6620081B1CB /* MZFormSheetBackgroundWindow.m */; };
+		11D11F441878A6620081B1CB /* MZFormSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F3C1878A6620081B1CB /* MZFormSheetController.m */; };
+		11D11F451878A6620081B1CB /* MZFormSheetSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F3E1878A6620081B1CB /* MZFormSheetSegue.m */; };
+		11D11F461878A6620081B1CB /* MZTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F401878A6620081B1CB /* MZTransition.m */; };
+		11D11F471878A6620081B1CB /* UIImage+Additional.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F421878A6620081B1CB /* UIImage+Additional.m */; };
+		11D11F4D1878A74E0081B1CB /* MZAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F4A1878A74E0081B1CB /* MZAppearance.m */; };
+		11D11F4E1878A74E0081B1CB /* NSInvocation+Copy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F4C1878A74E0081B1CB /* NSInvocation+Copy.m */; };
+		11D11F581878AE910081B1CB /* SaveAsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F561878AE910081B1CB /* SaveAsViewController.m */; };
+		11D11F591878AE910081B1CB /* SaveAsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D11F571878AE910081B1CB /* SaveAsView.xib */; };
 		11DC90631874D39600C069D8 /* NewCardDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DC90621874D39600C069D8 /* NewCardDeckViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +99,23 @@
 		11D0D13A18722DD6008CC7FD /* drive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drive.png; sourceTree = "<group>"; };
 		11D0D13C18722E34008CC7FD /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropbox.png; sourceTree = "<group>"; };
 		11D0D13E187231D8008CC7FD /* custom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom.png; sourceTree = "<group>"; };
+		11D11F391878A6620081B1CB /* MZFormSheetBackgroundWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetBackgroundWindow.h; sourceTree = "<group>"; };
+		11D11F3A1878A6620081B1CB /* MZFormSheetBackgroundWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetBackgroundWindow.m; sourceTree = "<group>"; };
+		11D11F3B1878A6620081B1CB /* MZFormSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetController.h; sourceTree = "<group>"; };
+		11D11F3C1878A6620081B1CB /* MZFormSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetController.m; sourceTree = "<group>"; };
+		11D11F3D1878A6620081B1CB /* MZFormSheetSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetSegue.h; sourceTree = "<group>"; };
+		11D11F3E1878A6620081B1CB /* MZFormSheetSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetSegue.m; sourceTree = "<group>"; };
+		11D11F3F1878A6620081B1CB /* MZTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTransition.h; sourceTree = "<group>"; };
+		11D11F401878A6620081B1CB /* MZTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTransition.m; sourceTree = "<group>"; };
+		11D11F411878A6620081B1CB /* UIImage+Additional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additional.h"; sourceTree = "<group>"; };
+		11D11F421878A6620081B1CB /* UIImage+Additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additional.m"; sourceTree = "<group>"; };
+		11D11F491878A74E0081B1CB /* MZAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZAppearance.h; sourceTree = "<group>"; };
+		11D11F4A1878A74E0081B1CB /* MZAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZAppearance.m; sourceTree = "<group>"; };
+		11D11F4B1878A74E0081B1CB /* NSInvocation+Copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+Copy.h"; sourceTree = "<group>"; };
+		11D11F4C1878A74E0081B1CB /* NSInvocation+Copy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+Copy.m"; sourceTree = "<group>"; };
+		11D11F551878AE910081B1CB /* SaveAsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveAsViewController.h; sourceTree = "<group>"; };
+		11D11F561878AE910081B1CB /* SaveAsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveAsViewController.m; sourceTree = "<group>"; };
+		11D11F571878AE910081B1CB /* SaveAsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaveAsView.xib; sourceTree = "<group>"; };
 		11DC90611874D39600C069D8 /* NewCardDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCardDeckViewController.h; sourceTree = "<group>"; };
 		11DC90621874D39600C069D8 /* NewCardDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCardDeckViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,12 +232,11 @@
 		11A4413B1873624F00FB5863 /* CardDeckViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				11D11F511878AE470081B1CB /* CreateCardsViewControllers */,
 				11A441381873620400FB5863 /* CardDeckViewController.h */,
 				11A441391873620400FB5863 /* CardDeckViewController.m */,
 				11D0D12918721356008CC7FD /* PresentationViewController.h */,
 				11D0D12A18721356008CC7FD /* PresentationViewController.m */,
-				11A44135187360EA00FB5863 /* CreateCardsViewController.h */,
-				11A44136187360EA00FB5863 /* CreateCardsViewController.m */,
 			);
 			name = CardDeckViewControllers;
 			sourceTree = "<group>";
@@ -242,6 +267,7 @@
 		11D0D11B18720345008CC7FD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				11D11F381878A6620081B1CB /* MZFormSheetController */,
 				11A4413B1873624F00FB5863 /* CardDeckViewControllers */,
 				11711FA51871F2CF00792D36 /* ViewController.h */,
 				11711FA61871F2CF00792D36 /* ViewController.m */,
@@ -262,6 +288,47 @@
 				11D0D1271872075A008CC7FD /* PersistencyManager.m */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		11D11F381878A6620081B1CB /* MZFormSheetController */ = {
+			isa = PBXGroup;
+			children = (
+				11D11F481878A74E0081B1CB /* Additional */,
+				11D11F391878A6620081B1CB /* MZFormSheetBackgroundWindow.h */,
+				11D11F3A1878A6620081B1CB /* MZFormSheetBackgroundWindow.m */,
+				11D11F3B1878A6620081B1CB /* MZFormSheetController.h */,
+				11D11F3C1878A6620081B1CB /* MZFormSheetController.m */,
+				11D11F3D1878A6620081B1CB /* MZFormSheetSegue.h */,
+				11D11F3E1878A6620081B1CB /* MZFormSheetSegue.m */,
+				11D11F3F1878A6620081B1CB /* MZTransition.h */,
+				11D11F401878A6620081B1CB /* MZTransition.m */,
+				11D11F411878A6620081B1CB /* UIImage+Additional.h */,
+				11D11F421878A6620081B1CB /* UIImage+Additional.m */,
+			);
+			path = MZFormSheetController;
+			sourceTree = "<group>";
+		};
+		11D11F481878A74E0081B1CB /* Additional */ = {
+			isa = PBXGroup;
+			children = (
+				11D11F491878A74E0081B1CB /* MZAppearance.h */,
+				11D11F4A1878A74E0081B1CB /* MZAppearance.m */,
+				11D11F4B1878A74E0081B1CB /* NSInvocation+Copy.h */,
+				11D11F4C1878A74E0081B1CB /* NSInvocation+Copy.m */,
+			);
+			path = Additional;
+			sourceTree = "<group>";
+		};
+		11D11F511878AE470081B1CB /* CreateCardsViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				11A44135187360EA00FB5863 /* CreateCardsViewController.h */,
+				11A44136187360EA00FB5863 /* CreateCardsViewController.m */,
+				11D11F551878AE910081B1CB /* SaveAsViewController.h */,
+				11D11F561878AE910081B1CB /* SaveAsViewController.m */,
+				11D11F571878AE910081B1CB /* SaveAsView.xib */,
+			);
+			name = CreateCardsViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +410,7 @@
 				11711FA91871F2CF00792D36 /* Images.xcassets in Resources */,
 				11D0D13F187231D8008CC7FD /* custom.png in Resources */,
 				11711F9B1871F2CF00792D36 /* InfoPlist.strings in Resources */,
+				11D11F591878AE910081B1CB /* SaveAsView.xib in Resources */,
 				11D0D13D18722E34008CC7FD /* dropbox.png in Resources */,
 				11D0D13B18722DD6008CC7FD /* drive.png in Resources */,
 				11711FA41871F2CF00792D36 /* Main.storyboard in Resources */,
@@ -367,17 +435,25 @@
 				11D0D12418720431008CC7FD /* LibraryAPI.m in Sources */,
 				11A44137187360EA00FB5863 /* CreateCardsViewController.m in Sources */,
 				11D0D1281872075A008CC7FD /* PersistencyManager.m in Sources */,
+				11D11F431878A6620081B1CB /* MZFormSheetBackgroundWindow.m in Sources */,
 				11D0D13518722A93008CC7FD /* CardDeckTableCell.m in Sources */,
 				11711FA71871F2CF00792D36 /* ViewController.m in Sources */,
 				11D0D115187202D1008CC7FD /* ChooseCardsViewController.m in Sources */,
+				11D11F451878A6620081B1CB /* MZFormSheetSegue.m in Sources */,
+				11D11F4D1878A74E0081B1CB /* MZAppearance.m in Sources */,
 				1194B23618772DB8008AD3AE /* KxMenu.m in Sources */,
 				11D0D11E18720412008CC7FD /* Notecard.m in Sources */,
+				11D11F461878A6620081B1CB /* MZTransition.m in Sources */,
+				11D11F471878A6620081B1CB /* UIImage+Additional.m in Sources */,
 				11A4413A1873620400FB5863 /* CardDeckViewController.m in Sources */,
 				11D0D12118720421008CC7FD /* Presentation.m in Sources */,
 				11DC90631874D39600C069D8 /* NewCardDeckViewController.m in Sources */,
+				11D11F441878A6620081B1CB /* MZFormSheetController.m in Sources */,
 				11711FA11871F2CF00792D36 /* AppDelegate.m in Sources */,
 				11D0D12B18721356008CC7FD /* PresentationViewController.m in Sources */,
 				11711F9D1871F2CF00792D36 /* main.m in Sources */,
+				11D11F4E1878A74E0081B1CB /* NSInvocation+Copy.m in Sources */,
+				11D11F581878AE910081B1CB /* SaveAsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

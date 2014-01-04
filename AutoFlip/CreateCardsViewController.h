@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CardDeckViewController.h"
+#import "SaveAsViewController.h"
 
 @interface CreateCardsViewController : CardDeckViewController <UITextViewDelegate,
-                                                               UIScrollViewDelegate>
+                                                               UIScrollViewDelegate,
+                                                               UIAlertViewDelegate,
+                                                               SaveAsViewControllerDelegate>
 
 // Technically this is redundant, since these values are stored by sinstance variable presentation
 // But I need to pass the values from the UITextFields through the segue somehow
@@ -20,5 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 - (IBAction)saveCards:(id)sender;
+
+- (void)saveDataAs:(SaveAsViewController *)saveAsViewController;
+- (void)cancelSave:(SaveAsViewController *)saveasViewController;
 
 @end

@@ -54,5 +54,12 @@
     return [NSString stringWithFormat:@"\u2022 %@\n", str];
 }
 
+- (UIImage *)scaleImage:(UIImage *)image withScale:(float)scale {
+    
+    return [UIImage imageWithCGImage:[image CGImage]
+                               scale:(image.scale * scale)
+                         orientation:(image.imageOrientation)];
+}
+
 
 @end

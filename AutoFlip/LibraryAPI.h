@@ -15,5 +15,6 @@
 
 - (NSMutableArray *)getPresentations;
 - (NSString *)appendBulletToString:(NSString *)str;
+- (UIImage *)scaleImage:(UIImage *)image withScale:(float)scale;
 
 @end

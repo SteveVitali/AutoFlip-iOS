@@ -7,13 +7,20 @@
 //
 
 #import "CreateCardsViewController.h"
+#import "SaveAsViewController.h"
 #import "Notecard.h"
+#import "MZFormSheetController.h"
 #import "KxMenu.h"
 #import "ViewController.h"
+#import "LibraryAPI.h"
 
 @interface CreateCardsViewController () {
     
     float kbHeight;
+    // For the saving as
+    MZFormSheetController *saveAsFormSheet;
+    SaveAsViewController  *saveAsViewController;
+    
 }
 - (void)saveAndExit;
 - (void)saveAs;
@@ -149,34 +156,116 @@
 }
 
 - (void)saveAndExit {
-    NSLog(@"asdf");
+    
     [self popToRoot];
 }
 
 - (void)saveAs {
-    
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@""
-                                                     message:@"Save presentation as..."
-                                                    delegate:self cancelButtonTitle:@"Save"
-                                           otherButtonTitles:nil];
-    alert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
-    
-    UITextField * titleField = [alert textFieldAtIndex:0];
-    titleField.keyboardType = UIKeyboardTypeAlphabet;
-    titleField.placeholder = self.presentation.title;
-    
-    UITextField * descriptionField = [alert textFieldAtIndex:1];
-    descriptionField.keyboardType = UIKeyboardTypeAlphabet;
-    descriptionField.secureTextEntry = NO;
-    descriptionField.placeholder = self.presentation.description;
+   
+  /*  UIAlertView * dialog = [[UIAlertView alloc] initWithTitle:@"Save presentation as..."
+                                                      message:@" "
+                                                     delegate:self
+                                            cancelButtonTitle:@"Cancel"
+                                            otherButtonTitles:@"Save", nil];
+  */
+    //It turns out UIAlertView has been deprecated, so now using custom class from github
+    // MZFormSheetController
 
-    [alert show];
-    [self.presentation setTitle:titleField.text];
-    [self.presentation setDescription:descriptionField.text];
+    SaveAsViewController *saveAsController = [[SaveAsViewController alloc] init];
+    [saveAsController setDelegate:self];
+    [saveAsViewController.titleField setPlaceholder:[self.presentation title]];
+    [saveAsViewController.descriptionField setPlaceholder:[self.presentation description]];
+    
+    MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:saveAsController];
+    
+    formSheet.shouldDismissOnBackgroundViewTap = YES;
+    formSheet.transitionStyle = MZFormSheetTransitionStyleSlideFromBottom;
+    formSheet.cornerRadius = 8.0;
+    formSheet.portraitTopInset = 6.0;
+    formSheet.landscapeTopInset = 6.0;
+    formSheet.presentedFormSheetSize = CGSizeMake(320, 200);
+    
+    formSheet.willPresentCompletionHandler = ^(UIViewController *presentedFSViewController){
+        presentedFSViewController.view.autoresizingMask = presentedFSViewController.view.autoresizingMask | UIViewAutoresizingFlexibleWidth;
+    };
+    
+    [formSheet presentAnimated:YES completionHandler:^(UIViewController *presentedFSViewController) {
+        
+    }];
+}
+
+#pragma mark - SaveAsViewControllerDelegate methods
+- (void)saveDataAs:(SaveAsViewController *)saveAsController {
+    
+    [self.presentation setTitle:saveAsController.titleField.text];
+    [self.presentation setDescription:saveAsController.descriptionField.text];
+   // [self.presentationTitleNavBar setTitle:[self presentationTitle]];
+    // For some reason, using the dot notation will make the title nav bar update
+    // when the property changes, but the above notation will not.
+    self.presentationTitleNavBar.title = self.presentation.title;
+
+    [self mz_dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+        //
+    }];
+}
+
+- (void)cancelSave:(SaveAsViewController *)saveasViewController {
+
+    [self mz_dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+        // 
+    }];
 }
 
 - (void)exportCards {
+    // Do any additional setup after loading the view, typically from a nib.
+    UIImage *drive   = [UIImage imageNamed:@"drive.png"];
+    UIImage *dropbox = [UIImage imageNamed:@"dropbox.png"];
+    UIImage *custom  = [UIImage imageNamed:@"custom.png"];
     
+    //scale 4.0 = 1/4 original image size
+    //makes assumptions about original image sizes
+    drive = [[LibraryAPI sharedInstance] scaleImage:drive withScale:16.0];
+    dropbox=[[LibraryAPI sharedInstance] scaleImage:dropbox withScale:16.0];
+    custom =[[LibraryAPI sharedInstance] scaleImage:custom withScale:8.0];
+    
+    NSArray *menuItems =
+    @[
+      
+      [KxMenuItem menuItem:@"Export Notecards"
+                     image:nil
+                    target:nil
+                    action:NULL],
+      
+      [KxMenuItem menuItem:@"Google Drive"
+                     image:drive
+                    target:self
+                    action:@selector(exportCardsToDestination:)],
+      
+      [KxMenuItem menuItem:@"Dropbox"
+                     image:dropbox
+                    target:self
+                    action:@selector(exportCardsToDestination:)],
+      ];
+    
+    KxMenuItem *first = menuItems[0];
+    first.foreColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
+    first.alignment = NSTextAlignmentCenter;
+    
+    [KxMenu showMenuInView:self.view
+                  fromRect:self.textArea.frame //sender.frame
+                 menuItems:menuItems];
+}
+
+- (void)exportCardsToDestination:(KxMenuItem *)sender{
+    
+    NSString *destination = sender.title;
+    //NSLog(@"%@",destination);
+    if ([destination isEqualToString:@"Google Drive"]) {
+        
+    }
+    else if ([destination isEqualToString:@"Dropbox"]) {
+        
+    }
 }
 
 - (void) popToRoot {
