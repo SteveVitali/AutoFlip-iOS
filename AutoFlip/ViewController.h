@@ -13,5 +13,6 @@
 - (IBAction)showMenu:(id)sender;
 
 - (void)pushCreateCardsView;
+- (void)returnToRoot;
 
 @end

@@ -97,6 +97,12 @@
     [self performSegueWithIdentifier:@"createCards" sender:sender];
 }
 
+- (void)returnToRoot {
+    
+    [self dismissViewControllerAnimated:NO completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 
 @end
 

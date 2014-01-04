@@ -8,20 +8,26 @@
 
 #import "CreateCardsViewController.h"
 #import "Notecard.h"
+#import "KxMenu.h"
+#import "ViewController.h"
 
-@interface CreateCardsViewController ()
-{
+@interface CreateCardsViewController () {
+    
     float kbHeight;
 }
+- (void)saveAndExit;
+- (void)saveAs;
+- (void)exportCards;
 @end
 
 @implementation CreateCardsViewController {
+    
     NSInteger cardIndex;
     NSInteger heightOfNavAndButtons;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -29,8 +35,8 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.presentation = [[Presentation alloc] init];
@@ -69,6 +75,7 @@
 }
 
 - (void)viewDidUnload {
+    
     // Release any retained subviews of the main view.
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardDidShowNotification
@@ -82,6 +89,7 @@
 }
 
 - (IBAction)nextCard:(id)sender {
+    
     [super nextCard:sender];
     //if this card is the last one in the deck so far
     if (self.cardIndex == [self.presentation.notecards count] - 1) {
@@ -93,33 +101,102 @@
 }
 
 - (IBAction)previousCard:(id)sender {
+    
     [super previousCard:sender];
     
 }
 
 - (void)reloadCard {
+    
     [super reloadCard];
     
 }
 
+#pragma mark - save cards methods
 - (IBAction)saveCards:(id)sender {
+    
     [self.textArea resignFirstResponder];
     Notecard *card = [self.presentation.notecards objectAtIndex:self.cardIndex];
     card.text = [self.textArea text];
-    if (card) {
-        NSLog(@"not null %@", self.textArea.text);
-    }
-    NSLog(@"above^ %d", self.cardIndex);
+
+    [self showSaveMenu:sender];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)showSaveMenu:(UIButton *)sender {
+    
+    NSArray *menuItems =
+    @[
+      
+      [KxMenuItem menuItem:@"Save"
+                     image:nil
+                    target:nil
+                    action:NULL],
+      
+      [KxMenuItem menuItem:@"Save and exit"
+                     image:nil
+                    target:self
+                    action:@selector(saveAndExit)],
+      
+      [KxMenuItem menuItem:@"Save as..."
+                     image:nil
+                    target:self
+                    action:@selector(saveAs)],
+      
+      [KxMenuItem menuItem:@"Export..."
+                     image:nil
+                    target:self
+                    action:@selector(exportCards)],
+      ];
+    
+    KxMenuItem *first = menuItems[0];
+    first.foreColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
+    first.alignment = NSTextAlignmentCenter;
+    
+    [KxMenu showMenuInView:self.view
+                  fromRect:self.textArea.frame//fromRect:sender.frame
+                 menuItems:menuItems];
+}
+
+- (void)saveAndExit {
+    
+    NSLog(@"asdf");
+    [self popToRoot];
+}
+
+- (void)saveAs {
+    
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@""
+                                                     message:@"Save presentation as..."
+                                                    delegate:self cancelButtonTitle:@"Save"
+                                           otherButtonTitles:nil];
+    alert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
+    
+    UITextField * titleField = [alert textFieldAtIndex:0];
+    titleField.keyboardType = UIKeyboardTypeAlphabet;
+    titleField.placeholder = self.presentation.title;
+    
+    UITextField * descriptionField = [alert textFieldAtIndex:1];
+    descriptionField.keyboardType = UIKeyboardTypeAlphabet;
+    descriptionField.secureTextEntry = NO;
+    descriptionField.placeholder = self.presentation.description;
+
+    [alert show];
+    [self.presentation setTitle:titleField.text];
+    [self.presentation setDescription:descriptionField.text];
+}
+
+- (void)exportCards {
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)textAreaEdited
-{
+- (void)textAreaEdited {
+    
     NSRange cursorPosition = [self.textArea selectedRange];
     NSMutableString *textAreaContent = [[NSMutableString alloc] initWithString:[self.textArea text]];
     
@@ -151,8 +228,8 @@
 
 }
 
--(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
     CGRect frame = [[UIScreen mainScreen] bounds];
     
     self.scrollView.frame = frame;
@@ -161,14 +238,14 @@
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    
     //not sure why, but this fixes the glitch where it won't scroll after you rotate
     [self textViewDidChange:self.textArea];
 }
 
-
 // Called when the UIKeyboardDidShowNotification is sent.
-- (void)keyboardWasShown:(NSNotification*)aNotification
-{
+- (void)keyboardWasShown:(NSNotification*)aNotification {
+    
     // kbHeight gets "initialized" here because it needs the notification to get the kbHeight
     kbHeight = [self getKeyboardHeight:aNotification];
     self.scrollView.frame = CGRectMake(self.view.frame.origin.x,
@@ -204,8 +281,8 @@
 
 // found most of this method on stackoverflow
 // should be called in textViewDidChange: and textViewDidChangeSelection:
-- (void)scrollToCursor
-{
+- (void)scrollToCursor {
+    
     int verticalPaddingBecauseFuckYou;
     // if there is a selection cursor
     if (self.textArea.selectedRange.location != NSNotFound) {
@@ -242,6 +319,7 @@
 // scrollview delegate method
 // disallow horizontal scrolling in the textview
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
+    
     if (sender.contentOffset.x != 0) {
         //CGPoint offset = sender.contentOffset;
         //offset.x = 0;
@@ -251,8 +329,8 @@
 
 // Whenever the text changes, the textView's size is updated (so it grows as more text
 // is added), and it also scrolls to the cursor.
-- (void)textViewDidChange:(UITextView *)textView
-{
+- (void)textViewDidChange:(UITextView *)textView {
+    
     if (self.textArea.contentSize.height > heightOfNavAndButtons + self.view.frame.size.height - kbHeight) {
         
     self.textArea.frame = CGRectMake(self.textArea.frame.origin.x,
@@ -271,19 +349,25 @@
 }
 
 
-- (void)textViewDidChangeSelection:(UITextView *)aTextView
-{
-    [self scrollToCursor];
-}
-
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-    [self scrollToCursor];
-}
-
-- (void)textViewDidEndEditing:(UITextField *)textField
-{
+- (void)textViewDidChangeSelection:(UITextView *)aTextView {
     
+    [self scrollToCursor];
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    
+    [self scrollToCursor];
+}
+
+- (void)textViewDidEndEditing:(UITextField *)textField {
+    
+}
+
+- (void) popToRoot {
+    
+    UINavigationController *nav = (UINavigationController*) self.view.window.rootViewController;
+    ViewController *root = [nav.viewControllers objectAtIndex:0];
+    [root returnToRoot];
 }
 
 
