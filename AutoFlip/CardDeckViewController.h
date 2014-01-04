@@ -14,6 +14,7 @@
 @interface CardDeckViewController : UIViewController
 
 @property Presentation *presentation;
+@property NSInteger cardIndex;
 
 @property (strong, nonatomic) IBOutlet UIView *masterView;
 @property (weak, nonatomic) IBOutlet UITextView *textArea;
@@ -21,8 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UIButton *previousCard;
 @property (weak, nonatomic) IBOutlet UIButton *nextCard;
-
-@property NSInteger cardIndex;
 
 - (IBAction)nextCard:(id)sender;
 - (IBAction)previousCard:(id)sender;

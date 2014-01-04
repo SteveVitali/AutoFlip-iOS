@@ -12,6 +12,7 @@
 @implementation Presentation
 
 - (id)init {
+    
     self = [super init];
     if (self) {
         self.notecards = [[NSMutableArray alloc] init];
@@ -20,6 +21,7 @@
 }
 
 - (id)initWithNotes:(NSMutableArray *)notecards {
+    
     self = [super init];
     if (self) {
         //nonsense
@@ -28,6 +30,7 @@
 }
 
 - (id)initWithRandomNotes:(int)num {
+    
     self = [super init];
     if (self) {
         
@@ -64,19 +67,20 @@
 }
 
 - (void)addCardAtIndex:(NSInteger)index {
+    
     [self.notecards addObject:[[Notecard alloc] initWithEmptyCard]];
 }
 
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    
     [aCoder encodeObject:self.title forKey:@"title"];
     [aCoder encodeObject:self.type forKey:@"type"];
     [aCoder encodeObject:self.notecards forKey:@"notecards"];
 
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    
     self = [super init];
     if (self)
     {

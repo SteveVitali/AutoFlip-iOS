@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "CardDeckViewController.h"
 
-@interface CreateCardsViewController : CardDeckViewController <UITextViewDelegate, UIScrollViewDelegate>
+@interface CreateCardsViewController : CardDeckViewController <UITextViewDelegate,
+                                                               UIScrollViewDelegate>
 
-// Technically this is redundant, since these values are stored by superclass instance variable presentation
-// But I need to pass the values from the UITextFields through the segue somehow, and idk how else to do it other than this.
+// Technically this is redundant, since these values are stored by sinstance variable presentation
+// But I need to pass the values from the UITextFields through the segue somehow
 @property NSString *presentationTitle;
 @property NSString *presentationDescription;
 

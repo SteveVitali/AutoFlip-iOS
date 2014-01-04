@@ -10,15 +10,15 @@
 #import "Presentation.h"
 
 @interface CardDeckViewController () {
-    //etc.
+    
 }
 
 @end
 
 @implementation CardDeckViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -26,8 +26,8 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.cardIndex = 0;
@@ -35,6 +35,7 @@
 }
 
 - (void)reloadCard {
+    
     self.textArea.text = [[self.presentation.notecards objectAtIndex:self.cardIndex] text];
     if (self.cardIndex == 0) {
         [self.previousCard setEnabled:false];
@@ -47,29 +48,29 @@
 - (void)updateProgressBar {
     
     float progress = (float)(self.cardIndex+1)/[self.presentation.notecards count];
-    NSLog(@"%f",progress);
-    NSLog(@"notecards count: %d",self.presentation.notecards.count);
+    //NSLog(@"%f",progress);
+    //NSLog(@"notecards count: %d",self.presentation.notecards.count);
     [self.progressBar setProgress:progress];
 }
 
-- (IBAction)nextCard:(id)sender
-{
+- (IBAction)nextCard:(id)sender {
+    
     if (self.cardIndex < [self.presentation.notecards count] - 1) {
         self.cardIndex++;
         [self reloadCard];
     }
 }
 
-- (IBAction)previousCard:(id)sender
-{
+- (IBAction)previousCard:(id)sender {
+    
     if (self.cardIndex != 0) {
         self.cardIndex--;
         [self reloadCard];
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
+    
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

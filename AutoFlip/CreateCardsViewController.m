@@ -57,7 +57,6 @@
     // hardcoding it because not sure how to get programmatically
     // for some reason self.presentationNavBar.frame.height doesn't work
     heightOfNavAndButtons = 86;
-    
 }
 
 - (void)registerForNotifications {
@@ -68,10 +67,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillBeHidden:)
                                                  name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector (textAreaEdited)
-                                                 name:UITextViewTextDidChangeNotification
-                                               object:self.textArea];
 }
 
 - (void)viewDidUnload {
@@ -82,9 +77,6 @@
                                                   object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardWillHideNotification
-                                                  object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UITextViewTextDidChangeNotification
                                                   object:nil];
 }
 
@@ -109,7 +101,6 @@
 - (void)reloadCard {
     
     [super reloadCard];
-    
 }
 
 #pragma mark - save cards methods
@@ -158,7 +149,6 @@
 }
 
 - (void)saveAndExit {
-    
     NSLog(@"asdf");
     [self popToRoot];
 }
@@ -189,46 +179,40 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
+- (void) popToRoot {
     
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    UINavigationController *nav = (UINavigationController*) self.view.window.rootViewController;
+    ViewController *root = [nav.viewControllers objectAtIndex:0];
+    [root returnToRoot];
 }
 
-- (void)textAreaEdited {
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification {
     
-    NSRange cursorPosition = [self.textArea selectedRange];
-    NSMutableString *textAreaContent = [[NSMutableString alloc] initWithString:[self.textArea text]];
-    
-    // if you love the length of your textAreaContent, return.
-    // if there is only one bullet, you're not going to be able to backspace much of anything
-    if (textAreaContent.length <3) {
-        // then, make sure they're not deleting the original bullet
-        // and don't waste time looking at the rest of this method and return
-        self.textArea.text = @"\u2022 ";
-        return;
-    }
-    
-    // if the character before the cursor was a newline
-    else if ([textAreaContent characterAtIndex:cursorPosition.location-1] == '\n') {
-        // Then, add a bullet point AND space before cursor (space is important because next conditional)
-        [textAreaContent setString:[self.textArea.text stringByAppendingString:@"\u2022 "]];
-        [self.textArea setText:textAreaContent];
-        cursorPosition.location++;
-    }
-    // if the previous character is a bullet, then the user must have backspaced/deleted
-    // the space that was added after the bullet, meaning they probably want to delete the bullet
-    else if ([[textAreaContent substringWithRange:NSMakeRange(cursorPosition.location-1,1)] isEqualToString: @"\u2022"]) {
-        // so, delete the bullet and the newline character at the same time, so
-        // another bullet isn't generated.
-        NSString *stringBeforeBullet = [textAreaContent substringToIndex:cursorPosition.location-2];
-        NSString *stringAfterBullet  = [textAreaContent substringFromIndex:cursorPosition.location];
-        self.textArea.text = [stringBeforeBullet stringByAppendingString:stringAfterBullet];
-    }
-
+    // kbHeight gets "initialized" here because it needs the notification to get the kbHeight
+    kbHeight = [self getKeyboardHeight:aNotification];
+    self.scrollView.frame = CGRectMake(self.view.frame.origin.x,
+                                       self.view.frame.origin.y + heightOfNavAndButtons,
+                                       self.view.frame.size.width,
+                                       self.view.frame.size.height-kbHeight-heightOfNavAndButtons);
 }
 
--(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    NSLog(@"this runs keyboard will hide");
+    // Make it bigger again:
+    self.scrollView.frame = CGRectMake(self.view.frame.origin.x,
+                                       self.view.frame.origin.y + heightOfNavAndButtons,
+                                       self.view.frame.size.width,
+                                       self.view.frame.size.height - heightOfNavAndButtons);
+    
+}
+
+#pragma mark - rotation/orientation-related methods
+
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                               duration:(NSTimeInterval)duration {
     
     CGRect frame = [[UIScreen mainScreen] bounds];
     
@@ -243,17 +227,6 @@
     [self textViewDidChange:self.textArea];
 }
 
-// Called when the UIKeyboardDidShowNotification is sent.
-- (void)keyboardWasShown:(NSNotification*)aNotification {
-    
-    // kbHeight gets "initialized" here because it needs the notification to get the kbHeight
-    kbHeight = [self getKeyboardHeight:aNotification];
-    self.scrollView.frame = CGRectMake(self.view.frame.origin.x,
-                                       self.view.frame.origin.y + heightOfNavAndButtons,
-                                       self.view.frame.size.width,
-                                       self.view.frame.size.height - kbHeight - heightOfNavAndButtons);
-}
-
 - (float)getKeyboardHeight:(NSNotification*)aNotification {
     
     NSDictionary* info = [aNotification userInfo];
@@ -263,20 +236,9 @@
     if(UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)){
         return kbSize.width;
     }
-    return kbSize.height; //You're probably wondering where the 25 came from. It came from fuck you, that's where.
-                          //You're probably wondering what 25 I'm talking about; again, fuck you, that's what.
-}
-
-// Called when the UIKeyboardWillHideNotification is sent
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
-{
-    NSLog(@"this runs keyboard will hide");
-    // Make it bigger again:
-    self.scrollView.frame = CGRectMake(self.view.frame.origin.x,
-                                       self.view.frame.origin.y + heightOfNavAndButtons,
-                                       self.view.frame.size.width,
-                                       self.view.frame.size.height - heightOfNavAndButtons);
-
+    return kbSize.height;
+    //You're probably wondering where the 25 came from. It came from fuck you, that's where.
+    //You're probably wondering what 25 I'm talking about; again, fuck you, that's what.
 }
 
 // found most of this method on stackoverflow
@@ -286,28 +248,36 @@
     int verticalPaddingBecauseFuckYou;
     // if there is a selection cursor
     if (self.textArea.selectedRange.location != NSNotFound) {
-        if (self.textArea.contentSize.height > self.view.frame.size.height - heightOfNavAndButtons - kbHeight - 10) {
-            if(UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)){
+        
+        float verticalSpace = self.view.frame.size.height - heightOfNavAndButtons - kbHeight - 10;
+        if (self.textArea.contentSize.height > verticalSpace) {
+            
+            UIInterfaceOrientation orient = [UIApplication sharedApplication].statusBarOrientation;
+            if (UIInterfaceOrientationIsLandscape(orient)){
                 verticalPaddingBecauseFuckYou = 112;
             } else {
                 verticalPaddingBecauseFuckYou = 64;
             }
-            NSLog(@"frame size height %f",self.view.frame.size.height);
+            //NSLog(@"frame size height %f",self.view.frame.size.height);
             // work out how big the text view would be if the text only went up to the cursor
             NSRange range;
             range.location = self.textArea.selectedRange.location;
             range.length = self.textArea.text.length - range.location;
-            NSString *string = [self.textArea.text stringByReplacingCharactersInRange:range withString:@""];
-            CGSize size = [string sizeWithFont:self.textArea.font constrainedToSize:self.textArea.bounds.size lineBreakMode:NSLineBreakByWordWrapping];
+            NSString *string =
+                      [self.textArea.text stringByReplacingCharactersInRange:range withString:@""];
+            CGSize size = [string sizeWithFont:self.textArea.font
+                             constrainedToSize:self.textArea.bounds.size
+                                 lineBreakMode:NSLineBreakByWordWrapping];
             
             // work out where that position would be relative to the textView's frame
             CGRect viewRect = self.textArea.frame;
             int scrollHeight = viewRect.origin.y + size.height;
-            NSLog(@"scrollHeight: %d",scrollHeight);
+            //NSLog(@"scrollHeight: %d",scrollHeight);
             
-            // scroll to it, but not with scrollRectToVisible because it sucks and fuck you scrollRectToVisible
-            //[self.scrollView scrollRectToVisible:finalRect animated:YES];
-            //CGRect finalRect = CGRectMake(0, scrollHeight, 1, 32);
+            // scroll to it,
+            // but not with scrollRectToVisible because it sucks and fuck you scrollRectToVisible
+            // [self.scrollView scrollRectToVisible:finalRect animated:YES];
+            // CGRect finalRect = CGRectMake(0, scrollHeight, 1, 32);
             
             CGPoint point = CGPointMake(1, scrollHeight - kbHeight + verticalPaddingBecauseFuckYou);
             [self.scrollView setContentOffset:point animated: YES];
@@ -327,11 +297,18 @@
     }
 }
 
+#pragma mark - UITextView delegate methods and related methods
+
+#pragma mark - methods for keyboard and textview notifications
+
 // Whenever the text changes, the textView's size is updated (so it grows as more text
 // is added), and it also scrolls to the cursor.
 - (void)textViewDidChange:(UITextView *)textView {
     
-    if (self.textArea.contentSize.height > heightOfNavAndButtons + self.view.frame.size.height - kbHeight) {
+    [self fixBulletFormatting];
+
+    float verticalHeightLeftOver = heightOfNavAndButtons + self.view.frame.size.height - kbHeight;
+    if (self.textArea.contentSize.height > verticalHeightLeftOver) {
         
     self.textArea.frame = CGRectMake(self.textArea.frame.origin.x,
                                     self.textArea.frame.origin.y,
@@ -344,10 +321,45 @@
     [self scrollToCursor];
     
     
-    CGSize temp = self.textArea.frame.size;
-    NSLog(@"dimensions of textaview: %f %f", temp.width, temp.height);
+    //CGSize temp = self.textArea.frame.size;
+    //NSLog(@"dimensions of textaview: %f %f", temp.width, temp.height);
+
 }
 
+// Basically this method just makes sure bullets show up when they're supposed to
+- (void)fixBulletFormatting {
+    
+    NSRange cursorPosition = [self.textArea selectedRange];
+    NSMutableString *textAreaContent = [[NSMutableString alloc] initWithString:[self.textArea text]];
+    
+    // if you love the length of your textAreaContent, return.
+    // if there is only one bullet, you're not going to be able to backspace much of anything
+    if (textAreaContent.length <3) {
+        // then, make sure they're not deleting the original bullet
+        // and don't waste time looking at the rest of this method and return
+        self.textArea.text = @"\u2022 ";
+        return;
+    }
+    
+    // if the character before the cursor was a newline
+    else if ([textAreaContent characterAtIndex:cursorPosition.location-1] == '\n') {
+        // Then, add a bullet point AND space before cursor
+        // (space is important because next conditional)
+        [textAreaContent setString:[self.textArea.text stringByAppendingString:@"\u2022 "]];
+        [self.textArea setText:textAreaContent];
+        cursorPosition.location++;
+    }
+    // if the previous character is a bullet, then the user must have backspaced/deleted
+    // the space that was added after the bullet, meaning they probably want to delete the bullet
+    else if ([[textAreaContent substringWithRange:NSMakeRange(cursorPosition.location-1,1)]
+                                  isEqualToString: @"\u2022"]) {
+        // so, delete the bullet and the newline character at the same time, so
+        // another bullet isn't generated.
+        NSString *stringBeforeBullet = [textAreaContent substringToIndex:cursorPosition.location-2];
+        NSString *stringAfterBullet  = [textAreaContent substringFromIndex:cursorPosition.location];
+        self.textArea.text = [stringBeforeBullet stringByAppendingString:stringAfterBullet];
+    }
+}
 
 - (void)textViewDidChangeSelection:(UITextView *)aTextView {
     
@@ -363,13 +375,11 @@
     
 }
 
-- (void) popToRoot {
+- (void)didReceiveMemoryWarning {
     
-    UINavigationController *nav = (UINavigationController*) self.view.window.rootViewController;
-    ViewController *root = [nav.viewControllers objectAtIndex:0];
-    [root returnToRoot];
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
-
 
 /* in case these come in handy later:
  NSLog(@"self.view frame: origin(%f, %f), dims(%f, %f)",

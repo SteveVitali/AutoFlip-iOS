@@ -22,8 +22,8 @@
 
 @implementation ChooseCardsViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
+- (id)initWithStyle:(UITableViewStyle)style {
+    
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -31,33 +31,30 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
+    
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // Uncomment the following line to display an Edit button in the navigation bar
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     presentations = [[LibraryAPI sharedInstance] getPresentations];
     self.searchResults = [NSMutableArray arrayWithCapacity:[presentations count]];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
     if([segue.identifier isEqualToString:@"beginPresentation"]) {
-        PresentationViewController *controller = (PresentationViewController *)[segue destinationViewController];
+        PresentationViewController *controller =
+                                    (PresentationViewController *)[segue destinationViewController];
         controller.presentation = chosenPresentation;
     }
 }
 
 - (void)toggleEditing {
+    
     if (self.tableView.editing){
         [self.tableView setEditing:NO animated:YES];
         editButton.title = @"Edit";
@@ -68,16 +65,15 @@
     }
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+#pragma mark - Table view data source and table view delegate methods
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
     // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     // Return the number of rows in the section.
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return [self.searchResults count];
@@ -87,15 +83,18 @@
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     static NSString *CellIdentifier = @"Cell";
     Presentation *presentation;
 
-    CardDeckTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    CardDeckTableCell *cell =
+        [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     // Configure the cell...
     if (cell == nil) {
-        cell = [[CardDeckTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[CardDeckTableCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                        reuseIdentifier:CellIdentifier];
     }
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
@@ -110,8 +109,8 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         chosenPresentation = [self.searchResults objectAtIndex:indexPath.row];
     } else {
@@ -120,15 +119,17 @@
 }
 
 // Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
 
 // Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+ forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [presentations removeObjectAtIndex:indexPath.row];
@@ -136,48 +137,35 @@
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        // Create a new instance of the appropriate class,
+        // insert it into the array, and add a new row to the table view
     }
     [tableView reloadData];
 }
 
 // Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
+      toIndexPath:(NSIndexPath *)toIndexPath {
     
 }
 
 // Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
-
+#pragma mark - UISearchBarDelegate methods
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
     
     [self.searchResults removeAllObjects];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.title contains[c] %@",searchText];
-
-    self.searchResults = [NSMutableArray arrayWithArray:[presentations filteredArrayUsingPredicate:predicate]];
+    
+    self.searchResults = [NSMutableArray arrayWithArray:
+                          [presentations filteredArrayUsingPredicate:predicate]];
 }
-
-
-#pragma mark - UISearchBarDelegate methods
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     
@@ -203,7 +191,9 @@
 
 #pragma mark - UISearchDisplayController Delegate Methods
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString {
+    
     // Tells the table data source to reload when text changes
     [self filterContentForSearchText:searchString
                                scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
@@ -212,12 +202,20 @@
     return YES;
 }
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    
     // Tells the table data source to reload when scope bar selection changes
     [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
      [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
     // Return YES to cause the search result table view to be reloaded.
     return YES;
+}
+
+- (void)didReceiveMemoryWarning {
+    
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end

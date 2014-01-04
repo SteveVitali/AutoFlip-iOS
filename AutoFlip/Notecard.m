@@ -16,15 +16,8 @@
 
 @implementation Notecard
 
-- (id)initWithBullets:(NSMutableArray *)bullets {
-    self = [super init];
-    if (self) {
-        //nonsense;
-    }
-    return self;
-}
-
 - (id)initWithEmptyCard {
+    
     self = [super init];
     if (self) {
         self.bullets = [[NSMutableArray alloc] init];
@@ -33,7 +26,17 @@
     return self;
 }
 
+- (id)initWithBullets:(NSMutableArray *)bullets {
+    
+    self = [super init];
+    if (self) {
+        //nonsense;
+    }
+    return self;
+}
+
 - (id)initWithRandomBullets {
+    
     self = [super init];
     if (self) {
         
@@ -57,12 +60,13 @@
 }
 
 - (NSString *)getRandomWord {
-    int randomIndex = arc4random() % 12 + 1 ;
+    
+    int randomIndex = arc4random() % 13 + 1 ;
     switch (randomIndex) {
         case 1: return @"2 Chainz";
-        case 2: return @"boobs";
+        case 2: return @"Hamlet";
         case 3: return @"wow";
-        case 4: return @"Hitler";
+        case 4: return @"Alas";
         case 5: return @"and";
         case 6: return @"but";
         case 7: return @"such";
@@ -71,13 +75,16 @@
         case 10:return @"wow";
         case 11:return @"flip";
         case 12:return @"auto";
+        case 13:return @"poor Yorrick";
     }
     return @"wow such never actually executed code";
 }
 
 - (NSString *)getTextInBulletFormat {
+    
     for (int i=0; i<[self.bullets count]; i++) {
-        [self.bullets setObject:[NSString stringWithFormat:@"\u2022 %@\n", [self.bullets objectAtIndex:i]] atIndexedSubscript:i];
+        [self.bullets setObject:[NSString stringWithFormat:@"\u2022 %@\n",
+                                 [self.bullets objectAtIndex:i]] atIndexedSubscript:i];
     }
     return [self.bullets componentsJoinedByString:@""];
 }
@@ -89,8 +96,8 @@
     
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    
     self = [super init];
     if (self)
     {

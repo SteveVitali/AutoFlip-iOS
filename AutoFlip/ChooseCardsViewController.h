@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChooseCardsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
+@interface ChooseCardsViewController : UITableViewController
+<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 
 @property (strong,nonatomic) NSMutableArray *searchResults;
 @property IBOutlet UISearchBar *searchBar;

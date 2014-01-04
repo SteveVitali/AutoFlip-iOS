@@ -17,10 +17,14 @@
 @implementation PersistencyManager
 
 - (id)init {
+    
     self = [super init];
     if (self) {
-        NSData *data = [NSData dataWithContentsOfFile:[NSHomeDirectory() stringByAppendingString:@"/Documents/presentations.bin"]];
+        
+        NSData *data = [NSData dataWithContentsOfFile:[NSHomeDirectory()
+                              stringByAppendingString:@"/Documents/presentations.bin"]];
         presentations = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        
         //presentations = nil; //uncomment to reset the stored values on iphone sim
         if (presentations == nil) {
             NSLog(@"Nil shit nigga wassup");
@@ -38,11 +42,14 @@
 }
 
 - (NSMutableArray *)getPresentations {
+    
     return presentations;
 }
 
 - (void)savePresentations {
-        NSString *filename = [NSHomeDirectory() stringByAppendingString:@"/Documents/presentations.bin"];
+    
+        NSString *filename =
+                    [NSHomeDirectory() stringByAppendingString:@"/Documents/presentations.bin"];
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:presentations];
         [data writeToFile:filename atomically:YES];
 }

@@ -14,13 +14,14 @@
 @end
 
 @implementation ViewController {
+    
     UIImage *drive;
     UIImage *dropbox;
     UIImage *custom;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     drive   = [UIImage imageNamed:@"drive.png"];
@@ -36,15 +37,10 @@
 }
 
 - (UIImage *)scaleImage:(UIImage *)image withScale:(float)scale {
+    
     return [UIImage imageWithCGImage:[image CGImage]
                               scale:(image.scale * scale)
                         orientation:(image.imageOrientation)];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)showMenu:(UIButton *)sender {
@@ -103,6 +99,12 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+
+- (void)didReceiveMemoryWarning {
+    
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 @end
 

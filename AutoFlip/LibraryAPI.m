@@ -16,15 +16,15 @@
 #import "PersistencyManager.h"
 
 @interface LibraryAPI() {
+    
     PersistencyManager *persistencyManager;
 }
 @end
 
 @implementation LibraryAPI
 
-
-- (id)init
-{
+- (id)init {
+    
     self = [super init];
     if (self) {
         persistencyManager = [[PersistencyManager alloc] init];
@@ -32,15 +32,12 @@
     return self;
 }
 
-+ (LibraryAPI *)sharedInstance
-{
-    // 1
++ (LibraryAPI *)sharedInstance {
+    
     static LibraryAPI *_sharedInstance = nil;
     
-    // 2
     static dispatch_once_t oncePredicate;
     
-    // 3
     dispatch_once(&oncePredicate, ^{
         _sharedInstance = [[LibraryAPI alloc] init];
     });
@@ -48,10 +45,12 @@
 }
 
 - (NSMutableArray *)getPresentations {
+    
     return [persistencyManager getPresentations];
 }
 
 - (NSString *)appendBulletToString:(NSString *)str {
+    
     return [NSString stringWithFormat:@"\u2022 %@\n", str];
 }
 
