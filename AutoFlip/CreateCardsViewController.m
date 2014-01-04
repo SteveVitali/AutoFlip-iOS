@@ -20,7 +20,6 @@
     // For the saving as
     MZFormSheetController *saveAsFormSheet;
     SaveAsViewController  *saveAsViewController;
-    
 }
 - (void)saveAndExit;
 - (void)saveAs;
@@ -48,6 +47,8 @@
 	// Do any additional setup after loading the view.
     self.presentation = [[Presentation alloc] init];
     [self.presentation addCardAtIndex:0];
+    [self.presentation setType:@"custom"];
+    [[LibraryAPI sharedInstance] addPresentation:self.presentation atIndex:0];
     
     // Set presentation title and description from stuff passed through segue
     // I understand this code looks hilarious, but it works, damnit.
@@ -117,6 +118,8 @@
     Notecard *card = [self.presentation.notecards objectAtIndex:self.cardIndex];
     card.text = [self.textArea text];
 
+    [[LibraryAPI sharedInstance] savePresentations];
+    
     [self showSaveMenu:sender];
 }
 
@@ -171,10 +174,11 @@
     //It turns out UIAlertView has been deprecated, so now using custom class from github
     // MZFormSheetController
 
-    SaveAsViewController *saveAsController = [[SaveAsViewController alloc] init];
-    [saveAsController setDelegate:self];
-    [saveAsViewController.titleField setPlaceholder:[self.presentation title]];
-    [saveAsViewController.descriptionField setPlaceholder:[self.presentation description]];
+    SaveAsViewController *saveAsController = [[SaveAsViewController alloc]
+                                       initWithPlaceholderTextTitle:self.presentation.title
+                                                        description:self.presentation.description];
+
+    saveAsController.delegate = self;
     
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:saveAsController];
     
@@ -190,7 +194,7 @@
     };
     
     [formSheet presentAnimated:YES completionHandler:^(UIViewController *presentedFSViewController) {
-        
+
     }];
 }
 

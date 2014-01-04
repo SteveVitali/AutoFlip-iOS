@@ -17,4 +17,8 @@
 - (NSString *)appendBulletToString:(NSString *)str;
 - (UIImage *)scaleImage:(UIImage *)image withScale:(float)scale;
 
+- (void)savePresentations;
+- (void)addPresentation:(Presentation *)presentation atIndex:(int)index;
+- (void)deletePresentationAtIndex:(int)index;
+
 @end

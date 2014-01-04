@@ -10,7 +10,7 @@
 #import "Presentation.h"
 
 @interface PersistencyManager() {
-    NSMutableArray *presentations;
+
 }
 @end
 
@@ -23,16 +23,16 @@
         
         NSData *data = [NSData dataWithContentsOfFile:[NSHomeDirectory()
                               stringByAppendingString:@"/Documents/presentations.bin"]];
-        presentations = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        self.presentations = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         
         //presentations = nil; //uncomment to reset the stored values on iphone sim
-        if (presentations == nil) {
+        if (self.presentations == nil) {
             NSLog(@"Nil shit nigga wassup");
             //we need some motherfuckin' presentations
             //going to initialize dummy presentation for now
-            presentations = [[NSMutableArray alloc] init];
+            self.presentations = [[NSMutableArray alloc] init];
             for(int i=0; i<24; i++) {
-                [presentations addObject:[[Presentation alloc] initWithRandomNotes:i+1]];
+                [self.presentations addObject:[[Presentation alloc] initWithRandomNotes:i+1]];
             }
             [self savePresentations];
         }
@@ -43,15 +43,29 @@
 
 - (NSMutableArray *)getPresentations {
     
-    return presentations;
+    return self.presentations;
 }
 
 - (void)savePresentations {
     
         NSString *filename =
                     [NSHomeDirectory() stringByAppendingString:@"/Documents/presentations.bin"];
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:presentations];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.presentations];
         [data writeToFile:filename atomically:YES];
+}
+
+- (void)addPresentation:(Presentation *)presentation atIndex:(int)index {
+    
+    if (self.presentations.count >= index) {
+        [self.presentations insertObject:presentation atIndex:index];
+    } else {
+        [self.presentations addObject:presentation];
+    }
+}
+
+- (void)deletePresentationAtIndex:(int)index {
+    
+    [self.presentations removeObjectAtIndex:index];
 }
 
 @end

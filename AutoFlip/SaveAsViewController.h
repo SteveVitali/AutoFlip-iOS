@@ -14,6 +14,9 @@
 
 @property (weak) id<SaveAsViewControllerDelegate> delegate;
 
+@property NSString *titleText;
+@property NSString *descriptionText;
+
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionField;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
@@ -21,6 +24,8 @@
 
 - (IBAction)cancelButtonPressed:(id)sender;
 - (IBAction)saveButtonPressed:(id)sender;
+
+- (id)initWithPlaceholderTextTitle:(NSString *)title description:(NSString *)description;
 
 @end
 

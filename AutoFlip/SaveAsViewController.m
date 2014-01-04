@@ -23,10 +23,23 @@
     return self;
 }
 
+- (id)initWithPlaceholderTextTitle:(NSString *)title description:(NSString *)description {
+    
+    self = [super init];
+    if (self) {
+        self.titleText = title;
+        self.descriptionText = description;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.titleField.placeholder = self.titleText;
+    self.descriptionField.placeholder = self.descriptionText;
+    NSLog(@"%@",self.descriptionText);
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {

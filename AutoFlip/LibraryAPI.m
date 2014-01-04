@@ -61,5 +61,21 @@
                          orientation:(image.imageOrientation)];
 }
 
+- (void)savePresentations {
+    
+    [persistencyManager savePresentations];
+}
+
+- (void)addPresentation:(Presentation *)presentation atIndex:(int)index {
+    
+    [persistencyManager addPresentation:presentation atIndex:index];
+}
+
+- (void)deletePresentationAtIndex:(int)index {
+    
+    [persistencyManager deletePresentationAtIndex:index];
+}
+
+
 
 @end
