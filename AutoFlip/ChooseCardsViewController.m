@@ -133,6 +133,8 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [presentations removeObjectAtIndex:indexPath.row];
+      //  [[LibraryAPI sharedInstance] deletePresentationAtIndex:indexPath.row];
+        [[LibraryAPI sharedInstance] savePresentations];
 
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }

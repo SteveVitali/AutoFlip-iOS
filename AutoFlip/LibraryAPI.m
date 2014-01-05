@@ -71,6 +71,11 @@
     [persistencyManager addPresentation:presentation atIndex:index];
 }
 
+- (void)setPresentation:(Presentation *)presentation atIndex:(int)index {
+    
+    [persistencyManager setPresentation:presentation atIndex:index];
+}
+
 - (void)deletePresentationAtIndex:(int)index {
     
     [persistencyManager deletePresentationAtIndex:index];

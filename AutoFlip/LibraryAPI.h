@@ -20,5 +20,6 @@
 - (void)savePresentations;
 - (void)addPresentation:(Presentation *)presentation atIndex:(int)index;
 - (void)deletePresentationAtIndex:(int)index;
+- (void)setPresentation:(Presentation *)presentation atIndex:(int)index;
 
 @end

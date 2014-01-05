@@ -252,11 +252,6 @@
                                 <outlet property="delegate" destination="21i-NN-olK" id="bMp-qG-5LD"/>
                             </connections>
                         </searchBar>
-                        <searchBar key="tableFooterView" contentMode="redraw" id="NQZ-9G-UU4">
-                            <rect key="frame" x="0.0" y="632" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="A0Q-NN-jI4" customClass="CardDeckTableCell">
                                 <rect key="frame" x="0.0" y="130" width="320" height="44"/>

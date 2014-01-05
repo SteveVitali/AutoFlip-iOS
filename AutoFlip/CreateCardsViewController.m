@@ -90,20 +90,23 @@
 
 - (IBAction)nextCard:(id)sender {
     
-    [super nextCard:sender];
+    [[self.presentation.notecards objectAtIndex:self.cardIndex] setText:self.textArea.text];
+    
     //if this card is the last one in the deck so far
     if (self.cardIndex == [self.presentation.notecards count] - 1) {
         self.cardIndex++;
         [self.presentation addCardAtIndex:self.cardIndex];
         [self reloadCard];
         [self.textArea setText:@"\u2022 "];
+    } else {
+        [super nextCard:sender];
     }
 }
 
 - (IBAction)previousCard:(id)sender {
     
+    [[self.presentation.notecards objectAtIndex:self.cardIndex] setText:self.textArea.text];
     [super previousCard:sender];
-    
 }
 
 - (void)reloadCard {
@@ -115,10 +118,10 @@
 - (IBAction)saveCards:(id)sender {
     
     [self.textArea resignFirstResponder];
-    Notecard *card = [self.presentation.notecards objectAtIndex:self.cardIndex];
-    card.text = [self.textArea text];
 
+    [[LibraryAPI sharedInstance] setPresentation:self.presentation atIndex:0];
     [[LibraryAPI sharedInstance] savePresentations];
+
     
     [self showSaveMenu:sender];
 }

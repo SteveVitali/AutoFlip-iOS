@@ -63,6 +63,15 @@
     }
 }
 
+- (void)setPresentation:(Presentation *)presentation atIndex:(int)index {
+    
+    if (self.presentations.count >= index) {
+        [self.presentations setObject:presentation atIndexedSubscript:index];
+    } else {
+        [self.presentations addObject:presentation];
+    }
+}
+
 - (void)deletePresentationAtIndex:(int)index {
     
     [self.presentations removeObjectAtIndex:index];
