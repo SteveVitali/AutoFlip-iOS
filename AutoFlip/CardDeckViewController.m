@@ -8,6 +8,7 @@
 
 #import "CardDeckViewController.h"
 #import "Presentation.h"
+#import "UIColor+FlatUI.h"
 
 @interface CardDeckViewController () {
     
@@ -33,6 +34,8 @@
     self.cardIndex = 0;
     [self reloadCard];
     [self.navigationController.navigationBar setHidden:NO];
+    self.view.backgroundColor = [UIColor cloudsColor];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {

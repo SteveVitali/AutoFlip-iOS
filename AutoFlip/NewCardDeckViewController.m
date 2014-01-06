@@ -30,6 +30,8 @@
 	// Do any additional setup after loading the view.
     
     [self.navigationController.navigationBar setHidden:NO];
+    self.view.backgroundColor = [UIColor cloudsColor];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {

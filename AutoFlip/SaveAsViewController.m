@@ -62,6 +62,9 @@
     self.saveButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
     [self.saveButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [self.saveButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    
+    self.view.backgroundColor = [UIColor cloudsColor];
+
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {

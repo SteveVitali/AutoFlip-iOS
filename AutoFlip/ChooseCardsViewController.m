@@ -56,6 +56,8 @@
     // self.tableView.backgroundView = nil;
     
     [self.navigationController.navigationBar setHidden:NO];
+    self.view.backgroundColor = [UIColor cloudsColor];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
