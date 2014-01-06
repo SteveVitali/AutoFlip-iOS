@@ -7,6 +7,12 @@
 //
 
 #import "SaveAsViewController.h"
+#import "FUIButton.h"
+#import "UIColor+FlatUI.h"
+#import "FUIButton.h"
+#import "UIFont+FlatUI.h"
+#import "FUITextField.h"
+#import "UIBarButtonItem+FlatUI.h"
 
 @interface SaveAsViewController ()
 
@@ -40,6 +46,22 @@
     self.titleField.placeholder = self.titleText;
     self.descriptionField.placeholder = self.descriptionText;
     NSLog(@"%@",self.descriptionText);
+    
+    self.cancelButton.buttonColor = [UIColor turquoiseColor];
+    self.cancelButton.shadowColor = [UIColor greenSeaColor];
+    self.cancelButton.shadowHeight = 3.0f;
+    self.cancelButton.cornerRadius = 6.0f;
+    self.cancelButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    [self.cancelButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [self.cancelButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    
+    self.saveButton.buttonColor = [UIColor turquoiseColor];
+    self.saveButton.shadowColor = [UIColor greenSeaColor];
+    self.saveButton.shadowHeight = 3.0f;
+    self.saveButton.cornerRadius = 6.0f;
+    self.saveButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    [self.saveButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [self.saveButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {

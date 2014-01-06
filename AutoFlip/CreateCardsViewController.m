@@ -498,9 +498,7 @@
 
 
 //TO DO STILL:
-// allow deck title to be added for presentation deck
-//   Allow deck title to be edited
-// Allow individual cards to be deleted
+// Allow individual cards to be deleted or inserted
 // Allow existing card sets to be opened and edited
 // Data validation:
     // Make sure no deck name collisions; validate data in title/description fields.

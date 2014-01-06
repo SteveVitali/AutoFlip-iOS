@@ -7,6 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FUIButton.h"
+#import "UIColor+FlatUI.h"
+#import "FUIButton.h"
+#import "UIFont+FlatUI.h"
+#import "FUITextField.h"
+#import "UIBarButtonItem+FlatUI.h"
 
 @protocol SaveAsViewControllerDelegate;
 
@@ -17,10 +23,10 @@
 @property NSString *titleText;
 @property NSString *descriptionText;
 
-@property (weak, nonatomic) IBOutlet UITextField *titleField;
-@property (weak, nonatomic) IBOutlet UITextField *descriptionField;
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
-@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (weak, nonatomic) IBOutlet FUITextField *titleField;
+@property (weak, nonatomic) IBOutlet FUITextField *descriptionField;
+@property (weak, nonatomic) IBOutlet FUIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet FUIButton *saveButton;
 
 - (IBAction)cancelButtonPressed:(id)sender;
 - (IBAction)saveButtonPressed:(id)sender;

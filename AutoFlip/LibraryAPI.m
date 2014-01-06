@@ -81,6 +81,4 @@
     [persistencyManager deletePresentationAtIndex:index];
 }
 
-
-
 @end

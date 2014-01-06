@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FUIButton.h"
 
 @interface ViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet FUIButton *startButton;
+@property (weak, nonatomic) IBOutlet FUIButton *importButton;
+@property (weak, nonatomic) IBOutlet UILabel *logoLabel;
 
 - (IBAction)showMenu:(id)sender;
 

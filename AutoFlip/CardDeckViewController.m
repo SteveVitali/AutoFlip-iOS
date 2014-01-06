@@ -32,6 +32,12 @@
 	// Do any additional setup after loading the view.
     self.cardIndex = 0;
     [self reloadCard];
+    [self.navigationController.navigationBar setHidden:NO];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [self.navigationController.navigationBar setHidden:NO];
 }
 
 - (void)reloadCard {
@@ -74,6 +80,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 @end

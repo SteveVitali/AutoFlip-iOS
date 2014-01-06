@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FUITextField.h"
 
 @interface NewCardDeckViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *titleField;
-@property (weak, nonatomic) IBOutlet UITextField *descriptionField;
+@property (weak, nonatomic) IBOutlet FUITextField *titleField;
+@property (weak, nonatomic) IBOutlet FUITextField *descriptionField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *createButton;
 
 @end

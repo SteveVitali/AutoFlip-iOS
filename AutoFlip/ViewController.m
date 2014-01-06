@@ -8,6 +8,11 @@
 
 #import "ViewController.h"
 #import "KxMenu.h"
+#import "FUIButton.h"
+#import "UIColor+FlatUI.h"
+#import "UIFont+FlatUI.h"
+#import "UINavigationBar+FlatUI.h"
+#import "UIBarButtonItem+FlatUI.h"
 
 @interface ViewController ()
 
@@ -34,6 +39,35 @@
     dropbox=[self scaleImage:dropbox withScale:8.0];
     custom =[self scaleImage:custom withScale:4.0];
     
+    self.logoLabel.font = [UIFont flatFontOfSize:36];
+    self.logoLabel.textColor = [UIColor midnightBlueColor];
+  //  self.logoLabel.font = [UIFont systemFontOfSize:36];
+    
+    self.view.backgroundColor = [UIColor cloudsColor];
+    
+    self.importButton.buttonColor = [UIColor turquoiseColor];
+    self.importButton.shadowColor = [UIColor greenSeaColor];
+    self.importButton.shadowHeight = 3.0f;
+    self.importButton.cornerRadius = 6.0f;
+    self.importButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    [self.importButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [self.importButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+   
+    self.startButton.buttonColor = [UIColor turquoiseColor];
+    self.startButton.shadowColor = [UIColor greenSeaColor];
+    self.startButton.shadowHeight = 3.0f;
+    self.startButton.cornerRadius = 6.0f;
+    self.startButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    [self.startButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [self.startButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    
+    [self.navigationController.navigationBar setHidden:YES];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [self.navigationController.navigationBar setHidden:YES];
 }
 
 - (UIImage *)scaleImage:(UIImage *)image withScale:(float)scale {
@@ -97,6 +131,7 @@
     
     [self dismissViewControllerAnimated:NO completion:nil];
     [self.navigationController popToRootViewControllerAnimated:YES];
+
 }
 
 

@@ -27,7 +27,7 @@
     if (self.selected) {
         [self.chooseButton setHidden:NO];
     } else {
-        [self.chooseButton setHidden:YES];
+        [self.chooseButton setHidden:NO];
     }
 }
 

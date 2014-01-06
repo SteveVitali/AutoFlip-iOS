@@ -7,10 +7,15 @@
 //
 
 #import "ChooseCardsViewController.h"
+#import "ViewController.h"
 #import "PresentationViewController.h"
 #import "CardDeckTableCell.h"
 #import "LibraryAPI.h"
 #import "Presentation.h"
+#import "UITableViewCell+FlatUI.h"
+#import "UIColor+FlatUI.h"
+#import "UINavigationBar+FlatUI.h"
+#import "UIBarButtonItem+FlatUI.h"
 
 @interface ChooseCardsViewController ()
 {
@@ -42,7 +47,22 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     presentations = [[LibraryAPI sharedInstance] getPresentations];
     self.searchResults = [NSMutableArray arrayWithCapacity:[presentations count]];
+    
+    //Set the separator color
+    self.tableView.separatorColor = [UIColor cloudsColor];
+    
+    //Set the background color
+    self.tableView.backgroundColor = [UIColor cloudsColor];
+    // self.tableView.backgroundView = nil;
+    
+    [self.navigationController.navigationBar setHidden:NO];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [self.navigationController.navigationBar setHidden:NO];
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -63,6 +83,13 @@
         [self.tableView setEditing:YES animated:YES];
         editButton.title = @"Done";
     }
+}
+
+- (void) popToRoot {
+    
+    UINavigationController *nav = (UINavigationController*) self.view.window.rootViewController;
+    ViewController *root = [nav.viewControllers objectAtIndex:0];
+    [root returnToRoot];
 }
 
 #pragma mark - Table view data source and table view delegate methods
@@ -91,10 +118,20 @@
 
     CardDeckTableCell *cell =
         [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    [cell configureFlatCellWithColor:[UIColor greenSeaColor] selectedColor:[UIColor cloudsColor]];
+    
     // Configure the cell...
     if (cell == nil) {
         cell = [[CardDeckTableCell alloc] initWithStyle:UITableViewCellStyleDefault
                                         reuseIdentifier:CellIdentifier];
+        [cell configureFlatCellWithColor:[UIColor greenSeaColor] selectedColor:[UIColor cloudsColor]];
+    }
+    
+    cell.cornerRadius = 5.f; //Optional
+    if (self.tableView.style == UITableViewStyleGrouped) {
+        cell.separatorHeight = 2.f; //Optional
+    } else {
+        cell.separatorHeight = 0.;
     }
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
@@ -111,8 +148,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         chosenPresentation = [self.searchResults objectAtIndex:indexPath.row];
+        
     } else {
         chosenPresentation = [presentations objectAtIndex:indexPath.row];
     }

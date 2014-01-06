@@ -28,6 +28,13 @@
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self.navigationController.navigationBar setHidden:NO];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [self.navigationController.navigationBar setHidden:NO];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -37,7 +44,6 @@
                                    (CreateCardsViewController *)[segue destinationViewController];
         controller.presentationTitle = [self.titleField text];
         controller.presentationDescription = [self.descriptionField text];
-        NSLog(controller.presentationTitle);
     }
 }
 
