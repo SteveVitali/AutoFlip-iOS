@@ -34,7 +34,7 @@
     self.cardIndex = 0;
     [self reloadCard];
     [self.navigationController.navigationBar setHidden:NO];
-    self.view.backgroundColor = [UIColor cloudsColor];
+   // self.view.backgroundColor = [UIColor cloudsColor];
 
 }
 

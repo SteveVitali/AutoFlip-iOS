@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Presentation.h"
+
+
+@protocol CardDeckTableCellDelegate;
 
 @interface CardDeckTableCell : UITableViewCell
 

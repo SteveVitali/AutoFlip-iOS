@@ -7,13 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CardDeckTableCell.h"
 
 @interface ChooseCardsViewController : UITableViewController
-<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
+                                        <UITableViewDataSource,
+                                         UITableViewDelegate,
+                                         UISearchBarDelegate,
+                                         UISearchDisplayDelegate>
 
 @property (strong,nonatomic) NSMutableArray *searchResults;
 @property IBOutlet UISearchBar *searchBar;
 
 - (IBAction)toggleEditing;
+- (IBAction)chooseButtonPressed:(id)sender;
 
 @end

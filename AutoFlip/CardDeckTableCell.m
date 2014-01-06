@@ -7,6 +7,7 @@
 //
 
 #import "CardDeckTableCell.h"
+#import "UIColor+FlatUI.h"
 
 @implementation CardDeckTableCell
 
@@ -24,10 +25,17 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+    // The code below is duplicated in the tableView cellForIndexSomethingSomething
+    // method in the ChooseCardsViewController; should probably fix that;
     if (self.selected) {
         [self.chooseButton setHidden:NO];
+        self.title.textColor = [UIColor turquoiseColor];
+        self.chooseButton.titleLabel.textColor = [UIColor turquoiseColor];
+        self.chooseButton.titleLabel.text = @">";
     } else {
-        [self.chooseButton setHidden:NO];
+        [self.chooseButton setHidden:YES];
+        [self.title setTextColor:[UIColor cloudsColor]];
+        [self.chooseButton.titleLabel setTextColor:[UIColor cloudsColor]];
     }
 }
 

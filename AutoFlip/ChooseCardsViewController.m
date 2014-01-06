@@ -63,8 +63,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [self.navigationController.navigationBar setHidden:NO];
+    [self.tableView reloadData];
 }
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -94,6 +94,10 @@
     [root returnToRoot];
 }
 
+- (IBAction)chooseButtonPressed:(id)sender {
+    
+}
+
 #pragma mark - Table view data source and table view delegate methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
@@ -120,14 +124,14 @@
 
     CardDeckTableCell *cell =
         [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    [cell configureFlatCellWithColor:[UIColor greenSeaColor] selectedColor:[UIColor cloudsColor]];
     
     // Configure the cell...
     if (cell == nil) {
         cell = [[CardDeckTableCell alloc] initWithStyle:UITableViewCellStyleDefault
                                         reuseIdentifier:CellIdentifier];
-        [cell configureFlatCellWithColor:[UIColor greenSeaColor] selectedColor:[UIColor cloudsColor]];
     }
+    [cell configureFlatCellWithColor:[UIColor greenSeaColor] selectedColor:[UIColor cloudsColor]];
+    [cell.textLabel setTextColor:[UIColor cloudsColor]];
     
     cell.cornerRadius = 5.f; //Optional
     if (self.tableView.style == UITableViewStyleGrouped) {
@@ -150,8 +154,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    //CardDeckTableCell *cell = (CardDeckTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         chosenPresentation = [self.searchResults objectAtIndex:indexPath.row];
         

@@ -117,11 +117,12 @@
 #pragma mark - save cards methods
 - (IBAction)saveCards:(id)sender {
     
+    [[self.presentation.notecards objectAtIndex:self.cardIndex] setText:self.textArea.text];
+
     [self.textArea resignFirstResponder];
 
     [[LibraryAPI sharedInstance] setPresentation:self.presentation atIndex:0];
     [[LibraryAPI sharedInstance] savePresentations];
-
     
     [self showSaveMenu:sender];
 }
@@ -153,7 +154,7 @@
       ];
     
     KxMenuItem *first = menuItems[0];
-    first.foreColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
+    first.foreColor = [UIColor turquoiseColor];
     first.alignment = NSTextAlignmentCenter;
     
     [KxMenu showMenuInView:self.view
@@ -255,7 +256,7 @@
       ];
     
     KxMenuItem *first = menuItems[0];
-    first.foreColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
+    first.foreColor = [UIColor turquoiseColor];
     first.alignment = NSTextAlignmentCenter;
     
     [KxMenu showMenuInView:self.view
