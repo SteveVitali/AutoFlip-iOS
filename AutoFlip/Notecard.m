@@ -89,6 +89,19 @@
     return [self.bullets componentsJoinedByString:@""];
 }
 
+- (NSString *)getTextFromBulletFormat {
+    
+    NSString *text = [NSString stringWithString:[self text]];
+    
+    NSCharacterSet *charactersToRemove = [[ NSCharacterSet alphanumericCharacterSet ] invertedSet ];
+    
+    NSString *newText =
+              [[text componentsSeparatedByCharactersInSet:charactersToRemove ]
+                                        componentsJoinedByString:@" " ];
+    
+    return newText;
+}
+
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.bullets forKey:@"bullets"];

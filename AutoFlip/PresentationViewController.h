@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Presentation.h"
 #import "CardDeckViewController.h"
+#import <OpenEars/PocketsphinxController.h>
+#import <OpenEars/OpenEarsEventsObserver.h>
 
 @interface PresentationViewController : CardDeckViewController
 
+@property (strong, nonatomic) PocketsphinxController *pocketsphinxController;
+@property (strong, nonatomic) OpenEarsEventsObserver *openEarsEventsObserver;
 
 @end

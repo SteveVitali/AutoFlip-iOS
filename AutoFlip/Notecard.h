@@ -17,4 +17,6 @@
 - (id)initWithEmptyCard;
 - (id)initWithRandomBullets;
 
+- (NSString *)getTextFromBulletFormat;
+
 @end

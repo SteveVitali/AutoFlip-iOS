@@ -25,7 +25,7 @@
                               stringByAppendingString:@"/Documents/presentations.bin"]];
         self.presentations = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         
-        //presentations = nil; //uncomment to reset the stored values on iphone sim
+        //self.presentations = nil; //uncomment to reset the stored values on iphone sim
         if (self.presentations == nil) {
             NSLog(@"Nil shit nigga wassup");
             //we need some motherfuckin' presentations

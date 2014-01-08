@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		116FD85A187B53B900BC4643 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD858187B53B900BC4643 /* AudioToolbox.framework */; };
+		116FD85B187B53B900BC4643 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD859187B53B900BC4643 /* AVFoundation.framework */; };
+		116FD861187B53F400BC4643 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 116FD85D187B53F400BC4643 /* AcousticModelEnglish.bundle */; };
+		116FD862187B53F400BC4643 /* AcousticModelSpanish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 116FD85E187B53F400BC4643 /* AcousticModelSpanish.bundle */; };
+		116FD863187B53F400BC4643 /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD85F187B53F400BC4643 /* OpenEars.framework */; };
+		116FD864187B53F400BC4643 /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD860187B53F400BC4643 /* Slt.framework */; };
 		11711F911871F2CF00792D36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11711F901871F2CF00792D36 /* Foundation.framework */; };
 		11711F931871F2CF00792D36 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11711F921871F2CF00792D36 /* CoreGraphics.framework */; };
 		11711F951871F2CF00792D36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11711F941871F2CF00792D36 /* UIKit.framework */; };
@@ -86,6 +92,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		116FD858187B53B900BC4643 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		116FD859187B53B900BC4643 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		116FD85D187B53F400BC4643 /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelEnglish.bundle; sourceTree = "<group>"; };
+		116FD85E187B53F400BC4643 /* AcousticModelSpanish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelSpanish.bundle; sourceTree = "<group>"; };
+		116FD85F187B53F400BC4643 /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEars.framework; sourceTree = "<group>"; };
+		116FD860187B53F400BC4643 /* Slt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Slt.framework; sourceTree = "<group>"; };
 		11711F8D1871F2CF00792D36 /* AutoFlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoFlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11711F901871F2CF00792D36 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		11711F921871F2CF00792D36 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -203,9 +215,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116FD85A187B53B900BC4643 /* AudioToolbox.framework in Frameworks */,
+				116FD864187B53F400BC4643 /* Slt.framework in Frameworks */,
+				116FD85B187B53B900BC4643 /* AVFoundation.framework in Frameworks */,
 				11711F931871F2CF00792D36 /* CoreGraphics.framework in Frameworks */,
 				11711F951871F2CF00792D36 /* UIKit.framework in Frameworks */,
 				11711F911871F2CF00792D36 /* Foundation.framework in Frameworks */,
+				116FD863187B53F400BC4643 /* OpenEars.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,9 +245,21 @@
 			name = iPad;
 			sourceTree = "<group>";
 		};
+		116FD85C187B53F400BC4643 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				116FD85D187B53F400BC4643 /* AcousticModelEnglish.bundle */,
+				116FD85E187B53F400BC4643 /* AcousticModelSpanish.bundle */,
+				116FD85F187B53F400BC4643 /* OpenEars.framework */,
+				116FD860187B53F400BC4643 /* Slt.framework */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
 		11711F841871F2CF00792D36 = {
 			isa = PBXGroup;
 			children = (
+				116FD85C187B53F400BC4643 /* Framework */,
 				11711F961871F2CF00792D36 /* AutoFlip */,
 				11711FB51871F2CF00792D36 /* AutoFlipTests */,
 				1192496C1878F53100BD6868 /* Resources */,
@@ -253,6 +281,8 @@
 		11711F8F1871F2CF00792D36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				116FD858187B53B900BC4643 /* AudioToolbox.framework */,
+				116FD859187B53B900BC4643 /* AVFoundation.framework */,
 				11711F901871F2CF00792D36 /* Foundation.framework */,
 				11711F921871F2CF00792D36 /* CoreGraphics.framework */,
 				11711F941871F2CF00792D36 /* UIKit.framework */,
@@ -509,6 +539,7 @@
 				11711F891871F2CF00792D36 /* Sources */,
 				11711F8A1871F2CF00792D36 /* Frameworks */,
 				11711F8B1871F2CF00792D36 /* Resources */,
+				50524F424C454D533F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -577,6 +608,7 @@
 			files = (
 				1192497E1878F53100BD6868 /* Lato-Light.ttf in Resources */,
 				11711FA91871F2CF00792D36 /* Images.xcassets in Resources */,
+				116FD862187B53F400BC4643 /* AcousticModelSpanish.bundle in Resources */,
 				119249791878F53100BD6868 /* Lato-Bold.ttf in Resources */,
 				1192497B1878F53100BD6868 /* Lato-Hairline.ttf in Resources */,
 				11D0D13F187231D8008CC7FD /* custom.png in Resources */,
@@ -584,6 +616,7 @@
 				1192497A1878F53100BD6868 /* Lato-BoldItalic.ttf in Resources */,
 				11D11F591878AE910081B1CB /* SaveAsView.xib in Resources */,
 				1192497C1878F53100BD6868 /* Lato-HairlineItalic.ttf in Resources */,
+				116FD861187B53F400BC4643 /* AcousticModelEnglish.bundle in Resources */,
 				1192497D1878F53100BD6868 /* Lato-Italic.ttf in Resources */,
 				119249771878F53100BD6868 /* Lato-Black.ttf in Resources */,
 				1192497F1878F53100BD6868 /* Lato-LightItalic.ttf in Resources */,
@@ -604,6 +637,9 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+
+
 
 /* Begin PBXSourcesBuildPhase section */
 		11711F891871F2CF00792D36 /* Sources */ = {
@@ -717,7 +753,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -756,7 +792,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -777,6 +813,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Framework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoFlip/AutoFlip-Prefix.pch";
 				INFOPLIST_FILE = "AutoFlip/AutoFlip-Info.plist";
@@ -792,6 +832,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Framework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoFlip/AutoFlip-Prefix.pch";
 				INFOPLIST_FILE = "AutoFlip/AutoFlip-Info.plist";
