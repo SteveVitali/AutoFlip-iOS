@@ -80,6 +80,8 @@
 		11D11F971878F0510081B1CB /* UIToolbar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F841878F0510081B1CB /* UIToolbar+FlatUI.m */; };
 		11DC90631874D39600C069D8 /* NewCardDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DC90621874D39600C069D8 /* NewCardDeckViewController.m */; };
 		11F0C87C1880761E0056CD66 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C87B1880761E0056CD66 /* DropboxSDK.framework */; };
+		11F0C87F1880AE710056CD66 /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C87D1880AE710056CD66 /* DBChooser.framework */; };
+		11F0C8801880AE710056CD66 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 11F0C87E1880AE710056CD66 /* DBChooser.bundle */; };
 		886164EB67E243F3B444711C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F23F36D5CC4DD7B03FE483 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -211,6 +213,8 @@
 		11DC90611874D39600C069D8 /* NewCardDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCardDeckViewController.h; sourceTree = "<group>"; };
 		11DC90621874D39600C069D8 /* NewCardDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCardDeckViewController.m; sourceTree = "<group>"; };
 		11F0C87B1880761E0056CD66 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
+		11F0C87D1880AE710056CD66 /* DBChooser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBChooser.framework; sourceTree = "<group>"; };
+		11F0C87E1880AE710056CD66 /* DBChooser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DBChooser.bundle; sourceTree = "<group>"; };
 		330C7D711C864D938A5C6191 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		81F23F36D5CC4DD7B03FE483 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -228,6 +232,7 @@
 				11711F951871F2CF00792D36 /* UIKit.framework in Frameworks */,
 				11711F911871F2CF00792D36 /* Foundation.framework in Frameworks */,
 				116FD863187B53F400BC4643 /* OpenEars.framework in Frameworks */,
+				11F0C87F1880AE710056CD66 /* DBChooser.framework in Frameworks */,
 				886164EB67E243F3B444711C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +290,8 @@
 		11711F8F1871F2CF00792D36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11F0C87D1880AE710056CD66 /* DBChooser.framework */,
+				11F0C87E1880AE710056CD66 /* DBChooser.bundle */,
 				11F0C87B1880761E0056CD66 /* DropboxSDK.framework */,
 				116FD85D187B53F400BC4643 /* AcousticModelEnglish.bundle */,
 				116FD85E187B53F400BC4643 /* AcousticModelSpanish.bundle */,
@@ -626,6 +633,7 @@
 				11711F9B1871F2CF00792D36 /* InfoPlist.strings in Resources */,
 				1192497A1878F53100BD6868 /* Lato-BoldItalic.ttf in Resources */,
 				11D11F591878AE910081B1CB /* SaveAsView.xib in Resources */,
+				11F0C8801880AE710056CD66 /* DBChooser.bundle in Resources */,
 				1192497C1878F53100BD6868 /* Lato-HairlineItalic.ttf in Resources */,
 				116FD861187B53F400BC4643 /* AcousticModelEnglish.bundle in Resources */,
 				1192497D1878F53100BD6868 /* Lato-Italic.ttf in Resources */,

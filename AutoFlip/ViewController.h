@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "FUIButton.h"
+#import <DropboxSDK/DropboxSDK.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <DBRestClientDelegate>
 
 @property (weak, nonatomic) IBOutlet FUIButton *startButton;
 @property (weak, nonatomic) IBOutlet FUIButton *importButton;
 @property (weak, nonatomic) IBOutlet UILabel *logoLabel;
+@property (nonatomic, readonly) DBRestClient *restClient;
 
 - (IBAction)showMenu:(id)sender;
 

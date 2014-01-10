@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <DropboxSDK/DropboxSDK.h>
+#import <DBChooser/DBChooser.h>
 
 @implementation AppDelegate
 
@@ -25,7 +26,10 @@
     return YES;
 }
 
+#pragma mark - Dropbox hooks
+
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
     if ([[DBSession sharedSession] handleOpenURL:url]) {
         if ([[DBSession sharedSession] isLinked]) {
             NSLog(@"App linked successfully!");
@@ -34,6 +38,18 @@
         return YES;
     }
     // Add whatever other url handling code your app requires here
+    return NO;
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
+  sourceApplication:(NSString *)source annotation:(id)annotation {
+    
+    if ([[DBChooser defaultChooser] handleOpenURL:url]) {
+        // This was a Chooser response and handleOpenURL automatically ran the
+        // completion block
+        return YES;
+    }
+    
     return NO;
 }
 							

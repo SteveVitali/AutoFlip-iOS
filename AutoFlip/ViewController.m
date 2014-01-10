@@ -14,6 +14,7 @@
 #import "UINavigationBar+FlatUI.h"
 #import "UIBarButtonItem+FlatUI.h"
 #import <DropboxSDK/DropboxSDK.h>
+#import <DBChooser/DBChooser.h>
 
 @interface ViewController ()
 
@@ -25,6 +26,8 @@
     UIImage *dropbox;
     UIImage *custom;
 }
+
+@synthesize restClient = _restClient;
 
 - (void)viewDidLoad {
     
@@ -78,13 +81,6 @@
                         orientation:(image.imageOrientation)];
 }
 
-- (void)didPressLink {
-    
-    if (![[DBSession sharedSession] isLinked]) {
-        [[DBSession sharedSession] linkFromController:self];
-    }
-}
-
 - (IBAction)showMenu:(UIButton *)sender {
     
     NSArray *menuItems =
@@ -125,9 +121,77 @@
     [self performSegueWithIdentifier:@"createCards" sender:sender];
 }
 
+#pragma mark - Dropbox Core API methods
+
 - (void)pushDropboxView:(id)sender {
     
-    [self performSegueWithIdentifier:@"createCards" sender:sender];
+    [self didPressLink];
+    //[self performSegueWithIdentifier:@"createCards" sender:sender];
+}
+
+- (void)didPressLink {
+    
+    if (![[DBSession sharedSession] isLinked]) {
+        [[DBSession sharedSession] linkFromController:self];
+    }
+    [[self restClient] loadMetadata:@"/"];
+    NSLog(@"link pressed");
+}
+
+- (DBRestClient *)restClient {
+    
+    if (!_restClient) {
+        _restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
+        _restClient.delegate = self;
+    }
+    return _restClient;
+}
+
+- (void)restClient:(DBRestClient *)client loadedMetadata:(DBMetadata *)metadata {
+    
+    if (metadata.isDirectory) {
+        NSLog(@"Folder '%@' contains:", metadata.path);
+        for (DBMetadata *file in metadata.contents) {
+            NSLog(@"	%@", file.filename);
+        }
+    }
+}
+
+- (void)restClient:(DBRestClient*)client loadedFile:(NSString*)localPath
+       contentType:(NSString*)contentType metadata:(DBMetadata*)metadata {
+    
+    NSLog(@"File loaded into path: %@", localPath);
+}
+
+- (void)restClient:(DBRestClient*)client loadFileFailedWithError:(NSError*)error {
+    
+    NSLog(@"There was an error loading the file - %@", error);
+}
+
+- (void)restClient:(DBRestClient *)client
+loadMetadataFailedWithError:(NSError *)error {
+    
+    NSLog(@"Error loading metadata: %@", error);
+}
+
+#pragma mark - Dropbox Drop-ins methods
+
+- (void)dropboxChoose {
+    
+    [[DBChooser defaultChooser] openChooserForLinkType:DBChooserLinkTypePreview
+                                    fromViewController:self completion:^(NSArray *results)
+    {
+         if ([results count]) {
+             // Process results from Chooser
+         } else {
+             // User canceled the action
+         }
+     }];
+}
+
+- (IBAction)didPressChoose {
+    
+    [self dropboxChoose];
 }
 
 - (void)pushCreateCardsView:(id)sender {
