@@ -13,6 +13,7 @@
 #import "UIFont+FlatUI.h"
 #import "UINavigationBar+FlatUI.h"
 #import "UIBarButtonItem+FlatUI.h"
+#import <DropboxSDK/DropboxSDK.h>
 
 @interface ViewController ()
 
@@ -75,6 +76,13 @@
     return [UIImage imageWithCGImage:[image CGImage]
                               scale:(image.scale * scale)
                         orientation:(image.imageOrientation)];
+}
+
+- (void)didPressLink {
+    
+    if (![[DBSession sharedSession] isLinked]) {
+        [[DBSession sharedSession] linkFromController:self];
+    }
 }
 
 - (IBAction)showMenu:(UIButton *)sender {
