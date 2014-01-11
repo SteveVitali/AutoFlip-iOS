@@ -118,7 +118,7 @@
 
 - (void)pushDriveView:(id)sender {
     
-    [self performSegueWithIdentifier:@"createCards" sender:sender];
+    [self performSegueWithIdentifier:@"driveFiles" sender:sender];
 }
 
 #pragma mark - Dropbox Core API methods
@@ -206,7 +206,6 @@ loadMetadataFailedWithError:(NSError *)error {
 
 }
 
-
 - (void)didReceiveMemoryWarning {
     
     [super didReceiveMemoryWarning];
@@ -214,4 +213,5 @@ loadMetadataFailedWithError:(NSError *)error {
 }
 
 @end
+
 

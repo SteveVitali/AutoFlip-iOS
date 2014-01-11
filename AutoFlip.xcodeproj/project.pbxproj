@@ -40,6 +40,10 @@
 		1194B23618772DB8008AD3AE /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194B23518772DB8008AD3AE /* KxMenu.m */; };
 		11A44137187360EA00FB5863 /* CreateCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A44136187360EA00FB5863 /* CreateCardsViewController.m */; };
 		11A4413A1873620400FB5863 /* CardDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A441391873620400FB5863 /* CardDeckViewController.m */; };
+		11BA10A81881C2E20093851B /* GTLDrive_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BA10A61881C2E20093851B /* GTLDrive_Sources.m */; };
+		11BA10AD1881C4460093851B /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BA10AB1881C3690093851B /* GTMOAuth2ViewTouch.xib */; };
+		11BA10B41881CC580093851B /* DriveFilesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BA10B31881CC580093851B /* DriveFilesListViewController.m */; };
+		11BA10B71881CCE50093851B /* DrEditUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BA10B61881CCE50093851B /* DrEditUtilities.m */; };
 		11D0D115187202D1008CC7FD /* ChooseCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */; };
 		11D0D11E18720412008CC7FD /* Notecard.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D11D18720412008CC7FD /* Notecard.m */; };
 		11D0D12118720421008CC7FD /* Presentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D12018720421008CC7FD /* Presentation.m */; };
@@ -82,6 +86,10 @@
 		11F0C87C1880761E0056CD66 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C87B1880761E0056CD66 /* DropboxSDK.framework */; };
 		11F0C87F1880AE710056CD66 /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C87D1880AE710056CD66 /* DBChooser.framework */; };
 		11F0C8801880AE710056CD66 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 11F0C87E1880AE710056CD66 /* DBChooser.bundle */; };
+		11F0C9C11880F8010056CD66 /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C9C01880F8010056CD66 /* libGTLTouchStaticLib.a */; };
+		11F0C9C31880F8130056CD66 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C9C21880F8130056CD66 /* Security.framework */; };
+		11F0C9C51880F81E0056CD66 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C9C41880F81E0056CD66 /* SystemConfiguration.framework */; };
+		11F0C9C71880F82E0056CD66 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C9C61880F82E0056CD66 /* MobileCoreServices.framework */; };
 		886164EB67E243F3B444711C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F23F36D5CC4DD7B03FE483 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +145,14 @@
 		11A44136187360EA00FB5863 /* CreateCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCardsViewController.m; sourceTree = "<group>"; };
 		11A441381873620400FB5863 /* CardDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDeckViewController.h; sourceTree = "<group>"; };
 		11A441391873620400FB5863 /* CardDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDeckViewController.m; sourceTree = "<group>"; };
+		11BA10A61881C2E20093851B /* GTLDrive_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLDrive_Sources.m; path = Source/Services/Drive/Generated/GTLDrive_Sources.m; sourceTree = "<group>"; };
+		11BA10A71881C2E20093851B /* GTLDrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLDrive.h; path = Source/Services/Drive/Generated/GTLDrive.h; sourceTree = "<group>"; };
+		11BA10AB1881C3690093851B /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = AutoFlip/GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
+		11BA10B11881CB320093851B /* DrEditFileEditDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrEditFileEditDelegate.h; sourceTree = "<group>"; };
+		11BA10B21881CC580093851B /* DriveFilesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriveFilesListViewController.h; sourceTree = "<group>"; };
+		11BA10B31881CC580093851B /* DriveFilesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveFilesListViewController.m; sourceTree = "<group>"; };
+		11BA10B51881CCE50093851B /* DrEditUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrEditUtilities.h; sourceTree = "<group>"; };
+		11BA10B61881CCE50093851B /* DrEditUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrEditUtilities.m; sourceTree = "<group>"; };
 		11D0D113187202D1008CC7FD /* ChooseCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCardsViewController.h; sourceTree = "<group>"; };
 		11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCardsViewController.m; sourceTree = "<group>"; };
 		11D0D11C18720412008CC7FD /* Notecard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notecard.h; sourceTree = "<group>"; };
@@ -215,6 +231,11 @@
 		11F0C87B1880761E0056CD66 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		11F0C87D1880AE710056CD66 /* DBChooser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBChooser.framework; sourceTree = "<group>"; };
 		11F0C87E1880AE710056CD66 /* DBChooser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DBChooser.bundle; sourceTree = "<group>"; };
+		11F0C9C01880F8010056CD66 /* libGTLTouchStaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGTLTouchStaticLib.a; path = "../../google-api-objectivec-client-read-only/Source/build/Debug-iphoneos/libGTLTouchStaticLib.a"; sourceTree = "<group>"; };
+		11F0C9C21880F8130056CD66 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		11F0C9C41880F81E0056CD66 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		11F0C9C61880F82E0056CD66 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		11FC52711880F97300195730 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = "google-api-objectivec-client/Source/OAuth2/Touch/GTMOAuth2ViewTouch.xib"; sourceTree = SOURCE_ROOT; };
 		330C7D711C864D938A5C6191 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		81F23F36D5CC4DD7B03FE483 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -224,6 +245,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11F0C9C71880F82E0056CD66 /* MobileCoreServices.framework in Frameworks */,
+				11F0C9C51880F81E0056CD66 /* SystemConfiguration.framework in Frameworks */,
+				11F0C9C31880F8130056CD66 /* Security.framework in Frameworks */,
+				11F0C9C11880F8010056CD66 /* libGTLTouchStaticLib.a in Frameworks */,
 				116FD85A187B53B900BC4643 /* AudioToolbox.framework in Frameworks */,
 				116FD864187B53F400BC4643 /* Slt.framework in Frameworks */,
 				116FD85B187B53B900BC4643 /* AVFoundation.framework in Frameworks */,
@@ -257,17 +282,9 @@
 			name = iPad;
 			sourceTree = "<group>";
 		};
-		116FD85C187B53F400BC4643 /* Framework */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Framework;
-			sourceTree = "<group>";
-		};
 		11711F841871F2CF00792D36 = {
 			isa = PBXGroup;
 			children = (
-				116FD85C187B53F400BC4643 /* Framework */,
 				11711F961871F2CF00792D36 /* AutoFlip */,
 				11711FB51871F2CF00792D36 /* AutoFlipTests */,
 				1192496C1878F53100BD6868 /* Resources */,
@@ -290,6 +307,10 @@
 		11711F8F1871F2CF00792D36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11F0C9C61880F82E0056CD66 /* MobileCoreServices.framework */,
+				11F0C9C41880F81E0056CD66 /* SystemConfiguration.framework */,
+				11F0C9C21880F8130056CD66 /* Security.framework */,
+				11F0C9C01880F8010056CD66 /* libGTLTouchStaticLib.a */,
 				11F0C87D1880AE710056CD66 /* DBChooser.framework */,
 				11F0C87E1880AE710056CD66 /* DBChooser.bundle */,
 				11F0C87B1880761E0056CD66 /* DropboxSDK.framework */,
@@ -327,6 +348,7 @@
 		11711F971871F2CF00792D36 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				11FC52711880F97300195730 /* GTMOAuth2ViewTouch.xib */,
 				11711F981871F2CF00792D36 /* AutoFlip-Info.plist */,
 				11711F991871F2CF00792D36 /* InfoPlist.strings */,
 				11711F9C1871F2CF00792D36 /* main.m */,
@@ -409,6 +431,8 @@
 		11D0D11B18720345008CC7FD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				11BA10B21881CC580093851B /* DriveFilesListViewController.h */,
+				11BA10B31881CC580093851B /* DriveFilesListViewController.m */,
 				11A4413B1873624F00FB5863 /* CardDeckViewControllers */,
 				11711FA51871F2CF00792D36 /* ViewController.h */,
 				11711FA61871F2CF00792D36 /* ViewController.m */,
@@ -476,6 +500,12 @@
 		11D11F5A1878EFF80081B1CB /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				11BA10B51881CCE50093851B /* DrEditUtilities.h */,
+				11BA10B61881CCE50093851B /* DrEditUtilities.m */,
+				11BA10B11881CB320093851B /* DrEditFileEditDelegate.h */,
+				11BA10AB1881C3690093851B /* GTMOAuth2ViewTouch.xib */,
+				11BA10A61881C2E20093851B /* GTLDrive_Sources.m */,
+				11BA10A71881C2E20093851B /* GTLDrive.h */,
 				1194B23418772DB8008AD3AE /* KxMenu.h */,
 				1194B23518772DB8008AD3AE /* KxMenu.m */,
 				11D11F381878A6620081B1CB /* MZFormSheetController */,
@@ -624,6 +654,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11BA10AD1881C4460093851B /* GTMOAuth2ViewTouch.xib in Resources */,
 				1192497E1878F53100BD6868 /* Lato-Light.ttf in Resources */,
 				11711FA91871F2CF00792D36 /* Images.xcassets in Resources */,
 				116FD862187B53F400BC4643 /* AcousticModelSpanish.bundle in Resources */,
@@ -720,6 +751,7 @@
 				11D11F951878F0510081B1CB /* UITabBar+FlatUI.m in Sources */,
 				11D11F471878A6620081B1CB /* UIImage+Additional.m in Sources */,
 				11D11F921878F0510081B1CB /* UIProgressView+FlatUI.m in Sources */,
+				11BA10B41881CC580093851B /* DriveFilesListViewController.m in Sources */,
 				11D11F891878F0510081B1CB /* FUISegmentedControl.m in Sources */,
 				11A4413A1873620400FB5863 /* CardDeckViewController.m in Sources */,
 				11D11F861878F0510081B1CB /* FUIButton.m in Sources */,
@@ -730,10 +762,12 @@
 				11DC90631874D39600C069D8 /* NewCardDeckViewController.m in Sources */,
 				11D11F441878A6620081B1CB /* MZFormSheetController.m in Sources */,
 				11711FA11871F2CF00792D36 /* AppDelegate.m in Sources */,
+				11BA10B71881CCE50093851B /* DrEditUtilities.m in Sources */,
 				11D0D12B18721356008CC7FD /* PresentationViewController.m in Sources */,
 				11711F9D1871F2CF00792D36 /* main.m in Sources */,
 				11D11F4E1878A74E0081B1CB /* NSInvocation+Copy.m in Sources */,
 				11D11F581878AE910081B1CB /* SaveAsViewController.m in Sources */,
+				11BA10A81881C2E20093851B /* GTLDrive_Sources.m in Sources */,
 				11D11F941878F0510081B1CB /* UIStepper+FlatUI.m in Sources */,
 				11D11F8C1878F0510081B1CB /* UIBarButtonItem+FlatUI.m in Sources */,
 			);
@@ -861,6 +895,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 330C7D711C864D938A5C6191 /* Pods.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -874,6 +909,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Source/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -882,6 +918,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 330C7D711C864D938A5C6191 /* Pods.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -895,6 +932,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Source/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
