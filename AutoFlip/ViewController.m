@@ -15,6 +15,8 @@
 #import "UIBarButtonItem+FlatUI.h"
 #import <DropboxSDK/DropboxSDK.h>
 #import <DBChooser/DBChooser.h>
+#import "MZFormSheetController.h"
+#import "LibraryAPI.h"
 
 @interface ViewController ()
 
@@ -71,7 +73,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    [self.navigationController.navigationBar setHidden:YES];
+    [self.navigationController.navigationBar setHidden:NO];
+    [self.navigationController setToolbarHidden:NO];
 }
 
 - (UIImage *)scaleImage:(UIImage *)image withScale:(float)scale {
@@ -183,6 +186,9 @@ loadMetadataFailedWithError:(NSError *)error {
     {
          if ([results count]) {
              // Process results from Chooser
+             DBChooserResult *result = [results objectAtIndex:0];
+             NSLog(@"result: %@",result.name);
+             [[LibraryAPI sharedInstance] customLog:[NSString stringWithFormat:@"result: %@",result.name]];
          } else {
              // User canceled the action
          }
@@ -197,6 +203,33 @@ loadMetadataFailedWithError:(NSError *)error {
 - (void)pushCreateCardsView:(id)sender {
     
     [self performSegueWithIdentifier:@"createCards" sender:sender];
+}
+
+- (IBAction)showDebugging:(id)sender {
+
+    UIViewController *viewController = [[UIViewController alloc] init];
+    UITextView *debugView = [[UITextView alloc] init];
+    debugView.text = [[LibraryAPI sharedInstance] debuggingResults];
+    debugView.frame = CGRectMake(16, 64, self.view.frame.size.width-32, 256);
+    [viewController.view addSubview:debugView];
+    
+    MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:viewController];
+    
+    formSheet.shouldDismissOnBackgroundViewTap = YES;
+    formSheet.transitionStyle = MZFormSheetTransitionStyleSlideFromBottom;
+    formSheet.cornerRadius = 8.0;
+    formSheet.portraitTopInset = 6.0;
+    formSheet.landscapeTopInset = 6.0;
+    formSheet.presentedFormSheetSize = CGSizeMake(320, 200);
+    
+    formSheet.willPresentCompletionHandler = ^(UIViewController *presentedFSViewController){
+        presentedFSViewController.view.autoresizingMask = presentedFSViewController.view.autoresizingMask | UIViewAutoresizingFlexibleWidth;
+    };
+    
+    [formSheet presentAnimated:YES completionHandler:^(UIViewController *presentedFSViewController) {
+        
+    }];
+    
 }
 
 - (void)returnToRoot {

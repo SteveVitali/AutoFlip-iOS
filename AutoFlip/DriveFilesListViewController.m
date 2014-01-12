@@ -251,8 +251,8 @@ static NSString *const kClientSecret = @"1aXd3lyDt8LR-MXInEmN5777";
 - (void)loadDriveFiles {
     
   GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
-  query.q = @"mimeType = 'text/plain'";
-  
+  query.q = @"mimeType = 'text/plain', 'application/vnd.google-apps.document'";
+    
   UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading files"
                                                            delegate:self];
   [self.driveService executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
@@ -266,6 +266,7 @@ static NSString *const kClientSecret = @"1aXd3lyDt8LR-MXInEmN5777";
       [self.driveFiles removeAllObjects];
       [self.driveFiles addObjectsFromArray:files.items];
       [self.tableView reloadData];
+        NSLog(@"num items: %d",self.driveFiles.count);
     } else {
       NSLog(@"An error occurred: %@", error);
       [DrEditUtilities showErrorMessageWithTitle:@"Unable to load files"

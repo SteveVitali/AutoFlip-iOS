@@ -26,7 +26,7 @@
     return YES;
 }
 
-#pragma mark - Dropbox hooks
+#pragma mark - Dropbox Core API hook
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     
@@ -40,6 +40,8 @@
     // Add whatever other url handling code your app requires here
     return NO;
 }
+
+#pragma mark - Dropbox Drop-ins Chooser hook
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
   sourceApplication:(NSString *)source annotation:(id)annotation {

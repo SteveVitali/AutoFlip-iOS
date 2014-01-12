@@ -44,6 +44,7 @@
 		11BA10AD1881C4460093851B /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BA10AB1881C3690093851B /* GTMOAuth2ViewTouch.xib */; };
 		11BA10B41881CC580093851B /* DriveFilesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BA10B31881CC580093851B /* DriveFilesListViewController.m */; };
 		11BA10B71881CCE50093851B /* DrEditUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BA10B61881CCE50093851B /* DrEditUtilities.m */; };
+		11C75DE818831A7D000EB94B /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C75DE718831A7D000EB94B /* libGTLTouchStaticLib.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		11D0D115187202D1008CC7FD /* ChooseCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */; };
 		11D0D11E18720412008CC7FD /* Notecard.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D11D18720412008CC7FD /* Notecard.m */; };
 		11D0D12118720421008CC7FD /* Presentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D12018720421008CC7FD /* Presentation.m */; };
@@ -86,11 +87,9 @@
 		11F0C87C1880761E0056CD66 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C87B1880761E0056CD66 /* DropboxSDK.framework */; };
 		11F0C87F1880AE710056CD66 /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C87D1880AE710056CD66 /* DBChooser.framework */; };
 		11F0C8801880AE710056CD66 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 11F0C87E1880AE710056CD66 /* DBChooser.bundle */; };
-		11F0C9C11880F8010056CD66 /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C9C01880F8010056CD66 /* libGTLTouchStaticLib.a */; };
 		11F0C9C31880F8130056CD66 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C9C21880F8130056CD66 /* Security.framework */; };
 		11F0C9C51880F81E0056CD66 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C9C41880F81E0056CD66 /* SystemConfiguration.framework */; };
 		11F0C9C71880F82E0056CD66 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C9C61880F82E0056CD66 /* MobileCoreServices.framework */; };
-		886164EB67E243F3B444711C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F23F36D5CC4DD7B03FE483 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +152,7 @@
 		11BA10B31881CC580093851B /* DriveFilesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveFilesListViewController.m; sourceTree = "<group>"; };
 		11BA10B51881CCE50093851B /* DrEditUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrEditUtilities.h; sourceTree = "<group>"; };
 		11BA10B61881CCE50093851B /* DrEditUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrEditUtilities.m; sourceTree = "<group>"; };
+		11C75DE718831A7D000EB94B /* libGTLTouchStaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libGTLTouchStaticLib.a; path = "Source/build/Debug-iphoneos/libGTLTouchStaticLib.a"; sourceTree = "<group>"; };
 		11D0D113187202D1008CC7FD /* ChooseCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCardsViewController.h; sourceTree = "<group>"; };
 		11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCardsViewController.m; sourceTree = "<group>"; };
 		11D0D11C18720412008CC7FD /* Notecard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notecard.h; sourceTree = "<group>"; };
@@ -231,13 +231,11 @@
 		11F0C87B1880761E0056CD66 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		11F0C87D1880AE710056CD66 /* DBChooser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBChooser.framework; sourceTree = "<group>"; };
 		11F0C87E1880AE710056CD66 /* DBChooser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DBChooser.bundle; sourceTree = "<group>"; };
-		11F0C9C01880F8010056CD66 /* libGTLTouchStaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGTLTouchStaticLib.a; path = "../../google-api-objectivec-client-read-only/Source/build/Debug-iphoneos/libGTLTouchStaticLib.a"; sourceTree = "<group>"; };
 		11F0C9C21880F8130056CD66 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		11F0C9C41880F81E0056CD66 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		11F0C9C61880F82E0056CD66 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		11FC52711880F97300195730 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = "google-api-objectivec-client/Source/OAuth2/Touch/GTMOAuth2ViewTouch.xib"; sourceTree = SOURCE_ROOT; };
 		330C7D711C864D938A5C6191 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		81F23F36D5CC4DD7B03FE483 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,10 +243,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11C75DE818831A7D000EB94B /* libGTLTouchStaticLib.a in Frameworks */,
 				11F0C9C71880F82E0056CD66 /* MobileCoreServices.framework in Frameworks */,
 				11F0C9C51880F81E0056CD66 /* SystemConfiguration.framework in Frameworks */,
 				11F0C9C31880F8130056CD66 /* Security.framework in Frameworks */,
-				11F0C9C11880F8010056CD66 /* libGTLTouchStaticLib.a in Frameworks */,
 				116FD85A187B53B900BC4643 /* AudioToolbox.framework in Frameworks */,
 				116FD864187B53F400BC4643 /* Slt.framework in Frameworks */,
 				116FD85B187B53B900BC4643 /* AVFoundation.framework in Frameworks */,
@@ -258,7 +256,6 @@
 				11711F911871F2CF00792D36 /* Foundation.framework in Frameworks */,
 				116FD863187B53F400BC4643 /* OpenEars.framework in Frameworks */,
 				11F0C87F1880AE710056CD66 /* DBChooser.framework in Frameworks */,
-				886164EB67E243F3B444711C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,10 +304,10 @@
 		11711F8F1871F2CF00792D36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11C75DE718831A7D000EB94B /* libGTLTouchStaticLib.a */,
 				11F0C9C61880F82E0056CD66 /* MobileCoreServices.framework */,
 				11F0C9C41880F81E0056CD66 /* SystemConfiguration.framework */,
 				11F0C9C21880F8130056CD66 /* Security.framework */,
-				11F0C9C01880F8010056CD66 /* libGTLTouchStaticLib.a */,
 				11F0C87D1880AE710056CD66 /* DBChooser.framework */,
 				11F0C87E1880AE710056CD66 /* DBChooser.bundle */,
 				11F0C87B1880761E0056CD66 /* DropboxSDK.framework */,
@@ -324,7 +321,6 @@
 				11711F921871F2CF00792D36 /* CoreGraphics.framework */,
 				11711F941871F2CF00792D36 /* UIKit.framework */,
 				11711FAF1871F2CF00792D36 /* XCTest.framework */,
-				81F23F36D5CC4DD7B03FE483 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -587,7 +583,6 @@
 				11711F891871F2CF00792D36 /* Sources */,
 				11711F8A1871F2CF00792D36 /* Frameworks */,
 				11711F8B1871F2CF00792D36 /* Resources */,
-				2763B018310E47BBB33184D1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -689,21 +684,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2763B018310E47BBB33184D1 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		F89FC5FBE088466E8E7945F3 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -896,8 +876,10 @@
 			baseConfigurationReference = 330C7D711C864D938A5C6191 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "Steve Vitali";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Framework",
@@ -905,8 +887,18 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoFlip/AutoFlip-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "AutoFlip/AutoFlip-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					Foundation,
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Source/**";
@@ -919,8 +911,10 @@
 			baseConfigurationReference = 330C7D711C864D938A5C6191 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "Steve Vitali";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Framework",
@@ -928,8 +922,18 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoFlip/AutoFlip-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "AutoFlip/AutoFlip-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					Foundation,
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Source/**";

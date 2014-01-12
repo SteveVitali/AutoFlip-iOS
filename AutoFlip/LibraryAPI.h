@@ -11,11 +11,15 @@
 
 @interface LibraryAPI : NSObject
 
+@property NSString *debuggingResults;
+
 + (LibraryAPI *)sharedInstance;
 
 - (NSMutableArray *)getPresentations;
 - (NSString *)appendBulletToString:(NSString *)str;
 - (UIImage *)scaleImage:(UIImage *)image withScale:(float)scale;
+
+- (void)customLog:(NSString *)log;
 
 - (void)savePresentations;
 - (void)addPresentation:(Presentation *)presentation atIndex:(int)index;

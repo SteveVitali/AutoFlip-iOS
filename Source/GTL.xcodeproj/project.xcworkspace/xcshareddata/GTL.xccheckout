@@ -5,44 +5,44 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>16D04D65-AE80-473E-8F80-1CAAE9F2451C</string>
+	<string>423CC414-4534-41E8-8116-240AB6938135</string>
 	<key>IDESourceControlProjectName</key>
 	<string>GTL</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>73C75B7A-82D3-4629-88D8-9847462BB45C</key>
-		<string>http://google-api-objectivec-client.googlecode.com/svn/trunk</string>
-		<key>8EB0B1F7-FF52-425B-B4F2-BAC557E94FB4</key>
+		<key>388DDCFB-C834-4821-B9EE-6E449E6D2BB7</key>
 		<string>http://gtm-http-fetcher.googlecode.com/svn/trunk/Source</string>
-		<key>BDFB9CFB-793D-42AA-A760-474CA042DE8E</key>
+		<key>46A00885-4740-445C-92FB-E589A0654D8E</key>
 		<string>http://gtm-oauth2.googlecode.com/svn/trunk/Source</string>
+		<key>B773E792-7225-446B-87B7-383072A63056</key>
+		<string>http://google-api-objectivec-client.googlecode.com/svn/trunk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Source/GTL.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>73C75B7A-82D3-4629-88D8-9847462BB45C</key>
-		<string>../../..</string>
-		<key>8EB0B1F7-FF52-425B-B4F2-BAC557E94FB4</key>
+		<key>388DDCFB-C834-4821-B9EE-6E449E6D2BB7</key>
 		<string>../../HTTPFetcher</string>
-		<key>BDFB9CFB-793D-42AA-A760-474CA042DE8E</key>
+		<key>46A00885-4740-445C-92FB-E589A0654D8E</key>
 		<string>../../OAuth2</string>
+		<key>B773E792-7225-446B-87B7-383072A63056</key>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
-		<key>73C75B7A-82D3-4629-88D8-9847462BB45C</key>
-		<string>http://google-api-objectivec-client.googlecode.com/svn</string>
-		<key>8EB0B1F7-FF52-425B-B4F2-BAC557E94FB4</key>
+		<key>388DDCFB-C834-4821-B9EE-6E449E6D2BB7</key>
 		<string>http://gtm-http-fetcher.googlecode.com/svn</string>
-		<key>BDFB9CFB-793D-42AA-A760-474CA042DE8E</key>
+		<key>46A00885-4740-445C-92FB-E589A0654D8E</key>
 		<string>http://gtm-oauth2.googlecode.com/svn</string>
+		<key>B773E792-7225-446B-87B7-383072A63056</key>
+		<string>http://google-api-objectivec-client.googlecode.com/svn</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>http://google-api-objectivec-client.googlecode.com/svn/trunk/Source/GTL.xcodeproj</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>73C75B7A-82D3-4629-88D8-9847462BB45C</string>
+	<string>B773E792-7225-446B-87B7-383072A63056</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -55,7 +55,7 @@
 			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
 			<string>trunk</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>73C75B7A-82D3-4629-88D8-9847462BB45C</string>
+			<string>B773E792-7225-446B-87B7-383072A63056</string>
 			<key>IDESourceControlWCCName</key>
 			<string>google-api-objectivec-client-read-only</string>
 		</dict>
@@ -69,7 +69,7 @@
 			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
 			<string>trunk</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>8EB0B1F7-FF52-425B-B4F2-BAC557E94FB4</string>
+			<string>388DDCFB-C834-4821-B9EE-6E449E6D2BB7</string>
 			<key>IDESourceControlWCCName</key>
 			<string>HTTPFetcher</string>
 		</dict>
@@ -83,7 +83,7 @@
 			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
 			<string>trunk</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>BDFB9CFB-793D-42AA-A760-474CA042DE8E</string>
+			<string>46A00885-4740-445C-92FB-E589A0654D8E</string>
 			<key>IDESourceControlWCCName</key>
 			<string>OAuth2</string>
 		</dict>

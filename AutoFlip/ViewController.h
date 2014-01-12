@@ -21,6 +21,7 @@
 @property (nonatomic, readonly) DBRestClient *restClient;
 
 - (IBAction)showMenu:(id)sender;
+- (IBAction)showDebugging:(id)sender;
 
 - (void)returnToRoot;
 

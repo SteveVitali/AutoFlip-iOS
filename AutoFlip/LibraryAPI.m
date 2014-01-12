@@ -28,6 +28,8 @@
     self = [super init];
     if (self) {
         persistencyManager = [[PersistencyManager alloc] init];
+        self.debuggingResults = [[NSString alloc] init];
+        self.debuggingResults = @"Debugging Results:\n";
     }
     return self;
 }
@@ -79,6 +81,11 @@
 - (void)deletePresentationAtIndex:(int)index {
     
     [persistencyManager deletePresentationAtIndex:index];
+}
+
+- (void)customLog:(NSString *)log {
+    
+    self.debuggingResults = [self.debuggingResults stringByAppendingString:log];
 }
 
 @end

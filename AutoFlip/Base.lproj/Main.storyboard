@@ -69,7 +69,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="HfM-hH-33a"/>
+                        <barButtonItem title="Debugging" id="fDN-pd-8Fv">
+                            <connections>
+                                <action selector="showDebugging:" destination="vXZ-lx-hvc" id="npl-m5-PGb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="dct-fD-ztw"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="Fy7-Ap-7I3"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="importButton" destination="t6M-BN-vfu" id="bZw-L8-evP"/>
                         <outlet property="logoLabel" destination="rva-pY-OZ8" id="UBZ-Pf-oJI"/>
@@ -426,7 +436,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Sign in" id="Q1h-pU-JMn">
+                        <barButtonItem title="Sign in " id="Q1h-pU-JMn">
                             <connections>
                                 <action selector="authButtonClicked:" destination="3IS-gk-RA2" id="qDy-9a-u6y"/>
                             </connections>
