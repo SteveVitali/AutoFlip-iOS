@@ -68,7 +68,6 @@
     [self.startButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     
     [self.navigationController.navigationBar setHidden:YES];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -128,11 +127,11 @@
 
 - (void)pushDropboxView:(id)sender {
     
-    [self didPressLink];
-    //[self performSegueWithIdentifier:@"createCards" sender:sender];
+    //[self dropBoxCoreAuthentication];
+    [self dropboxChooser];
 }
 
-- (void)didPressLink {
+- (void)dropBoxCoreAuthentication {
     
     if (![[DBSession sharedSession] isLinked]) {
         [[DBSession sharedSession] linkFromController:self];
@@ -160,26 +159,28 @@
     }
 }
 
+// The two below run after loadFile has been called
+
 - (void)restClient:(DBRestClient*)client loadedFile:(NSString*)localPath
        contentType:(NSString*)contentType metadata:(DBMetadata*)metadata {
     
-    NSLog(@"File loaded into path: %@", localPath);
+    [[LibraryAPI sharedInstance] customLog:[NSString stringWithFormat:@"File loaded into path: %@", localPath]];
 }
 
 - (void)restClient:(DBRestClient*)client loadFileFailedWithError:(NSError*)error {
     
-    NSLog(@"There was an error loading the file - %@", error);
+    [[LibraryAPI sharedInstance] customLog:[NSString stringWithFormat:@"There was an error loading the file - %@", error]];
 }
 
 - (void)restClient:(DBRestClient *)client
 loadMetadataFailedWithError:(NSError *)error {
     
-    NSLog(@"Error loading metadata: %@", error);
+    [[LibraryAPI sharedInstance] customLog:[NSString stringWithFormat:@"Error loading metadata: %@", error]];
 }
 
 #pragma mark - Dropbox Drop-ins methods
 
-- (void)dropboxChoose {
+- (void)dropboxChooser {
     
     [[DBChooser defaultChooser] openChooserForLinkType:DBChooserLinkTypePreview
                                     fromViewController:self completion:^(NSArray *results)
@@ -187,17 +188,17 @@ loadMetadataFailedWithError:(NSError *)error {
          if ([results count]) {
              // Process results from Chooser
              DBChooserResult *result = [results objectAtIndex:0];
-             NSLog(@"result: %@",result.name);
-             [[LibraryAPI sharedInstance] customLog:[NSString stringWithFormat:@"result: %@",result.name]];
+             
+             NSString *localPath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
+             
+             [[LibraryAPI sharedInstance] customLog:[NSString stringWithFormat:@"%@",result.link.absoluteString]];
+             
+             [[self restClient] loadFile:[result.link absoluteString] intoPath:localPath];
+             
          } else {
              // User canceled the action
          }
      }];
-}
-
-- (IBAction)didPressChoose {
-    
-    [self dropboxChoose];
 }
 
 - (void)pushCreateCardsView:(id)sender {
@@ -210,8 +211,13 @@ loadMetadataFailedWithError:(NSError *)error {
     UIViewController *viewController = [[UIViewController alloc] init];
     UITextView *debugView = [[UITextView alloc] init];
     debugView.text = [[LibraryAPI sharedInstance] debuggingResults];
-    debugView.frame = CGRectMake(16, 64, self.view.frame.size.width-32, 256);
-    [viewController.view addSubview:debugView];
+    debugView.frame = CGRectMake(0, 0, 200, 368);
+    debugView.textContainer.lineBreakMode = NSLineBreakByCharWrapping;
+
+    UIScrollView *scrollView = [[UIScrollView alloc]
+                                initWithFrame:CGRectMake(0, 0, 200, 368)];
+    [scrollView addSubview:debugView];
+    [viewController.view addSubview:scrollView];
     
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:viewController];
     
@@ -220,7 +226,7 @@ loadMetadataFailedWithError:(NSError *)error {
     formSheet.cornerRadius = 8.0;
     formSheet.portraitTopInset = 6.0;
     formSheet.landscapeTopInset = 6.0;
-    formSheet.presentedFormSheetSize = CGSizeMake(320, 200);
+    formSheet.presentedFormSheetSize = CGSizeMake(200, 400);
     
     formSheet.willPresentCompletionHandler = ^(UIViewController *presentedFSViewController){
         presentedFSViewController.view.autoresizingMask = presentedFSViewController.view.autoresizingMask | UIViewAutoresizingFlexibleWidth;
@@ -229,7 +235,6 @@ loadMetadataFailedWithError:(NSError *)error {
     [formSheet presentAnimated:YES completionHandler:^(UIViewController *presentedFSViewController) {
         
     }];
-    
 }
 
 - (void)returnToRoot {

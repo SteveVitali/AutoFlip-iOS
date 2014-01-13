@@ -85,7 +85,8 @@
 
 - (void)customLog:(NSString *)log {
     
-    self.debuggingResults = [self.debuggingResults stringByAppendingString:log];
+    self.debuggingResults = [self.debuggingResults stringByAppendingString:[NSString stringWithFormat:@"%@ \n", log]];
+    NSLog(@"%@",log);
 }
 
 @end
