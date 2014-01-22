@@ -64,7 +64,10 @@
     
     // hardcoding it because not sure how to get programmatically
     // for some reason self.presentationNavBar.frame.height doesn't work
-    heightOfNavAndButtons = 86;
+    heightOfNavAndButtons = 56;
+    
+    //self.textArea.backgroundColor = [UIColor blueColor];
+    //self.scrollView.backgroundColor = [UIColor redColor];
 }
 
 - (void)registerForNotifications {
@@ -314,8 +317,6 @@
     CGRect frame = [[UIScreen mainScreen] bounds];
     
     self.scrollView.frame = frame;
-    self.scrollView.bounds = frame;
-    self.scrollView.contentSize = CGSizeMake(frame.size.width * 2, frame.size.height);
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
@@ -341,12 +342,12 @@
 // found most of this method on stackoverflow
 // should be called in textViewDidChange: and textViewDidChangeSelection:
 - (void)scrollToCursor {
-    
+    /*
     int verticalPaddingBecauseFuckYou;
     // if there is a selection cursor
     if (self.textArea.selectedRange.location != NSNotFound) {
         
-        float verticalSpace = self.view.frame.size.height - heightOfNavAndButtons - kbHeight - 10;
+        float verticalSpace = self.view.frame.size.height - kbHeight;
         if (self.textArea.contentSize.height > verticalSpace) {
             
             UIInterfaceOrientation orient = [UIApplication sharedApplication].statusBarOrientation;
@@ -380,6 +381,7 @@
             [self.scrollView setContentOffset:point animated: YES];
         }
     }
+     */
 }
 
 
@@ -407,10 +409,10 @@
     float verticalHeightLeftOver = heightOfNavAndButtons + self.view.frame.size.height - kbHeight;
     if (self.textArea.contentSize.height > verticalHeightLeftOver) {
         
-    self.textArea.frame = CGRectMake(self.textArea.frame.origin.x,
-                                    self.textArea.frame.origin.y,
-                                    self.textArea.frame.size.width,
-                                    self.textArea.contentSize.height);
+        self.textArea.frame = CGRectMake(self.textArea.frame.origin.x,
+                                         self.textArea.frame.origin.y,
+                                         self.textArea.frame.size.width,
+                                         self.textArea.contentSize.height);
     }
     
     self.scrollView.contentSize = CGSizeMake(self.scrollView.contentSize.width,

@@ -43,7 +43,6 @@
     // init language model
     LanguageModelGenerator *lmGenerator = [[LanguageModelGenerator alloc] init];
     
-    
     // init other stuff
     
     NSString *text = [[self.presentation.notecards objectAtIndex:self.cardIndex] getTextFromBulletFormat];
@@ -72,7 +71,6 @@
     } else {
         NSLog(@"Error: %@",[err localizedDescription]);
     }
-    
     
     // Test speech out
     // right before my first self.pocketspinxcontroller

@@ -68,7 +68,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if([segue.identifier isEqualToString:@"beginPresentation"]) {
+    if([segue.identifier isEqualToString:@"startPresentation"]) {
         PresentationViewController *controller =
                                     (PresentationViewController *)[segue destinationViewController];
         controller.presentation = chosenPresentation;
@@ -122,16 +122,19 @@
     static NSString *CellIdentifier = @"Cell";
     Presentation *presentation;
 
-    CardDeckTableCell *cell =
+    UITableViewCell *cell =
         [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     if (cell == nil) {
-        cell = [[CardDeckTableCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                         reuseIdentifier:CellIdentifier];
     }
-    [cell configureFlatCellWithColor:[UIColor greenSeaColor] selectedColor:[UIColor cloudsColor]];
-    [cell.textLabel setTextColor:[UIColor cloudsColor]];
+    [cell configureFlatCellWithColor:[UIColor cloudsColor] selectedColor:[UIColor lightGrayColor]];
+    [cell.textLabel setTextColor:[UIColor blackColor]];
+    
+    [self.tableView setSeparatorColor:[UIColor lightGrayColor]];
+    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
     cell.cornerRadius = 5.f; //Optional
     if (self.tableView.style == UITableViewStyleGrouped) {
@@ -145,16 +148,17 @@
     } else {
         presentation = [presentations objectAtIndex:indexPath.row];
     }
-    cell.title.text = presentation.title;
+    cell.textLabel.text = presentation.title;
+    cell.detailTextLabel.text = presentation.description;
     //Assuming the icon is a .png and is named the same as the "type"
-    cell.icon.image = [UIImage imageNamed:[presentation.type stringByAppendingString:@".png"]];
+    cell.imageView.image = [UIImage imageNamed:[presentation.type stringByAppendingString:@".png"]];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     //CardDeckTableCell *cell = (CardDeckTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
@@ -164,6 +168,7 @@
     } else {
         chosenPresentation = [presentations objectAtIndex:indexPath.row];
     }
+    [self performSegueWithIdentifier:@"startPresentation" sender:self];
 }
 
 // Override to support conditional editing of the table view.

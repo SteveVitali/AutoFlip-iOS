@@ -51,10 +51,8 @@
 		11D0D12418720431008CC7FD /* LibraryAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D12318720431008CC7FD /* LibraryAPI.m */; };
 		11D0D1281872075A008CC7FD /* PersistencyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D1271872075A008CC7FD /* PersistencyManager.m */; };
 		11D0D12B18721356008CC7FD /* PresentationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D12A18721356008CC7FD /* PresentationViewController.m */; };
-		11D0D13518722A93008CC7FD /* CardDeckTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D13418722A93008CC7FD /* CardDeckTableCell.m */; };
 		11D0D13B18722DD6008CC7FD /* drive.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D0D13A18722DD6008CC7FD /* drive.png */; };
 		11D0D13D18722E34008CC7FD /* dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D0D13C18722E34008CC7FD /* dropbox.png */; };
-		11D0D13F187231D8008CC7FD /* custom.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D0D13E187231D8008CC7FD /* custom.png */; };
 		11D11F431878A6620081B1CB /* MZFormSheetBackgroundWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F3A1878A6620081B1CB /* MZFormSheetBackgroundWindow.m */; };
 		11D11F441878A6620081B1CB /* MZFormSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F3C1878A6620081B1CB /* MZFormSheetController.m */; };
 		11D11F451878A6620081B1CB /* MZFormSheetSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F3E1878A6620081B1CB /* MZFormSheetSegue.m */; };
@@ -84,6 +82,7 @@
 		11D11F961878F0510081B1CB /* UITableViewCell+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F821878F0510081B1CB /* UITableViewCell+FlatUI.m */; };
 		11D11F971878F0510081B1CB /* UIToolbar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F841878F0510081B1CB /* UIToolbar+FlatUI.m */; };
 		11DC90631874D39600C069D8 /* NewCardDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DC90621874D39600C069D8 /* NewCardDeckViewController.m */; };
+		11E8F76418903EE300A6DF5C /* custom.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E8F76318903EE300A6DF5C /* custom.png */; };
 		11F0C87C1880761E0056CD66 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C87B1880761E0056CD66 /* DropboxSDK.framework */; };
 		11F0C87F1880AE710056CD66 /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C87D1880AE710056CD66 /* DBChooser.framework */; };
 		11F0C8801880AE710056CD66 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 11F0C87E1880AE710056CD66 /* DBChooser.bundle */; };
@@ -152,7 +151,7 @@
 		11BA10B31881CC580093851B /* DriveFilesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveFilesListViewController.m; sourceTree = "<group>"; };
 		11BA10B51881CCE50093851B /* DrEditUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrEditUtilities.h; sourceTree = "<group>"; };
 		11BA10B61881CCE50093851B /* DrEditUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrEditUtilities.m; sourceTree = "<group>"; };
-		11C75DE718831A7D000EB94B /* libGTLTouchStaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libGTLTouchStaticLib.a; path = "Source/build/Debug-iphoneos/libGTLTouchStaticLib.a"; sourceTree = "<group>"; };
+		11C75DE718831A7D000EB94B /* libGTLTouchStaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGTLTouchStaticLib.a; path = "Source/build/Debug-iphoneos/libGTLTouchStaticLib.a"; sourceTree = "<group>"; };
 		11D0D113187202D1008CC7FD /* ChooseCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCardsViewController.h; sourceTree = "<group>"; };
 		11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCardsViewController.m; sourceTree = "<group>"; };
 		11D0D11C18720412008CC7FD /* Notecard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notecard.h; sourceTree = "<group>"; };
@@ -165,11 +164,8 @@
 		11D0D1271872075A008CC7FD /* PersistencyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistencyManager.m; sourceTree = "<group>"; };
 		11D0D12918721356008CC7FD /* PresentationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentationViewController.h; sourceTree = "<group>"; };
 		11D0D12A18721356008CC7FD /* PresentationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentationViewController.m; sourceTree = "<group>"; };
-		11D0D13318722A93008CC7FD /* CardDeckTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDeckTableCell.h; sourceTree = "<group>"; };
-		11D0D13418722A93008CC7FD /* CardDeckTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDeckTableCell.m; sourceTree = "<group>"; };
 		11D0D13A18722DD6008CC7FD /* drive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = drive.png; path = ../drive.png; sourceTree = "<group>"; };
 		11D0D13C18722E34008CC7FD /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dropbox.png; path = ../dropbox.png; sourceTree = "<group>"; };
-		11D0D13E187231D8008CC7FD /* custom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = custom.png; path = ../custom.png; sourceTree = "<group>"; };
 		11D11F391878A6620081B1CB /* MZFormSheetBackgroundWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetBackgroundWindow.h; sourceTree = "<group>"; };
 		11D11F3A1878A6620081B1CB /* MZFormSheetBackgroundWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetBackgroundWindow.m; sourceTree = "<group>"; };
 		11D11F3B1878A6620081B1CB /* MZFormSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetController.h; sourceTree = "<group>"; };
@@ -228,6 +224,7 @@
 		11D11F841878F0510081B1CB /* UIToolbar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+FlatUI.m"; sourceTree = "<group>"; };
 		11DC90611874D39600C069D8 /* NewCardDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCardDeckViewController.h; sourceTree = "<group>"; };
 		11DC90621874D39600C069D8 /* NewCardDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCardDeckViewController.m; sourceTree = "<group>"; };
+		11E8F76318903EE300A6DF5C /* custom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom.png; sourceTree = "<group>"; };
 		11F0C87B1880761E0056CD66 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		11F0C87D1880AE710056CD66 /* DBChooser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBChooser.framework; sourceTree = "<group>"; };
 		11F0C87E1880AE710056CD66 /* DBChooser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DBChooser.bundle; sourceTree = "<group>"; };
@@ -235,7 +232,6 @@
 		11F0C9C41880F81E0056CD66 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		11F0C9C61880F82E0056CD66 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		11FC52711880F97300195730 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = "google-api-objectivec-client/Source/OAuth2/Touch/GTMOAuth2ViewTouch.xib"; sourceTree = SOURCE_ROOT; };
-		330C7D711C864D938A5C6191 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,7 +284,6 @@
 				11D11F5A1878EFF80081B1CB /* vendor */,
 				11711F8F1871F2CF00792D36 /* Frameworks */,
 				11711F8E1871F2CF00792D36 /* Products */,
-				330C7D711C864D938A5C6191 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -374,7 +369,7 @@
 		1192496C1878F53100BD6868 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				11D0D13E187231D8008CC7FD /* custom.png */,
+				11E8F76318903EE300A6DF5C /* custom.png */,
 				11D0D13C18722E34008CC7FD /* dropbox.png */,
 				11D0D13A18722DD6008CC7FD /* drive.png */,
 				1192496D1878F53100BD6868 /* Lato-Black.ttf */,
@@ -417,8 +412,6 @@
 		11D0D11A18720342008CC7FD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				11D0D13318722A93008CC7FD /* CardDeckTableCell.h */,
-				11D0D13418722A93008CC7FD /* CardDeckTableCell.m */,
 				11711FA21871F2CF00792D36 /* Main.storyboard */,
 			);
 			name = Views;
@@ -579,7 +572,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11711FBF1871F2CF00792D36 /* Build configuration list for PBXNativeTarget "AutoFlip" */;
 			buildPhases = (
-				F89FC5FBE088466E8E7945F3 /* Check Pods Manifest.lock */,
 				11711F891871F2CF00792D36 /* Sources */,
 				11711F8A1871F2CF00792D36 /* Frameworks */,
 				11711F8B1871F2CF00792D36 /* Resources */,
@@ -620,6 +612,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Steve John Vitali";
 				TargetAttributes = {
+					11711F8C1871F2CF00792D36 = {
+						DevelopmentTeam = Z5AR6RGC9X;
+					};
 					11711FAD1871F2CF00792D36 = {
 						TestTargetID = 11711F8C1871F2CF00792D36;
 					};
@@ -655,10 +650,10 @@
 				116FD862187B53F400BC4643 /* AcousticModelSpanish.bundle in Resources */,
 				119249791878F53100BD6868 /* Lato-Bold.ttf in Resources */,
 				1192497B1878F53100BD6868 /* Lato-Hairline.ttf in Resources */,
-				11D0D13F187231D8008CC7FD /* custom.png in Resources */,
 				11711F9B1871F2CF00792D36 /* InfoPlist.strings in Resources */,
 				1192497A1878F53100BD6868 /* Lato-BoldItalic.ttf in Resources */,
 				11D11F591878AE910081B1CB /* SaveAsView.xib in Resources */,
+				11E8F76418903EE300A6DF5C /* custom.png in Resources */,
 				11F0C8801880AE710056CD66 /* DBChooser.bundle in Resources */,
 				1192497C1878F53100BD6868 /* Lato-HairlineItalic.ttf in Resources */,
 				116FD861187B53F400BC4643 /* AcousticModelEnglish.bundle in Resources */,
@@ -683,24 +678,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		F89FC5FBE088466E8E7945F3 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		11711F891871F2CF00792D36 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -711,7 +688,6 @@
 				11A44137187360EA00FB5863 /* CreateCardsViewController.m in Sources */,
 				11D0D1281872075A008CC7FD /* PersistencyManager.m in Sources */,
 				11D11F431878A6620081B1CB /* MZFormSheetBackgroundWindow.m in Sources */,
-				11D0D13518722A93008CC7FD /* CardDeckTableCell.m in Sources */,
 				11D11F881878F0510081B1CB /* FUIPopoverBackgroundView.m in Sources */,
 				11711FA71871F2CF00792D36 /* ViewController.m in Sources */,
 				11D0D115187202D1008CC7FD /* ChooseCardsViewController.m in Sources */,
@@ -873,13 +849,13 @@
 		};
 		11711FC01871F2CF00792D36 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 330C7D711C864D938A5C6191 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "Steve Vitali";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Framework",
@@ -900,6 +876,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4B67792C-0B9F-4F1A-88CA-149A05D41442";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Source/**";
 				WRAPPER_EXTENSION = app;
@@ -908,13 +885,13 @@
 		};
 		11711FC11871F2CF00792D36 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 330C7D711C864D938A5C6191 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "Steve Vitali";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Framework",
@@ -935,6 +912,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4B67792C-0B9F-4F1A-88CA-149A05D41442";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Source/**";
 				WRAPPER_EXTENSION = app;

@@ -35,12 +35,30 @@
     [self reloadCard];
     [self.navigationController.navigationBar setHidden:NO];
    // self.view.backgroundColor = [UIColor cloudsColor];
-
+    
+    UIView *customView = [[UIView alloc] init];
+    UIProgressView *progressBar = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+    
+    self.progressBar = progressBar;
+    
+    [customView addSubview:self.progressBar];
+    self.progressBarBarButton.customView = customView;
+    
+    [progressBar setFrame:CGRectMake(-64, 0, 128, 0)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     [self.navigationController.navigationBar setHidden:NO];
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
+    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+        self.progressBar.frame = CGRectMake(-128, 0, 256, 0);
+    } else {
+        self.progressBar.frame = CGRectMake(-64, 0, 128, 0);
+    }
 }
 
 - (void)reloadCard {

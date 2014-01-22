@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *previousCard;
 @property (weak, nonatomic) IBOutlet UIButton *nextCard;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *progressBarBarButton;
+
 - (IBAction)nextCard:(id)sender;
 - (IBAction)previousCard:(id)sender;
 - (void)reloadCard;
