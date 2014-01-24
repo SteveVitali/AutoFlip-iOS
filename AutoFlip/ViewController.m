@@ -21,6 +21,8 @@
 #import "Presentation.h"
 #import "Notecard.h"
 #import "CreateCardsViewController.h"
+#import "DriveFilesListViewController.h"
+#import "DrEditUtilities.h"
 
 @interface ViewController ()
 
@@ -136,72 +138,6 @@
     [self dropboxChooser];
 }
 
-/*
-#pragma mark - Dropbox Core API methods
-
-- (void)dropBoxCoreAuthentication {
-    
-    if (![[DBSession sharedSession] isLinked]) {
-        [[DBSession sharedSession] linkFromController:self];
-        NSLog(@"dbsession tried to link from controller self");
-    } else {NSLog(@"dbsession is already linked");}
-}
-
-/*
-- (DBRestClient *)restClient {
-    
-    if (!_restClient) {
-        _restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
-        _restClient.delegate = self;
-    }
-    return _restClient;
-}
-
-
-- (DBRestClient *)restClient
-{
-    if (_restClient == nil) {
-        if ( [[DBSession sharedSession].userIds count] ) {
-            _restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
-            _restClient.delegate = self;
-            NSLog(@" not not else");
-        } else { NSLog(@"e lse elsel");}
-    }
-    
-    return _restClient;
-}
-
-- (void)restClient:(DBRestClient *)client loadedMetadata:(DBMetadata *)metadata {
-    
-    if (metadata.isDirectory) {
-        NSLog(@"Folder '%@' contains:", metadata.path);
-        for (DBMetadata *file in metadata.contents) {
-            NSLog(@"	%@", file.filename);
-        }
-    }
-}
-
-// The two below run after loadFile has been called
-
-- (void)restClient:(DBRestClient*)client loadedFile:(NSString*)localPath
-       contentType:(NSString*)contentType metadata:(DBMetadata*)metadata {
-    
-    [[LibraryAPI sharedInstance] customLog:[NSString stringWithFormat:@"File loaded into path: %@", localPath]];
-}
-
-- (void)restClient:(DBRestClient*)client loadFileFailedWithError:(NSError*)error {
-    
-    [[LibraryAPI sharedInstance] customLog:[NSString stringWithFormat:@"There was an error loading the file - %@", error]];
-}
-
-- (void)restClient:(DBRestClient *)client
-loadMetadataFailedWithError:(NSError *)error {
-    
-    [[LibraryAPI sharedInstance] customLog:[NSString stringWithFormat:@"Error loading metadata: %@", error]];
-}
-
-*/
-
 #pragma mark - Dropbox Drop-ins methods
 
 - (void)dropboxChooser {
@@ -228,37 +164,62 @@ loadMetadataFailedWithError:(NSError *)error {
     
     // Get the extension from the file name
     NSRange range = [result.name rangeOfString:@"."];
-    NSString *name = [result.name substringToIndex:range.location];
     NSString *extension = [result.name substringFromIndex:range.location];
+    //NSString *name = [result.name substringToIndex:range.location];
+    
+    if ([extension isEqualToString:@".pptx"]) {
+        // As it turns out, this sweet method exists, so the above isn't necessary (I think).
+        NSString *name = [result.name stringByDeletingPathExtension];
 
-    // Download the data of the file w/ the URL
-    NSURL *url = result.link;
-    NSData *urlData = [NSData dataWithContentsOfURL:url];
+        // Download the data of the file w/ the URL
+        NSURL *url = result.link;
+        NSData *urlData = [NSData dataWithContentsOfURL:url];
+    
+        [self createImportedPresentationWithData:urlData andName:name fromService:@"dropbox"];
+    } else {
+        UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Try importing a .pptx file instead."
+                                                                 delegate:self];
+    }
+}
+
+- (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name {
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self createImportedPresentationWithData:data andName:name fromService:@"drive"];
+    }];
+}
+
+- (void)createImportedPresentationWithData:(NSData *)data andName:(NSString *)name fromService:(NSString *)service {
     
     // If the file downloaded
-    if ( urlData ) {
+    if ( data ) {
         
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString  *documentsDirectory = [paths objectAtIndex:0];
         
-        // Write dat file to a file whose name is the same as the Dropbox file name
-        NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,result.name];
-        [urlData writeToFile:filePath atomically:YES];
+        // Write dat file to a file whose name is the same as the imported file name
+        NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,name];
+        [data writeToFile:filePath atomically:YES];
         
-        if ([extension isEqualToString:@".pptx"] || [extension isEqualToString:@".ppt"]) {
-
+        NSLog(@"documents directory");
+        [self listFilesAtPath:documentsDirectory];
+        
+        //if ([extension isEqualToString:@".pptx"] || [extension isEqualToString:@".ppt"]) {
+            
             // Set output path for zip file in a directory whose name is the same as the file name minus its extension
-            NSString *outputPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",name]];
+            NSString *outputPath = [documentsDirectory stringByAppendingPathComponent:
+                                                           [NSString stringWithFormat:@"/%@",
+                                                           [NSString stringWithFormat:@"%@.zip",name]]];
             NSString *zipPath = filePath;
             
             [SSZipArchive unzipFileAtPath:zipPath toDestination:outputPath delegate:self];
+        
+            NSString *slidesPath = [outputPath stringByAppendingPathComponent:@"/ppt/slides"];
             
-            NSString *slidesPath = [documentsDirectory stringByAppendingPathComponent:@"/ppt/slides"];
-            
-            NSLog(@"Files in unzipped ppt directory");
+            NSLog(@"Files in unzipped powerpoint directory");
             [self listFilesAtPath:outputPath];
-           
-            NSLog(@"Files in the ppt/slides directory \n");
+            
+            NSLog(@"Files in the ppt/slides directory %@ \n", slidesPath);
             NSArray *slides = [self listFilesAtPath:slidesPath];
             
             // Notecards array to hold cards for newPresentation (below)
@@ -267,7 +228,7 @@ loadMetadataFailedWithError:(NSError *)error {
             for(int i=1; i<slides.count; i++) {
                 
                 // Load the slide and get its data as a string
-                NSString *slidePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/ppt/slides/%@",[slides objectAtIndex:i]]];
+                NSString *slidePath = [slidesPath stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",[slides objectAtIndex:i]]];
                 NSString *xml = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:slidePath] encoding:NSUTF8StringEncoding];
                 
                 NSLog(@"\t SLIDE %d: \n",i);
@@ -278,19 +239,25 @@ loadMetadataFailedWithError:(NSError *)error {
                 // Output bullets
                 for (NSString *bullet in slideBullets) NSLog(@"    - %@", bullet);
             }
-            importedPresentation = [[Presentation alloc] initWithNotes:notecards];
+            importedPresentation = [[Presentation alloc] init];
             importedPresentation.title = name;
-            importedPresentation.description = [NSString stringWithFormat:@"%@ imported from Dropbox",name];
-            importedPresentation.type = @"dropbox";
-            
+            importedPresentation.notecards = notecards;
+            importedPresentation.type = service;
+            //Capitalize first letter of "service" type
+            importedPresentation.description = [NSString stringWithFormat:@"%@ imported from %@",name,
+                                                         [service stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                          withString:[[service substringToIndex:1] capitalizedString]]];
+
             [self performSegueWithIdentifier:@"createImportedCards" sender:self];
-            
-        }
-        else if ([extension isEqualToString:@".txt"] || [extension isEqualToString:@".rtf"]) {
-            
-            NSString *dataString = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
-            // Do some other stuff with the file string
-        }
+
+ //       }
+ //       else if ([extension isEqualToString:@".txt"] || [extension isEqualToString:@".rtf"]) {
+ //
+ //           NSString *dataString = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
+ //           // Do some other stuff with the file string
+ //     }
+    } else {
+        NSLog(@"no datas");
     }
 }
 
@@ -325,7 +292,6 @@ loadMetadataFailedWithError:(NSError *)error {
     return results;
 }
 
-
 -(NSArray *)listFilesAtPath:(NSString *)path {
     
     NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:NULL];
@@ -345,8 +311,12 @@ loadMetadataFailedWithError:(NSError *)error {
         controller.presentationTitle = importedPresentation.title;
         controller.presentationDescription = importedPresentation.description;
     }
+    else if ([segue.identifier isEqualToString:@"driveFiles"]) {
+        
+        DriveFilesListViewController *controller = (DriveFilesListViewController *)[segue destinationViewController];
+        controller.delegate = self;
+    }
 }
-
 
 - (void)pushCreateCardsView:(id)sender {
     

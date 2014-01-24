@@ -10,6 +10,20 @@
 
 #import "DrEditFileEditDelegate.h"
 
+@protocol DriveFilePickerDelegate;
+
 @interface DriveFilesListViewController : UITableViewController <DrEditFileEditDelegate>
+
+@property (weak) id<DriveFilePickerDelegate> delegate;
+
+- (void)driveFileDidDownloadWithData:(NSData *)data;
+
+@end
+
+@protocol DriveFilePickerDelegate <NSObject>
+
+@required
+
+- (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name;
 
 @end

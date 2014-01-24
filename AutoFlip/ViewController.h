@@ -12,8 +12,9 @@
 #import "GTMOAuth2ViewControllerTouch.h"
 #import "GTLDrive.h"
 #import "SSZipArchive.h"
+#import "DriveFilesListViewController.h"
 
-@interface ViewController : UIViewController <DBRestClientDelegate, SSZipArchiveDelegate>
+@interface ViewController : UIViewController <DBRestClientDelegate, SSZipArchiveDelegate, DriveFilePickerDelegate>
 
 @property (weak, nonatomic) IBOutlet FUIButton *startButton;
 @property (weak, nonatomic) IBOutlet FUIButton *importButton;
@@ -25,5 +26,6 @@
 - (IBAction)showDebugging:(id)sender;
 
 - (void)returnToRoot;
+- (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name;
 
 @end

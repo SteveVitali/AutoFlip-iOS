@@ -23,6 +23,8 @@
 //#import "DrEditFileEditViewController.h"
 #import "DrEditUtilities.h"
 #import "ViewController.h"
+#import <MobileCoreServices/UTType.h>
+
 
 // Constants used for OAuth 2.0 authorization.
 static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
@@ -133,6 +135,102 @@ static NSString *const kClientSecret = @"1aXd3lyDt8LR-MXInEmN5777";
   return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    GTLDriveFile *file = [self.driveFiles objectAtIndex:indexPath.row];
+    
+    [self downloadFileContent:file];
+}
+
+- (void)printFileMetadataWithService:(GTLServiceDrive *)service
+                              fileId:(NSString *)fileId {
+    GTLQuery *query = [GTLQueryDrive queryForFilesGetWithFileId:fileId];
+    
+    // queryTicket can be used to track the status of the request.
+    GTLServiceTicket *queryTicket =
+    [service executeQuery:query
+        completionHandler:^(GTLServiceTicket *ticket, GTLDriveFile *file,
+                            NSError *error) {
+            if (error == nil) {
+                NSLog(@"Title: %@", file.title);
+                NSLog(@"Description: %@", file.descriptionProperty);
+                NSLog(@"MIME type: %@", file.mimeType);
+            } else {
+                NSLog(@"An error occurred: %@", error);
+            }
+        }];
+}
+
+- (void)downloadFileContent:(GTLDriveFile *)file {
+    
+    //NSString *exportFormat = @"text/plain";
+    // As it turns out, if you use the above MIME type, Google Docs will actually export it for you
+    // But then I'd have to parse through that and write new Presentation creation code, even if it
+    // Technically runs 2 seconds faster (maybe more), so I'm going to export as pptx, then unzip and extract text
+    // The same way I do for the Dropbox download.
+    // We should probably change this at some point, but I really don't feel like doing it now.
+    NSString *exportFormat = @"application/vnd.openxmlformats-officedocument.presentationml.presentation";
+    
+    NSString *exportURLStr = [file.exportLinks JSONValueForKey:exportFormat];
+    NSString *extn = [self extensionForMIMEType:exportFormat];
+    // Use a GTMHTTPFetcher object to download the file with authorization.
+    NSURL *url = [NSURL URLWithString:exportURLStr];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    GTMHTTPFetcher *fetcher = [GTMHTTPFetcher fetcherWithRequest:request];
+    
+    // Requests of user data from Google services must be authorized.
+    fetcher.authorizer = self.driveService.authorizer;
+    
+    fetcher.receivedDataBlock = ^(NSData *receivedData) {
+        // The fetcher will call the received data block periodically.
+        // When a download path has been specified, the received data
+        // parameter will be nil.
+    };
+    
+    [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
+        // Callback
+        if (error) {
+            [self displayAlert:@"Error Downloading File"
+                        format:@"%@", error];
+        } else {
+            NSLog(@"%@ downloaded successfully!", file.title);
+            [self driveFileDidDownloadWithData:data andName:file.title];
+        }
+    }];
+}
+
+- (NSString *)extensionForMIMEType:(NSString *)mimeType {
+    NSString *result = nil;
+    CFStringRef uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType,
+                                                            (__bridge CFStringRef)mimeType, NULL);
+    if (uti) {
+        CFStringRef cfExtn = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassFilenameExtension);
+        if (cfExtn) {
+            result = CFBridgingRelease(cfExtn);
+        }
+        CFRelease(uti);
+    }
+
+    return result;
+}
+
+- (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name {
+
+    [self.delegate driveFileDidDownloadWithData:data andName:name];
+}
+
+- (void)displayAlert:(NSString *)title format:(NSString *)format, ... {
+    NSString *result = format;
+    if (format) {
+        va_list argList;
+        va_start(argList, format);
+        result = [[NSString alloc] initWithFormat:format
+                                        arguments:argList];
+        va_end(argList);
+    }
+    NSLog(@"%@",result);
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
   /*DrEditFileEditViewController *viewController = [segue destinationViewController];
@@ -198,7 +296,7 @@ static NSString *const kClientSecret = @"1aXd3lyDt8LR-MXInEmN5777";
     // Sign in.
     SEL finishedSelector = @selector(viewController:finishedWithAuth:error:);
     GTMOAuth2ViewControllerTouch *authViewController = 
-      [[GTMOAuth2ViewControllerTouch alloc] initWithScope:kGTLAuthScopeDriveFile
+      [[GTMOAuth2ViewControllerTouch alloc] initWithScope:kGTLAuthScopeDrive
                                                  clientID:kClientId
                                              clientSecret:kClientSecret
                                          keychainItemName:kKeychainItemName
@@ -251,8 +349,8 @@ static NSString *const kClientSecret = @"1aXd3lyDt8LR-MXInEmN5777";
 - (void)loadDriveFiles {
     
   GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
-  query.q = @"mimeType = 'text/plain', 'application/vnd.google-apps.document'";
-    
+  //query.q = @"mimeType = 'text/plain'";
+  query.q = @"mimeType = 'application/vnd.google-apps.presentation'";
   UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading files"
                                                            delegate:self];
   [self.driveService executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
