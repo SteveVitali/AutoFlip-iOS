@@ -45,22 +45,25 @@
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.presentation = [[Presentation alloc] init];
-    [self.presentation addCardAtIndex:0];
-    [self.presentation setType:@"custom"];
-    [[LibraryAPI sharedInstance] addPresentation:self.presentation atIndex:0];
     
-    // Set presentation title and description from stuff passed through segue
-    // I understand this code looks hilarious, but it works, damnit.
-    self.presentation.title = self.presentationTitle;
-    self.presentation.description = self.presentationDescription;
+    // If it's not an imported presentation
+    if (!self.presentation) {
+        self.presentation = [[Presentation alloc] init];
+        [self.presentation addCardAtIndex:0];
+        [self.presentation setType:@"custom"];
+        [self.textArea setText:@"\u2022 "];
+        // Set presentation title and description from stuff passed through segue
+        // I understand this code looks hilarious, but it works, damnit.
+        self.presentation.title = self.presentationTitle;
+        self.presentation.description = self.presentationDescription;
+    }
     self.presentationTitleNavBar.title = self.presentationTitle;
     
     [self registerForNotifications];
     [self.textArea setDelegate:self];
-    [self.textArea setText:@"\u2022 "];
-    
     [self.scrollView setDelegate:self];
+    
+    [[LibraryAPI sharedInstance] addPresentation:self.presentation atIndex:0];
     
     // hardcoding it because not sure how to get programmatically
     // for some reason self.presentationNavBar.frame.height doesn't work

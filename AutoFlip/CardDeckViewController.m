@@ -75,8 +75,8 @@
 - (void)updateProgressBar {
     
     float progress = (float)(self.cardIndex+1)/[self.presentation.notecards count];
-    //NSLog(@"%f",progress);
-    //NSLog(@"notecards count: %d",self.presentation.notecards.count);
+    NSLog(@"%f",progress);
+    NSLog(@"notecards count: %d",self.presentation.notecards.count);
     [self.progressBar setProgress:progress];
 }
 

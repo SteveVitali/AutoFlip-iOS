@@ -30,7 +30,8 @@
     
     self = [super init];
     if (self) {
-        //nonsense;
+        self.bullets = bullets;
+        self.text = [self getTextInBulletFormat];
     }
     return self;
 }

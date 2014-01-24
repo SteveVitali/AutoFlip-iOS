@@ -262,8 +262,9 @@ loadMetadataFailedWithError:(NSError *)error {
             NSArray *slides = [self listFilesAtPath:slidesPath];
             
             // Notecards array to hold cards for newPresentation (below)
+            // i=1 to skip the blank slide at the beginning.
             NSMutableArray *notecards = [[NSMutableArray alloc] init];
-            for(int i=0; i<slides.count; i++) {
+            for(int i=1; i<slides.count; i++) {
                 
                 // Load the slide and get its data as a string
                 NSString *slidePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/ppt/slides/%@",[slides objectAtIndex:i]]];
@@ -279,7 +280,8 @@ loadMetadataFailedWithError:(NSError *)error {
             }
             importedPresentation = [[Presentation alloc] initWithNotes:notecards];
             importedPresentation.title = name;
-            importedPresentation.title = [NSString stringWithFormat:@"%@ imported from Dropbox",name];
+            importedPresentation.description = [NSString stringWithFormat:@"%@ imported from Dropbox",name];
+            importedPresentation.type = @"dropbox";
             
             [self performSegueWithIdentifier:@"createImportedCards" sender:self];
             
@@ -339,7 +341,9 @@ loadMetadataFailedWithError:(NSError *)error {
     if([segue.identifier isEqualToString:@"createImportedCards"]) {
         CreateCardsViewController *controller = (CreateCardsViewController *)[segue destinationViewController];
         controller.presentation = importedPresentation;
-        
+        // This should be changed at some point.
+        controller.presentationTitle = importedPresentation.title;
+        controller.presentationDescription = importedPresentation.description;
     }
 }
 

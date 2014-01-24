@@ -24,7 +24,7 @@
     
     self = [super init];
     if (self) {
-        //nonsense
+        self.notecards = notecards;
     }
     return self;
 }
