@@ -11,8 +11,9 @@
 #import <DropboxSDK/DropboxSDK.h>
 #import "GTMOAuth2ViewControllerTouch.h"
 #import "GTLDrive.h"
+#import "SSZipArchive.h"
 
-@interface ViewController : UIViewController <DBRestClientDelegate>
+@interface ViewController : UIViewController <DBRestClientDelegate, SSZipArchiveDelegate>
 
 @property (weak, nonatomic) IBOutlet FUIButton *startButton;
 @property (weak, nonatomic) IBOutlet FUIButton *importButton;

@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IQ1-6F-V5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="31" y="356"/>
+            <point key="canvasLocation" x="29" y="356"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -76,6 +76,7 @@
                         <outlet property="startButton" destination="f0O-Zt-ndL" id="dla-OU-5kw"/>
                         <segue destination="pdT-Q6-8Jf" kind="push" identifier="createCards" id="ZhR-A6-nKD"/>
                         <segue destination="3IS-gk-RA2" kind="push" identifier="driveFiles" id="229-fn-b7w"/>
+                        <segue destination="x40-BT-Z59" kind="push" identifier="createImportedCards" id="gX6-yH-str"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -200,7 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31d-IR-njV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="356"/>
+            <point key="canvasLocation" x="1754" y="644"/>
         </scene>
         <!--Choose Cards View Controller - Choose a Presentation Deck-->
         <scene sceneID="f8r-UC-uJa">
@@ -406,4 +407,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="gX6-yH-str"/>
+    </inferredMetricsTieBreakers>
 </document>

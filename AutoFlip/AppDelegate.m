@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <DropboxSDK/DropboxSDK.h>
+//#import <DropboxSDK/DropboxSDK.h>
 #import <DBChooser/DBChooser.h>
 
 @implementation AppDelegate
@@ -15,36 +15,27 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // Override point for customization after application launch.
-    DBSession* dbSession =
+   
+    // More Dropbox Core API stuff that we're commenting out
+    /*DBSession* dbSession =
     [[DBSession alloc]
       initWithAppKey:@"bq6mrrr7dinh2si"
       appSecret:@"oo4jwvush1fzufw"
       root:kDBRootDropbox]; // either kDBRootAppFolder or kDBRootDropbox
-
+    
     [DBSession setSharedSession:dbSession];
     
-    return YES;
-}
-
-#pragma mark - Dropbox Core API hook
-
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    NSLog(@"dbsession: %@",[DBSession sharedSession].userIds);
+        */
     
-    if ([[DBSession sharedSession] handleOpenURL:url]) {
-        if ([[DBSession sharedSession] isLinked]) {
-            NSLog(@"App linked successfully!");
-            // At this point you can start making API calls
-        }
-        return YES;
-    }
-    // Add whatever other url handling code your app requires here
-    return NO;
+    return YES;
 }
 
 #pragma mark - Dropbox Drop-ins Chooser hook
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
-  sourceApplication:(NSString *)source annotation:(id)annotation {
+  sourceApplication:(NSString *)source annotation:(id)annotation
+{
     
     if ([[DBChooser defaultChooser] handleOpenURL:url]) {
         // This was a Chooser response and handleOpenURL automatically ran the
@@ -54,7 +45,7 @@
     
     return NO;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -81,5 +72,24 @@
     
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+/*
+ #pragma mark - Dropbox Core API hook
+ 
+ - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+ 
+ NSLog(@"application handleopenurl bullshit");
+ if ([[DBSession sharedSession] handleOpenURL:url]) {
+ if ([[DBSession sharedSession] isLinked]) {
+ NSLog(@"App linked successfully!");
+ // At this point you can start making API calls
+ } else { NSLog(@"not linked?");}
+ return YES;
+ } else {NSLog(@"def not linked");}
+ // Add whatever other url handling code your app requires here
+ return NO;
+ }
+ 
+ */
 
 @end

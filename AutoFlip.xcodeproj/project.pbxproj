@@ -27,6 +27,12 @@
 		11711FB21871F2CF00792D36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11711F941871F2CF00792D36 /* UIKit.framework */; };
 		11711FBA1871F2CF00792D36 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11711FB81871F2CF00792D36 /* InfoPlist.strings */; };
 		11711FBC1871F2CF00792D36 /* AutoFlipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11711FBB1871F2CF00792D36 /* AutoFlipTests.m */; };
+		118C19651891D152007EB10E /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 118C195B1891D152007EB10E /* ioapi.c */; };
+		118C19661891D152007EB10E /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 118C195D1891D152007EB10E /* mztools.c */; };
+		118C19671891D152007EB10E /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 118C195F1891D152007EB10E /* unzip.c */; };
+		118C19681891D152007EB10E /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 118C19611891D152007EB10E /* zip.c */; };
+		118C19691891D152007EB10E /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 118C19641891D152007EB10E /* SSZipArchive.m */; };
+		118C196B1891D162007EB10E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 118C196A1891D162007EB10E /* libz.dylib */; };
 		119249771878F53100BD6868 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1192496D1878F53100BD6868 /* Lato-Black.ttf */; };
 		119249781878F53100BD6868 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1192496E1878F53100BD6868 /* Lato-BlackItalic.ttf */; };
 		119249791878F53100BD6868 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1192496F1878F53100BD6868 /* Lato-Bold.ttf */; };
@@ -127,6 +133,18 @@
 		11711FB71871F2CF00792D36 /* AutoFlipTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AutoFlipTests-Info.plist"; sourceTree = "<group>"; };
 		11711FB91871F2CF00792D36 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		11711FBB1871F2CF00792D36 /* AutoFlipTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoFlipTests.m; sourceTree = "<group>"; };
+		118C195A1891D152007EB10E /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		118C195B1891D152007EB10E /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		118C195C1891D152007EB10E /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		118C195D1891D152007EB10E /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		118C195E1891D152007EB10E /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		118C195F1891D152007EB10E /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		118C19601891D152007EB10E /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		118C19611891D152007EB10E /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		118C19621891D152007EB10E /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		118C19631891D152007EB10E /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		118C19641891D152007EB10E /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
+		118C196A1891D162007EB10E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		1192496D1878F53100BD6868 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		1192496E1878F53100BD6868 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
 		1192496F1878F53100BD6868 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
@@ -239,6 +257,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				118C196B1891D162007EB10E /* libz.dylib in Frameworks */,
 				11C75DE818831A7D000EB94B /* libGTLTouchStaticLib.a in Frameworks */,
 				11F0C9C71880F82E0056CD66 /* MobileCoreServices.framework in Frameworks */,
 				11F0C9C51880F81E0056CD66 /* SystemConfiguration.framework in Frameworks */,
@@ -299,6 +318,7 @@
 		11711F8F1871F2CF00792D36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				118C196A1891D162007EB10E /* libz.dylib */,
 				11C75DE718831A7D000EB94B /* libGTLTouchStaticLib.a */,
 				11F0C9C61880F82E0056CD66 /* MobileCoreServices.framework */,
 				11F0C9C41880F81E0056CD66 /* SystemConfiguration.framework */,
@@ -364,6 +384,32 @@
 				11711FB81871F2CF00792D36 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		118C19581891D152007EB10E /* SSZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				118C19591891D152007EB10E /* minizip */,
+				118C19631891D152007EB10E /* SSZipArchive.h */,
+				118C19641891D152007EB10E /* SSZipArchive.m */,
+			);
+			path = SSZipArchive;
+			sourceTree = "<group>";
+		};
+		118C19591891D152007EB10E /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				118C195A1891D152007EB10E /* crypt.h */,
+				118C195B1891D152007EB10E /* ioapi.c */,
+				118C195C1891D152007EB10E /* ioapi.h */,
+				118C195D1891D152007EB10E /* mztools.c */,
+				118C195E1891D152007EB10E /* mztools.h */,
+				118C195F1891D152007EB10E /* unzip.c */,
+				118C19601891D152007EB10E /* unzip.h */,
+				118C19611891D152007EB10E /* zip.c */,
+				118C19621891D152007EB10E /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 		1192496C1878F53100BD6868 /* Resources */ = {
@@ -489,6 +535,7 @@
 		11D11F5A1878EFF80081B1CB /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				118C19581891D152007EB10E /* SSZipArchive */,
 				11BA10B51881CCE50093851B /* DrEditUtilities.h */,
 				11BA10B61881CCE50093851B /* DrEditUtilities.m */,
 				11BA10B11881CB320093851B /* DrEditFileEditDelegate.h */,
@@ -689,6 +736,7 @@
 				11D0D1281872075A008CC7FD /* PersistencyManager.m in Sources */,
 				11D11F431878A6620081B1CB /* MZFormSheetBackgroundWindow.m in Sources */,
 				11D11F881878F0510081B1CB /* FUIPopoverBackgroundView.m in Sources */,
+				118C19681891D152007EB10E /* zip.c in Sources */,
 				11711FA71871F2CF00792D36 /* ViewController.m in Sources */,
 				11D0D115187202D1008CC7FD /* ChooseCardsViewController.m in Sources */,
 				11D11F451878A6620081B1CB /* MZFormSheetSegue.m in Sources */,
@@ -702,6 +750,7 @@
 				11D11F931878F0510081B1CB /* UISlider+FlatUI.m in Sources */,
 				11D11F461878A6620081B1CB /* MZTransition.m in Sources */,
 				11D11F8E1878F0510081B1CB /* UIFont+FlatUI.m in Sources */,
+				118C19691891D152007EB10E /* SSZipArchive.m in Sources */,
 				11D11F971878F0510081B1CB /* UIToolbar+FlatUI.m in Sources */,
 				11D11F871878F0510081B1CB /* FUICellBackgroundView.m in Sources */,
 				11D11F951878F0510081B1CB /* UITabBar+FlatUI.m in Sources */,
@@ -712,7 +761,9 @@
 				11A4413A1873620400FB5863 /* CardDeckViewController.m in Sources */,
 				11D11F861878F0510081B1CB /* FUIButton.m in Sources */,
 				11D11F8B1878F0510081B1CB /* FUITextField.m in Sources */,
+				118C19661891D152007EB10E /* mztools.c in Sources */,
 				11D11F911878F0510081B1CB /* UIPopoverController+FlatUI.m in Sources */,
+				118C19651891D152007EB10E /* ioapi.c in Sources */,
 				11D0D12118720421008CC7FD /* Presentation.m in Sources */,
 				11D11F851878F0510081B1CB /* FUIAlertView.m in Sources */,
 				11DC90631874D39600C069D8 /* NewCardDeckViewController.m in Sources */,
@@ -725,6 +776,7 @@
 				11D11F581878AE910081B1CB /* SaveAsViewController.m in Sources */,
 				11BA10A81881C2E20093851B /* GTLDrive_Sources.m in Sources */,
 				11D11F941878F0510081B1CB /* UIStepper+FlatUI.m in Sources */,
+				118C19671891D152007EB10E /* unzip.c in Sources */,
 				11D11F8C1878F0510081B1CB /* UIBarButtonItem+FlatUI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

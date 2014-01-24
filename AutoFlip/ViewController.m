@@ -17,6 +17,10 @@
 #import <DBChooser/DBChooser.h>
 #import "MZFormSheetController.h"
 #import "LibraryAPI.h"
+#import "SSZipArchive.h"
+#import "Presentation.h"
+#import "Notecard.h"
+#import "CreateCardsViewController.h"
 
 @interface ViewController ()
 
@@ -27,6 +31,8 @@
     UIImage *drive;
     UIImage *dropbox;
     UIImage *custom;
+    
+    Presentation *importedPresentation;
 }
 
 @synthesize restClient = _restClient;
@@ -68,6 +74,7 @@
     [self.startButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     
     [self.navigationController.navigationBar setHidden:YES];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -123,29 +130,44 @@
     [self performSegueWithIdentifier:@"driveFiles" sender:sender];
 }
 
-#pragma mark - Dropbox Core API methods
-
 - (void)pushDropboxView:(id)sender {
     
     //[self dropBoxCoreAuthentication];
     [self dropboxChooser];
 }
 
+/*
+#pragma mark - Dropbox Core API methods
+
 - (void)dropBoxCoreAuthentication {
     
     if (![[DBSession sharedSession] isLinked]) {
         [[DBSession sharedSession] linkFromController:self];
-    }
-    [[self restClient] loadMetadata:@"/"];
-    NSLog(@"link pressed");
+        NSLog(@"dbsession tried to link from controller self");
+    } else {NSLog(@"dbsession is already linked");}
 }
 
+/*
 - (DBRestClient *)restClient {
     
     if (!_restClient) {
         _restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
         _restClient.delegate = self;
     }
+    return _restClient;
+}
+
+
+- (DBRestClient *)restClient
+{
+    if (_restClient == nil) {
+        if ( [[DBSession sharedSession].userIds count] ) {
+            _restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
+            _restClient.delegate = self;
+            NSLog(@" not not else");
+        } else { NSLog(@"e lse elsel");}
+    }
+    
     return _restClient;
 }
 
@@ -178,28 +200,149 @@ loadMetadataFailedWithError:(NSError *)error {
     [[LibraryAPI sharedInstance] customLog:[NSString stringWithFormat:@"Error loading metadata: %@", error]];
 }
 
+*/
+
 #pragma mark - Dropbox Drop-ins methods
 
 - (void)dropboxChooser {
     
-    [[DBChooser defaultChooser] openChooserForLinkType:DBChooserLinkTypePreview
+    [[DBChooser defaultChooser] openChooserForLinkType:DBChooserLinkTypeDirect
                                     fromViewController:self completion:^(NSArray *results)
-    {
+     {
          if ([results count]) {
              // Process results from Chooser
-             DBChooserResult *result = [results objectAtIndex:0];
              
-             NSString *localPath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
-             
-             [[LibraryAPI sharedInstance] customLog:[NSString stringWithFormat:@"%@",result.link.absoluteString]];
-             
-             [[self restClient] loadFile:[result.link absoluteString] intoPath:localPath];
+             for (DBChooserResult *result in results) {
+                 NSLog(@"results: %@",result.link);
+                
+                 [self handleDropboxFileWithResult:result];
+             }
              
          } else {
              // User canceled the action
          }
      }];
 }
+
+- (void)handleDropboxFileWithResult:(DBChooserResult *)result {
+    
+    // Get the extension from the file name
+    NSRange range = [result.name rangeOfString:@"."];
+    NSString *name = [result.name substringToIndex:range.location];
+    NSString *extension = [result.name substringFromIndex:range.location];
+
+    // Download the data of the file w/ the URL
+    NSURL *url = result.link;
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    
+    // If the file downloaded
+    if ( urlData ) {
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString  *documentsDirectory = [paths objectAtIndex:0];
+        
+        // Write dat file to a file whose name is the same as the Dropbox file name
+        NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,result.name];
+        [urlData writeToFile:filePath atomically:YES];
+        
+        if ([extension isEqualToString:@".pptx"] || [extension isEqualToString:@".ppt"]) {
+
+            // Set output path for zip file in a directory whose name is the same as the file name minus its extension
+            NSString *outputPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",name]];
+            NSString *zipPath = filePath;
+            
+            [SSZipArchive unzipFileAtPath:zipPath toDestination:outputPath delegate:self];
+            
+            NSString *slidesPath = [documentsDirectory stringByAppendingPathComponent:@"/ppt/slides"];
+            
+            NSLog(@"Files in unzipped ppt directory");
+            [self listFilesAtPath:outputPath];
+           
+            NSLog(@"Files in the ppt/slides directory \n");
+            NSArray *slides = [self listFilesAtPath:slidesPath];
+            
+            // Notecards array to hold cards for newPresentation (below)
+            NSMutableArray *notecards = [[NSMutableArray alloc] init];
+            for(int i=0; i<slides.count; i++) {
+                
+                // Load the slide and get its data as a string
+                NSString *slidePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/ppt/slides/%@",[slides objectAtIndex:i]]];
+                NSString *xml = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:slidePath] encoding:NSUTF8StringEncoding];
+                
+                NSLog(@"\t SLIDE %d: \n",i);
+                NSMutableArray *slideBullets = [self getTextFromXML:xml BetweenTag:@"a:t"];
+                
+                [notecards addObject:[[Notecard alloc] initWithBullets:slideBullets]];
+                
+                // Output bullets
+                for (NSString *bullet in slideBullets) NSLog(@"    - %@", bullet);
+            }
+            importedPresentation = [[Presentation alloc] initWithNotes:notecards];
+            importedPresentation.title = name;
+            importedPresentation.title = [NSString stringWithFormat:@"%@ imported from Dropbox",name];
+            
+            [self performSegueWithIdentifier:@"createImportedCards" sender:self];
+            
+        }
+        else if ([extension isEqualToString:@".txt"] || [extension isEqualToString:@".rtf"]) {
+            
+            NSString *dataString = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
+            // Do some other stuff with the file string
+        }
+    }
+}
+
+// Takes a tag where <p> tag would be NSString "p"
+- (NSMutableArray *)getTextFromXML:(NSString *)xml BetweenTag:(NSString *)tag {
+    
+    //NSLog(@"\n\n XML:\n %@", xml);
+    
+    // @"<badgeCount>([^<]+)</badgeCount>";
+    // Example of what the pattern should look like^
+    NSString *pattern = [NSString stringWithFormat:@"<%@>([^<]+)</%@>",tag,tag];
+    //NSLog(@"\nRegular expression: %@ \n",pattern);
+    
+    NSRegularExpression *regex = [NSRegularExpression
+                                  regularExpressionWithPattern:pattern
+                                  options:NSRegularExpressionCaseInsensitive
+                                  error:nil];
+    //NSTextCheckingResult *textCheckingResult = [regex firstMatchInString:xml options:0 range:NSMakeRange(0, xml.length)];
+    NSArray *textCheckingResults = [regex matchesInString:xml options:0 range:NSMakeRange(0, xml.length)];
+    
+    NSMutableArray *results = [[NSMutableArray alloc] init];
+    NSRange matchRange;
+    NSString *match;
+    
+    // Stick the search results in the results array
+    for(NSTextCheckingResult *textCheckingResult in textCheckingResults) {
+        matchRange = [textCheckingResult rangeAtIndex:1];
+        match = [xml substringWithRange:matchRange];
+        [results addObject:match];
+    }
+    
+    return results;
+}
+
+
+-(NSArray *)listFilesAtPath:(NSString *)path {
+    
+    NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:NULL];
+    
+    for (int count = 0; count < (int)[directoryContent count]; count++) {
+        NSLog(@"File %d: %@", (count + 1), [directoryContent objectAtIndex:count]);
+    }
+    return directoryContent;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if([segue.identifier isEqualToString:@"createImportedCards"]) {
+        CreateCardsViewController *controller = (CreateCardsViewController *)[segue destinationViewController];
+        controller.presentation = importedPresentation;
+        
+    }
+}
+
 
 - (void)pushCreateCardsView:(id)sender {
     
@@ -208,6 +351,8 @@ loadMetadataFailedWithError:(NSError *)error {
 
 - (IBAction)showDebugging:(id)sender {
 
+    //[self dropBoxCoreAuthentication];
+    
     UIViewController *viewController = [[UIViewController alloc] init];
     UITextView *debugView = [[UITextView alloc] init];
     debugView.text = [[LibraryAPI sharedInstance] debuggingResults];
@@ -241,7 +386,7 @@ loadMetadataFailedWithError:(NSError *)error {
     
     [self dismissViewControllerAnimated:NO completion:nil];
     [self.navigationController popToRootViewControllerAnimated:YES];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
