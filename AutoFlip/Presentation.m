@@ -66,9 +66,14 @@
     return self;
 }
 
-- (void)addCardAtIndex:(NSInteger)index {
+- (void)addCard {
     
     [self.notecards addObject:[[Notecard alloc] initWithEmptyCard]];
+}
+
+- (void)insertCardAtIndex:(NSInteger)index {
+    
+    [self.notecards insertObject:[[Notecard alloc] initWithEmptyCard] atIndex:index];
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {

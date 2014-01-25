@@ -152,11 +152,6 @@
 	NSLog(@"A test file that was submitted for recognition is now complete.");
 }
 
-- (void)reloadCard {
-    
-    [super reloadCard];
-    //etc.
-}
 
 - (IBAction)nextCard:(id)sender {
     
@@ -166,6 +161,11 @@
 - (IBAction)previousCard:(id)sender {
     
     [super previousCard:sender];
+}
+
+- (void)reloadCard {
+    
+    [super reloadCard];
 }
 
 - (void)didReceiveMemoryWarning {

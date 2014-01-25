@@ -20,10 +20,11 @@
 @property (weak, nonatomic) IBOutlet UITextView *textArea;
 @property (weak, nonatomic) IBOutlet UINavigationItem *presentationTitleNavBar;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
-@property (weak, nonatomic) IBOutlet UIButton *previousCard;
-@property (weak, nonatomic) IBOutlet UIButton *nextCard;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *progressBarBarButton;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextCard;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *previousCard;
 
 - (IBAction)nextCard:(id)sender;
 - (IBAction)previousCard:(id)sender;

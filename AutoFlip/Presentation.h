@@ -15,7 +15,8 @@
 @property NSString *description;
 @property NSString *type;
 
-- (void)addCardAtIndex:(NSInteger)index;
+- (void)insertCardAtIndex:(NSInteger)index;
+- (void)addCard;
 
 - (id) initWithNotes:(NSMutableArray *)notecards;
 - (id)initWithRandomNotes:(int)num;

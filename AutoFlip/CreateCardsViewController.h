@@ -22,9 +22,17 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-- (IBAction)saveCards:(id)sender;
-
 - (void)saveDataAs:(SaveAsViewController *)saveAsViewController;
 - (void)cancelSave:(SaveAsViewController *)saveasViewController;
+
+- (IBAction)saveCards:(id)sender;
+- (IBAction)didPressActionsButton:(id)sender;
+
+- (IBAction)nextCard:(id)sender;
+- (IBAction)previousCard:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *previousCard;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextCard;
+
 
 @end

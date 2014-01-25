@@ -28,7 +28,6 @@
 
 @implementation CreateCardsViewController {
     
-    NSInteger cardIndex;
     NSInteger heightOfNavAndButtons;
 }
 
@@ -49,7 +48,7 @@
     // If it's not an imported presentation
     if (!self.presentation) {
         self.presentation = [[Presentation alloc] init];
-        [self.presentation addCardAtIndex:0];
+        [self.presentation insertCardAtIndex:0];
         [self.presentation setType:@"custom"];
         [self.textArea setText:@"\u2022 "];
         // Set presentation title and description from stuff passed through segue
@@ -77,18 +76,23 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideShowNavigation)];
     tap.numberOfTapsRequired = 2;
     [self.textArea addGestureRecognizer:tap];
+    
+    self.textArea.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.scrollView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    [self reloadCard];
 }
 
 - (void) hideShowNavigation {
     
-    [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
+    //[self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
 }
 
 - (void)registerForNotifications {
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWasShown:)
-                                                 name:UIKeyboardDidShowNotification object:nil];
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillBeHidden:)
                                                  name:UIKeyboardWillHideNotification object:nil];
@@ -105,24 +109,68 @@
                                                   object:nil];
 }
 
+- (IBAction)didPressActionsButton:(id)sender {
+    
+    NSArray *menuItems =
+    @[
+      
+      [KxMenuItem menuItem:@"Options"
+                     image:nil
+                    target:nil
+                    action:NULL],
+      
+      [KxMenuItem menuItem:@"Insert New Card"
+                     image:nil
+                    target:self
+                    action:@selector(insertCard)],
+      
+      [KxMenuItem menuItem:@"Delete Current Card"
+                     image:nil
+                    target:self
+                    action:@selector(deleteCard)],
+      
+      ];
+    
+    KxMenuItem *first = menuItems[0];
+    first.foreColor = [UIColor turquoiseColor];
+    first.alignment = NSTextAlignmentCenter;
+    
+    [KxMenu showMenuInView:self.view
+                  fromRect:self.textArea.frame//fromRect:sender.frame
+                 menuItems:menuItems];
+}
+
+- (void)insertCard {
+    
+    [self saveCardTextToPresentation];
+    self.cardIndex++;
+    [self.presentation insertCardAtIndex:self.cardIndex];
+    [self reloadCard];
+}
+
+- (void)deleteCard {
+    
+    if (self.presentation.notecards.count > 1) {
+        // self.cardIndex does not change
+        [self.presentation.notecards removeObjectAtIndex:self.cardIndex];
+        
+        if (!(self.cardIndex < self.presentation.notecards.count)) {
+            self.cardIndex--;
+        }
+        [self reloadCard];
+    }
+}
+
 - (IBAction)nextCard:(id)sender {
     
-    [[self.presentation.notecards objectAtIndex:self.cardIndex] setText:self.textArea.text];
-    
-    //if this card is the last one in the deck so far
-    if (self.cardIndex == [self.presentation.notecards count] - 1) {
-        self.cardIndex++;
-        [self.presentation addCardAtIndex:self.cardIndex];
-        [self reloadCard];
-        [self.textArea setText:@"\u2022 "];
-    } else {
-        [super nextCard:sender];
-    }
+    NSLog(@"yes, this runs");
+    [self saveCardTextToPresentation];
+    [super nextCard:sender];
 }
 
 - (IBAction)previousCard:(id)sender {
     
-    [[self.presentation.notecards objectAtIndex:self.cardIndex] setText:self.textArea.text];
+    [self saveCardTextToPresentation];
     [super previousCard:sender];
 }
 
@@ -131,11 +179,16 @@
     [super reloadCard];
 }
 
+- (void)saveCardTextToPresentation {
+    
+    [[self.presentation.notecards objectAtIndex:self.cardIndex] setText:self.textArea.text];
+}
+
 #pragma mark - save cards methods
 - (IBAction)saveCards:(id)sender {
     
-    [[self.presentation.notecards objectAtIndex:self.cardIndex] setText:self.textArea.text];
-
+    [self saveCardTextToPresentation];
+    
     [self.textArea resignFirstResponder];
 
     [[LibraryAPI sharedInstance] setPresentation:self.presentation atIndex:0];
@@ -242,7 +295,7 @@
 }
 
 - (void)exportCards {
-    // Do any additional setup after loading the view, typically from a nib.
+
     UIImage *drive   = [UIImage imageNamed:@"drive.png"];
     UIImage *dropbox = [UIImage imageNamed:@"dropbox.png"];
     UIImage *custom  = [UIImage imageNamed:@"custom.png"];
@@ -301,14 +354,15 @@
 }
 
 // Called when the UIKeyboardDidShowNotification is sent.
-- (void)keyboardWasShown:(NSNotification*)aNotification {
+- (void)keyboardWillShow:(NSNotification*)aNotification {
     
     // kbHeight gets "initialized" here because it needs the notification to get the kbHeight
     kbHeight = [self getKeyboardHeight:aNotification];
-    self.scrollView.frame = CGRectMake(self.view.frame.origin.x,
-                                       self.view.frame.origin.y, //+ heightOfNavAndButtons,
+    self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x,
+                                       self.scrollView.frame.origin.y,
                                        self.view.frame.size.width,
-                                       self.view.frame.size.height-kbHeight);//-heightOfNavAndButtons);
+                                       self.view.frame.size.height-kbHeight);
+    [self scrollToCursor];
 }
 
 // Called when the UIKeyboardWillHideNotification is sent
@@ -316,11 +370,10 @@
 {
     NSLog(@"this runs keyboard will hide");
     // Make it bigger again:
-    self.scrollView.frame = CGRectMake(self.view.frame.origin.x,
-                                       self.view.frame.origin.y + heightOfNavAndButtons,
+    self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x,
+                                       self.scrollView.frame.origin.y,
                                        self.view.frame.size.width,
-                                       self.view.frame.size.height - heightOfNavAndButtons);
-    
+                                       self.view.frame.size.height);
 }
 
 #pragma mark - rotation/orientation-related methods
@@ -356,48 +409,43 @@
 // found most of this method on stackoverflow
 // should be called in textViewDidChange: and textViewDidChangeSelection:
 - (void)scrollToCursor {
-    /*
-    int verticalPaddingBecauseFuckYou;
+    
     // if there is a selection cursor
     if (self.textArea.selectedRange.location != NSNotFound) {
         
-        float verticalSpace = self.view.frame.size.height - kbHeight;
-        if (self.textArea.contentSize.height > verticalSpace) {
-            
-            UIInterfaceOrientation orient = [UIApplication sharedApplication].statusBarOrientation;
-            if (UIInterfaceOrientationIsLandscape(orient)){
-                verticalPaddingBecauseFuckYou = 112;
-            } else {
-                verticalPaddingBecauseFuckYou = 64;
-            }
-            //NSLog(@"frame size height %f",self.view.frame.size.height);
-            // work out how big the text view would be if the text only went up to the cursor
-            NSRange range;
-            range.location = self.textArea.selectedRange.location;
-            range.length = self.textArea.text.length - range.location;
-            NSString *string =
-                      [self.textArea.text stringByReplacingCharactersInRange:range withString:@""];
-            CGSize size = [string sizeWithFont:self.textArea.font
-                             constrainedToSize:self.textArea.bounds.size
-                                 lineBreakMode:NSLineBreakByWordWrapping];
-            
-            // work out where that position would be relative to the textView's frame
-            CGRect viewRect = self.textArea.frame;
-            int scrollHeight = viewRect.origin.y + size.height;
-            //NSLog(@"scrollHeight: %d",scrollHeight);
-            
-            // scroll to it,
-            // but not with scrollRectToVisible because it sucks and fuck you scrollRectToVisible
-            // [self.scrollView scrollRectToVisible:finalRect animated:YES];
-            // CGRect finalRect = CGRectMake(0, scrollHeight, 1, 32);
-            
-            CGPoint point = CGPointMake(1, scrollHeight - kbHeight + verticalPaddingBecauseFuckYou);
-            [self.scrollView setContentOffset:point animated: YES];
+        float verticalPaddingBecauseFuckYou;
+        
+        UIInterfaceOrientation orient = [UIApplication sharedApplication].statusBarOrientation;
+        if (UIInterfaceOrientationIsLandscape(orient)){
+            verticalPaddingBecauseFuckYou = 112;
+        } else {
+            verticalPaddingBecauseFuckYou = 224;
         }
+        //NSLog(@"frame size height %f",self.view.frame.size.height);
+        // work out how big the text view would be if the text only went up to the cursor
+        NSRange range;
+        range.location = self.textArea.selectedRange.location;
+        range.length = self.textArea.text.length - range.location;
+        NSString *string =
+                  [self.textArea.text stringByReplacingCharactersInRange:range withString:@""];
+        CGSize size = [string sizeWithFont:self.textArea.font
+                         constrainedToSize:self.textArea.bounds.size
+                             lineBreakMode:NSLineBreakByWordWrapping];
+        
+        // work out where that position would be relative to the textView's frame
+        CGRect viewRect = self.textArea.frame;
+        int scrollHeight = viewRect.origin.y + size.height;
+        //NSLog(@"scrollHeight: %d",scrollHeight);
+        
+        // scroll to it,
+        // but not with scrollRectToVisible because it sucks and fuck you scrollRectToVisible
+        // [self.scrollView scrollRectToVisible:finalRect animated:YES];
+        // CGRect finalRect = CGRectMake(0, scrollHeight, 1, 32);
+        CGPoint point = CGPointMake(1, scrollHeight - verticalPaddingBecauseFuckYou);
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, scrollHeight+verticalPaddingBecauseFuckYou);
+        [self.scrollView setContentOffset:point animated: NO];
     }
-     */
 }
-
 
 // scrollview delegate method
 // disallow horizontal scrolling in the textview
@@ -419,24 +467,11 @@
 - (void)textViewDidChange:(UITextView *)textView {
     
     [self fixBulletFormatting];
-
-    float verticalHeightLeftOver = heightOfNavAndButtons + self.view.frame.size.height - kbHeight;
-    if (self.textArea.contentSize.height > verticalHeightLeftOver) {
-        
-        self.textArea.frame = CGRectMake(self.textArea.frame.origin.x,
-                                         self.textArea.frame.origin.y,
-                                         self.textArea.frame.size.width,
-                                         self.textArea.contentSize.height);
-    }
     
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.contentSize.width,
-                                             self.textArea.frame.size.height+50);
-    [self scrollToCursor];
+    CGRect frame = self.textArea.frame;
+    frame.size.height = self.textArea.contentSize.height+30;
+    self.textArea.frame = frame;
     
-    
-    //CGSize temp = self.textArea.frame.size;
-    //NSLog(@"dimensions of textaview: %f %f", temp.width, temp.height);
-
 }
 
 // Basically this method just makes sure bullets show up when they're supposed to
@@ -461,6 +496,8 @@
         [textAreaContent setString:[self.textArea.text stringByAppendingString:@"\u2022 "]];
         [self.textArea setText:textAreaContent];
         cursorPosition.location++;
+        
+        [self scrollToCursor];
     }
     // if the previous character is a bullet, then the user must have backspaced/deleted
     // the space that was added after the bullet, meaning they probably want to delete the bullet
@@ -476,12 +513,12 @@
 
 - (void)textViewDidChangeSelection:(UITextView *)aTextView {
     
-    [self scrollToCursor];
+    //[self scrollToCursor];
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     
-    [self scrollToCursor];
+    //[self scrollToCursor];
 }
 
 - (void)textViewDidEndEditing:(UITextField *)textField {

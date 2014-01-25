@@ -65,37 +65,41 @@
 
 - (void)reloadCard {
     
+    NSLog(@"notecards count: %d",self.presentation.notecards.count);
+    NSLog(@"card index: %d",self.cardIndex);
+    
     self.textArea.text = [[self.presentation.notecards objectAtIndex:self.cardIndex] text];
+    
     if (self.cardIndex == 0) {
-        [self.previousCard setEnabled:false];
+        [self.previousCard setEnabled:NO];
     } else {
-        [self.previousCard setEnabled:true];
+        [self.previousCard setEnabled:YES];
     }
+    if (self.cardIndex == self.presentation.notecards.count - 1) {
+        [self.nextCard setEnabled:NO];
+    } else {
+        [self.nextCard setEnabled:YES];
+    }
+    
     [self updateProgressBar];
 }
 
 - (void)updateProgressBar {
     
     float progress = (float)(self.cardIndex+1)/[self.presentation.notecards count];
-    NSLog(@"%f",progress);
-    NSLog(@"notecards count: %d",self.presentation.notecards.count);
     [self.progressBar setProgress:progress];
 }
 
 - (IBAction)nextCard:(id)sender {
     
-    if (self.cardIndex < [self.presentation.notecards count] - 1) {
-        self.cardIndex++;
-        [self reloadCard];
-    }
+    self.cardIndex++;
+    [self reloadCard];
 }
 
 - (IBAction)previousCard:(id)sender {
     
-    if (self.cardIndex != 0) {
-        self.cardIndex--;
-        [self reloadCard];
-    }
+    self.cardIndex--;
+    [self reloadCard];
 }
 
 - (void)didReceiveMemoryWarning {
