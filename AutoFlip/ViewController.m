@@ -132,6 +132,11 @@
     [self performSegueWithIdentifier:@"driveFiles" sender:sender];
 }
 
+- (void)didCancelDriveFileChooser:(id)sender {
+    NSLog(@"dismissing");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)pushDropboxView:(id)sender {
     
     //[self dropBoxCoreAuthentication];
@@ -168,6 +173,7 @@
     //NSString *name = [result.name substringToIndex:range.location];
     
     if ([extension isEqualToString:@".pptx"]) {
+        
         // As it turns out, this sweet method exists, so the above isn't necessary (I think).
         NSString *name = [result.name stringByDeletingPathExtension];
 
@@ -177,14 +183,15 @@
     
         [self createImportedPresentationWithData:urlData andName:name fromService:@"dropbox"];
     } else {
-        UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Try importing a .pptx file instead."
-                                                                 delegate:self];
+        [DrEditUtilities showErrorMessageWithTitle:@"Unsupported File Type"
+                                           message:@"Try importing a .pptx file instead."
+                                          delegate:self];
     }
 }
 
 - (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name {
     
-    [self dismissViewControllerAnimated:YES completion:^{
+    [self dismissViewControllerAnimated:NO completion:^{
         [self createImportedPresentationWithData:data andName:name fromService:@"drive"];
     }];
 }
@@ -313,7 +320,8 @@
     }
     else if ([segue.identifier isEqualToString:@"driveFiles"]) {
         
-        DriveFilesListViewController *controller = (DriveFilesListViewController *)[segue destinationViewController];
+        UINavigationController *driveNav = (UINavigationController *)[segue destinationViewController];
+        DriveFilesListViewController *controller = (DriveFilesListViewController *)[driveNav viewControllers][0];
         controller.delegate = self;
     }
 }

@@ -31,6 +31,7 @@ static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
 static NSString *const kClientId = @"226204493879-7fedavakjro1dn5jgg2hj8vt11bhhhb3.apps.googleusercontent.com";
 static NSString *const kClientSecret = @"1aXd3lyDt8LR-MXInEmN5777";
 
+UIAlertView *loadingAlert;
 
 @interface DriveFilesListViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *authButton;
@@ -122,23 +123,41 @@ static NSString *const kClientSecret = @"1aXd3lyDt8LR-MXInEmN5777";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-  return self.driveFiles.count;
+    // Return the number of rows in the section.
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.searchResults count];
+        
+    } else {
+        return [self.driveFiles count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DriveCell"];
-
-  GTLDriveFile *file = [self.driveFiles objectAtIndex:indexPath.row];
+    UITableViewCell *cell;
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DriveCell"];
+    }
+    
+    GTLDriveFile *file;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        file = [self.searchResults objectAtIndex:indexPath.row];
+    } else {
+        file = [self.driveFiles objectAtIndex:indexPath.row];
+    }
   cell.textLabel.text = file.title;
   return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [self.searchBar resignFirstResponder];
+    
     GTLDriveFile *file = [self.driveFiles objectAtIndex:indexPath.row];
     
+    loadingAlert = [DrEditUtilities showLoadingMessageWithTitle:@"Importing presentation..." delegate:self];
+
     [self downloadFileContent:file];
 }
 
@@ -185,6 +204,11 @@ static NSString *const kClientSecret = @"1aXd3lyDt8LR-MXInEmN5777";
         // The fetcher will call the received data block periodically.
         // When a download path has been specified, the received data
         // parameter will be nil.
+        //NSNumber *length = [NSNumber numberWithInteger:receivedData.length];
+        //int kilobytes = [length floatValue]/1024;
+        //NSString *loadingString = [[NSString alloc] initWithFormat:@"Importing presentation... %d KB", kilobytes];
+        
+        //loadingAlert = [DrEditUtilities showLoadingMessageWithTitle:loadingString delegate:self];
     };
     
     [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
@@ -194,6 +218,7 @@ static NSString *const kClientSecret = @"1aXd3lyDt8LR-MXInEmN5777";
                         format:@"%@", error];
         } else {
             NSLog(@"%@ downloaded successfully!", file.title);
+            [loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
             [self driveFileDidDownloadWithData:data andName:file.title];
         }
     }];
@@ -374,11 +399,72 @@ static NSString *const kClientSecret = @"1aXd3lyDt8LR-MXInEmN5777";
   }];
 }
 
+- (IBAction)didPressCancel:(id)sender {
+    
+    [self.delegate didCancelDriveFileChooser:self];
+}
+
 - (IBAction)popToRoot:(id)sender {
     
     UINavigationController *nav = (UINavigationController*) self.view.window.rootViewController;
     ViewController *root = [nav.viewControllers objectAtIndex:0];
     [root returnToRoot];
+}
+
+#pragma mark - UISearchBarDelegate methods
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+    
+    [self.searchResults removeAllObjects];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.title contains[c] %@",searchText];
+    
+    self.searchResults = [NSMutableArray arrayWithArray:
+                          [self.driveFiles filteredArrayUsingPredicate:predicate]];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+    [self handleSearch:searchBar];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    
+    [self handleSearch:searchBar];
+}
+
+- (void)handleSearch:(UISearchBar *)searchBar {
+    
+    NSLog(@"User searched for %@", searchBar.text);
+    [searchBar resignFirstResponder]; // if you want the keyboard to go away
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar {
+    
+    NSLog(@"User canceled search");
+    [searchBar resignFirstResponder]; // if you want the keyboard to go away
+}
+
+#pragma mark - UISearchDisplayController Delegate Methods
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString {
+    
+    // Tells the table data source to reload when text changes
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    return YES;
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    
+    // Tells the table data source to reload when scope bar selection changes
+    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
 }
 
 @end

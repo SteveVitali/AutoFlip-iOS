@@ -27,5 +27,6 @@
 
 - (void)returnToRoot;
 - (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name;
+- (void)didCancelDriveFileChooser:(id)sender;
 
 @end

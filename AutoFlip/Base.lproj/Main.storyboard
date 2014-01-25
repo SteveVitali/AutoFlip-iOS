@@ -81,8 +81,8 @@
                         <outlet property="logoLabel" destination="rva-pY-OZ8" id="UBZ-Pf-oJI"/>
                         <outlet property="startButton" destination="f0O-Zt-ndL" id="dla-OU-5kw"/>
                         <segue destination="pdT-Q6-8Jf" kind="push" identifier="createCards" id="ZhR-A6-nKD"/>
-                        <segue destination="3IS-gk-RA2" kind="modal" identifier="driveFiles" id="229-fn-b7w"/>
                         <segue destination="x40-BT-Z59" kind="push" identifier="createImportedCards" id="gX6-yH-str"/>
+                        <segue destination="BI9-0p-ewz" kind="modal" identifier="driveFiles" id="A8e-Sg-bzX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -145,6 +145,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f5o-X9-sIZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="884" y="356"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="K6a-Re-zqZ">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="BI9-0p-ewz" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jBM-uw-LHi">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3IS-gk-RA2" kind="relationship" relationship="rootViewController" id="AoB-rZ-6Nm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5c9-BM-1lB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="884" y="1014"/>
         </scene>
         <!--Create Cards View Controller - Presentation Title-->
         <scene sceneID="5Y0-3c-EHN">
@@ -346,9 +361,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="reQ-lI-9Y6">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="3IS-gk-RA2" id="FWe-2m-QNU"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DriveCell" textLabel="bKw-e0-97Y" style="IBUITableViewCellStyleDefault" id="ACX-VI-nIj">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ACX-VI-nIj" id="1Pc-uA-iO8">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -386,23 +409,32 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="DrEdit" id="U54-aL-6RU">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="h3l-Q8-bhT">
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="h3l-Q8-bhT">
                             <connections>
-                                <action selector="popToRoot:" destination="3IS-gk-RA2" id="oXZ-6D-801"/>
+                                <action selector="didPressCancel:" destination="3IS-gk-RA2" id="jcL-bh-BW7"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="add" id="n7m-nj-Q3v"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addButton" destination="n7m-nj-Q3v" id="UL4-oX-e1X"/>
                         <outlet property="authButton" destination="Q1h-pU-JMn" id="cOY-5n-gXX"/>
                         <outlet property="refreshButton" destination="Oz8-Sm-fer" id="d2P-w6-QIq"/>
+                        <outlet property="searchBar" destination="reQ-lI-9Y6" id="yuh-bZ-FTc"/>
+                        <outlet property="searchDisplayController" destination="KKp-WC-5v4" id="sGZ-ur-M2z"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z93-Wm-SR2" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="KKp-WC-5v4">
+                    <connections>
+                        <outlet property="delegate" destination="3IS-gk-RA2" id="pHN-a2-OYD"/>
+                        <outlet property="searchBar" destination="reQ-lI-9Y6" id="CvV-e3-Qkg"/>
+                        <outlet property="searchContentsController" destination="3IS-gk-RA2" id="5xQ-r0-Mjm"/>
+                        <outlet property="searchResultsDataSource" destination="3IS-gk-RA2" id="wf7-cL-Ib3"/>
+                        <outlet property="searchResultsDelegate" destination="3IS-gk-RA2" id="Dpz-RS-e4n"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="884" y="1014"/>
+            <point key="canvasLocation" x="1263" y="1014"/>
         </scene>
     </scenes>
     <resources>
