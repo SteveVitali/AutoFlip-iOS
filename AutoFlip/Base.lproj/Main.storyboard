@@ -102,13 +102,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title of Deck" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FsQ-ZL-3vJ" customClass="FUITextField">
-                                <rect key="frame" x="33" y="148" width="254" height="30"/>
+                                <rect key="frame" x="33" y="157" width="254" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brief description... " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xMQ-VF-7aa" customClass="FUITextField">
-                                <rect key="frame" x="33" y="193" width="254" height="30"/>
+                                <rect key="frame" x="33" y="219" width="254" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -127,19 +127,36 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qee-tX-1Ws">
+                                <rect key="frame" x="33" y="128" width="254" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPM-vS-dzZ">
+                                <rect key="frame" x="33" y="195" width="254" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="cyv-Gz-0CN">
                         <barButtonItem key="rightBarButtonItem" title="Create" id="ro7-5U-40D">
                             <connections>
-                                <segue destination="x40-BT-Z59" kind="push" identifier="createCards" id="3KO-wx-9Hj"/>
+                                <action selector="didPressCreate:" destination="pdT-Q6-8Jf" id="BPW-My-VZl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionField" destination="xMQ-VF-7aa" id="krv-wj-S7p"/>
+                        <outlet property="descriptionFieldLabel" destination="aPM-vS-dzZ" id="hxM-1O-cSE"/>
                         <outlet property="titleField" destination="FsQ-ZL-3vJ" id="DyE-LE-EEU"/>
+                        <outlet property="titleFieldLabel" destination="Qee-tX-1Ws" id="dWJ-gV-yv0"/>
+                        <segue destination="x40-BT-Z59" kind="push" identifier="createCards" id="3eE-dR-ad3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f5o-X9-sIZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -222,7 +239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31d-IR-njV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1754" y="644"/>
+            <point key="canvasLocation" x="1700" y="484"/>
         </scene>
         <!--Choose Cards View Controller - Choose a Presentation Deck-->
         <scene sceneID="f8r-UC-uJa">
@@ -446,6 +463,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="gX6-yH-str"/>
+        <segue reference="3eE-dR-ad3"/>
     </inferredMetricsTieBreakers>
 </document>

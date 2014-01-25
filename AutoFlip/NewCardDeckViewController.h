@@ -14,5 +14,9 @@
 @property (weak, nonatomic) IBOutlet FUITextField *titleField;
 @property (weak, nonatomic) IBOutlet FUITextField *descriptionField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *createButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleFieldLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionFieldLabel;
+
+- (IBAction)didPressCreate:(id)sender;
 
 @end

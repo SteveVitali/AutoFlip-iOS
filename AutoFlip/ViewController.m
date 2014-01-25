@@ -75,14 +75,12 @@
     [self.startButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [self.startButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     
-    [self.navigationController.navigationBar setHidden:YES];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     [self.navigationController.navigationBar setHidden:NO];
-    [self.navigationController setToolbarHidden:NO];
+    [self.navigationController setToolbarHidden:YES];
 }
 
 - (UIImage *)scaleImage:(UIImage *)image withScale:(float)scale {

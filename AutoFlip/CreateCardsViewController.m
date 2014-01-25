@@ -69,8 +69,19 @@
     // for some reason self.presentationNavBar.frame.height doesn't work
     heightOfNavAndButtons = 56;
     
+    self.navigationItem.hidesBackButton = YES;
+    
     //self.textArea.backgroundColor = [UIColor blueColor];
     //self.scrollView.backgroundColor = [UIColor redColor];
+    // Hide navigation bar w/ screen tap
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideShowNavigation)];
+    tap.numberOfTapsRequired = 2;
+    [self.textArea addGestureRecognizer:tap];
+}
+
+- (void) hideShowNavigation {
+    
+    [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
 }
 
 - (void)registerForNotifications {
@@ -295,9 +306,9 @@
     // kbHeight gets "initialized" here because it needs the notification to get the kbHeight
     kbHeight = [self getKeyboardHeight:aNotification];
     self.scrollView.frame = CGRectMake(self.view.frame.origin.x,
-                                       self.view.frame.origin.y + heightOfNavAndButtons,
+                                       self.view.frame.origin.y, //+ heightOfNavAndButtons,
                                        self.view.frame.size.width,
-                                       self.view.frame.size.height-kbHeight-heightOfNavAndButtons);
+                                       self.view.frame.size.height-kbHeight);//-heightOfNavAndButtons);
 }
 
 // Called when the UIKeyboardWillHideNotification is sent

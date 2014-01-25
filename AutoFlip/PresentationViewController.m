@@ -78,8 +78,18 @@
     [self.pocketsphinxController setSecondsOfSilenceToDetect:.3];
     
     [self.pocketsphinxController startListeningWithLanguageModelAtPath:lmPath dictionaryAtPath:dicPath acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:NO]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" to perform Spanish recognition instead of English.
+    
+    // Hide navigation bar w/ screen tap
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideShowNavigation)];
+    tap.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:tap];
 }
 
+- (void) hideShowNavigation {
+    
+    [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
+    [self.navigationController setToolbarHidden:!self.navigationController.toolbarHidden animated:YES];
+}
 
 - (PocketsphinxController *)pocketsphinxController {
 	if (pocketsphinxController == nil) {

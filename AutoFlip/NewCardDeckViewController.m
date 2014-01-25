@@ -8,6 +8,7 @@
 
 #import "NewCardDeckViewController.h"
 #import "CreateCardsViewController.h"
+#import "DrEditUtilities.h"
 
 @interface NewCardDeckViewController ()
 
@@ -28,7 +29,14 @@
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    [self.titleFieldLabel setHidden:YES];
+    [self.titleFieldLabel setText:@"* Title field cannot be blank"];
+    [self.titleFieldLabel setTextColor:[UIColor redColor]];
+
+    [self.descriptionFieldLabel setText:@"* Description field cannot be blank"];
+    [self.descriptionFieldLabel setTextColor:[UIColor redColor]];
+    [self.descriptionFieldLabel setHidden:YES];
+
     [self.navigationController.navigationBar setHidden:NO];
     self.view.backgroundColor = [UIColor cloudsColor];
 
@@ -37,6 +45,17 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [self.navigationController.navigationBar setHidden:NO];
+    [self.navigationController setToolbarHidden:YES];
+}
+
+- (IBAction)didPressCreate:(id)sender {
+    
+    if (self.titleField.text.length > 0) {
+        [self performSegueWithIdentifier:@"createCards" sender:self];
+    } else {
+        [self.titleFieldLabel setHidden:NO];
+        //[DrEditUtilities showErrorMessageWithTitle:@"Error" message:@"Title field cannot be empty." delegate:self];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

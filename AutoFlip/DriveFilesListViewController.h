@@ -20,7 +20,6 @@
 @property (strong,nonatomic) NSMutableArray *searchResults;
 @property IBOutlet UISearchBar *searchBar;
 
-- (void)driveFileDidDownloadWithData:(NSData *)data;
 - (IBAction)didPressCancel:(id)sender;
 
 @end
