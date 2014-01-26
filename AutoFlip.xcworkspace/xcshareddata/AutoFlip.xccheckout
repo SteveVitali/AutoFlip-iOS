@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>BEC6EFC5-5B14-42D7-8889-ACD821C59E6C</string>
+	<string>1DB1FAC0-B788-4CC4-9035-329EFC7538B1</string>
 	<key>IDESourceControlProjectName</key>
 	<string>AutoFlip</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,11 +14,11 @@
 		<string>https://github.com/SteveVitali/AutoFlip-iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>AutoFlip.xcodeproj/project.xcworkspace</string>
+	<string>AutoFlip.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>575DBA3D-3E55-47C5-B27F-8F9D54E552DC</key>
-		<string>../..</string>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/SteveVitali/AutoFlip-iOS.git</string>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111A0C7D1895B5E5009D5E58 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 118C196A1891D162007EB10E /* libz.dylib */; };
 		116FD85A187B53B900BC4643 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD858187B53B900BC4643 /* AudioToolbox.framework */; };
 		116FD85B187B53B900BC4643 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD859187B53B900BC4643 /* AVFoundation.framework */; };
 		116FD861187B53F400BC4643 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 116FD85D187B53F400BC4643 /* AcousticModelEnglish.bundle */; };
@@ -32,7 +33,6 @@
 		118C19671891D152007EB10E /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 118C195F1891D152007EB10E /* unzip.c */; };
 		118C19681891D152007EB10E /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 118C19611891D152007EB10E /* zip.c */; };
 		118C19691891D152007EB10E /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 118C19641891D152007EB10E /* SSZipArchive.m */; };
-		118C196B1891D162007EB10E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 118C196A1891D162007EB10E /* libz.dylib */; };
 		119249771878F53100BD6868 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1192496D1878F53100BD6868 /* Lato-Black.ttf */; };
 		119249781878F53100BD6868 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1192496E1878F53100BD6868 /* Lato-BlackItalic.ttf */; };
 		119249791878F53100BD6868 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1192496F1878F53100BD6868 /* Lato-Bold.ttf */; };
@@ -111,6 +111,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		111A0C7A1895B57F009D5E58 /* GTL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTL.framework; path = "../../../Library/Developer/Xcode/DerivedData/AutoFlip-fdmzbufgiqjqezfyczvxlznhzzrd/Build/Products/Debug/GTL.framework"; sourceTree = "<group>"; };
 		116FD858187B53B900BC4643 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		116FD859187B53B900BC4643 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		116FD85D187B53F400BC4643 /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AcousticModelEnglish.bundle; path = Framework/AcousticModelEnglish.bundle; sourceTree = "<group>"; };
@@ -264,7 +265,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				118C196B1891D162007EB10E /* libz.dylib in Frameworks */,
+				111A0C7D1895B5E5009D5E58 /* libz.dylib in Frameworks */,
 				11C75DE818831A7D000EB94B /* libGTLTouchStaticLib.a in Frameworks */,
 				11F0C9C71880F82E0056CD66 /* MobileCoreServices.framework in Frameworks */,
 				11F0C9C51880F81E0056CD66 /* SystemConfiguration.framework in Frameworks */,
@@ -325,6 +326,7 @@
 		11711F8F1871F2CF00792D36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				111A0C7A1895B57F009D5E58 /* GTL.framework */,
 				118C196A1891D162007EB10E /* libz.dylib */,
 				11C75DE718831A7D000EB94B /* libGTLTouchStaticLib.a */,
 				11F0C9C61880F82E0056CD66 /* MobileCoreServices.framework */,
@@ -923,9 +925,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Framework",
-					"/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS",
+					"./**",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/AutoFlip-fdmzbufgiqjqezfyczvxlznhzzrd/Build/Products/Debug",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoFlip/AutoFlip-Prefix.pch";
@@ -944,7 +945,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4B67792C-0B9F-4F1A-88CA-149A05D41442";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Source/**";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -959,9 +960,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Framework",
-					"/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS",
+					"./**",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/AutoFlip-fdmzbufgiqjqezfyczvxlznhzzrd/Build/Products/Debug",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoFlip/AutoFlip-Prefix.pch";
@@ -980,7 +980,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4B67792C-0B9F-4F1A-88CA-149A05D41442";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "/Users/stevejohnvitali/Desktop/AutoFlip/AutoFlip-iOS/Source/**";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
