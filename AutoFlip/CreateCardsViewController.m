@@ -503,9 +503,13 @@
     else if ([textAreaContent characterAtIndex:cursorPosition.location-1] == '\n') {
         // Then, add a bullet point AND space before cursor
         // (space is important because next conditional)
-        [textAreaContent setString:[self.textArea.text stringByAppendingString:@"\u2022 "]];
-        [self.textArea setText:textAreaContent];
-        cursorPosition.location++;
+        NSMutableString *beforeCursor = [[NSMutableString alloc] initWithString:[textAreaContent substringToIndex:cursorPosition.location]];
+        NSMutableString *afterCursor  = [[NSMutableString alloc] initWithString:[textAreaContent substringFromIndex:cursorPosition.location]];
+        [beforeCursor setString:[beforeCursor stringByAppendingString:@"\u2022 "]];
+        [self.textArea setText:[beforeCursor stringByAppendingString:afterCursor]];
+
+        // Move cursor where it belongs
+        [self.textArea setSelectedRange:NSMakeRange(beforeCursor.length, 0)];
         
         [self scrollToCursor];
     }
