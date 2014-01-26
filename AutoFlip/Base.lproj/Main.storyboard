@@ -183,7 +183,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5c9-BM-1lB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="884" y="1014"/>
+            <point key="canvasLocation" x="872" y="1014"/>
         </scene>
         <!--Create Cards View Controller - Presentation Title-->
         <scene sceneID="5Y0-3c-EHN">
@@ -462,7 +462,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1263" y="1014"/>
+            <point key="canvasLocation" x="1306" y="1014"/>
         </scene>
     </scenes>
     <resources>

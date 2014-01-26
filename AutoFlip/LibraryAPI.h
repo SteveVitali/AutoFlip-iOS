@@ -35,4 +35,7 @@
 - (void)deletePresentationAtIndex:(int)index;
 - (void)setPresentation:(Presentation *)presentation atIndex:(int)index;
 
+- (void)deleteFileAtPath:(NSString *)path;
+- (NSArray *)listFilesAtPath:(NSString *)path;
+
 @end

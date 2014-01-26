@@ -8,6 +8,7 @@
 
 #import "PersistencyManager.h"
 #import "Presentation.h"
+#import "LibraryAPI.h"
 
 @interface PersistencyManager() {
 
@@ -86,6 +87,14 @@
     for (int i=index+1; i<self.presentations.count; i++) {
         Presentation *presentation = [self.presentations objectAtIndex:i];
         presentation.arrayIndex = [NSNumber numberWithInteger:([presentation.arrayIndex integerValue]-1)];
+    }
+    Presentation *presentationToDelete = [self.presentations objectAtIndex:index];
+    
+    // First delete the unzipped .pptx folder that was saved when the object was imported,
+    // Then delete the presentation object.
+    if ([presentationToDelete.type isEqualToString:@"drive"] || [presentationToDelete.type isEqualToString:@"dropbox"]) {
+        
+        [[LibraryAPI sharedInstance] deleteFileAtPath:presentationToDelete.pathToUnzippedPPTX];
     }
     [self.presentations removeObjectAtIndex:index];
 }

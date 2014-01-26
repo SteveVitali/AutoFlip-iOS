@@ -83,6 +83,7 @@
     [aCoder encodeObject:self.notecards forKey:@"notecards"];
     [aCoder encodeObject:self.description forKey:@"description"];
     [aCoder encodeObject:self.arrayIndex forKey:@"arrayIndex"];
+    [aCoder encodeObject:self.pathToUnzippedPPTX forKey:@"pathToUnzippedPPTX"];
 
 }
 
@@ -96,6 +97,7 @@
         _notecards = [aDecoder decodeObjectForKey:@"notecards"];
         _description = [aDecoder decodeObjectForKey:@"description"];
         _arrayIndex = [aDecoder decodeObjectForKey:@"arrayIndex"];
+        _pathToUnzippedPPTX = [aDecoder decodeObjectForKey:@"pathToUnzippedPPTX"];
     }
     return self;
 }

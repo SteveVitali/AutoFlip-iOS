@@ -295,20 +295,20 @@
         NSString  *directoryPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,name];
         
         // Enforce unique file names on presentations
-        // Actually, never mind, we can just delete the files once they're converted.
-//        int count = 1;
-//        while ([[NSFileManager defaultManager] fileExistsAtPath:directoryPath]) {
-//            NSLog(@"duplicate file at: %@",directoryPath);
-//            name = [name stringByAppendingString:[NSString stringWithFormat:@"%d",count]];
-//            directoryPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[name stringByAppendingString:@".zip"]];
-//            count++;
-//        }
+        int count = 1;
+        NSString *originalName = [NSString stringWithString:name];
+        while ([[NSFileManager defaultManager] fileExistsAtPath:directoryPath]) {
+            NSLog(@"duplicate file at: %@",directoryPath);
+            name = [originalName stringByAppendingString:[NSString stringWithFormat:@"%d",count]];
+            directoryPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,name];
+            count++;
+        }
         
         // Write the .zip file
         [data writeToFile:filePath atomically:YES];
         
         NSLog(@"documents directory");
-        [self listFilesAtPath:documentsDirectory];
+        [[LibraryAPI sharedInstance] listFilesAtPath:documentsDirectory];
         
         NSString *zipPath = filePath;
         
@@ -317,9 +317,9 @@
         NSString *slidesPath = [directoryPath stringByAppendingPathComponent:@"/ppt/slides"];
         
         NSLog(@"Files in unzipped powerpoint directory");
-        [self listFilesAtPath:directoryPath];
+        [[LibraryAPI sharedInstance] listFilesAtPath:directoryPath];
         NSLog(@"Files in the ppt/slides directory %@ \n", slidesPath);
-        NSArray *slides = [self listFilesAtPath:slidesPath];
+        NSArray *slides = [[LibraryAPI sharedInstance] listFilesAtPath:slidesPath];
         
         // Notecards array to hold cards for newPresentation (below)
         // i=1 to skip the blank slide at the beginning.
@@ -346,21 +346,12 @@
         importedPresentation.description = [NSString stringWithFormat:@"%@ imported from %@",name,
                                                      [service stringByReplacingCharactersInRange:NSMakeRange(0,1)
                                                       withString:[[service substringToIndex:1] capitalizedString]]];
+        importedPresentation.pathToUnzippedPPTX = directoryPath;
+        
+        NSLog(@"directoryPath: %@", importedPresentation.pathToUnzippedPPTX);
         
         // Remove the files, since they're not needed anymore.
-        NSError *error;
-        BOOL success = [[NSFileManager defaultManager] removeItemAtPath:zipPath error:&error];
-        if (success) {
-            NSLog(@"File removed successfully: %@",zipPath);
-        } else {
-            NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
-        }
-        success = [[NSFileManager defaultManager] removeItemAtPath:directoryPath error:&error];
-        if (success) {
-            NSLog(@"File removed successfully: %@",directoryPath);
-        } else {
-            NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
-        }
+        [[LibraryAPI sharedInstance] deleteFileAtPath:zipPath];
         
         [self performSegueWithIdentifier:@"createImportedCards" sender:self];
 
@@ -398,16 +389,6 @@
     }
     
     return results;
-}
-
--(NSArray *)listFilesAtPath:(NSString *)path {
-    
-    NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:NULL];
-    
-    for (int count = 0; count < (int)[directoryContent count]; count++) {
-        NSLog(@"File %d: %@", (count + 1), [directoryContent objectAtIndex:count]);
-    }
-    return directoryContent;
 }
 
 - (void)returnToRoot {

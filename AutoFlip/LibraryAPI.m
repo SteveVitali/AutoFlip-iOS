@@ -120,4 +120,25 @@
     NSLog(@"%@",log);
 }
 
+-(NSArray *)listFilesAtPath:(NSString *)path {
+    
+    NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:NULL];
+    
+    for (int count = 0; count < (int)[directoryContent count]; count++) {
+        NSLog(@"File %d: %@", (count + 1), [directoryContent objectAtIndex:count]);
+    }
+    return directoryContent;
+}
+
+- (void)deleteFileAtPath:(NSString *)path {
+    
+    NSError *error;
+    BOOL success = [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+    if (success) {
+        NSLog(@"File removed successfully: %@",path);
+    } else {
+        NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
+    }
+}
+
 @end

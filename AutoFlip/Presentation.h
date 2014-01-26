@@ -17,6 +17,8 @@
 
 @property NSNumber *arrayIndex;
 
+@property NSString *pathToUnzippedPPTX;
+
 - (void)insertCardAtIndex:(NSInteger)index;
 - (void)addCard;
 

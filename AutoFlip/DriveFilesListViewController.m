@@ -24,6 +24,7 @@
 #import "DrEditUtilities.h"
 #import "ViewController.h"
 #import <MobileCoreServices/UTType.h>
+#import "LibraryAPI.h"
 
 
 // Constants used for OAuth 2.0 authorization.
@@ -69,18 +70,34 @@ UIAlertView *loadingAlert;
   [super awakeFromNib];
 }
 
+- (id)init {
+    
+    self = [super init];
+    if (self) {
+        [self checkAuthentication];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     
-  [super viewDidLoad];
+    [super viewDidLoad];
   
-  // Check for authorization.
-  GTMOAuth2Authentication *auth =
+    [self checkAuthentication];
+    [self loadDriveFiles];
+
+}
+
+- (void)checkAuthentication {
+    
+    // Check for authorization.
+    GTMOAuth2Authentication *auth =
     [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
                                                           clientID:kClientId
                                                       clientSecret:kClientSecret];
-  if ([auth canAuthorize]) {
-    [self isAuthorizedWithAuthentication:auth];
-  }
+    if ([auth canAuthorize]) {
+        [self isAuthorizedWithAuthentication:auth];
+    }
 }
 
 - (void)viewDidUnload {
@@ -256,6 +273,31 @@ UIAlertView *loadingAlert;
     NSLog(@"%@",result);
 }
 
+- (void)uploadFileToGoogleDrive:(NSString*)filePath {
+    
+    GTLDriveFile *driveFile = [[GTLDriveFile alloc] init];
+    
+    driveFile.mimeType = @"";
+    
+    GTLUploadParameters *uploadParameters = [GTLUploadParameters
+                                             uploadParametersWithData:[NSData dataWithContentsOfFile:filePath]
+                                             MIMEType:driveFile.mimeType];
+    
+    GTLQueryDrive *query = [GTLQueryDrive queryForFilesInsertWithObject:driveFile
+                                                       uploadParameters:uploadParameters];
+    
+    [self.driveService executeQuery:query
+                  completionHandler:^(GTLServiceTicket *ticket,
+                                      GTLDriveFile *updatedFile,
+                                      NSError *error) {
+                      if (error == nil) {
+                          NSLog(@"File uploaded successfully from %@", filePath);
+                      } else {
+                          NSLog(@"Upload Failed: %@", error);
+                      }
+                  }];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
   /*DrEditFileEditViewController *viewController = [segue destinationViewController];
@@ -368,7 +410,6 @@ UIAlertView *loadingAlert;
   self.authButton.title = @"Sign out";
   self.isAuthorized = YES;
   [self toggleActionButtons:YES];
-  [self loadDriveFiles];
 }
 
 - (void)loadDriveFiles {

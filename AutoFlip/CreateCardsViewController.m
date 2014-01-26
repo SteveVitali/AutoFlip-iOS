@@ -350,16 +350,27 @@
                  menuItems:menuItems];
 }
 
+// This method is kind of useless.
 - (void)exportCardsToDestination:(KxMenuItem *)sender{
     
     NSString *destination = sender.title;
-    //NSLog(@"%@",destination);
     if ([destination isEqualToString:@"Google Drive"]) {
-        
+        [self exportPresentationToDrive];
     }
     else if ([destination isEqualToString:@"Dropbox"]) {
-        
+        [self exportPresentationToDropbox];
     }
+}
+
+- (void)exportPresentationToDrive {
+    
+    DriveFilesListViewController *testController = [[DriveFilesListViewController alloc] init];
+    [testController uploadFileToGoogleDrive:self.presentation.pathToUnzippedPPTX];
+}
+
+- (void)exportPresentationToDropbox {
+    
+    
 }
 
 - (void) popToRoot {

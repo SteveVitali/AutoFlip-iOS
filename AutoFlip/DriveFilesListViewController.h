@@ -22,6 +22,8 @@
 
 - (IBAction)didPressCancel:(id)sender;
 
+- (void)uploadFileToGoogleDrive:(NSString*)filePath;
+
 @end
 
 @protocol DriveFilePickerDelegate <NSObject>

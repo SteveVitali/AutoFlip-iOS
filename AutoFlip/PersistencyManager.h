@@ -14,8 +14,10 @@
 @property NSMutableArray *presentations;
 
 - (NSMutableArray *)getPresentations;
+
 - (void)savePresentations;
 - (void)addPresentation:(Presentation *)presentation atIndex:(int)index;
 - (void)setPresentation:(Presentation *)presentation atIndex:(int)index;
 - (void)deletePresentationAtIndex:(int)index;
+
 @end
