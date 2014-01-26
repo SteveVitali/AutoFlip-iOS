@@ -15,6 +15,8 @@
 @property NSString *description;
 @property NSString *type;
 
+@property NSNumber *arrayIndex;
+
 - (void)insertCardAtIndex:(NSInteger)index;
 - (void)addCard;
 

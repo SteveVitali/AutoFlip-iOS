@@ -286,64 +286,84 @@
         NSString  *documentsDirectory = [paths objectAtIndex:0];
         
         // Write dat file to a file whose name is the same as the imported file name
-        NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,name];
+        
+        // filePath = ~/DocumentsDirectory/name.zip
+        NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[name stringByAppendingString:@".zip"]];
+        // The .zip gets deleted after being unzipped, but not the unzipped folder of the same name (minus .zip extension),
+        // so we want to check if a file of the name w/o the extension exists so we don't overwrite it.
+        // Never mind the above comment.
+        NSString  *directoryPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,name];
+        
+        // Enforce unique file names on presentations
+        // Actually, never mind, we can just delete the files once they're converted.
+//        int count = 1;
+//        while ([[NSFileManager defaultManager] fileExistsAtPath:directoryPath]) {
+//            NSLog(@"duplicate file at: %@",directoryPath);
+//            name = [name stringByAppendingString:[NSString stringWithFormat:@"%d",count]];
+//            directoryPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[name stringByAppendingString:@".zip"]];
+//            count++;
+//        }
+        
+        // Write the .zip file
         [data writeToFile:filePath atomically:YES];
         
         NSLog(@"documents directory");
         [self listFilesAtPath:documentsDirectory];
         
-        //if ([extension isEqualToString:@".pptx"] || [extension isEqualToString:@".ppt"]) {
-            
-            // Set output path for zip file in a directory whose name is the same as the file name minus its extension
-            NSString *outputPath = [documentsDirectory stringByAppendingPathComponent:
-                                                           [NSString stringWithFormat:@"/%@",
-                                                           [NSString stringWithFormat:@"%@.zip",name]]];
-            NSString *zipPath = filePath;
-            
-            [SSZipArchive unzipFileAtPath:zipPath toDestination:outputPath delegate:self];
+        NSString *zipPath = filePath;
         
-            NSString *slidesPath = [outputPath stringByAppendingPathComponent:@"/ppt/slides"];
+        [SSZipArchive unzipFileAtPath:zipPath toDestination:directoryPath delegate:self];
+        
+        NSString *slidesPath = [directoryPath stringByAppendingPathComponent:@"/ppt/slides"];
+        
+        NSLog(@"Files in unzipped powerpoint directory");
+        [self listFilesAtPath:directoryPath];
+        NSLog(@"Files in the ppt/slides directory %@ \n", slidesPath);
+        NSArray *slides = [self listFilesAtPath:slidesPath];
+        
+        // Notecards array to hold cards for newPresentation (below)
+        // i=1 to skip the blank slide at the beginning.
+        NSMutableArray *notecards = [[NSMutableArray alloc] init];
+        for(int i=1; i<slides.count; i++) {
             
-            NSLog(@"Files in unzipped powerpoint directory");
-            [self listFilesAtPath:outputPath];
+            // Load the slide and get its data as a string
+            NSString *slidePath = [slidesPath stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",[slides objectAtIndex:i]]];
+            NSString *xml = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:slidePath] encoding:NSUTF8StringEncoding];
             
-            NSLog(@"Files in the ppt/slides directory %@ \n", slidesPath);
-            NSArray *slides = [self listFilesAtPath:slidesPath];
+            NSLog(@"\t SLIDE %d: \n",i);
+            NSMutableArray *slideBullets = [self getTextFromXML:xml BetweenTag:@"a:t"];
             
-            // Notecards array to hold cards for newPresentation (below)
-            // i=1 to skip the blank slide at the beginning.
-            NSMutableArray *notecards = [[NSMutableArray alloc] init];
-            for(int i=1; i<slides.count; i++) {
-                
-                // Load the slide and get its data as a string
-                NSString *slidePath = [slidesPath stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",[slides objectAtIndex:i]]];
-                NSString *xml = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:slidePath] encoding:NSUTF8StringEncoding];
-                
-                NSLog(@"\t SLIDE %d: \n",i);
-                NSMutableArray *slideBullets = [self getTextFromXML:xml BetweenTag:@"a:t"];
-                
-                [notecards addObject:[[Notecard alloc] initWithBullets:slideBullets]];
-                
-                // Output bullets
-                for (NSString *bullet in slideBullets) NSLog(@"    - %@", bullet);
-            }
-            importedPresentation = [[Presentation alloc] init];
-            importedPresentation.title = name;
-            importedPresentation.notecards = notecards;
-            importedPresentation.type = service;
-            //Capitalize first letter of "service" type
-            importedPresentation.description = [NSString stringWithFormat:@"%@ imported from %@",name,
-                                                         [service stringByReplacingCharactersInRange:NSMakeRange(0,1)
-                                                          withString:[[service substringToIndex:1] capitalizedString]]];
+            [notecards addObject:[[Notecard alloc] initWithBullets:slideBullets]];
+            
+            // Output bullets
+            for (NSString *bullet in slideBullets) NSLog(@"    - %@", bullet);
+        }
+        importedPresentation = [[Presentation alloc] init];
+        importedPresentation.title = name;
+        importedPresentation.notecards = notecards;
+        importedPresentation.type = service;
+        //Capitalize first letter of "service" type
+        importedPresentation.description = [NSString stringWithFormat:@"%@ imported from %@",name,
+                                                     [service stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                      withString:[[service substringToIndex:1] capitalizedString]]];
+        
+        // Remove the files, since they're not needed anymore.
+        NSError *error;
+        BOOL success = [[NSFileManager defaultManager] removeItemAtPath:zipPath error:&error];
+        if (success) {
+            NSLog(@"File removed successfully: %@",zipPath);
+        } else {
+            NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
+        }
+        success = [[NSFileManager defaultManager] removeItemAtPath:directoryPath error:&error];
+        if (success) {
+            NSLog(@"File removed successfully: %@",directoryPath);
+        } else {
+            NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
+        }
+        
+        [self performSegueWithIdentifier:@"createImportedCards" sender:self];
 
-            [self performSegueWithIdentifier:@"createImportedCards" sender:self];
-
- //       }
- //       else if ([extension isEqualToString:@".txt"] || [extension isEqualToString:@".rtf"]) {
- //
- //           NSString *dataString = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
- //           // Do some other stuff with the file string
- //     }
     } else {
         NSLog(@"no datas");
     }

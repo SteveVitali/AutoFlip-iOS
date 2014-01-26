@@ -165,7 +165,9 @@
         presentation = [presentations objectAtIndex:indexPath.row];
     }
     
-    cell.textLabel.text = presentation.title;
+    NSString *arrayIndex = [NSString stringWithFormat:@"%d",presentation.arrayIndex.integerValue];
+    cell.textLabel.text = [arrayIndex stringByAppendingString:presentation.title];
+    //cell.textLabel.text = presentation.title;
     cell.detailTextLabel.text = presentation.description;
     //Assuming the icon is a .png and is named the same as the "type"
     cell.imageView.image = [UIImage imageNamed:[presentation.type stringByAppendingString:@".png"]];
@@ -207,9 +209,10 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [presentations removeObjectAtIndex:indexPath.row];
-      //  [[LibraryAPI sharedInstance] deletePresentationAtIndex:indexPath.row];
+        // Delete the presentation, maintaining the integrity of the arrayIndex values.
+        [[LibraryAPI sharedInstance] deletePresentationAtIndex:indexPath.row];
         [[LibraryAPI sharedInstance] savePresentations];
+        presentations = [[LibraryAPI sharedInstance] getPresentations];
 
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
@@ -224,6 +227,13 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
       toIndexPath:(NSIndexPath *)toIndexPath {
     
+    Presentation *presentation = [presentations objectAtIndex:fromIndexPath.row];
+    // This will ensure integrity of arrayIndex values.
+    [[LibraryAPI sharedInstance] deletePresentationAtIndex:fromIndexPath.row];
+    [[LibraryAPI sharedInstance] addPresentation:presentation atIndex:toIndexPath.row];
+    [[LibraryAPI sharedInstance] savePresentations];
+    
+    [self.tableView reloadData];
 }
 
 // Override to support conditional rearranging of the table view.

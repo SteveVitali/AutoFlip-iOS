@@ -63,8 +63,6 @@
     [self.textArea setDelegate:self];
     [self.scrollView setDelegate:self];
     
-    [[LibraryAPI sharedInstance] addPresentation:self.presentation atIndex:0];
-    
     // hardcoding it because not sure how to get programmatically
     // for some reason self.presentationNavBar.frame.height doesn't work
     heightOfNavAndButtons = 56;
@@ -204,9 +202,14 @@
     
     [self.textArea resignFirstResponder];
 
-    [[LibraryAPI sharedInstance] setPresentation:self.presentation atIndex:0];
+    // If it hasn't been saved yet, since arrayIndex property gets set in the addPresentation:atIndex method
+    if (!self.presentation.arrayIndex) {
+        [[LibraryAPI sharedInstance] addPresentation:self.presentation atIndex:0];
+    }
+    else {
+        // do nothing, the next line will save the presentation correctly.
+    }
     [[LibraryAPI sharedInstance] savePresentations];
-    
     [self showSaveMenu:sender];
 }
 

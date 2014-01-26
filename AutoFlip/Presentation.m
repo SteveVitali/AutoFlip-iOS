@@ -82,6 +82,7 @@
     [aCoder encodeObject:self.type forKey:@"type"];
     [aCoder encodeObject:self.notecards forKey:@"notecards"];
     [aCoder encodeObject:self.description forKey:@"description"];
+    [aCoder encodeObject:self.arrayIndex forKey:@"arrayIndex"];
 
 }
 
@@ -94,6 +95,7 @@
         _type  = [aDecoder decodeObjectForKey:@"type"];
         _notecards = [aDecoder decodeObjectForKey:@"notecards"];
         _description = [aDecoder decodeObjectForKey:@"description"];
+        _arrayIndex = [aDecoder decodeObjectForKey:@"arrayIndex"];
     }
     return self;
 }

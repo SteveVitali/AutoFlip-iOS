@@ -32,7 +32,7 @@
             //going to initialize dummy presentation for now
             self.presentations = [[NSMutableArray alloc] init];
             for(int i=0; i<24; i++) {
-                [self.presentations addObject:[[Presentation alloc] initWithRandomNotes:i+1]];
+                [self addPresentation:[[Presentation alloc] initWithRandomNotes:i+1] atIndex:i];
             }
             [self savePresentations];
         }
@@ -56,24 +56,37 @@
 
 - (void)addPresentation:(Presentation *)presentation atIndex:(int)index {
     
-    if (self.presentations.count >= index) {
+    if (self.presentations.count > index) {
         [self.presentations insertObject:presentation atIndex:index];
+        presentation.arrayIndex = [NSNumber numberWithInt:index];
+        // Shift every existing presentation up by one
+        for (int i=index+1; i<self.presentations.count; i++) {
+            Presentation *presentation = [self.presentations objectAtIndex:i];
+            presentation.arrayIndex = [NSNumber numberWithInteger:([presentation.arrayIndex integerValue]+1)];
+        }
     } else {
         [self.presentations addObject:presentation];
+        presentation.arrayIndex = [NSNumber numberWithInt:self.presentations.count-1];
     }
 }
 
 - (void)setPresentation:(Presentation *)presentation atIndex:(int)index {
     
-    if (self.presentations.count >= index) {
+    if (self.presentations.count > index) {
         [self.presentations setObject:presentation atIndexedSubscript:index];
+        presentation.arrayIndex = [NSNumber numberWithInt:index];
     } else {
         [self.presentations addObject:presentation];
+        presentation.arrayIndex = [NSNumber numberWithInt:self.presentations.count-1];
     }
 }
 
 - (void)deletePresentationAtIndex:(int)index {
     
+    for (int i=index+1; i<self.presentations.count; i++) {
+        Presentation *presentation = [self.presentations objectAtIndex:i];
+        presentation.arrayIndex = [NSNumber numberWithInteger:([presentation.arrayIndex integerValue]-1)];
+    }
     [self.presentations removeObjectAtIndex:index];
 }
 
