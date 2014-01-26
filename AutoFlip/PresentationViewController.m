@@ -40,6 +40,9 @@
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self.navigationItem setTitle:[self.presentation title]];
+    
     // init language model
     LanguageModelGenerator *lmGenerator = [[LanguageModelGenerator alloc] init];
     
@@ -48,9 +51,13 @@
     NSString *text = [[self.presentation.notecards objectAtIndex:self.cardIndex] getTextFromBulletFormat];
     text = [text uppercaseString];
     
-    NSArray *words = [text componentsSeparatedByString:@" "];
-    
     NSLog(@"text: %@", text);
+    if ([text isEqualToString:@""]) {
+        // So the app doesn't crash, and so the slide essentially gets skipped.
+        text = @"THE";
+    }
+    
+    NSArray *words = [text componentsSeparatedByString:@" "];
     
     //NSArray *words = [NSArray arrayWithObjects:@"THE", @"COLD", @"WAR", @"COMMUNIST", @"COUNTRY", @"CHINA", nil];
     NSString *name = @"NameIWantForMyLanguageModelFiles";

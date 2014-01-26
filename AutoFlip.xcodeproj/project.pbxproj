@@ -43,6 +43,8 @@
 		1192497E1878F53100BD6868 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 119249741878F53100BD6868 /* Lato-Light.ttf */; };
 		1192497F1878F53100BD6868 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 119249751878F53100BD6868 /* Lato-LightItalic.ttf */; };
 		119249801878F53100BD6868 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 119249761878F53100BD6868 /* Lato-Regular.ttf */; };
+		11946E0D1894D20900A4D17A /* present.png in Resources */ = {isa = PBXBuildFile; fileRef = 11946E0B1894D20900A4D17A /* present.png */; };
+		11946E0E1894D20900A4D17A /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 11946E0C1894D20900A4D17A /* edit.png */; };
 		1194B23618772DB8008AD3AE /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194B23518772DB8008AD3AE /* KxMenu.m */; };
 		11A44137187360EA00FB5863 /* CreateCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A44136187360EA00FB5863 /* CreateCardsViewController.m */; };
 		11A4413A1873620400FB5863 /* CardDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A441391873620400FB5863 /* CardDeckViewController.m */; };
@@ -155,6 +157,8 @@
 		119249741878F53100BD6868 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		119249751878F53100BD6868 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		119249761878F53100BD6868 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		11946E0B1894D20900A4D17A /* present.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = present.png; sourceTree = "<group>"; };
+		11946E0C1894D20900A4D17A /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		1194B23418772DB8008AD3AE /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KxMenu.h; path = AutoFlip/KxMenu.h; sourceTree = "<group>"; };
 		1194B23518772DB8008AD3AE /* KxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KxMenu.m; path = AutoFlip/KxMenu.m; sourceTree = "<group>"; };
 		11A44135187360EA00FB5863 /* CreateCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCardsViewController.h; sourceTree = "<group>"; };
@@ -415,6 +419,8 @@
 		1192496C1878F53100BD6868 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				11946E0B1894D20900A4D17A /* present.png */,
+				11946E0C1894D20900A4D17A /* edit.png */,
 				11E8F76318903EE300A6DF5C /* custom.png */,
 				11D0D13C18722E34008CC7FD /* dropbox.png */,
 				11D0D13A18722DD6008CC7FD /* drive.png */,
@@ -701,6 +707,7 @@
 				1192497A1878F53100BD6868 /* Lato-BoldItalic.ttf in Resources */,
 				11D11F591878AE910081B1CB /* SaveAsView.xib in Resources */,
 				11E8F76418903EE300A6DF5C /* custom.png in Resources */,
+				11946E0D1894D20900A4D17A /* present.png in Resources */,
 				11F0C8801880AE710056CD66 /* DBChooser.bundle in Resources */,
 				1192497C1878F53100BD6868 /* Lato-HairlineItalic.ttf in Resources */,
 				116FD861187B53F400BC4643 /* AcousticModelEnglish.bundle in Resources */,
@@ -711,6 +718,7 @@
 				11D0D13D18722E34008CC7FD /* dropbox.png in Resources */,
 				11D0D13B18722DD6008CC7FD /* drive.png in Resources */,
 				11711FA41871F2CF00792D36 /* Main.storyboard in Resources */,
+				11946E0E1894D20900A4D17A /* edit.png in Resources */,
 				119249801878F53100BD6868 /* Lato-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -73,9 +73,13 @@
     //self.textArea.backgroundColor = [UIColor blueColor];
     //self.scrollView.backgroundColor = [UIColor redColor];
     // Hide navigation bar w/ screen tap
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideShowNavigation)];
-    tap.numberOfTapsRequired = 2;
-    [self.textArea addGestureRecognizer:tap];
+    UITapGestureRecognizer *tapText = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    tapText.numberOfTapsRequired = 2;
+    [self.textArea addGestureRecognizer:tapText];
+    
+    UITapGestureRecognizer *tapScroll = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    tapScroll.numberOfTapsRequired = 2;
+    [self.scrollView addGestureRecognizer:tapScroll];
     
     self.textArea.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     self.scrollView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
@@ -83,9 +87,10 @@
     [self reloadCard];
 }
 
-- (void) hideShowNavigation {
-    
-    //[self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
+- (void) hideKeyboard {
+
+    [self.textArea resignFirstResponder];
+
 }
 
 - (void)registerForNotifications {
@@ -110,6 +115,8 @@
 }
 
 - (IBAction)didPressActionsButton:(id)sender {
+    
+    [self.textArea resignFirstResponder];
     
     NSArray *menuItems =
     @[
@@ -136,16 +143,20 @@
     first.alignment = NSTextAlignmentCenter;
     
     [KxMenu showMenuInView:self.view
-                  fromRect:self.textArea.frame//fromRect:sender.frame
+                  fromRect:self.view.frame//fromRect:sender.frame
                  menuItems:menuItems];
 }
 
 - (void)insertCard {
     
-    [self saveCardTextToPresentation];
-    self.cardIndex++;
-    [self.presentation insertCardAtIndex:self.cardIndex];
-    [self reloadCard];
+    if ([self.textArea.text isEqualToString:@""]) {
+        // Don't do anything
+    } else {
+        [self saveCardTextToPresentation];
+        self.cardIndex++;
+        [self.presentation insertCardAtIndex:self.cardIndex];
+        [self reloadCard];
+    }
 }
 
 - (void)deleteCard {
@@ -163,7 +174,6 @@
 
 - (IBAction)nextCard:(id)sender {
     
-    NSLog(@"yes, this runs");
     [self saveCardTextToPresentation];
     [super nextCard:sender];
 }
@@ -228,7 +238,7 @@
     first.alignment = NSTextAlignmentCenter;
     
     [KxMenu showMenuInView:self.view
-                  fromRect:self.textArea.frame//fromRect:sender.frame
+                  fromRect:self.view.frame//fromRect:sender.frame
                  menuItems:menuItems];
 }
 
@@ -468,9 +478,9 @@
     
     [self fixBulletFormatting];
     
-    CGRect frame = self.textArea.frame;
-    frame.size.height = self.textArea.contentSize.height+30;
-    self.textArea.frame = frame;
+    //CGRect frame = self.textArea.frame;
+   // frame.size.height = self.textArea.contentSize.height+30;
+   // self.textArea.frame = frame;
     
 }
 

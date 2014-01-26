@@ -18,6 +18,9 @@
 @property (strong,nonatomic) NSMutableArray *searchResults;
 @property IBOutlet UISearchBar *searchBar;
 
+// Either "edit" or "present"
+@property NSString *chooserType;
+
 - (IBAction)toggleEditing;
 - (IBAction)chooseButtonPressed:(id)sender;
 

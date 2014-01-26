@@ -39,11 +39,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Start Presentation">
+                                <state key="normal" title="Choose Presentation">
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="21i-NN-olK" kind="push" id="A0w-bO-J7r"/>
+                                    <action selector="didPressStart:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3cL-iq-4fd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="t6M-BN-vfu" customClass="FUIButton">
@@ -51,11 +51,23 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Import Presentation Notes">
+                                <state key="normal" title="Create Presentation">
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="showMenu:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9Ex-JC-non"/>
+                                    <action selector="didPressCreate:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="FuH-2N-glO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="bs3-nX-3zs" customClass="FUIButton">
+                                <rect key="frame" x="60" y="273" width="200" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Import Presentation">
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressImport:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YEE-2K-kvR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -73,12 +85,15 @@
                     <navigationItem key="navigationItem" id="Fy7-Ap-7I3"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="importButton" destination="t6M-BN-vfu" id="bZw-L8-evP"/>
+                        <outlet property="createButton" destination="t6M-BN-vfu" id="5xx-sZ-s3f"/>
+                        <outlet property="importButton" destination="bs3-nX-3zs" id="cvE-QG-Gc0"/>
                         <outlet property="logoLabel" destination="rva-pY-OZ8" id="UBZ-Pf-oJI"/>
                         <outlet property="startButton" destination="f0O-Zt-ndL" id="dla-OU-5kw"/>
-                        <segue destination="pdT-Q6-8Jf" kind="push" identifier="createCards" id="ZhR-A6-nKD"/>
                         <segue destination="x40-BT-Z59" kind="push" identifier="createImportedCards" id="gX6-yH-str"/>
-                        <segue destination="BI9-0p-ewz" kind="modal" identifier="driveFiles" id="A8e-Sg-bzX"/>
+                        <segue destination="BI9-0p-ewz" kind="modal" identifier="driveFileChooser" id="A8e-Sg-bzX"/>
+                        <segue destination="pdT-Q6-8Jf" kind="push" identifier="newCardDeck" id="oAJ-Zt-2Zq"/>
+                        <segue destination="21i-NN-olK" kind="push" identifier="choosePresentationToEdit" id="sQh-Ct-Sgu"/>
+                        <segue destination="21i-NN-olK" kind="push" identifier="choosePresentationToPresent" id="DlJ-K0-bpS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -223,11 +238,13 @@
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="actionButton" destination="Xx0-TA-NdC" id="8ZY-yj-kIJ"/>
                         <outlet property="masterView" destination="t9x-0N-6ex" id="fX5-nW-feb"/>
                         <outlet property="nextCard" destination="079-so-Bw7" id="WZE-HK-OAU"/>
                         <outlet property="presentationTitleNavBar" destination="klv-Js-4cG" id="kuS-y1-0eQ"/>
                         <outlet property="previousCard" destination="YH4-EZ-eEr" id="4gf-mS-yJS"/>
                         <outlet property="progressBarBarButton" destination="mGg-Bf-Py9" id="Pal-4Y-ej1"/>
+                        <outlet property="saveButton" destination="ly2-lB-UI2" id="aK9-9J-d3G"/>
                         <outlet property="scrollView" destination="71F-9v-GoE" id="58F-Ok-8cO"/>
                         <outlet property="textArea" destination="2r4-uK-X2o" id="dTL-ic-Re8"/>
                     </connections>
@@ -299,6 +316,7 @@
                         <outlet property="searchBar" destination="wDy-z2-Kgq" id="9xw-W2-O7s"/>
                         <outlet property="searchDisplayController" destination="KIa-bJ-qyc" id="Vz3-1z-ZoT"/>
                         <segue destination="fos-MX-0Bw" kind="push" identifier="startPresentation" id="khJ-cJ-RNh"/>
+                        <segue destination="x40-BT-Z59" kind="push" identifier="openPresentationEditor" id="pgL-ue-QQX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyb-Qx-K6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -337,7 +355,7 @@
                     <toolbarItems>
                         <barButtonItem systemItem="rewind" id="F91-If-7xQ">
                             <connections>
-                                <action selector="previousCard:" destination="fos-MX-0Bw" id="0yc-ur-prN"/>
+                                <action selector="previousCard:" destination="fos-MX-0Bw" id="XGb-Gu-j0l"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="bqz-p7-0eS"/>
@@ -352,14 +370,16 @@
                     <navigationItem key="navigationItem" title="Slide Title" id="j7R-ad-GK3"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="nextCard" destination="OYb-Wj-daO" id="JyW-ph-yhZ"/>
                         <outlet property="presentationTitleNavBar" destination="j7R-ad-GK3" id="SpJ-J1-VKo"/>
+                        <outlet property="previousCard" destination="F91-If-7xQ" id="z8f-zt-5Jm"/>
                         <outlet property="progressBarBarButton" destination="oea-ln-jlR" id="a9e-Ki-8Dk"/>
                         <outlet property="textArea" destination="5BV-ux-sUB" id="ThJ-CG-XiO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOR-a2-1tH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="-52"/>
+            <point key="canvasLocation" x="1314" y="-74"/>
         </scene>
         <!--Drive Files List View Controller-->
         <scene sceneID="RFe-Lx-Ytv">
@@ -454,6 +474,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="3eE-dR-ad3"/>
+        <segue reference="DlJ-K0-bpS"/>
+        <segue reference="gX6-yH-str"/>
     </inferredMetricsTieBreakers>
 </document>

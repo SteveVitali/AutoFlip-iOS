@@ -24,15 +24,13 @@
 
 - (void)saveDataAs:(SaveAsViewController *)saveAsViewController;
 - (void)cancelSave:(SaveAsViewController *)saveasViewController;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 - (IBAction)saveCards:(id)sender;
 - (IBAction)didPressActionsButton:(id)sender;
 
 - (IBAction)nextCard:(id)sender;
 - (IBAction)previousCard:(id)sender;
-
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *previousCard;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextCard;
-
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *actionButton;
 
 @end

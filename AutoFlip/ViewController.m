@@ -23,6 +23,7 @@
 #import "CreateCardsViewController.h"
 #import "DriveFilesListViewController.h"
 #import "DrEditUtilities.h"
+#import "ChooseCardsViewController.h"
 
 @interface ViewController ()
 
@@ -33,6 +34,8 @@
     UIImage *drive;
     UIImage *dropbox;
     UIImage *custom;
+    UIImage *edit;
+    UIImage *present;
     
     Presentation *importedPresentation;
 }
@@ -46,12 +49,16 @@
     drive   = [UIImage imageNamed:@"drive.png"];
     dropbox = [UIImage imageNamed:@"dropbox.png"];
     custom  = [UIImage imageNamed:@"custom.png"];
+    edit    = [UIImage imageNamed:@"edit.png"];
+    present = [UIImage imageNamed:@"present.png"];
     
     //scale 4.0 = 1/4 original image size
     //makes assumptions on image sizes, which is bad but this is just to test the menu thing.
     drive = [self scaleImage:drive withScale:8.0];
     dropbox=[self scaleImage:dropbox withScale:8.0];
     custom =[self scaleImage:custom withScale:4.0];
+    edit   =[self scaleImage:edit withScale:4.0];
+    present=[self scaleImage:present withScale:4.0];
     
     self.logoLabel.font = [UIFont flatFontOfSize:36];
     self.logoLabel.textColor = [UIColor midnightBlueColor];
@@ -59,21 +66,10 @@
     
     self.view.backgroundColor = [UIColor cloudsColor];
     
-    self.importButton.buttonColor = [UIColor turquoiseColor];
-    self.importButton.shadowColor = [UIColor greenSeaColor];
-    self.importButton.shadowHeight = 3.0f;
-    self.importButton.cornerRadius = 6.0f;
-    self.importButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
-    [self.importButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-    [self.importButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
-   
-    self.startButton.buttonColor = [UIColor turquoiseColor];
-    self.startButton.shadowColor = [UIColor greenSeaColor];
-    self.startButton.shadowHeight = 3.0f;
-    self.startButton.cornerRadius = 6.0f;
-    self.startButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
-    [self.startButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-    [self.startButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    [self styleFlatUIButton:self.startButton];
+    [self styleFlatUIButton:self.createButton];
+    [self styleFlatUIButton:self.editButton];
+    [self styleFlatUIButton:self.importButton];
     
 }
 
@@ -90,12 +86,98 @@
                         orientation:(image.imageOrientation)];
 }
 
-- (IBAction)showMenu:(UIButton *)sender {
+- (void)styleFlatUIButton:(FUIButton *)button {
+    
+    button.buttonColor = [UIColor turquoiseColor];
+    button.shadowColor = [UIColor greenSeaColor];
+    button.shadowHeight = 3.0f;
+    button.cornerRadius = 6.0f;
+    button.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    [button setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+}
+
+- (IBAction)didPressStart:(id)sender {
     
     NSArray *menuItems =
     @[
       
-      [KxMenuItem menuItem:@"Import Notecards"
+      [KxMenuItem menuItem:@"Choose Presentation Notes"
+                     image:nil
+                    target:nil
+                    action:NULL],
+      
+      [KxMenuItem menuItem:@"Present"
+                     image:present
+                    target:self
+                    action:@selector(didPressPresent:)],
+      
+      [KxMenuItem menuItem:@"Edit"
+                     image:edit
+                    target:self
+                    action:@selector(didPressEdit:)],
+      ];
+    
+    KxMenuItem *first = menuItems[0];
+    first.foreColor = [UIColor turquoiseColor];
+    first.alignment = NSTextAlignmentCenter;
+    
+    [KxMenu showMenuInView:self.view
+                  fromRect:self.view.frame
+                 menuItems:menuItems];
+}
+
+- (void)didPressEdit:(id)sender {
+    
+    [self performSegueWithIdentifier:@"choosePresentationToEdit" sender:sender];
+}
+
+- (void)didPressPresent:(id)sender {
+    
+    [self performSegueWithIdentifier:@"choosePresentationToPresent" sender:sender];
+}
+
+- (IBAction)didPressCreate:(id)sender {
+    
+    [self performSegueWithIdentifier:@"newCardDeck" sender:sender];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"choosePresentationToPresent"]) {
+        
+        ChooseCardsViewController *controller = (ChooseCardsViewController *)[segue destinationViewController];
+        controller.chooserType = @"present";
+    }
+    else if ([segue.identifier isEqualToString:@"choosePresentationToEdit"]) {
+        
+        ChooseCardsViewController *controller = (ChooseCardsViewController *)[segue destinationViewController];
+        controller.chooserType = @"edit";
+    }
+    else if ([segue.identifier isEqualToString:@"newCardDeck"]) {
+        
+    }
+    else if ([segue.identifier isEqualToString:@"driveFileChooser"]) {
+        
+        UINavigationController *driveNav = (UINavigationController *)[segue destinationViewController];
+        DriveFilesListViewController *controller = (DriveFilesListViewController *)[driveNav viewControllers][0];
+        controller.delegate = self;
+    }
+    else if([segue.identifier isEqualToString:@"createImportedCards"]) {
+        CreateCardsViewController *controller = (CreateCardsViewController *)[segue destinationViewController];
+        controller.presentation = importedPresentation;
+        // This should be changed at some point.
+        controller.presentationTitle = importedPresentation.title;
+        controller.presentationDescription = importedPresentation.description;
+    }
+}
+
+- (IBAction)didPressImport:(id)sender {
+    
+    NSArray *menuItems =
+    @[
+      
+      [KxMenuItem menuItem:@"Import Presentation Notes"
                      image:nil
                     target:nil
                     action:NULL],
@@ -109,21 +191,17 @@
                      image:dropbox
                     target:self
                     action:@selector(pushDropboxView:)],
-      
-      [KxMenuItem menuItem:@"Create cards"
-                     image:custom
-                    target:self
-                    action:@selector(pushCreateCardsView:)],
-      ];
+    ];
     
     KxMenuItem *first = menuItems[0];
     first.foreColor = [UIColor turquoiseColor];
     first.alignment = NSTextAlignmentCenter;
     
     [KxMenu showMenuInView:self.view
-                  fromRect:sender.frame
+                  fromRect:self.view.frame
                  menuItems:menuItems];
 }
+
 
 - (void)pushDriveView:(id)sender {
     
@@ -307,30 +385,20 @@
     return directoryContent;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)returnToRoot {
     
-    if([segue.identifier isEqualToString:@"createImportedCards"]) {
-        CreateCardsViewController *controller = (CreateCardsViewController *)[segue destinationViewController];
-        controller.presentation = importedPresentation;
-        // This should be changed at some point.
-        controller.presentationTitle = importedPresentation.title;
-        controller.presentationDescription = importedPresentation.description;
-    }
-    else if ([segue.identifier isEqualToString:@"driveFiles"]) {
-        
-        UINavigationController *driveNav = (UINavigationController *)[segue destinationViewController];
-        DriveFilesListViewController *controller = (DriveFilesListViewController *)[driveNav viewControllers][0];
-        controller.delegate = self;
-    }
+    [self dismissViewControllerAnimated:NO completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (void)pushCreateCardsView:(id)sender {
+- (void)didReceiveMemoryWarning {
     
-    [self performSegueWithIdentifier:@"createCards" sender:sender];
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)showDebugging:(id)sender {
-
+    
     //[self dropBoxCoreAuthentication];
     
     UIViewController *viewController = [[UIViewController alloc] init];
@@ -338,7 +406,7 @@
     debugView.text = [[LibraryAPI sharedInstance] debuggingResults];
     debugView.frame = CGRectMake(0, 0, 200, 368);
     debugView.textContainer.lineBreakMode = NSLineBreakByCharWrapping;
-
+    
     UIScrollView *scrollView = [[UIScrollView alloc]
                                 initWithFrame:CGRectMake(0, 0, 200, 368)];
     [scrollView addSubview:debugView];
@@ -362,19 +430,4 @@
     }];
 }
 
-- (void)returnToRoot {
-    
-    [self dismissViewControllerAnimated:NO completion:nil];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 @end
-
-

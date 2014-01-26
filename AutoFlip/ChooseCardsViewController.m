@@ -16,6 +16,7 @@
 #import "UIColor+FlatUI.h"
 #import "UINavigationBar+FlatUI.h"
 #import "UIBarButtonItem+FlatUI.h"
+#import "CreateCardsViewController.h"
 
 @interface ChooseCardsViewController ()
 {
@@ -72,6 +73,14 @@
         PresentationViewController *controller =
                                     (PresentationViewController *)[segue destinationViewController];
         controller.presentation = chosenPresentation;
+    }
+    else if ([segue.identifier isEqualToString:@"openPresentationEditor"]) {
+        
+        CreateCardsViewController *controller = (CreateCardsViewController *)[segue destinationViewController];
+        controller.presentation = chosenPresentation;
+        // This should be changed at some point.
+        controller.presentationTitle = chosenPresentation.title;
+        controller.presentationDescription = chosenPresentation.description;
     }
 }
 
@@ -168,7 +177,12 @@
     } else {
         chosenPresentation = [presentations objectAtIndex:indexPath.row];
     }
-    [self performSegueWithIdentifier:@"startPresentation" sender:self];
+    if ([self.chooserType isEqualToString:@"present"]) {
+        [self performSegueWithIdentifier:@"startPresentation" sender:self];
+    }
+    else if ([self.chooserType isEqualToString:@"edit"]) {
+        [self performSegueWithIdentifier:@"openPresentationEditor" sender:self];
+    }
 }
 
 // Override to support conditional editing of the table view.

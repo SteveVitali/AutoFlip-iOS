@@ -18,12 +18,19 @@
 
 @property (weak, nonatomic) IBOutlet FUIButton *startButton;
 @property (weak, nonatomic) IBOutlet FUIButton *importButton;
+@property (weak, nonatomic) IBOutlet FUIButton *createButton;
+@property (weak, nonatomic) IBOutlet FUIButton *editButton;
 @property (weak, nonatomic) IBOutlet UILabel *logoLabel;
 
 @property (nonatomic, readonly) DBRestClient *restClient;
 
-- (IBAction)showMenu:(id)sender;
 - (IBAction)showDebugging:(id)sender;
+
+- (IBAction)didPressImport:(id)sender;
+- (IBAction)didPressCreate:(id)sender;
+- (IBAction)didPressStart:(id)sender;
+- (void)didPressEdit:(id)sender;
+- (void)didPressPresent:(id)sender;
 
 - (void)returnToRoot;
 - (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name;

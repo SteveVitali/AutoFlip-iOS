@@ -45,7 +45,6 @@
     self.progressBarBarButton.customView = customView;
     
     [progressBar setFrame:CGRectMake(-64, 0, 128, 0)];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
