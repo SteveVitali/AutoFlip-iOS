@@ -89,6 +89,7 @@
 		11D11F951878F0510081B1CB /* UITabBar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F801878F0510081B1CB /* UITabBar+FlatUI.m */; };
 		11D11F961878F0510081B1CB /* UITableViewCell+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F821878F0510081B1CB /* UITableViewCell+FlatUI.m */; };
 		11D11F971878F0510081B1CB /* UIToolbar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F841878F0510081B1CB /* UIToolbar+FlatUI.m */; };
+		11D208871895760A00345BD3 /* DesignManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D208861895760A00345BD3 /* DesignManager.m */; };
 		11DC90631874D39600C069D8 /* NewCardDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DC90621874D39600C069D8 /* NewCardDeckViewController.m */; };
 		11E8F76418903EE300A6DF5C /* custom.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E8F76318903EE300A6DF5C /* custom.png */; };
 		11F0C87C1880761E0056CD66 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C87B1880761E0056CD66 /* DropboxSDK.framework */; };
@@ -244,6 +245,8 @@
 		11D11F821878F0510081B1CB /* UITableViewCell+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+FlatUI.m"; sourceTree = "<group>"; };
 		11D11F831878F0510081B1CB /* UIToolbar+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+FlatUI.h"; sourceTree = "<group>"; };
 		11D11F841878F0510081B1CB /* UIToolbar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+FlatUI.m"; sourceTree = "<group>"; };
+		11D208851895760A00345BD3 /* DesignManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignManager.h; sourceTree = "<group>"; };
+		11D208861895760A00345BD3 /* DesignManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignManager.m; sourceTree = "<group>"; };
 		11DC90611874D39600C069D8 /* NewCardDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCardDeckViewController.h; sourceTree = "<group>"; };
 		11DC90621874D39600C069D8 /* NewCardDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCardDeckViewController.m; sourceTree = "<group>"; };
 		11E8F76318903EE300A6DF5C /* custom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom.png; sourceTree = "<group>"; };
@@ -492,6 +495,8 @@
 				11D0D12318720431008CC7FD /* LibraryAPI.m */,
 				11D0D1261872075A008CC7FD /* PersistencyManager.h */,
 				11D0D1271872075A008CC7FD /* PersistencyManager.m */,
+				11D208851895760A00345BD3 /* DesignManager.h */,
+				11D208861895760A00345BD3 /* DesignManager.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -780,6 +785,7 @@
 				11BA10B71881CCE50093851B /* DrEditUtilities.m in Sources */,
 				11D0D12B18721356008CC7FD /* PresentationViewController.m in Sources */,
 				11711F9D1871F2CF00792D36 /* main.m in Sources */,
+				11D208871895760A00345BD3 /* DesignManager.m in Sources */,
 				11D11F4E1878A74E0081B1CB /* NSInvocation+Copy.m in Sources */,
 				11D11F581878AE910081B1CB /* SaveAsViewController.m in Sources */,
 				11BA10A81881C2E20093851B /* GTLDrive_Sources.m in Sources */,

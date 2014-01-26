@@ -24,6 +24,7 @@
 #import "DriveFilesListViewController.h"
 #import "DrEditUtilities.h"
 #import "ChooseCardsViewController.h"
+#import "DesignManager.h"
 
 @interface ViewController ()
 
@@ -37,6 +38,8 @@
     UIImage *edit;
     UIImage *present;
     
+    DesignManager *designManager;
+    
     Presentation *importedPresentation;
 }
 
@@ -46,6 +49,9 @@
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    designManager = [[LibraryAPI sharedInstance] designManager];
+    
     drive   = [UIImage imageNamed:@"drive.png"];
     dropbox = [UIImage imageNamed:@"dropbox.png"];
     custom  = [UIImage imageNamed:@"custom.png"];
@@ -64,13 +70,12 @@
     self.logoLabel.textColor = [UIColor midnightBlueColor];
   //  self.logoLabel.font = [UIFont systemFontOfSize:36];
     
-    self.view.backgroundColor = [UIColor cloudsColor];
+    self.view.backgroundColor = [designManager homeScreenBGColor];
     
-    [self styleFlatUIButton:self.startButton];
-    [self styleFlatUIButton:self.createButton];
-    [self styleFlatUIButton:self.editButton];
-    [self styleFlatUIButton:self.importButton];
-    
+    [self styleFlatUIButton:self.startButton withDesignManager:designManager];
+    [self styleFlatUIButton:self.createButton withDesignManager:designManager];
+    [self styleFlatUIButton:self.editButton withDesignManager:designManager];
+    [self styleFlatUIButton:self.importButton withDesignManager:designManager];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -86,15 +91,15 @@
                         orientation:(image.imageOrientation)];
 }
 
-- (void)styleFlatUIButton:(FUIButton *)button {
+- (void)styleFlatUIButton:(FUIButton *)button withDesignManager:(DesignManager *)manager {
     
-    button.buttonColor = [UIColor turquoiseColor];
-    button.shadowColor = [UIColor greenSeaColor];
+    button.buttonColor = [manager buttonBGColor];
+    button.shadowColor = [manager buttonShadowColor];//[UIColor greenSeaColor];
     button.shadowHeight = 3.0f;
     button.cornerRadius = 6.0f;
     button.titleLabel.font = [UIFont boldFlatFontOfSize:16];
-    [button setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    [button setTitleColor:[manager buttonTextColorNormal] forState:UIControlStateNormal];
+    [button setTitleColor:[manager buttonTextColorHighlighted] forState:UIControlStateHighlighted];
 }
 
 - (IBAction)didPressStart:(id)sender {
@@ -205,7 +210,7 @@
 
 - (void)pushDriveView:(id)sender {
     
-    [self performSegueWithIdentifier:@"driveFiles" sender:sender];
+    [self performSegueWithIdentifier:@"driveFileChooser" sender:sender];
 }
 
 - (void)didCancelDriveFileChooser:(id)sender {

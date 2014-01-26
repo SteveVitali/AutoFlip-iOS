@@ -13,6 +13,8 @@
 #import <OpenEars/LanguageModelGenerator.h>
 #import <OpenEars/AcousticModel.h>
 #import "Notecard.h"
+#import "LibraryAPI.h"
+#import "DesignManager.h"
 
 @interface PresentationViewController () {
     
@@ -90,6 +92,8 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideShowNavigation)];
     tap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tap];
+    
+    [self.textArea setFont:[UIFont systemFontOfSize:[self.designManager.presentTextSize floatValue]]];
 }
 
 - (void) hideShowNavigation {

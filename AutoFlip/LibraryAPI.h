@@ -8,8 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "Presentation.h"
+#import "DesignManager.h"
 
 @interface LibraryAPI : NSObject
+
+// Technically I should have this as a hidden property and just implement its methods in
+// the LibraryAPI.m file, but in this case that would kind of be a waste of time, so I'm
+// just going to make it a property here for convenience.
+// The only difference is that now we have to run [[[LibraryAPI sharedInstance] designManager] someMethod:];
+// instead of [[LibraryAPI sharedInstance] someDesignManagerMethod:];
+@property DesignManager *designManager;
+- (void)setDesignManagerConstantsFromManager:(DesignManager *)manager;
 
 @property NSString *debuggingResults;
 

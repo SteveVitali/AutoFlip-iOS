@@ -14,6 +14,8 @@
 
 #import "LibraryAPI.h"
 #import "PersistencyManager.h"
+#import "DesignManager.h"
+#import "UIColor+FlatUI.h"
 
 @interface LibraryAPI() {
     
@@ -28,6 +30,10 @@
     self = [super init];
     if (self) {
         persistencyManager = [[PersistencyManager alloc] init];
+        self.designManager = [[DesignManager alloc] init];
+        
+        [self setDesignManagerConstantsFromManager:self.designManager];
+        
         self.debuggingResults = [[NSString alloc] init];
         self.debuggingResults = @"Debugging Results:\n";
     }
@@ -63,6 +69,8 @@
                          orientation:(image.imageOrientation)];
 }
 
+#pragma mark - PersistencyManager methods
+
 - (void)savePresentations {
     
     [persistencyManager savePresentations];
@@ -82,6 +90,29 @@
     
     [persistencyManager deletePresentationAtIndex:index];
 }
+
+#pragma mark - DesignManager methods
+// Color/Size constants for all the views in the application.
+- (void)setDesignManagerConstantsFromManager:(DesignManager *)manager {
+    
+    // Button colors
+    [manager setButtonBGColor:[UIColor turquoiseColor]];
+    [manager setButtonTextColorNormal:[UIColor cloudsColor]];
+    [manager setButtonTextColorHighlighted:[UIColor cloudsColor]];
+    [manager setButtonShadowColor:[UIColor greenSeaColor]];
+    // Screen backgrounds
+    [manager setHomeScreenBGColor:[UIColor cloudsColor]];
+    // TableView colors for ChooseCardsViewController
+    [manager setTableCellBGColorNormal:[UIColor cloudsColor]];
+    [manager setTableCellBGColorSelected:[UIColor grayColor]];
+    [manager setTableCellSeparatorColor:[UIColor cloudsColor]];
+    [manager setTableCellTextColor:[UIColor blackColor]];
+    [manager setTableCellDetailColor:[UIColor grayColor]];
+    // Text sizes
+    [manager setEditorTextSize:[NSNumber numberWithInt:14]];
+    [manager setPresentTextSize:[NSNumber numberWithInt:18]];
+}
+
 
 - (void)customLog:(NSString *)log {
     

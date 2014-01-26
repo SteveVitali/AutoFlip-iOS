@@ -10,11 +10,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Presentation.h"
+#import "DesignManager.h"
 
 @interface CardDeckViewController : UIViewController
 
 @property Presentation *presentation;
 @property NSInteger cardIndex;
+@property DesignManager *designManager;
 
 @property (strong, nonatomic) IBOutlet UIView *masterView;
 @property (weak, nonatomic) IBOutlet UITextView *textArea;

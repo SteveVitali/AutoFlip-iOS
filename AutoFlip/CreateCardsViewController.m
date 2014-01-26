@@ -13,6 +13,7 @@
 #import "KxMenu.h"
 #import "ViewController.h"
 #import "LibraryAPI.h"
+#import "DesignManager.h"
 
 @interface CreateCardsViewController () {
     
@@ -83,6 +84,8 @@
     
     self.textArea.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     self.scrollView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    [self.textArea setFont:[UIFont systemFontOfSize:[self.designManager.editorTextSize floatValue]]];
     
     [self reloadCard];
 }

@@ -9,6 +9,8 @@
 #import "CardDeckViewController.h"
 #import "Presentation.h"
 #import "UIColor+FlatUI.h"
+#import "LibraryAPI.h"
+#import "DesignManager.h"
 
 @interface CardDeckViewController () {
     
@@ -30,6 +32,9 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    self.designManager = [[LibraryAPI sharedInstance] designManager];
+    
 	// Do any additional setup after loading the view.
     self.cardIndex = 0;
     [self reloadCard];

@@ -9,24 +9,14 @@
 #import "AppDelegate.h"
 //#import <DropboxSDK/DropboxSDK.h>
 #import <DBChooser/DBChooser.h>
+#import "LibraryAPI.h"
+#import "UIColor+FlatUI.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // Override point for customization after application launch.
-   
-    // More Dropbox Core API stuff that we're commenting out
-    /*DBSession* dbSession =
-    [[DBSession alloc]
-      initWithAppKey:@"bq6mrrr7dinh2si"
-      appSecret:@"oo4jwvush1fzufw"
-      root:kDBRootDropbox]; // either kDBRootAppFolder or kDBRootDropbox
-    
-    [DBSession setSharedSession:dbSession];
-    
-    NSLog(@"dbsession: %@",[DBSession sharedSession].userIds);
-        */
     
     return YES;
 }

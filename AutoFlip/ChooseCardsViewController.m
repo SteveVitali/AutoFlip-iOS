@@ -17,12 +17,15 @@
 #import "UINavigationBar+FlatUI.h"
 #import "UIBarButtonItem+FlatUI.h"
 #import "CreateCardsViewController.h"
+#import "DesignManager.h"
 
 @interface ChooseCardsViewController ()
 {
     NSMutableArray *presentations;
     Presentation *chosenPresentation;
     __weak IBOutlet UIBarButtonItem *editButton;
+    
+    DesignManager *designManager;
 }
 @end
 
@@ -40,6 +43,8 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    designManager = [[LibraryAPI sharedInstance] designManager];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -49,16 +54,11 @@
     presentations = [[LibraryAPI sharedInstance] getPresentations];
     self.searchResults = [NSMutableArray arrayWithCapacity:[presentations count]];
     
-    //Set the separator color
-    self.tableView.separatorColor = [UIColor cloudsColor];
-    
-    //Set the background color
-    self.tableView.backgroundColor = [UIColor cloudsColor];
-    // self.tableView.backgroundView = nil;
+    //Set table colors
+    self.tableView.separatorColor = [designManager tableCellSeparatorColor];
     
     [self.navigationController.navigationBar setHidden:NO];
     self.view.backgroundColor = [UIColor cloudsColor];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -139,10 +139,17 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                         reuseIdentifier:CellIdentifier];
     }
-    [cell configureFlatCellWithColor:[UIColor cloudsColor] selectedColor:[UIColor lightGrayColor]];
-    [cell.textLabel setTextColor:[UIColor blackColor]];
+    // Configure cell design
+    [cell configureFlatCellWithColor:[UIColor cloudsColor] selectedColor:[designManager tableCellBGColorSelected]];
     
-    [self.tableView setSeparatorColor:[UIColor lightGrayColor]];
+    [cell.textLabel setTextColor:[designManager tableCellTextColor]];
+    
+    // Both of these BGColors need to be specified because of the accessory in the UITableViewCell
+    [cell.contentView setBackgroundColor:[designManager tableCellBGColorNormal]];
+    [cell.backgroundView setBackgroundColor:[designManager tableCellBGColorNormal]];
+    [cell.detailTextLabel setTextColor:[designManager tableCellDetailColor]];
+    
+    [self.tableView setSeparatorColor:[designManager tableCellSeparatorColor]];
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
     cell.cornerRadius = 5.f; //Optional
@@ -157,6 +164,7 @@
     } else {
         presentation = [presentations objectAtIndex:indexPath.row];
     }
+    
     cell.textLabel.text = presentation.title;
     cell.detailTextLabel.text = presentation.description;
     //Assuming the icon is a .png and is named the same as the "type"
