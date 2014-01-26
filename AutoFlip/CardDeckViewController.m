@@ -13,7 +13,8 @@
 #import "DesignManager.h"
 
 @interface CardDeckViewController () {
-    
+    BOOL canSwipeLeft;
+    BOOL canSwipeRight;
 }
 
 @end
@@ -50,6 +51,29 @@
     self.progressBarBarButton.customView = customView;
     
     [progressBar setFrame:CGRectMake(-64, 0, 128, 0)];
+    
+    UISwipeGestureRecognizer* swipeLeftGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeLeftFrom:)];
+    swipeLeftGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    UISwipeGestureRecognizer* swipeRightGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeRightFrom:)];
+    swipeRightGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [self.view addGestureRecognizer:swipeLeftGestureRecognizer];
+    [self.view addGestureRecognizer:swipeRightGestureRecognizer];
+}
+
+- (void)handleSwipeLeftFrom:(UIGestureRecognizer*)recognizer {
+    
+    if (canSwipeLeft) {
+        [self nextCard:nil];
+    }
+}
+
+- (void)handleSwipeRightFrom:(UIGestureRecognizer*)recognizer {
+    
+    if (canSwipeRight) {
+        [self previousCard:nil];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -76,13 +100,17 @@
     
     if (self.cardIndex == 0) {
         [self.previousCard setEnabled:NO];
+        canSwipeRight = NO;
     } else {
         [self.previousCard setEnabled:YES];
+        canSwipeRight = YES;
     }
     if (self.cardIndex == self.presentation.notecards.count - 1) {
         [self.nextCard setEnabled:NO];
+        canSwipeLeft = NO;
     } else {
         [self.nextCard setEnabled:YES];
+        canSwipeLeft = YES;
     }
     
     [self updateProgressBar];
