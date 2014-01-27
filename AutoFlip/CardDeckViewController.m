@@ -13,8 +13,7 @@
 #import "DesignManager.h"
 
 @interface CardDeckViewController () {
-    BOOL canSwipeLeft;
-    BOOL canSwipeRight;
+
 }
 
 @end
@@ -64,14 +63,14 @@
 
 - (void)handleSwipeLeftFrom:(UIGestureRecognizer*)recognizer {
     
-    if (canSwipeLeft) {
+    if (self.hasNextCard) {
         [self nextCard:nil];
     }
 }
 
 - (void)handleSwipeRightFrom:(UIGestureRecognizer*)recognizer {
     
-    if (canSwipeRight) {
+    if (self.hasPreviousCard) {
         [self previousCard:nil];
     }
 }
@@ -100,17 +99,17 @@
     
     if (self.cardIndex == 0) {
         [self.previousCard setEnabled:NO];
-        canSwipeRight = NO;
+        self.hasPreviousCard = NO;
     } else {
         [self.previousCard setEnabled:YES];
-        canSwipeRight = YES;
+        self.hasPreviousCard = YES;
     }
     if (self.cardIndex == self.presentation.notecards.count - 1) {
         [self.nextCard setEnabled:NO];
-        canSwipeLeft = NO;
+        self.hasNextCard = NO;
     } else {
         [self.nextCard setEnabled:YES];
-        canSwipeLeft = YES;
+        self.hasNextCard = YES;
     }
     
     [self updateProgressBar];

@@ -18,6 +18,9 @@
 @property NSInteger cardIndex;
 @property DesignManager *designManager;
 
+@property BOOL hasNextCard;
+@property BOOL hasPreviousCard;
+
 @property (strong, nonatomic) IBOutlet UIView *masterView;
 @property (weak, nonatomic) IBOutlet UITextView *textArea;
 @property (weak, nonatomic) IBOutlet UINavigationItem *presentationTitleNavBar;

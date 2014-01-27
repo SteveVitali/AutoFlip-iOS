@@ -275,12 +275,20 @@ UIAlertView *loadingAlert;
 
 - (void)uploadFileToGoogleDrive:(NSString*)filePath {
     
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString  *documentsDirectory = [paths objectAtIndex:0];
+    NSString  *zippedPath = [NSString stringWithFormat:@"%@/test.zip", documentsDirectory];
+    
+    NSArray *inputPaths = [[LibraryAPI sharedInstance] listFilesAtPath:filePath];
+    
+    [SSZipArchive createZipFileAtPath:zippedPath withFilesAtPaths:inputPaths];
+    
     GTLDriveFile *driveFile = [[GTLDriveFile alloc] init];
     
-    driveFile.mimeType = @"";
+    driveFile.mimeType = @"application/vnd.openxmlformats-officedocument.presentationml.presentation";
     
     GTLUploadParameters *uploadParameters = [GTLUploadParameters
-                                             uploadParametersWithData:[NSData dataWithContentsOfFile:filePath]
+                                             uploadParametersWithData:[NSData dataWithContentsOfFile:zippedPath]
                                              MIMEType:driveFile.mimeType];
     
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesInsertWithObject:driveFile
@@ -291,7 +299,7 @@ UIAlertView *loadingAlert;
                                       GTLDriveFile *updatedFile,
                                       NSError *error) {
                       if (error == nil) {
-                          NSLog(@"File uploaded successfully from %@", filePath);
+                          NSLog(@"File uploaded successfully from %@", zippedPath);
                       } else {
                           NSLog(@"Upload Failed: %@", error);
                       }

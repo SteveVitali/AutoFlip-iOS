@@ -64,6 +64,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [self.navigationController.navigationBar setHidden:NO];
+    [self.navigationController setToolbarHidden:YES];
     [self.tableView reloadData];
 }
 
@@ -165,9 +166,9 @@
         presentation = [presentations objectAtIndex:indexPath.row];
     }
     
-    NSString *arrayIndex = [NSString stringWithFormat:@"%d",presentation.arrayIndex.integerValue];
-    cell.textLabel.text = [arrayIndex stringByAppendingString:presentation.title];
-    //cell.textLabel.text = presentation.title;
+    //NSString *arrayIndex = [NSString stringWithFormat:@"%d",presentation.arrayIndex.integerValue];
+    //cell.textLabel.text = [arrayIndex stringByAppendingString:presentation.title];
+    cell.textLabel.text = presentation.title;
     cell.detailTextLabel.text = presentation.description;
     //Assuming the icon is a .png and is named the same as the "type"
     cell.imageView.image = [UIImage imageNamed:[presentation.type stringByAppendingString:@".png"]];

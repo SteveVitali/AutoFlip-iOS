@@ -12,9 +12,12 @@
 #import <OpenEars/PocketsphinxController.h>
 #import <OpenEars/OpenEarsEventsObserver.h>
 
-@interface PresentationViewController : CardDeckViewController
+@interface PresentationViewController : CardDeckViewController <OpenEarsEventsObserverDelegate>
 
 @property (strong, nonatomic) PocketsphinxController *pocketsphinxController;
 @property (strong, nonatomic) OpenEarsEventsObserver *openEarsEventsObserver;
+
+@property NSMutableSet *spokenWords;
+@property NSMutableSet *allWords;
 
 @end
