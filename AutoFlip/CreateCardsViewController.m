@@ -539,6 +539,7 @@
         NSString *stringBeforeBullet = [textAreaContent substringToIndex:cursorPosition.location-2];
         NSString *stringAfterBullet  = [textAreaContent substringFromIndex:cursorPosition.location];
         self.textArea.text = [stringBeforeBullet stringByAppendingString:stringAfterBullet];
+        [self.textArea setSelectedRange:NSMakeRange(stringBeforeBullet.length, 0)];
     }
 }
 

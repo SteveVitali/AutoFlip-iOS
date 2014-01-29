@@ -154,7 +154,7 @@
     
     NSLog(@"Spoken words: %d of %d: %@", self.spokenWords.count, self.allWords.count, portionOfCardSpoken);
     float progress = (float)[self.spokenWords count]/(float)[self.allWords count];
-    if (progress >= .5) {
+    if (progress >= .3) {
         if (self.hasNextCard) {
             [self nextCard:nil];
         }
