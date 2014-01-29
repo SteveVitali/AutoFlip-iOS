@@ -46,7 +46,7 @@
 		11946E0D1894D20900A4D17A /* present.png in Resources */ = {isa = PBXBuildFile; fileRef = 11946E0B1894D20900A4D17A /* present.png */; };
 		11946E0E1894D20900A4D17A /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 11946E0C1894D20900A4D17A /* edit.png */; };
 		1194B23618772DB8008AD3AE /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194B23518772DB8008AD3AE /* KxMenu.m */; };
-		11A44137187360EA00FB5863 /* CreateCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A44136187360EA00FB5863 /* CreateCardsViewController.m */; };
+		11A44137187360EA00FB5863 /* OldCreateCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A44136187360EA00FB5863 /* OldCreateCardsViewController.m */; };
 		11A4413A1873620400FB5863 /* CardDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A441391873620400FB5863 /* CardDeckViewController.m */; };
 		11BA10A81881C2E20093851B /* GTLDrive_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BA10A61881C2E20093851B /* GTLDrive_Sources.m */; };
 		11BA10AD1881C4460093851B /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BA10AB1881C3690093851B /* GTMOAuth2ViewTouch.xib */; };
@@ -61,6 +61,7 @@
 		11D0D12B18721356008CC7FD /* PresentationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D12A18721356008CC7FD /* PresentationViewController.m */; };
 		11D0D13B18722DD6008CC7FD /* drive.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D0D13A18722DD6008CC7FD /* drive.png */; };
 		11D0D13D18722E34008CC7FD /* dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D0D13C18722E34008CC7FD /* dropbox.png */; };
+		11D0FBE618994CF6009D067F /* CreateCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0FBE518994CF6009D067F /* CreateCardsViewController.m */; };
 		11D11F431878A6620081B1CB /* MZFormSheetBackgroundWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F3A1878A6620081B1CB /* MZFormSheetBackgroundWindow.m */; };
 		11D11F441878A6620081B1CB /* MZFormSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F3C1878A6620081B1CB /* MZFormSheetController.m */; };
 		11D11F451878A6620081B1CB /* MZFormSheetSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D11F3E1878A6620081B1CB /* MZFormSheetSegue.m */; };
@@ -163,8 +164,8 @@
 		11946E0C1894D20900A4D17A /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		1194B23418772DB8008AD3AE /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KxMenu.h; path = AutoFlip/KxMenu.h; sourceTree = "<group>"; };
 		1194B23518772DB8008AD3AE /* KxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KxMenu.m; path = AutoFlip/KxMenu.m; sourceTree = "<group>"; };
-		11A44135187360EA00FB5863 /* CreateCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCardsViewController.h; sourceTree = "<group>"; };
-		11A44136187360EA00FB5863 /* CreateCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCardsViewController.m; sourceTree = "<group>"; };
+		11A44135187360EA00FB5863 /* OldCreateCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldCreateCardsViewController.h; sourceTree = "<group>"; };
+		11A44136187360EA00FB5863 /* OldCreateCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldCreateCardsViewController.m; sourceTree = "<group>"; };
 		11A441381873620400FB5863 /* CardDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDeckViewController.h; sourceTree = "<group>"; };
 		11A441391873620400FB5863 /* CardDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDeckViewController.m; sourceTree = "<group>"; };
 		11BA10A61881C2E20093851B /* GTLDrive_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLDrive_Sources.m; path = Source/Services/Drive/Generated/GTLDrive_Sources.m; sourceTree = "<group>"; };
@@ -190,6 +191,8 @@
 		11D0D12A18721356008CC7FD /* PresentationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentationViewController.m; sourceTree = "<group>"; };
 		11D0D13A18722DD6008CC7FD /* drive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = drive.png; path = ../drive.png; sourceTree = "<group>"; };
 		11D0D13C18722E34008CC7FD /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dropbox.png; path = ../dropbox.png; sourceTree = "<group>"; };
+		11D0FBE418994CF6009D067F /* CreateCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCardsViewController.h; sourceTree = "<group>"; };
+		11D0FBE518994CF6009D067F /* CreateCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCardsViewController.m; sourceTree = "<group>"; };
 		11D11F391878A6620081B1CB /* MZFormSheetBackgroundWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetBackgroundWindow.h; sourceTree = "<group>"; };
 		11D11F3A1878A6620081B1CB /* MZFormSheetBackgroundWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetBackgroundWindow.m; sourceTree = "<group>"; };
 		11D11F3B1878A6620081B1CB /* MZFormSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetController.h; sourceTree = "<group>"; };
@@ -368,6 +371,7 @@
 		11711F971871F2CF00792D36 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				11D0FBE718994CFA009D067F /* Deprecated */,
 				11FC52711880F97300195730 /* GTMOAuth2ViewTouch.xib */,
 				11711F981871F2CF00792D36 /* AutoFlip-Info.plist */,
 				11711F991871F2CF00792D36 /* InfoPlist.strings */,
@@ -503,6 +507,15 @@
 			name = API;
 			sourceTree = "<group>";
 		};
+		11D0FBE718994CFA009D067F /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				11A44135187360EA00FB5863 /* OldCreateCardsViewController.h */,
+				11A44136187360EA00FB5863 /* OldCreateCardsViewController.m */,
+			);
+			name = Deprecated;
+			sourceTree = "<group>";
+		};
 		11D11F381878A6620081B1CB /* MZFormSheetController */ = {
 			isa = PBXGroup;
 			children = (
@@ -536,8 +549,8 @@
 		11D11F511878AE470081B1CB /* CreateCardsViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				11A44135187360EA00FB5863 /* CreateCardsViewController.h */,
-				11A44136187360EA00FB5863 /* CreateCardsViewController.m */,
+				11D0FBE418994CF6009D067F /* CreateCardsViewController.h */,
+				11D0FBE518994CF6009D067F /* CreateCardsViewController.m */,
 				11D11F551878AE910081B1CB /* SaveAsViewController.h */,
 				11D11F561878AE910081B1CB /* SaveAsViewController.m */,
 				11D11F571878AE910081B1CB /* SaveAsView.xib */,
@@ -747,7 +760,7 @@
 			files = (
 				11D11F901878F0510081B1CB /* UINavigationBar+FlatUI.m in Sources */,
 				11D0D12418720431008CC7FD /* LibraryAPI.m in Sources */,
-				11A44137187360EA00FB5863 /* CreateCardsViewController.m in Sources */,
+				11A44137187360EA00FB5863 /* OldCreateCardsViewController.m in Sources */,
 				11D0D1281872075A008CC7FD /* PersistencyManager.m in Sources */,
 				11D11F431878A6620081B1CB /* MZFormSheetBackgroundWindow.m in Sources */,
 				11D11F881878F0510081B1CB /* FUIPopoverBackgroundView.m in Sources */,
@@ -773,6 +786,7 @@
 				11D11F921878F0510081B1CB /* UIProgressView+FlatUI.m in Sources */,
 				11BA10B41881CC580093851B /* DriveFilesListViewController.m in Sources */,
 				11D11F891878F0510081B1CB /* FUISegmentedControl.m in Sources */,
+				11D0FBE618994CF6009D067F /* CreateCardsViewController.m in Sources */,
 				11A4413A1873620400FB5863 /* CardDeckViewController.m in Sources */,
 				11D11F861878F0510081B1CB /* FUIButton.m in Sources */,
 				11D11F8B1878F0510081B1CB /* FUITextField.m in Sources */,

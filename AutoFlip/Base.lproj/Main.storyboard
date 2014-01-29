@@ -19,10 +19,10 @@
             </objects>
             <point key="canvasLocation" x="29" y="356"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller - createImportedCards-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController title="createImportedCards" id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -89,11 +89,11 @@
                         <outlet property="importButton" destination="bs3-nX-3zs" id="cvE-QG-Gc0"/>
                         <outlet property="logoLabel" destination="rva-pY-OZ8" id="UBZ-Pf-oJI"/>
                         <outlet property="startButton" destination="f0O-Zt-ndL" id="dla-OU-5kw"/>
-                        <segue destination="x40-BT-Z59" kind="push" identifier="createImportedCards" id="gX6-yH-str"/>
                         <segue destination="BI9-0p-ewz" kind="modal" identifier="driveFileChooser" id="A8e-Sg-bzX"/>
                         <segue destination="pdT-Q6-8Jf" kind="push" identifier="newCardDeck" id="oAJ-Zt-2Zq"/>
                         <segue destination="21i-NN-olK" kind="push" identifier="choosePresentationToEdit" id="sQh-Ct-Sgu"/>
                         <segue destination="21i-NN-olK" kind="push" identifier="choosePresentationToPresent" id="DlJ-K0-bpS"/>
+                        <segue destination="LHR-qD-Y6Y" kind="push" id="fVV-8k-p3T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -148,6 +148,16 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9PM-wN-6JM">
+                                <rect key="frame" x="99" y="313" width="123" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Test Create Cards">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressTestCreate:" destination="pdT-Q6-8Jf" eventType="touchUpInside" id="gbf-pE-zIZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -163,7 +173,7 @@
                         <outlet property="descriptionFieldLabel" destination="aPM-vS-dzZ" id="hxM-1O-cSE"/>
                         <outlet property="titleField" destination="FsQ-ZL-3vJ" id="DyE-LE-EEU"/>
                         <outlet property="titleFieldLabel" destination="Qee-tX-1Ws" id="dWJ-gV-yv0"/>
-                        <segue destination="x40-BT-Z59" kind="push" identifier="createCards" id="3eE-dR-ad3"/>
+                        <segue destination="LHR-qD-Y6Y" kind="push" identifier="createCards" id="1Dd-mx-Ee7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f5o-X9-sIZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -185,10 +195,10 @@
             </objects>
             <point key="canvasLocation" x="872" y="1014"/>
         </scene>
-        <!--Create Cards View Controller - Presentation Title-->
+        <!--Old Create Cards View Controller - Presentation Title-->
         <scene sceneID="5Y0-3c-EHN">
             <objects>
-                <viewController id="x40-BT-Z59" customClass="CreateCardsViewController" sceneMemberID="viewController">
+                <viewController id="x40-BT-Z59" customClass="OldCreateCardsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t9x-0N-6ex">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -251,7 +261,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31d-IR-njV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="484"/>
+            <point key="canvasLocation" x="1916" y="366"/>
         </scene>
         <!--Choose Cards View Controller - Choose a Presentation Deck-->
         <scene sceneID="f8r-UC-uJa">
@@ -316,7 +326,7 @@
                         <outlet property="searchBar" destination="wDy-z2-Kgq" id="9xw-W2-O7s"/>
                         <outlet property="searchDisplayController" destination="KIa-bJ-qyc" id="Vz3-1z-ZoT"/>
                         <segue destination="fos-MX-0Bw" kind="push" identifier="startPresentation" id="khJ-cJ-RNh"/>
-                        <segue destination="x40-BT-Z59" kind="push" identifier="openPresentationEditor" id="pgL-ue-QQX"/>
+                        <segue destination="LHR-qD-Y6Y" kind="push" identifier="openPresentationEditor" id="Lp7-11-OHQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyb-Qx-K6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -341,8 +351,8 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="5BV-ux-sUB">
-                                <rect key="frame" x="0.0" y="66" width="568" height="224"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -462,7 +472,68 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1306" y="1014"/>
+            <point key="canvasLocation" x="1314" y="1014"/>
+        </scene>
+        <!--Create Cards View Controller - Presentation Title-->
+        <scene sceneID="f1m-CY-4Po">
+            <objects>
+                <viewController id="LHR-qD-Y6Y" customClass="CreateCardsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Alh-Bx-PDT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" id="4TM-ug-Nhu">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem systemItem="rewind" id="lcO-jQ-jRV">
+                            <connections>
+                                <action selector="previousCard:" destination="LHR-qD-Y6Y" id="8T9-5t-zOh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="4u4-uC-Q2u"/>
+                        <barButtonItem title="Progress Bar" id="RDW-VO-GsO"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="xvu-4I-SLy"/>
+                        <barButtonItem systemItem="fastForward" id="uGy-oe-eNk">
+                            <connections>
+                                <action selector="nextCard:" destination="LHR-qD-Y6Y" id="aqQ-ec-Cqk"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Presentation Title" id="xw6-JI-QU3">
+                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="lej-3P-UZU">
+                            <connections>
+                                <action selector="saveCards:" destination="LHR-qD-Y6Y" id="8oK-HK-X5u"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Actions" id="1h5-mE-fqP">
+                            <connections>
+                                <action selector="didPressActionsButton:" destination="LHR-qD-Y6Y" id="LMA-EC-9Ip"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="actionButton" destination="1h5-mE-fqP" id="UN4-IY-RbN"/>
+                        <outlet property="nextCard" destination="uGy-oe-eNk" id="uOr-aj-hyz"/>
+                        <outlet property="presentationTitleNavBar" destination="xw6-JI-QU3" id="Y0n-qZ-miz"/>
+                        <outlet property="previousCard" destination="lcO-jQ-jRV" id="YXd-hI-5Wj"/>
+                        <outlet property="progressBarBarButton" destination="RDW-VO-GsO" id="0v9-vw-nLR"/>
+                        <outlet property="saveButton" destination="lej-3P-UZU" id="dZW-DY-96f"/>
+                        <outlet property="textArea" destination="4TM-ug-Nhu" id="SZR-DZ-hwi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oDo-1v-D3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1916" y="1014"/>
         </scene>
     </scenes>
     <resources>
@@ -475,6 +546,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="DlJ-K0-bpS"/>
-        <segue reference="gX6-yH-str"/>
+        <segue reference="Lp7-11-OHQ"/>
     </inferredMetricsTieBreakers>
 </document>

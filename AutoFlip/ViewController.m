@@ -20,7 +20,7 @@
 #import "SSZipArchive.h"
 #import "Presentation.h"
 #import "Notecard.h"
-#import "CreateCardsViewController.h"
+#import "OldCreateCardsViewController.h"
 #import "DriveFilesListViewController.h"
 #import "DrEditUtilities.h"
 #import "ChooseCardsViewController.h"
@@ -169,7 +169,7 @@
         controller.delegate = self;
     }
     else if([segue.identifier isEqualToString:@"createImportedCards"]) {
-        CreateCardsViewController *controller = (CreateCardsViewController *)[segue destinationViewController];
+        OldCreateCardsViewController *controller = (OldCreateCardsViewController *)[segue destinationViewController];
         controller.presentation = importedPresentation;
         // This should be changed at some point.
         controller.presentationTitle = importedPresentation.title;

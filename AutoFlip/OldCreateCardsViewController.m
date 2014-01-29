@@ -1,12 +1,12 @@
 //
-//  TestCreateCardsViewController.m
+//  CreateCardsViewController.m
 //  AutoFlip
 //
 //  Created by Steve John Vitali on 12/31/13.
 //  Copyright (c) 2013 Steve John Vitali. All rights reserved.
 //
 
-#import "CreateCardsViewController.h"
+#import "OldCreateCardsViewController.h"
 #import "SaveAsViewController.h"
 #import "Notecard.h"
 #import "MZFormSheetController.h"
@@ -15,7 +15,7 @@
 #import "LibraryAPI.h"
 #import "DesignManager.h"
 
-@interface CreateCardsViewController () {
+@interface OldCreateCardsViewController () {
     
     float kbHeight;
     // For the saving as
@@ -27,8 +27,9 @@
 - (void)exportCards;
 @end
 
-@implementation CreateCardsViewController {
+@implementation OldCreateCardsViewController {
     
+    NSInteger heightOfNavAndButtons;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -60,6 +61,11 @@
     
     [self registerForNotifications];
     [self.textArea setDelegate:self];
+    [self.scrollView setDelegate:self];
+    
+    // hardcoding it because not sure how to get programmatically
+    // for some reason self.presentationNavBar.frame.height doesn't work
+    heightOfNavAndButtons = 56;
     
     self.navigationItem.hidesBackButton = YES;
     
@@ -72,8 +78,10 @@
     
     UITapGestureRecognizer *tapScroll = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     tapScroll.numberOfTapsRequired = 2;
+    [self.scrollView addGestureRecognizer:tapScroll];
     
     self.textArea.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.scrollView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
     [self.textArea setFont:[UIFont systemFontOfSize:[self.designManager.editorTextSize floatValue]]];
     
@@ -81,9 +89,9 @@
 }
 
 - (void) hideKeyboard {
-    
+
     [self.textArea resignFirstResponder];
-    
+
 }
 
 - (void)registerForNotifications {
@@ -194,7 +202,7 @@
     [self saveCardTextToPresentation];
     
     [self.textArea resignFirstResponder];
-    
+
     // If it hasn't been saved yet, since arrayIndex property gets set in the addPresentation:atIndex method
     if (!self.presentation.arrayIndex) {
         [[LibraryAPI sharedInstance] addPresentation:self.presentation atIndex:0];
@@ -247,20 +255,20 @@
 }
 
 - (void)saveAs {
-    
-    /*  UIAlertView * dialog = [[UIAlertView alloc] initWithTitle:@"Save presentation as..."
-     message:@" "
-     delegate:self
-     cancelButtonTitle:@"Cancel"
-     otherButtonTitles:@"Save", nil];
-     */
+   
+  /*  UIAlertView * dialog = [[UIAlertView alloc] initWithTitle:@"Save presentation as..."
+                                                      message:@" "
+                                                     delegate:self
+                                            cancelButtonTitle:@"Cancel"
+                                            otherButtonTitles:@"Save", nil];
+  */
     //It turns out UIAlertView has been deprecated, so now using custom class from github
     // MZFormSheetController
-    
+
     SaveAsViewController *saveAsController = [[SaveAsViewController alloc]
-                                              initWithPlaceholderTextTitle:self.presentation.title
-                                              description:self.presentation.description];
-    
+                                       initWithPlaceholderTextTitle:self.presentation.title
+                                                        description:self.presentation.description];
+
     saveAsController.delegate = self;
     
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:saveAsController];
@@ -277,7 +285,7 @@
     };
     
     [formSheet presentAnimated:YES completionHandler:^(UIViewController *presentedFSViewController) {
-        
+
     }];
 }
 
@@ -286,25 +294,25 @@
     
     [self.presentation setTitle:saveAsController.titleField.text];
     [self.presentation setDescription:saveAsController.descriptionField.text];
-    // [self.presentationTitleNavBar setTitle:[self presentationTitle]];
+   // [self.presentationTitleNavBar setTitle:[self presentationTitle]];
     // For some reason, using the dot notation will make the title nav bar update
     // when the property changes, but the above notation will not.
     self.presentationTitleNavBar.title = self.presentation.title;
-    
+
     [self mz_dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
         //
     }];
 }
 
 - (void)cancelSave:(SaveAsViewController *)saveasViewController {
-    
+
     [self mz_dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
-        //
+        // 
     }];
 }
 
 - (void)exportCards {
-    
+
     UIImage *drive   = [UIImage imageNamed:@"drive.png"];
     UIImage *dropbox = [UIImage imageNamed:@"dropbox.png"];
     UIImage *custom  = [UIImage imageNamed:@"custom.png"];
@@ -378,30 +386,32 @@
     
     // kbHeight gets "initialized" here because it needs the notification to get the kbHeight
     kbHeight = [self getKeyboardHeight:aNotification];
-    
-    CGRect frame = CGRectMake(self.textArea.frame.origin.x, self.textArea.frame.origin.y,
-                              self.textArea.frame.size.width, self.textArea.frame.size.height-kbHeight);
-    [self.textArea setFrame:frame];
-    
+    self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x,
+                                       self.scrollView.frame.origin.y,
+                                       self.view.frame.size.width,
+                                       self.view.frame.size.height-kbHeight);
+    [self scrollToCursor];
 }
 
 // Called when the UIKeyboardWillHideNotification is sent
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
     NSLog(@"this runs keyboard will hide");
-    CGRect frame = CGRectMake(self.textArea.frame.origin.x, self.textArea.frame.origin.y,
-                              self.textArea.frame.size.width, self.textArea.frame.size.height+kbHeight);
-    [self.textArea setFrame:frame];
+    // Make it bigger again:
+    self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x,
+                                       self.scrollView.frame.origin.y,
+                                       self.view.frame.size.width,
+                                       self.view.frame.size.height);
 }
 
 #pragma mark - rotation/orientation-related methods
 
--(void)didRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                duration:(NSTimeInterval)duration {
     
-    CGRect frame = self.navigationController.view.bounds;
-    [self.textArea setFrame:frame];
-
+    CGRect frame = [[UIScreen mainScreen] bounds];
+    
+    self.scrollView.frame = frame;
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
@@ -413,7 +423,7 @@
 - (float)getKeyboardHeight:(NSNotification*)aNotification {
     
     NSDictionary* info = [aNotification userInfo];
-    
+
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     if(UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)){
@@ -422,6 +432,58 @@
     return kbSize.height;
     //You're probably wondering where the 25 came from. It came from fuck you, that's where.
     //You're probably wondering what 25 I'm talking about; again, fuck you, that's what.
+}
+
+// found most of this method on stackoverflow
+// should be called in textViewDidChange: and textViewDidChangeSelection:
+- (void)scrollToCursor {
+    
+    // if there is a selection cursor
+    if (self.textArea.selectedRange.location != NSNotFound) {
+        
+        float verticalPaddingBecauseFuckYou;
+        
+        UIInterfaceOrientation orient = [UIApplication sharedApplication].statusBarOrientation;
+        if (UIInterfaceOrientationIsLandscape(orient)){
+            verticalPaddingBecauseFuckYou = 112;
+        } else {
+            verticalPaddingBecauseFuckYou = 224;
+        }
+        //NSLog(@"frame size height %f",self.view.frame.size.height);
+        // work out how big the text view would be if the text only went up to the cursor
+        NSRange range;
+        range.location = self.textArea.selectedRange.location;
+        range.length = self.textArea.text.length - range.location;
+        NSString *string =
+                  [self.textArea.text stringByReplacingCharactersInRange:range withString:@""];
+        CGSize size = [string sizeWithFont:self.textArea.font
+                         constrainedToSize:self.textArea.bounds.size
+                             lineBreakMode:NSLineBreakByWordWrapping];
+        
+        // work out where that position would be relative to the textView's frame
+        CGRect viewRect = self.textArea.frame;
+        int scrollHeight = viewRect.origin.y + size.height;
+        //NSLog(@"scrollHeight: %d",scrollHeight);
+        
+        // scroll to it,
+        // but not with scrollRectToVisible because it sucks and fuck you scrollRectToVisible
+        // [self.scrollView scrollRectToVisible:finalRect animated:YES];
+        // CGRect finalRect = CGRectMake(0, scrollHeight, 1, 32);
+        CGPoint point = CGPointMake(1, scrollHeight - verticalPaddingBecauseFuckYou);
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, scrollHeight+verticalPaddingBecauseFuckYou);
+        [self.scrollView setContentOffset:point animated: NO];
+    }
+}
+
+// scrollview delegate method
+// disallow horizontal scrolling in the textview
+- (void)scrollViewDidScroll:(UIScrollView *)sender {
+    
+    if (sender.contentOffset.x != 0) {
+        //CGPoint offset = sender.contentOffset;
+        //offset.x = 0;
+        //sender.contentOffset = offset;
+    }
 }
 
 #pragma mark - UITextView delegate methods and related methods
@@ -435,15 +497,13 @@
     [self fixBulletFormatting];
     
     //CGRect frame = self.textArea.frame;
-    // frame.size.height = self.textArea.contentSize.height+30;
-    // self.textArea.frame = frame;
+   // frame.size.height = self.textArea.contentSize.height+30;
+   // self.textArea.frame = frame;
     
 }
 
 // Basically this method just makes sure bullets show up when they're supposed to
 - (void)fixBulletFormatting {
-    
-    [self.textArea setScrollEnabled:NO];
     
     NSRange cursorPosition = [self.textArea selectedRange];
     NSMutableString *textAreaContent = [[NSMutableString alloc] initWithString:[self.textArea text]];
@@ -465,14 +525,16 @@
         NSMutableString *afterCursor  = [[NSMutableString alloc] initWithString:[textAreaContent substringFromIndex:cursorPosition.location]];
         [beforeCursor setString:[beforeCursor stringByAppendingString:@"\u2022 "]];
         [self.textArea setText:[beforeCursor stringByAppendingString:afterCursor]];
-        
+
         // Move cursor where it belongs
         [self.textArea setSelectedRange:NSMakeRange(beforeCursor.length, 0)];
+        
+        [self scrollToCursor];
     }
     // if the previous character is a bullet, then the user must have backspaced/deleted
     // the space that was added after the bullet, meaning they probably want to delete the bullet
     else if ([[textAreaContent substringWithRange:NSMakeRange(cursorPosition.location-1,1)]
-              isEqualToString: @"\u2022"]) {
+                                  isEqualToString: @"\u2022"]) {
         // so, delete the bullet and the newline character at the same time, so
         // another bullet isn't generated.
         NSString *stringBeforeBullet = [textAreaContent substringToIndex:cursorPosition.location-2];
@@ -480,8 +542,6 @@
         self.textArea.text = [stringBeforeBullet stringByAppendingString:stringAfterBullet];
         [self.textArea setSelectedRange:NSMakeRange(stringBeforeBullet.length, 0)];
     }
-    
-    [self.textArea setScrollEnabled:YES];
 }
 
 - (void)textViewDidChangeSelection:(UITextView *)aTextView {
@@ -504,10 +564,30 @@
     // Dispose of any resources that can be recreated.
 }
 
+/* in case these come in handy later:
+ NSLog(@"self.view frame: origin(%f, %f), dims(%f, %f)",
+ self.view.bounds.origin.x, self.view.bounds.origin.y,
+ self.view.bounds.size.width, self.view.bounds.size.height);
+ 
+ NSLog(@"self.scrollview frame: origin(%f, %f), dims(%f, %f)",
+ self.scrollView.frame.origin.x, self.scrollView.frame.origin.y,
+ self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+ 
+ 
+ NSLog(@"self.textArea frame: origin(%f, %f), dims(%f, %f)",
+ self.textArea.frame.origin.x, self.textArea.frame.origin.y,
+ self.textArea.frame.size.width, self.textArea.frame.size.height);
+ 
+ NSLog(@"self.textArea.contentSize frame: origin(%f, %f)",
+ self.textArea.contentSize.width, self.textArea.contentSize.height );
+ 
+ */
+
+
 //TO DO STILL:
 // Allow individual cards to be deleted or inserted
 // Allow existing card sets to be opened and edited
 // Data validation:
-// Make sure no deck name collisions; validate data in title/description fields.
+    // Make sure no deck name collisions; validate data in title/description fields.
 
 @end

@@ -51,13 +51,13 @@
     tap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tap];
     
-    [self.textArea setFont:[UIFont systemFontOfSize:[self.designManager.presentTextSize floatValue]]];
 }
 
 - (void)resetSpeechRecognition {
     
     if (self.pocketsphinxController) {
         [self.pocketsphinxController stopListening];
+        [self.pocketsphinxController stopVoiceRecognitionThread];
     }
     
     self.pocketsphinxController = nil;
@@ -82,7 +82,6 @@
     self.allWords = [NSMutableSet setWithArray:words];
     words = [self.allWords allObjects];
     
-    //NSArray *words = [NSArray arrayWithObjects:@"THE", @"COLD", @"WAR", @"COMMUNIST", @"COUNTRY", @"CHINA", nil];
     NSString *name = @"NameIWantForMyLanguageModelFiles";
     NSError *err = [lmGenerator generateLanguageModelFromArray:words withFilesNamed:name forAcousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelEnglish"]];
     
@@ -230,6 +229,7 @@
 - (void)reloadCard {
     
     [super reloadCard];
+    [self.textArea setFont:[UIFont systemFontOfSize:[self.designManager.presentTextSize floatValue]]];
     [self resetSpeechRecognition];
 }
 
