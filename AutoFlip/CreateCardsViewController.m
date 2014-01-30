@@ -267,10 +267,10 @@
     
     formSheet.shouldDismissOnBackgroundViewTap = YES;
     formSheet.transitionStyle = MZFormSheetTransitionStyleSlideFromBottom;
-    formSheet.cornerRadius = 8.0;
+    formSheet.cornerRadius = 4.0;
     formSheet.portraitTopInset = 6.0;
-    formSheet.landscapeTopInset = 6.0;
-    formSheet.presentedFormSheetSize = CGSizeMake(320, 200);
+    formSheet.landscapeTopInset = 0.0;
+    formSheet.presentedFormSheetSize = CGSizeMake(300, 144);
     
     formSheet.willPresentCompletionHandler = ^(UIViewController *presentedFSViewController){
         presentedFSViewController.view.autoresizingMask = presentedFSViewController.view.autoresizingMask | UIViewAutoresizingFlexibleWidth;

@@ -39,13 +39,15 @@
 
     [self.navigationController.navigationBar setHidden:NO];
     self.view.backgroundColor = [UIColor cloudsColor];
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     [self.navigationController.navigationBar setHidden:NO];
     [self.navigationController setToolbarHidden:YES];
+    
+    [self.titleField becomeFirstResponder];
 }
 
 - (IBAction)didPressCreate:(id)sender {

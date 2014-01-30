@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "UIColor+FlatUI.h"
+#import "FUIButton.h"
 
 @interface DesignManager : NSObject
 
@@ -29,5 +30,7 @@
 // Text Sizes
 @property NSNumber *presentTextSize;
 @property NSNumber *editorTextSize;
+
+- (void)styleFlatUIButton:(FUIButton *)button;
 
 @end

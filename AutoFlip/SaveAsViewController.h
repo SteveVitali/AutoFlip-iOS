@@ -16,7 +16,7 @@
 
 @protocol SaveAsViewControllerDelegate;
 
-@interface SaveAsViewController : UIViewController
+@interface SaveAsViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak) id<SaveAsViewControllerDelegate> delegate;
 

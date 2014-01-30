@@ -13,6 +13,7 @@
 #import "UIFont+FlatUI.h"
 #import "FUITextField.h"
 #import "UIBarButtonItem+FlatUI.h"
+#import "LibraryAPI.h"
 
 @interface SaveAsViewController ()
 
@@ -43,28 +44,29 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.titleField.placeholder = self.titleText;
-    self.descriptionField.placeholder = self.descriptionText;
+    
+    [self.titleField setPlaceholder:@"Title"];
+    [self.descriptionField setPlaceholder:@"Brief description..."];
+    
+    [self.titleField setDelegate:self];
+    [self.descriptionField setDelegate:self];
+
+    [self.titleField setText:self.titleText];
+    [self.descriptionField setText:self.descriptionText];
+
+    [self.titleField becomeFirstResponder];
+    
     NSLog(@"%@",self.descriptionText);
     
-    self.cancelButton.buttonColor = [UIColor turquoiseColor];
-    self.cancelButton.shadowColor = [UIColor greenSeaColor];
-    self.cancelButton.shadowHeight = 3.0f;
-    self.cancelButton.cornerRadius = 6.0f;
-    self.cancelButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
-    [self.cancelButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-    [self.cancelButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
-    
-    self.saveButton.buttonColor = [UIColor turquoiseColor];
-    self.saveButton.shadowColor = [UIColor greenSeaColor];
-    self.saveButton.shadowHeight = 3.0f;
-    self.saveButton.cornerRadius = 6.0f;
-    self.saveButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
-    [self.saveButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-    [self.saveButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    [[[LibraryAPI sharedInstance] designManager] styleFlatUIButton:self.saveButton];
+    [[[LibraryAPI sharedInstance] designManager] styleFlatUIButton:self.cancelButton];
     
     self.view.backgroundColor = [UIColor cloudsColor];
-
+}
+     
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    [textField selectAll:self];    
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {

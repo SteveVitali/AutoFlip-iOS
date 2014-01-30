@@ -72,10 +72,10 @@
     
     self.view.backgroundColor = [designManager homeScreenBGColor];
     
-    [self styleFlatUIButton:self.startButton withDesignManager:designManager];
-    [self styleFlatUIButton:self.createButton withDesignManager:designManager];
-    [self styleFlatUIButton:self.editButton withDesignManager:designManager];
-    [self styleFlatUIButton:self.importButton withDesignManager:designManager];
+    [designManager styleFlatUIButton:self.startButton];
+    [designManager styleFlatUIButton:self.createButton];
+    [designManager styleFlatUIButton:self.editButton];
+    [designManager styleFlatUIButton:self.importButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -89,17 +89,6 @@
     return [UIImage imageWithCGImage:[image CGImage]
                               scale:(image.scale * scale)
                         orientation:(image.imageOrientation)];
-}
-
-- (void)styleFlatUIButton:(FUIButton *)button withDesignManager:(DesignManager *)manager {
-    
-    button.buttonColor = [manager buttonBGColor];
-    button.shadowColor = [manager buttonShadowColor];//[UIColor greenSeaColor];
-    button.shadowHeight = 3.0f;
-    button.cornerRadius = 6.0f;
-    button.titleLabel.font = [UIFont boldFlatFontOfSize:16];
-    [button setTitleColor:[manager buttonTextColorNormal] forState:UIControlStateNormal];
-    [button setTitleColor:[manager buttonTextColorHighlighted] forState:UIControlStateHighlighted];
 }
 
 - (IBAction)didPressStart:(id)sender {
