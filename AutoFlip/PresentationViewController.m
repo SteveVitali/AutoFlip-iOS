@@ -51,39 +51,35 @@
     tap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tap];
     
+    self.allWords = [NSMutableSet setWithSet:[self.presentation getAllWordsInPresentation]];
+    [self initSpeechRecognition];
 }
 
-- (void)resetSpeechRecognition {
-    
-    if (self.pocketsphinxController) {
-        [self.pocketsphinxController stopListening];
-        [self.pocketsphinxController stopVoiceRecognitionThread];
-    }
-    
-    self.pocketsphinxController = nil;
-    self.openEarsEventsObserver = nil;
+- (void)initSpeechRecognition {
     
     // init language model
     LanguageModelGenerator *lmGenerator = [[LanguageModelGenerator alloc] init];
     
-    NSString *text = [NSString stringWithString:self.textArea.text];
-    text = [text uppercaseString];
-    
-    NSLog(@"text: %@", text);
-    if ([text isEqualToString:@""]) {
-        // So the app doesn't crash, and so the slide essentially gets skipped.
-        text = @"THE";
+    NSMutableArray *words = [[NSMutableArray alloc] initWithArray:[self.allWords allObjects]];
+    // Words for language model
+    NSArray *lmWords;
+    // To keep the app from crashing due to nil language model
+    // Also to get rid of words which are just empty "" strings.
+    for (int i=0; i<words.count; i++) {
+        NSString *word = [words objectAtIndex:i];
+        if ([word isEqualToString:@""]) {
+            [words removeObject:word];
+            i--;
+        }
+    }
+    if ([words count] ==0) {
+        lmWords = @[@"THE"];
+    } else {
+        lmWords = words;
     }
     
-    self.spokenWords = [[NSMutableSet alloc] init];
-    // Set the set of all words, and also prepare the words array to be put into the language
-    // model by removing duplicate words.
-    NSArray *words = [text componentsSeparatedByString:@" "];
-    self.allWords = [NSMutableSet setWithArray:words];
-    words = [self.allWords allObjects];
-    
     NSString *name = @"NameIWantForMyLanguageModelFiles";
-    NSError *err = [lmGenerator generateLanguageModelFromArray:words withFilesNamed:name forAcousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelEnglish"]];
+    NSError *err = [lmGenerator generateLanguageModelFromArray:lmWords withFilesNamed:name forAcousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelEnglish"]];
     
     NSDictionary *languageGeneratorResults = nil;
     
@@ -107,7 +103,33 @@
     [self.pocketsphinxController setSecondsOfSilenceToDetect:.2];
     
     [self.pocketsphinxController startListeningWithLanguageModelAtPath:lmPath dictionaryAtPath:dicPath acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:NO]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" to perform Spanish recognition instead of English.
+}
+
+- (void)resetSpeechRecognitionForNewSlide {
     
+    NSString *slideText = [[self.presentation.notecards objectAtIndex:self.cardIndex] getTextFromBulletFormat];
+    slideText = [slideText uppercaseString];
+    
+    if ([slideText isEqualToString:@""]) {
+        // So the app doesn't crash, and so the slide essentially gets skipped.
+        slideText = @"THE";
+    }
+    
+    // Set the set of all words, and also prepare the words array to be put into the language
+    // model by removing duplicate words.
+    NSMutableArray *words = [NSMutableArray arrayWithArray:[slideText componentsSeparatedByString:@" "]];
+    
+    for (int i=0; i<words.count; i++) {
+        NSString *word = [words objectAtIndex:i];
+        if ([word isEqualToString:@""]) {
+            [words removeObjectAtIndex:i];
+            i--;
+        }
+    }
+    self.slideWords = [NSMutableSet setWithArray:words];
+    
+    // Reset the spoken words array
+    self.spokenWords = [[NSMutableSet alloc] init];
 }
 
 - (void) hideShowNavigation {
@@ -118,7 +140,18 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     
-    [self.pocketsphinxController stopListening];
+    [self deconstructVoiceRecognition];
+}
+
+- (void)deconstructVoiceRecognition {
+    
+    if (self.pocketsphinxController) {
+        [self.pocketsphinxController stopListening];
+        [self.pocketsphinxController stopVoiceRecognitionThread];
+    }
+    
+    self.pocketsphinxController = nil;
+    self.openEarsEventsObserver = nil;
 }
 
 - (PocketsphinxController *)pocketsphinxController {
@@ -145,14 +178,14 @@
     [self.spokenWords addObjectsFromArray:newWords];
     
     NSMutableString *portionOfCardSpoken = [NSMutableString stringWithString:@""];
-    for (NSString *word in self.allWords) {
+    for (NSString *word in self.slideWords) {
         if ([self.spokenWords containsObject:word]) {
             portionOfCardSpoken = [NSMutableString stringWithString:[portionOfCardSpoken stringByAppendingString:[NSString stringWithFormat:@"%@ ",word]]];
         }
     }
     
-    NSLog(@"Spoken words: %d of %d: %@", self.spokenWords.count, self.allWords.count, portionOfCardSpoken);
-    float progress = (float)[self.spokenWords count]/(float)[self.allWords count];
+    NSLog(@"Spoken words: %d of %d: %@", self.spokenWords.count, self.slideWords.count, portionOfCardSpoken);
+    float progress = (float)[self.spokenWords count]/(float)[self.slideWords count];
     if (progress >= .3) {
         if (self.hasNextCard) {
             [self nextCard:nil];
@@ -230,7 +263,8 @@
     
     [super reloadCard];
     [self.textArea setFont:[UIFont systemFontOfSize:[self.designManager.presentTextSize floatValue]]];
-    [self resetSpeechRecognition];
+    [self resetSpeechRecognitionForNewSlide];
+    NSLog(@"Words on slide: %@", self.slideWords);
 }
 
 - (void)didReceiveMemoryWarning {

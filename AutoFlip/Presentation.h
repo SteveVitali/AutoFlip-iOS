@@ -22,6 +22,8 @@
 - (void)insertCardAtIndex:(NSInteger)index;
 - (void)addCard;
 
+- (NSSet *)getAllWordsInPresentation;
+
 - (id) initWithNotes:(NSMutableArray *)notecards;
 - (id)initWithRandomNotes:(int)num;
 

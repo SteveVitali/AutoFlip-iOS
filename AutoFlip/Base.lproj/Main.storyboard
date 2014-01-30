@@ -96,7 +96,7 @@
                         <segue destination="pdT-Q6-8Jf" kind="push" identifier="newCardDeck" id="oAJ-Zt-2Zq"/>
                         <segue destination="21i-NN-olK" kind="push" identifier="choosePresentationToEdit" id="sQh-Ct-Sgu"/>
                         <segue destination="21i-NN-olK" kind="push" identifier="choosePresentationToPresent" id="DlJ-K0-bpS"/>
-                        <segue destination="LHR-qD-Y6Y" kind="push" id="fVV-8k-p3T"/>
+                        <segue destination="LHR-qD-Y6Y" kind="push" identifier="createImportedCards" id="fVV-8k-p3T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

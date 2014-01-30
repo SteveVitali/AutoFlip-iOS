@@ -76,6 +76,19 @@
     [self.notecards insertObject:[[Notecard alloc] initWithEmptyCard] atIndex:index];
 }
 
+- (NSSet *)getAllWordsInPresentation {
+    
+    NSString *allText = @"";
+    
+    for (Notecard *card in self.notecards) {
+        allText = [allText stringByAppendingString:card.getTextFromBulletFormat];
+    }
+    NSArray *words = [allText componentsSeparatedByString:@" "];
+    NSSet *allWords = [NSSet setWithArray:words];
+    
+    return allWords;
+}
+
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     
     [aCoder encodeObject:self.title forKey:@"title"];

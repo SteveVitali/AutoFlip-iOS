@@ -17,6 +17,7 @@
 @property (strong, nonatomic) PocketsphinxController *pocketsphinxController;
 @property (strong, nonatomic) OpenEarsEventsObserver *openEarsEventsObserver;
 
+@property NSMutableSet *slideWords;
 @property NSMutableSet *spokenWords;
 @property NSMutableSet *allWords;
 

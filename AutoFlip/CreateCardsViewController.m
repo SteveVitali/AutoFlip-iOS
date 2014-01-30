@@ -453,7 +453,7 @@
     if (textAreaContent.length <3) {
         // then, make sure they're not deleting the original bullet
         // and don't waste time looking at the rest of this method and return
-        self.textArea.text = @"\u2022 ";
+        self.textArea.text = [NSString stringWithFormat:@"\u2022 %@",self.textArea.text];
         return;
     }
     
