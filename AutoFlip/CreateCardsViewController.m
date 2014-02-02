@@ -386,21 +386,12 @@
 // Called when the UIKeyboardWillHideNotification is sent
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
-    NSLog(@"this runs keyboard will hide");
     CGRect frame = CGRectMake(self.textArea.frame.origin.x, self.textArea.frame.origin.y,
                               self.textArea.frame.size.width, self.textArea.frame.size.height+kbHeight);
     [self.textArea setFrame:frame];
 }
 
 #pragma mark - rotation/orientation-related methods
-
--(void)didRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-                               duration:(NSTimeInterval)duration {
-    
-    CGRect frame = self.navigationController.view.bounds;
-    [self.textArea setFrame:frame];
-
-}
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     

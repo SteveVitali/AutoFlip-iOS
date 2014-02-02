@@ -116,13 +116,6 @@
     }
 }
 
-- (void)didRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-
-    [self.textArea sizeFontToFit:self.textArea.text
-                         minSize:[[[LibraryAPI sharedInstance] designManager] minNotecardFontSize].floatValue
-                         maxSize:[[[LibraryAPI sharedInstance] designManager] maxNotecardFontSize].floatValue];
-}
-
 
 - (void)reloadCard {
     

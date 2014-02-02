@@ -196,14 +196,13 @@
                  menuItems:menuItems];
 }
 
-
 - (void)pushDriveView:(id)sender {
     
     [self performSegueWithIdentifier:@"driveFileChooser" sender:sender];
 }
 
 - (void)didCancelDriveFileChooser:(id)sender {
-    NSLog(@"dismissing");
+    NSLog(@"dismissing drive file chooser");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

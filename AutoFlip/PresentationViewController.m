@@ -143,6 +143,13 @@
                          maxSize:[[[LibraryAPI sharedInstance] designManager] maxNotecardFontSize].floatValue];
 }
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
+    [self.textArea sizeFontToFit:self.textArea.text
+                         minSize:[[[LibraryAPI sharedInstance] designManager] minNotecardFontSize].floatValue
+                         maxSize:[[[LibraryAPI sharedInstance] designManager] maxNotecardFontSize].floatValue];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     
     [self deconstructVoiceRecognition];
@@ -269,7 +276,6 @@
     [super reloadCard];
     //[self.textArea setFont:[UIFont systemFontOfSize:[self.designManager.presentTextSize floatValue]]];
     [self resetSpeechRecognitionForNewSlide];
-    NSLog(@"Words on slide: %@", self.slideWords);
 }
 
 - (void)didReceiveMemoryWarning {

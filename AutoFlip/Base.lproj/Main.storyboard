@@ -310,8 +310,8 @@
                         <outlet property="editButton" destination="U8f-JE-bcY" id="HLe-xL-Icb"/>
                         <outlet property="searchBar" destination="wDy-z2-Kgq" id="9xw-W2-O7s"/>
                         <outlet property="searchDisplayController" destination="KIa-bJ-qyc" id="Vz3-1z-ZoT"/>
-                        <segue destination="fos-MX-0Bw" kind="push" identifier="startPresentation" id="khJ-cJ-RNh"/>
                         <segue destination="LHR-qD-Y6Y" kind="push" identifier="openPresentationEditor" id="Lp7-11-OHQ"/>
+                        <segue destination="Dms-y9-cwR" kind="push" identifier="startPresentation" id="r6e-Bp-ius"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyb-Qx-K6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -326,54 +326,6 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="884" y="-300"/>
-        </scene>
-        <!--Presentation View Controller - Slide Title-->
-        <scene sceneID="w4L-63-709">
-            <objects>
-                <viewController id="fos-MX-0Bw" customClass="PresentationViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="z8N-W3-VYQ">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" scrollEnabled="NO" editable="NO" selectable="NO" id="5BV-ux-sUB">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <toolbarItems>
-                        <barButtonItem systemItem="rewind" id="F91-If-7xQ">
-                            <connections>
-                                <action selector="previousCard:" destination="fos-MX-0Bw" id="XGb-Gu-j0l"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="bqz-p7-0eS"/>
-                        <barButtonItem title="Progress Bar" id="oea-ln-jlR"/>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="jf0-QS-HDK"/>
-                        <barButtonItem systemItem="fastForward" id="OYb-Wj-daO">
-                            <connections>
-                                <action selector="nextCard:" destination="fos-MX-0Bw" id="RfA-7f-Nz9"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Slide Title" id="j7R-ad-GK3"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <connections>
-                        <outlet property="nextCard" destination="OYb-Wj-daO" id="JyW-ph-yhZ"/>
-                        <outlet property="presentationTitleNavBar" destination="j7R-ad-GK3" id="SpJ-J1-VKo"/>
-                        <outlet property="previousCard" destination="F91-If-7xQ" id="z8f-zt-5Jm"/>
-                        <outlet property="progressBarBarButton" destination="oea-ln-jlR" id="a9e-Ki-8Dk"/>
-                        <outlet property="textArea" destination="5BV-ux-sUB" id="ThJ-CG-XiO"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IOR-a2-1tH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1314" y="-74"/>
         </scene>
         <!--Drive Files List View Controller-->
         <scene sceneID="RFe-Lx-Ytv">
@@ -519,6 +471,54 @@
             </objects>
             <point key="canvasLocation" x="1916" y="1014"/>
         </scene>
+        <!--Presentation View Controller - Presentation Title-->
+        <scene sceneID="Vee-Zl-6At">
+            <objects>
+                <viewController id="Dms-y9-cwR" customClass="PresentationViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KDj-bz-1mo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" editable="NO" id="pAN-rL-TvW">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem systemItem="rewind" id="cEJ-SU-g5x">
+                            <connections>
+                                <action selector="previousCard:" destination="Dms-y9-cwR" id="57w-hx-qdl"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="nhx-fc-CoY"/>
+                        <barButtonItem title="Progress Bar" id="UIb-aU-NpS"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Izk-oA-Fnk"/>
+                        <barButtonItem systemItem="fastForward" id="vkh-vw-jMD">
+                            <connections>
+                                <action selector="nextCard:" destination="Dms-y9-cwR" id="vU5-3R-jEK"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Presentation Title" id="Ysx-aG-KVk"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="nextCard" destination="vkh-vw-jMD" id="Ng6-bB-1bO"/>
+                        <outlet property="presentationTitleNavBar" destination="Ysx-aG-KVk" id="JMd-nC-93k"/>
+                        <outlet property="previousCard" destination="cEJ-SU-g5x" id="DIB-CA-WEz"/>
+                        <outlet property="progressBarBarButton" destination="UIb-aU-NpS" id="ma2-JD-osN"/>
+                        <outlet property="textArea" destination="pAN-rL-TvW" id="cRe-3S-MbU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eTg-D1-Coz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1453" y="-300"/>
+        </scene>
     </scenes>
     <resources>
         <image name="custom.png" width="256" height="256"/>
@@ -530,6 +530,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="DlJ-K0-bpS"/>
-        <segue reference="fVV-8k-p3T"/>
+        <segue reference="Lp7-11-OHQ"/>
     </inferredMetricsTieBreakers>
 </document>
