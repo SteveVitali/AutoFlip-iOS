@@ -28,8 +28,8 @@
 @property UIColor *tableCellDetailColor;
 
 // Text Sizes
-@property NSNumber *presentTextSize;
-@property NSNumber *editorTextSize;
+@property NSNumber *maxNotecardFontSize;
+@property NSNumber *minNotecardFontSize;
 
 - (void)styleFlatUIButton:(FUIButton *)button;
 

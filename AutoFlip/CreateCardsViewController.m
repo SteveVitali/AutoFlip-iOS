@@ -14,6 +14,7 @@
 #import "ViewController.h"
 #import "LibraryAPI.h"
 #import "DesignManager.h"
+#import "UITextView+AutoResizeFont.h"
 
 @interface CreateCardsViewController () {
     
@@ -74,8 +75,6 @@
     tapScroll.numberOfTapsRequired = 2;
     
     self.textArea.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    
-    [self.textArea setFont:[UIFont systemFontOfSize:[self.designManager.editorTextSize floatValue]]];
     
     [self reloadCard];
 }
@@ -180,7 +179,6 @@
 - (void)reloadCard {
     
     [super reloadCard];
-    [self.textArea setFont:[UIFont systemFontOfSize:[self.designManager.presentTextSize floatValue]]];
 }
 
 - (void)saveCardTextToPresentation {
@@ -434,7 +432,9 @@
     
     [self fixBulletFormatting];
     
-    //CGRect frame = self.textArea.frame;
+    [self.textArea sizeFontToFit:self.textArea.text
+                         minSize:[[[LibraryAPI sharedInstance] designManager] minNotecardFontSize].floatValue
+                         maxSize:[[[LibraryAPI sharedInstance] designManager] maxNotecardFontSize].floatValue];    //CGRect frame = self.textArea.frame;
     // frame.size.height = self.textArea.contentSize.height+30;
     // self.textArea.frame = frame;
     

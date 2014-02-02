@@ -109,10 +109,9 @@
     [manager setTableCellTextColor:[UIColor blackColor]];
     [manager setTableCellDetailColor:[UIColor grayColor]];
     // Text sizes
-    [manager setEditorTextSize:[NSNumber numberWithInt:14]];
-    [manager setPresentTextSize:[NSNumber numberWithInt:18]];
+    [manager setMinNotecardFontSize:[NSNumber numberWithInt:12]];
+    [manager setMaxNotecardFontSize:[NSNumber numberWithInt:36]];
 }
-
 
 - (void)customLog:(NSString *)log {
     

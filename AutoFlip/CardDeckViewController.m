@@ -11,6 +11,7 @@
 #import "UIColor+FlatUI.h"
 #import "LibraryAPI.h"
 #import "DesignManager.h"
+#import "UITextView+AutoResizeFont.h"
 
 @interface CardDeckViewController () {
 
@@ -59,6 +60,31 @@
     
     [self.view addGestureRecognizer:swipeLeftGestureRecognizer];
     [self.view addGestureRecognizer:swipeRightGestureRecognizer];
+    
+    self.pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGesture:)];
+    [self.textArea addGestureRecognizer:self.pinchRecognizer];
+        
+    [self.textArea sizeFontToFit:self.textArea.text
+                         minSize:[[[LibraryAPI sharedInstance] designManager] minNotecardFontSize].floatValue
+                         maxSize:[[[LibraryAPI sharedInstance] designManager] maxNotecardFontSize].floatValue];
+}
+
+- (void)pinchGesture:(UIPinchGestureRecognizer *)recognizer {
+    
+    NSLog(@"Pinch: Scale: %f Velocity: %f", recognizer.scale, recognizer.velocity);
+ 
+    // Commenting this out because not really necessary right now.
+    /*
+    CGFloat pointSize = [self.textArea.font pointSize];
+    NSString *fontName = [self.textArea.font fontName];
+    
+    pointSize = ((recognizer.velocity > 0) ? 1 : -1) * 1 + pointSize;
+    
+    //if (pointSize < 13) pointSize = 13;
+    //if (pointSize < 42) pointSize = 42;
+    
+    self.textArea.font = [UIFont fontWithName:fontName size:pointSize];
+     */
 }
 
 - (void)handleSwipeLeftFrom:(UIGestureRecognizer*)recognizer {
@@ -90,6 +116,14 @@
     }
 }
 
+- (void)didRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+
+    [self.textArea sizeFontToFit:self.textArea.text
+                         minSize:[[[LibraryAPI sharedInstance] designManager] minNotecardFontSize].floatValue
+                         maxSize:[[[LibraryAPI sharedInstance] designManager] maxNotecardFontSize].floatValue];
+}
+
+
 - (void)reloadCard {
     
     NSLog(@"notecards count: %d",self.presentation.notecards.count);
@@ -113,6 +147,10 @@
     }
     
     [self updateProgressBar];
+    
+    [self.textArea sizeFontToFit:self.textArea.text
+                         minSize:[[[LibraryAPI sharedInstance] designManager] minNotecardFontSize].floatValue
+                         maxSize:[[[LibraryAPI sharedInstance] designManager] maxNotecardFontSize].floatValue];
 }
 
 - (void)updateProgressBar {

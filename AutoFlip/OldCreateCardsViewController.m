@@ -82,8 +82,8 @@
     
     self.textArea.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     self.scrollView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    
-    [self.textArea setFont:[UIFont systemFontOfSize:[self.designManager.editorTextSize floatValue]]];
+    // Uncommenting because DesignManager properties changed
+    //[self.textArea setFont:[UIFont systemFontOfSize:[self.designManager.editorTextSize floatValue]]];
     
     [self reloadCard];
 }
@@ -188,7 +188,8 @@
 - (void)reloadCard {
     
     [super reloadCard];
-    [self.textArea setFont:[UIFont systemFontOfSize:[self.designManager.presentTextSize floatValue]]];
+    // Uncommenting because DesignManager properties changed
+    //[self.textArea setFont:[UIFont systemFontOfSize:[self.designManager.presentTextSize floatValue]]];
 }
 
 - (void)saveCardTextToPresentation {

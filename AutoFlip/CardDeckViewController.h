@@ -31,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextCard;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previousCard;
 
+@property UIPinchGestureRecognizer *pinchRecognizer; 
+
 - (IBAction)nextCard:(id)sender;
 - (IBAction)previousCard:(id)sender;
 - (void)reloadCard;

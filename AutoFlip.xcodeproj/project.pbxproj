@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		111A0C7D1895B5E5009D5E58 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 118C196A1891D162007EB10E /* libz.dylib */; };
+		116BFBF5189D620F008663CE /* UITextView+AutoResizeFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */; };
 		116FD85A187B53B900BC4643 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD858187B53B900BC4643 /* AudioToolbox.framework */; };
 		116FD85B187B53B900BC4643 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD859187B53B900BC4643 /* AVFoundation.framework */; };
 		116FD861187B53F400BC4643 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 116FD85D187B53F400BC4643 /* AcousticModelEnglish.bundle */; };
@@ -113,6 +114,8 @@
 
 /* Begin PBXFileReference section */
 		111A0C7A1895B57F009D5E58 /* GTL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTL.framework; path = "../../../Library/Developer/Xcode/DerivedData/AutoFlip-fdmzbufgiqjqezfyczvxlznhzzrd/Build/Products/Debug/GTL.framework"; sourceTree = "<group>"; };
+		116BFBF3189D620F008663CE /* UITextView+AutoResizeFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+AutoResizeFont.h"; sourceTree = "<group>"; };
+		116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+AutoResizeFont.m"; sourceTree = "<group>"; };
 		116FD858187B53B900BC4643 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		116FD859187B53B900BC4643 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		116FD85D187B53F400BC4643 /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AcousticModelEnglish.bundle; path = Framework/AcousticModelEnglish.bundle; sourceTree = "<group>"; };
@@ -364,6 +367,8 @@
 				11711FA01871F2CF00792D36 /* AppDelegate.m */,
 				11711FA81871F2CF00792D36 /* Images.xcassets */,
 				11711F971871F2CF00792D36 /* Supporting Files */,
+				116BFBF3189D620F008663CE /* UITextView+AutoResizeFont.h */,
+				116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */,
 			);
 			path = AutoFlip;
 			sourceTree = "<group>";
@@ -790,6 +795,7 @@
 				11A4413A1873620400FB5863 /* CardDeckViewController.m in Sources */,
 				11D11F861878F0510081B1CB /* FUIButton.m in Sources */,
 				11D11F8B1878F0510081B1CB /* FUITextField.m in Sources */,
+				116BFBF5189D620F008663CE /* UITextView+AutoResizeFont.m in Sources */,
 				118C19661891D152007EB10E /* mztools.c in Sources */,
 				11D11F911878F0510081B1CB /* UIPopoverController+FlatUI.m in Sources */,
 				118C19651891D152007EB10E /* ioapi.c in Sources */,
