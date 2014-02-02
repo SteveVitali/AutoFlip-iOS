@@ -36,5 +36,6 @@
 - (IBAction)nextCard:(id)sender;
 - (IBAction)previousCard:(id)sender;
 - (void)reloadCard;
+- (void)resizeTextToFitScreen;
 
 @end

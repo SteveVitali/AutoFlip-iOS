@@ -138,16 +138,21 @@
     [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
     [self.navigationController setToolbarHidden:!self.navigationController.toolbarHidden animated:YES];
     
-    [self.textArea sizeFontToFit:self.textArea.text
-                         minSize:[[[LibraryAPI sharedInstance] designManager] minNotecardFontSize].floatValue
-                         maxSize:[[[LibraryAPI sharedInstance] designManager] maxNotecardFontSize].floatValue];
+    [self resizeTextToFitScreen];
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     
-    [self.textArea sizeFontToFit:self.textArea.text
-                         minSize:[[[LibraryAPI sharedInstance] designManager] minNotecardFontSize].floatValue
-                         maxSize:[[[LibraryAPI sharedInstance] designManager] maxNotecardFontSize].floatValue];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    
+    [self resizeTextToFitScreen];
+}
+
+- (void)resizeTextToFitScreen {
+    
+    [super resizeTextToFitScreen];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

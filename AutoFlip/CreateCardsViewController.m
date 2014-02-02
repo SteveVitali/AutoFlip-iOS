@@ -381,6 +381,9 @@
                               self.textArea.frame.size.width, self.textArea.frame.size.height-kbHeight);
     [self.textArea setFrame:frame];
     
+    // This is so the automatic text resizing works right
+    [self.navigationController setToolbarHidden:YES];
+    [self resizeTextToFitScreen];
 }
 
 // Called when the UIKeyboardWillHideNotification is sent
@@ -389,6 +392,10 @@
     CGRect frame = CGRectMake(self.textArea.frame.origin.x, self.textArea.frame.origin.y,
                               self.textArea.frame.size.width, self.textArea.frame.size.height+kbHeight);
     [self.textArea setFrame:frame];
+    
+    // This is so the automatic text resizing works right
+    [self.navigationController setToolbarHidden:NO];
+    [self resizeTextToFitScreen];
 }
 
 #pragma mark - rotation/orientation-related methods
@@ -423,12 +430,16 @@
     
     [self fixBulletFormatting];
     
-    [self.textArea sizeFontToFit:self.textArea.text
-                         minSize:[[[LibraryAPI sharedInstance] designManager] minNotecardFontSize].floatValue
-                         maxSize:[[[LibraryAPI sharedInstance] designManager] maxNotecardFontSize].floatValue];    //CGRect frame = self.textArea.frame;
+    [self resizeTextToFitScreen];
+    //CGRect frame = self.textArea.frame;
     // frame.size.height = self.textArea.contentSize.height+30;
     // self.textArea.frame = frame;
     
+}
+
+- (void)resizeTextToFitScreen {
+    
+    [super resizeTextToFitScreen];
 }
 
 // Basically this method just makes sure bullets show up when they're supposed to
