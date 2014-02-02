@@ -10,6 +10,5 @@
 
 @interface UITextView (AutoResizeFont)
 
-- (BOOL)sizeFontToFit:(NSString*)aString minSize:(float)aMinFontSize maxSize:(float)aMaxFontSize;
-
+- (BOOL)sizeFontToFitText:(NSString*)text minFontSize:(float)minFontSize maxFontSize:(float)maxFontSize verticalPadding:(float)padY;
 @end

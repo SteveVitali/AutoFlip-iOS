@@ -63,10 +63,13 @@
     
     self.pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGesture:)];
     [self.textArea addGestureRecognizer:self.pinchRecognizer];
-        
-    [self.textArea sizeFontToFit:self.textArea.text
-                         minSize:[[[LibraryAPI sharedInstance] designManager] minNotecardFontSize].floatValue
-                         maxSize:[[[LibraryAPI sharedInstance] designManager] maxNotecardFontSize].floatValue];
+    
+//    [self.navigationController.navigationBar setTranslucent:NO];
+//    
+//    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+//        self.edgesForExtendedLayout = UIRectEdgeNone;   // iOS 7 specific
+
+    [self resizeTextToFitScreen];
 }
 
 - (void)pinchGesture:(UIPinchGestureRecognizer *)recognizer {
@@ -141,9 +144,25 @@
     
     [self updateProgressBar];
     
-    [self.textArea sizeFontToFit:self.textArea.text
-                         minSize:[[[LibraryAPI sharedInstance] designManager] minNotecardFontSize].floatValue
-                         maxSize:[[[LibraryAPI sharedInstance] designManager] maxNotecardFontSize].floatValue];
+    [self resizeTextToFitScreen];
+}
+
+- (void)resizeTextToFitScreen {
+    
+    // Default padY just because
+    float padY = 32;
+    
+    if (!self.navigationController.toolbarHidden) {
+        padY += self.navigationController.toolbar.frame.size.height;
+    }
+    if (!self.navigationController.navigationBarHidden) {
+        padY += self.navigationController.navigationBar.frame.size.height;
+    }
+    
+    [self.textArea sizeFontToFitText:self.textArea.text
+                         minFontSize:[[[LibraryAPI sharedInstance] designManager] minNotecardFontSize].floatValue
+                         maxFontSize:[[[LibraryAPI sharedInstance] designManager] maxNotecardFontSize].floatValue
+                     verticalPadding:padY];
 }
 
 - (void)updateProgressBar {
