@@ -40,6 +40,7 @@
     [self.navigationController.navigationBar setHidden:NO];
     self.view.backgroundColor = [UIColor cloudsColor];
     
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"paper-portrait.png"]]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

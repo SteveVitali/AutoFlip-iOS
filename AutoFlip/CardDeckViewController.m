@@ -70,6 +70,9 @@
 //        self.edgesForExtendedLayout = UIRectEdgeNone;   // iOS 7 specific
 
     [self resizeTextToFitScreen];
+    
+    //[self.textArea setBackgroundColor:[self.designManager cardDeckViewControllerBGColor]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"paper-portrait.png"]]];
 }
 
 - (void)pinchGesture:(UIPinchGestureRecognizer *)recognizer {

@@ -16,6 +16,8 @@
 
 @interface ViewController : UIViewController <DBRestClientDelegate, SSZipArchiveDelegate, DriveFilePickerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+
 @property (weak, nonatomic) IBOutlet FUIButton *startButton;
 @property (weak, nonatomic) IBOutlet FUIButton *importButton;
 @property (weak, nonatomic) IBOutlet FUIButton *createButton;

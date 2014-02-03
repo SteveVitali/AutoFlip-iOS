@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		111A0C7D1895B5E5009D5E58 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 118C196A1891D162007EB10E /* libz.dylib */; };
+		11229DF118A0143600B6F1C3 /* autoflip.png in Resources */ = {isa = PBXBuildFile; fileRef = 11229DF018A0143600B6F1C3 /* autoflip.png */; };
+		11229DF418A03BF400B6F1C3 /* paper-portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 11229DF218A03BF400B6F1C3 /* paper-portrait.png */; };
+		11229DF518A03BF400B6F1C3 /* paper-landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 11229DF318A03BF400B6F1C3 /* paper-landscape.png */; };
 		116BFBF5189D620F008663CE /* UITextView+AutoResizeFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */; };
 		116FD85A187B53B900BC4643 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD858187B53B900BC4643 /* AudioToolbox.framework */; };
 		116FD85B187B53B900BC4643 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD859187B53B900BC4643 /* AVFoundation.framework */; };
@@ -113,6 +116,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11229DF018A0143600B6F1C3 /* autoflip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoflip.png; sourceTree = "<group>"; };
+		11229DF218A03BF400B6F1C3 /* paper-portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paper-portrait.png"; sourceTree = "<group>"; };
+		11229DF318A03BF400B6F1C3 /* paper-landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paper-landscape.png"; sourceTree = "<group>"; };
 		116BFBF3189D620F008663CE /* UITextView+AutoResizeFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+AutoResizeFont.h"; sourceTree = "<group>"; };
 		116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+AutoResizeFont.m"; sourceTree = "<group>"; };
 		116FD858187B53B900BC4643 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -395,8 +401,8 @@
 			children = (
 				11711F961871F2CF00792D36 /* AutoFlip */,
 				11711FB51871F2CF00792D36 /* AutoFlipTests */,
-				1192496C1878F53100BD6868 /* Resources */,
 				11D11F5A1878EFF80081B1CB /* vendor */,
+				1192496C1878F53100BD6868 /* Resources */,
 				11711F8F1871F2CF00792D36 /* Frameworks */,
 				11711F8E1871F2CF00792D36 /* Products */,
 			);
@@ -446,10 +452,10 @@
 				11D0D11918720339008CC7FD /* Models */,
 				11711F9F1871F2CF00792D36 /* AppDelegate.h */,
 				11711FA01871F2CF00792D36 /* AppDelegate.m */,
-				11711FA81871F2CF00792D36 /* Images.xcassets */,
-				11711F971871F2CF00792D36 /* Supporting Files */,
 				116BFBF3189D620F008663CE /* UITextView+AutoResizeFont.h */,
 				116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */,
+				11711FA81871F2CF00792D36 /* Images.xcassets */,
+				11711F971871F2CF00792D36 /* Supporting Files */,
 			);
 			path = AutoFlip;
 			sourceTree = "<group>";
@@ -514,6 +520,9 @@
 		1192496C1878F53100BD6868 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				11229DF218A03BF400B6F1C3 /* paper-portrait.png */,
+				11229DF318A03BF400B6F1C3 /* paper-landscape.png */,
+				11229DF018A0143600B6F1C3 /* autoflip.png */,
 				11946E0B1894D20900A4D17A /* present.png */,
 				11946E0C1894D20900A4D17A /* edit.png */,
 				11E8F76318903EE300A6DF5C /* custom.png */,
@@ -897,6 +906,8 @@
 				11BA10AD1881C4460093851B /* GTMOAuth2ViewTouch.xib in Resources */,
 				1192497E1878F53100BD6868 /* Lato-Light.ttf in Resources */,
 				11711FA91871F2CF00792D36 /* Images.xcassets in Resources */,
+				11229DF118A0143600B6F1C3 /* autoflip.png in Resources */,
+				11229DF518A03BF400B6F1C3 /* paper-landscape.png in Resources */,
 				116FD862187B53F400BC4643 /* AcousticModelSpanish.bundle in Resources */,
 				119249791878F53100BD6868 /* Lato-Bold.ttf in Resources */,
 				1192497B1878F53100BD6868 /* Lato-Hairline.ttf in Resources */,
@@ -914,6 +925,7 @@
 				119249781878F53100BD6868 /* Lato-BlackItalic.ttf in Resources */,
 				11D0D13D18722E34008CC7FD /* dropbox.png in Resources */,
 				11D0D13B18722DD6008CC7FD /* drive.png in Resources */,
+				11229DF418A03BF400B6F1C3 /* paper-portrait.png in Resources */,
 				11711FA41871F2CF00792D36 /* Main.storyboard in Resources */,
 				11946E0E1894D20900A4D17A /* edit.png in Resources */,
 				119249801878F53100BD6868 /* Lato-Regular.ttf in Resources */,

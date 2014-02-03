@@ -56,8 +56,6 @@
 
     [self.titleField becomeFirstResponder];
     
-    NSLog(@"%@",self.descriptionText);
-    
     [[[LibraryAPI sharedInstance] designManager] styleFlatUIButton:self.saveButton];
     [[[LibraryAPI sharedInstance] designManager] styleFlatUIButton:self.cancelButton];
     

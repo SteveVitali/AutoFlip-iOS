@@ -460,7 +460,7 @@
         CGSize size = [string sizeWithFont:self.textArea.font
                          constrainedToSize:self.textArea.bounds.size
                              lineBreakMode:NSLineBreakByWordWrapping];
-        
+                
         // work out where that position would be relative to the textView's frame
         CGRect viewRect = self.textArea.frame;
         int scrollHeight = viewRect.origin.y + size.height;

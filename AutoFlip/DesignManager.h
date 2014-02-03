@@ -12,13 +12,19 @@
 
 @interface DesignManager : NSObject
 
+@property UIColor *primaryAccentColor;
+
 // Button and text colors
 @property UIColor *buttonBGColor;
 @property UIColor *buttonShadowColor;
 @property UIColor *buttonTextColorNormal;
 @property UIColor *buttonTextColorHighlighted;
+@property float buttonShadowHeight;
+@property float buttonCornerRadius;
+@property float buttonFontSize;
 // Other colors
 @property UIColor *homeScreenBGColor;
+@property UIColor *cardDeckViewControllerBGColor;
 @property UIColor *kxMenuTextColor;
 // Table colors
 @property UIColor *tableCellBGColorNormal;

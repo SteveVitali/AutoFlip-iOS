@@ -27,13 +27,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AutoFlip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rva-pY-OZ8">
-                                <rect key="frame" x="57" y="102" width="206" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="48"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="f0O-Zt-ndL" customClass="FUIButton">
                                 <rect key="frame" x="60" y="199" width="200" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -73,6 +66,10 @@
                                     <action selector="didPressImport:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YEE-2K-kvR"/>
                                 </connections>
                             </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="autoflip.png" id="b1w-2B-4iU">
+                                <rect key="frame" x="60" y="102" width="200" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -90,7 +87,7 @@
                     <connections>
                         <outlet property="createButton" destination="t6M-BN-vfu" id="5xx-sZ-s3f"/>
                         <outlet property="importButton" destination="bs3-nX-3zs" id="cvE-QG-Gc0"/>
-                        <outlet property="logoLabel" destination="rva-pY-OZ8" id="UBZ-Pf-oJI"/>
+                        <outlet property="logoImageView" destination="b1w-2B-4iU" id="smn-yt-xm5"/>
                         <outlet property="startButton" destination="f0O-Zt-ndL" id="dla-OU-5kw"/>
                         <segue destination="BI9-0p-ewz" kind="modal" identifier="driveFileChooser" id="A8e-Sg-bzX"/>
                         <segue destination="pdT-Q6-8Jf" kind="push" identifier="newCardDeck" id="oAJ-Zt-2Zq"/>
@@ -482,7 +479,7 @@
                             <textView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" editable="NO" id="pAN-rL-TvW">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -521,6 +518,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="autoflip.png" width="400" height="100"/>
         <image name="custom.png" width="256" height="256"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -529,7 +527,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="1Dd-mx-Ee7"/>
         <segue reference="DlJ-K0-bpS"/>
-        <segue reference="Lp7-11-OHQ"/>
     </inferredMetricsTieBreakers>
 </document>

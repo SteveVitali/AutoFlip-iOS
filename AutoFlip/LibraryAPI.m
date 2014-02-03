@@ -95,13 +95,19 @@
 // Color/Size constants for all the views in the application.
 - (void)setDesignManagerConstantsFromManager:(DesignManager *)manager {
     
+    [manager setPrimaryAccentColor:[UIColor wetAsphaltColor]];
+    
     // Button colors
-    [manager setButtonBGColor:[UIColor turquoiseColor]];
+    [manager setButtonBGColor:[manager primaryAccentColor]];
+    [manager setButtonShadowColor:[UIColor midnightBlueColor]];
     [manager setButtonTextColorNormal:[UIColor cloudsColor]];
     [manager setButtonTextColorHighlighted:[UIColor cloudsColor]];
-    [manager setButtonShadowColor:[UIColor greenSeaColor]];
+    [manager setButtonShadowHeight:2.0f];
+    [manager setButtonCornerRadius:4.0f];
+    [manager setButtonFontSize:16];
     // Screen backgrounds
     [manager setHomeScreenBGColor:[UIColor cloudsColor]];
+    [manager setCardDeckViewControllerBGColor:[UIColor cloudsColor]];
     // TableView colors for ChooseCardsViewController
     [manager setTableCellBGColorNormal:[UIColor cloudsColor]];
     [manager setTableCellBGColorSelected:[UIColor grayColor]];
@@ -111,6 +117,8 @@
     // Text sizes
     [manager setMinNotecardFontSize:[NSNumber numberWithInt:16]];
     [manager setMaxNotecardFontSize:[NSNumber numberWithInt:36]];
+    
+    [manager setKxMenuTextColor:[UIColor cloudsColor]];
 }
 
 - (void)customLog:(NSString *)log {

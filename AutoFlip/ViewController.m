@@ -76,6 +76,12 @@
     [designManager styleFlatUIButton:self.createButton];
     [designManager styleFlatUIButton:self.editButton];
     [designManager styleFlatUIButton:self.importButton];
+    
+    self.logoImageView.image = [self scaleImage:[UIImage imageNamed:@"autoflip.png"] withScale:2.0];
+    
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"paper-portrait.png"]]];
+    
+    self.navigationController.navigationBar.tintColor = [[[LibraryAPI sharedInstance] designManager] primaryAccentColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -113,7 +119,7 @@
       ];
     
     KxMenuItem *first = menuItems[0];
-    first.foreColor = [UIColor turquoiseColor];
+    first.foreColor = [[[LibraryAPI sharedInstance] designManager] kxMenuTextColor];
     first.alignment = NSTextAlignmentCenter;
     
     [KxMenu showMenuInView:self.view
@@ -188,7 +194,7 @@
     ];
     
     KxMenuItem *first = menuItems[0];
-    first.foreColor = [UIColor turquoiseColor];
+    first.foreColor = [[[LibraryAPI sharedInstance] designManager] kxMenuTextColor];
     first.alignment = NSTextAlignmentCenter;
     
     [KxMenu showMenuInView:self.view
