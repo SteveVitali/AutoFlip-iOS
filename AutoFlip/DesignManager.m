@@ -26,9 +26,9 @@
     
     button.buttonColor = [self buttonBGColor];
     button.shadowColor = [self buttonShadowColor];//[UIColor greenSeaColor];
-    button.shadowHeight = 3.0f;
-    button.cornerRadius = 6.0f;
-    button.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    button.shadowHeight = [self buttonShadowHeight];
+    button.cornerRadius = [self buttonCornerRadius];
+    button.titleLabel.font = [UIFont boldFlatFontOfSize:[self buttonFontSize]];
     [button setTitleColor:[self buttonTextColorNormal] forState:UIControlStateNormal];
     [button setTitleColor:[self buttonTextColorHighlighted] forState:UIControlStateHighlighted];
 }

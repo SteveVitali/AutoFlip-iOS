@@ -131,7 +131,7 @@
       ];
     
     KxMenuItem *first = menuItems[0];
-    first.foreColor = [UIColor turquoiseColor];
+    first.foreColor = [[[LibraryAPI sharedInstance] designManager] kxMenuTextColor];
     first.alignment = NSTextAlignmentCenter;
     
     [KxMenu showMenuInView:self.view
@@ -231,7 +231,7 @@
       ];
     
     KxMenuItem *first = menuItems[0];
-    first.foreColor = [UIColor turquoiseColor];
+    first.foreColor = [[[LibraryAPI sharedInstance] designManager] kxMenuTextColor];
     first.alignment = NSTextAlignmentCenter;
     
     [KxMenu showMenuInView:self.view
@@ -333,7 +333,7 @@
       ];
     
     KxMenuItem *first = menuItems[0];
-    first.foreColor = [UIColor turquoiseColor];
+    first.foreColor = [[[LibraryAPI sharedInstance] designManager] kxMenuTextColor];
     first.alignment = NSTextAlignmentCenter;
     
     [KxMenu showMenuInView:self.view

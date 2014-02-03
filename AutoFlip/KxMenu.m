@@ -173,7 +173,6 @@ typedef enum {
         self.layer.shadowOffset = CGSizeMake(2, 2);
         self.layer.shadowRadius = 2;
     }
-    
     return self;
 }
 
@@ -333,7 +332,7 @@ typedef enum {
     [UIView animateWithDuration:0.2
                      animations:^(void) {
                          
-                         self.alpha = 1.0f;
+                         self.alpha = .98f;
                          self.frame = toFrame;
                          
                      } completion:^(BOOL completed) {

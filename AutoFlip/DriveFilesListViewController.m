@@ -195,6 +195,7 @@ UIAlertView *loadingAlert;
                 NSLog(@"An error occurred: %@", error);
             }
         }];
+    NSLog(@"Logging the queryTicket variable to get rid of the 'unused variable' 'error' %@", queryTicket);
 }
 
 - (void)downloadFileContent:(GTLDriveFile *)file {
