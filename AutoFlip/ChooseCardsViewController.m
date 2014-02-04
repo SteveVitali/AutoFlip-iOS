@@ -155,6 +155,7 @@
     [cell.contentView setBackgroundColor:[designManager tableCellBGColorNormal]];
     [cell.backgroundView setBackgroundColor:[designManager tableCellBGColorNormal]];
     [cell.detailTextLabel setTextColor:[designManager tableCellDetailColor]];
+    [cell setBackgroundColor:[designManager tableCellBGColorNormal]];
     
     [self.tableView setSeparatorColor:[designManager tableCellSeparatorColor]];
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
@@ -180,12 +181,6 @@
     cell.imageView.image = [UIImage imageNamed:[presentation.type stringByAppendingString:@".png"]];
     
     return cell;
-}
-
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    cell.backgroundColor = [UIColor clearColor];
-    cell.contentView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

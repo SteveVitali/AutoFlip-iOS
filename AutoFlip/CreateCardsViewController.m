@@ -187,7 +187,8 @@
     if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
         verticalPadding += 5;
     }
-    
+    // These values are completely hardcoded, which is probably bad
+    // But scumbag apple didn't give UIBarButtonItems a frame or bounds property
     [KxMenu showMenuInView:self.view
                   fromRect:CGRectMake(self.view.frame.size.width * 7/8 - 32, self.navigationController.navigationBar.frame.size.height / 2,
                                       75, self.navigationController.navigationBar.frame.size.height + verticalPadding)
@@ -266,6 +267,8 @@
         verticalPadding += 5;
     }
     
+    // These values are completely hardcoded, which is probably bad
+    // But scumbag apple didn't give UIBarButtonItems a frame or bounds property
     [KxMenu showMenuInView:self.view
                   fromRect:CGRectMake(0  , self.navigationController.navigationBar.frame.size.height / 2,
                                       75, self.navigationController.navigationBar.frame.size.height + verticalPadding)
@@ -459,7 +462,7 @@
     if (textAreaContent.length <3) {
         // then, make sure they're not deleting the original bullet
         // and don't waste time looking at the rest of this method and return
-        self.textArea.text = [NSString stringWithFormat:@"\u2022 %@",self.textArea.text];
+        self.textArea.text = @"\u2022 ";
         return;
     }
     

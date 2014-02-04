@@ -25,7 +25,7 @@
 #import "ViewController.h"
 #import <MobileCoreServices/UTType.h>
 #import "LibraryAPI.h"
-
+#import "UITableViewCell+FlatUI.h"
 
 // Constants used for OAuth 2.0 authorization.
 static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
@@ -57,7 +57,10 @@ UIAlertView *loadingAlert;
 @end
 
 
-@implementation DriveFilesListViewController
+@implementation DriveFilesListViewController {
+    
+    DesignManager *designManager;
+}
 @synthesize addButton = _addButton;
 @synthesize authButton = _authButton;
 @synthesize refreshButton = _refreshButton;
@@ -88,7 +91,12 @@ UIAlertView *loadingAlert;
     self.navigationController.navigationBar.barTintColor = [[[LibraryAPI sharedInstance] designManager] navigationBarTintColor];
     self.navigationController.toolbar.barTintColor = [[[LibraryAPI sharedInstance] designManager] navigationBarTintColor];
     self.navigationController.toolbar.tintColor = [[[LibraryAPI sharedInstance] designManager] primaryAccentColor];
+    
+    designManager = [[LibraryAPI sharedInstance] designManager];
 
+    //Set table colors
+    [self.view setBackgroundColor:[designManager homeScreenBGColor]];
+    
     [self checkAuthentication];
     [self loadDriveFiles];
 }
@@ -168,8 +176,26 @@ UIAlertView *loadingAlert;
     } else {
         file = [self.driveFiles objectAtIndex:indexPath.row];
     }
-  cell.textLabel.text = file.title;
-  return cell;
+    cell.textLabel.text = file.title;
+    
+    // I have no idea why this works with the [UIColor cloudsColor] set that way, but it does
+    [cell configureFlatCellWithColor:[UIColor cloudsColor] selectedColor:[designManager tableCellBGColorSelected]];
+    
+    [cell.textLabel setTextColor:[designManager tableCellTextColor]];
+    [cell setBackgroundColor:[designManager tableCellBGColorNormal]];
+    [cell.backgroundView setBackgroundColor:[designManager tableCellBGColorNormal]];
+    [cell.contentView setBackgroundColor:[designManager tableCellBGColorNormal]];
+    
+    [self.tableView setSeparatorColor:[designManager tableCellSeparatorColor]];
+    
+    cell.cornerRadius = 5.f; //Optional
+    if (self.tableView.style == UITableViewStyleGrouped) {
+        cell.separatorHeight = 2.f; //Optional
+    } else {
+        cell.separatorHeight = 0.;
+    }
+    
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

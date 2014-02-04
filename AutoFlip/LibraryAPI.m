@@ -106,10 +106,11 @@
     [manager setButtonFontSize:16];
     // Screen backgrounds
     [manager setHomeScreenBGColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"paper-portrait.png"]]];
-    [manager setCardDeckViewControllerBGColor:[UIColor cloudsColor]];
+    [manager setCardDeckTextViewBGColor:[[UIColor cloudsColor] colorWithAlphaComponent:0.3]];
+    [manager setCardDeckViewControllerBGColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"paper-portrait.png"]]];
     // TableView colors for ChooseCardsViewController
-    [manager setTableCellBGColorNormal:[[UIColor cloudsColor] colorWithAlphaComponent:.3]];
-    [manager setTableCellBGColorSelected:[[UIColor concreteColor] colorWithAlphaComponent:.3]];
+    [manager setTableCellBGColorNormal:[UIColor clearColor]];
+    [manager setTableCellBGColorSelected:[[UIColor concreteColor] colorWithAlphaComponent:0.3]];
     [manager setTableCellSeparatorColor:[UIColor concreteColor]];
     [manager setTableCellTextColor:[UIColor midnightBlueColor]];
     [manager setTableCellDetailColor:[UIColor wetAsphaltColor]];

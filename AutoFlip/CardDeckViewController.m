@@ -71,7 +71,7 @@
 
     [self resizeTextToFitScreen];
     
-    //[self.textArea setBackgroundColor:[self.designManager cardDeckViewControllerBGColor]];
+    [self.textArea setBackgroundColor:[self.designManager cardDeckTextViewBGColor]];
     [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] homeScreenBGColor]];
 }
 
