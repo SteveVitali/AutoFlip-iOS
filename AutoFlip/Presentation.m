@@ -89,6 +89,16 @@
     return allWords;
 }
 
+- (NSString *)getPresentationInTextFormat {
+    
+    NSString *allText = @"";
+    
+    for (Notecard *card in self.notecards) {
+        allText = [allText stringByAppendingString:[NSString stringWithFormat:@"%@\n",card.getTextFromBulletFormat]];
+    }
+    return allText;
+}
+
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     
     [aCoder encodeObject:self.title forKey:@"title"];

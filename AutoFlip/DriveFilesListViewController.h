@@ -22,7 +22,7 @@
 
 - (IBAction)didPressCancel:(id)sender;
 
-- (void)uploadFileToGoogleDrive:(NSString*)filePath;
+- (void)uploadTextFileToGoogleDrive:(NSString*)fileText title:(NSString *)title;
 
 @end
 

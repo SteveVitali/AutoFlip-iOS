@@ -237,6 +237,7 @@ UIAlertView *loadingAlert;
     // Technically runs 2 seconds faster (maybe more), so I'm going to export as pptx, then unzip and extract text
     // The same way I do for the Dropbox download.
     // We should probably change this at some point, but I really don't feel like doing it now.
+
     NSString *exportFormat = @"application/vnd.openxmlformats-officedocument.presentationml.presentation";
     
     NSString *exportURLStr = [file.exportLinks JSONValueForKey:exportFormat];
@@ -305,37 +306,34 @@ UIAlertView *loadingAlert;
     NSLog(@"%@",result);
 }
 
-- (void)uploadFileToGoogleDrive:(NSString*)filePath {
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString  *documentsDirectory = [paths objectAtIndex:0];
-    NSString  *zippedPath = [NSString stringWithFormat:@"%@/test.zip", documentsDirectory];
-    
-    NSArray *inputPaths = [[LibraryAPI sharedInstance] listFilesAtPath:filePath];
-    
-    [SSZipArchive createZipFileAtPath:zippedPath withFilesAtPaths:inputPaths];
+- (void)uploadTextFileToGoogleDrive:(NSString*)fileText title:(NSString *)title {
     
     GTLDriveFile *driveFile = [[GTLDriveFile alloc] init];
     
-    driveFile.mimeType = @"application/vnd.openxmlformats-officedocument.presentationml.presentation";
+    NSData *fileContent = [fileText dataUsingEncoding:NSUTF8StringEncoding];
+    GTLUploadParameters *uploadParameters = [GTLUploadParameters uploadParametersWithData:fileContent
+                                                                                 MIMEType:@"text/plain"];
     
-    GTLUploadParameters *uploadParameters = [GTLUploadParameters
-                                             uploadParametersWithData:[NSData dataWithContentsOfFile:zippedPath]
-                                             MIMEType:driveFile.mimeType];
+    driveFile.title = title;
     
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesInsertWithObject:driveFile
                                                        uploadParameters:uploadParameters];
     
+    UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Saving file"
+                                                             delegate:self];
+    
     [self.driveService executeQuery:query
-                  completionHandler:^(GTLServiceTicket *ticket,
-                                      GTLDriveFile *updatedFile,
-                                      NSError *error) {
-                      if (error == nil) {
-                          NSLog(@"File uploaded successfully from %@", zippedPath);
-                      } else {
-                          NSLog(@"Upload Failed: %@", error);
-                      }
-                  }];
+                  completionHandler:^(GTLServiceTicket *ticket, GTLDriveFile *updatedFile, NSError *error) {
+        [alert dismissWithClickedButtonIndex:0 animated:YES];
+
+        if (error == nil) {
+            NSLog(@"File uploaded successfully!");
+            [DrEditUtilities showErrorMessageWithTitle:[NSString stringWithFormat:@"'%@' successfully uploaded to Drive!",driveFile.title] message:nil delegate:self];
+        } else {
+            NSLog(@"Upload Failed: %@", error);
+            [DrEditUtilities showErrorMessageWithTitle:@"Upload failed :(" message:nil delegate:self];
+        }
+    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

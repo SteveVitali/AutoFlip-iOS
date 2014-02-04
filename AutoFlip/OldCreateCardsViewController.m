@@ -366,8 +366,8 @@
 
 - (void)exportPresentationToDrive {
     
-    DriveFilesListViewController *testController = [[DriveFilesListViewController alloc] init];
-    [testController uploadFileToGoogleDrive:self.presentation.pathToUnzippedPPTX];
+    //DriveFilesListViewController *testController = [[DriveFilesListViewController alloc] init];
+    //[testController uploadFileToGoogleDrive:self.presentation.pathToUnzippedPPTX];
 }
 
 - (void)exportPresentationToDropbox {

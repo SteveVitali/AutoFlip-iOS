@@ -362,8 +362,10 @@
 
 - (void)exportPresentationToDrive {
     
+    NSString *fileText = [self.presentation getPresentationInTextFormat];
+    
     DriveFilesListViewController *testController = [[DriveFilesListViewController alloc] init];
-    [testController uploadFileToGoogleDrive:self.presentation.pathToUnzippedPPTX];
+    [testController uploadTextFileToGoogleDrive:fileText title:self.presentation.title];
 }
 
 - (void)exportPresentationToDropbox {

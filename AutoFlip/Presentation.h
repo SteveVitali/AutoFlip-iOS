@@ -27,4 +27,6 @@
 - (id) initWithNotes:(NSMutableArray *)notecards;
 - (id)initWithRandomNotes:(int)num;
 
+- (NSString *)getPresentationInTextFormat;
+
 @end

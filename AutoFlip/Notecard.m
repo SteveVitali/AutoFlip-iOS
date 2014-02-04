@@ -45,7 +45,6 @@
         for(int i=0; i<6; i++) {
             [self.bullets addObject:[self getRandomBullet]];
         }
-        
         self.text = [self getTextInBulletFormat];
     }
     return self;
@@ -93,12 +92,13 @@
 - (NSString *)getTextFromBulletFormat {
     
     NSString *text = [NSString stringWithString:[self text]];
-    
-    NSCharacterSet *charactersToRemove = [[ NSCharacterSet alphanumericCharacterSet ] invertedSet ];
-    
-    NSString *newText =
-              [[text componentsSeparatedByCharactersInSet:charactersToRemove ]
-                                        componentsJoinedByString:@" " ];
+    NSString *newText;
+//    NSCharacterSet *charactersToRemove = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+//    
+//    NSString *newText =
+//              [[text componentsSeparatedByCharactersInSet:charactersToRemove]
+//                                        componentsJoinedByString:@" "];
+    newText = [text stringByReplacingOccurrencesOfString:@"\u2022 " withString:@""];
     
     return newText;
 }
@@ -107,7 +107,6 @@
 {
     [aCoder encodeObject:self.bullets forKey:@"bullets"];
     [aCoder encodeObject:self.text forKey:@"text"];
-    
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
