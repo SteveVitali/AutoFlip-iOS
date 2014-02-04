@@ -96,7 +96,6 @@
 - (void)setDesignManagerConstantsFromManager:(DesignManager *)manager {
     
     [manager setPrimaryAccentColor:[UIColor wetAsphaltColor]];
-    
     // Button colors
     [manager setButtonBGColor:[manager primaryAccentColor]];
     [manager setButtonShadowColor:[UIColor midnightBlueColor]];
@@ -106,19 +105,20 @@
     [manager setButtonCornerRadius:4.0f];
     [manager setButtonFontSize:16];
     // Screen backgrounds
-    [manager setHomeScreenBGColor:[UIColor cloudsColor]];
+    [manager setHomeScreenBGColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"paper-portrait.png"]]];
     [manager setCardDeckViewControllerBGColor:[UIColor cloudsColor]];
     // TableView colors for ChooseCardsViewController
-    [manager setTableCellBGColorNormal:[UIColor cloudsColor]];
-    [manager setTableCellBGColorSelected:[UIColor grayColor]];
-    [manager setTableCellSeparatorColor:[UIColor cloudsColor]];
-    [manager setTableCellTextColor:[UIColor blackColor]];
-    [manager setTableCellDetailColor:[UIColor grayColor]];
+    [manager setTableCellBGColorNormal:[[UIColor cloudsColor] colorWithAlphaComponent:.3]];
+    [manager setTableCellBGColorSelected:[[UIColor concreteColor] colorWithAlphaComponent:.3]];
+    [manager setTableCellSeparatorColor:[UIColor concreteColor]];
+    [manager setTableCellTextColor:[UIColor midnightBlueColor]];
+    [manager setTableCellDetailColor:[UIColor wetAsphaltColor]];
     // Text sizes
     [manager setMinNotecardFontSize:[NSNumber numberWithInt:16]];
     [manager setMaxNotecardFontSize:[NSNumber numberWithInt:36]];
-    
+    // Other
     [manager setKxMenuTextColor:[UIColor cloudsColor]];
+    [manager setNavigationBarTintColor:[UIColor cloudsColor]];
 }
 
 - (void)customLog:(NSString *)log {

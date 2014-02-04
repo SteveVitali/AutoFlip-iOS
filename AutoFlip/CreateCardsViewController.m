@@ -22,6 +22,7 @@
     // For the saving as
     MZFormSheetController *saveAsFormSheet;
     SaveAsViewController  *saveAsViewController;
+
 }
 - (void)saveAndExit;
 - (void)saveAs;
@@ -30,6 +31,9 @@
 
 @implementation CreateCardsViewController {
     
+    NSArray *kxSaveMenuItems;
+    NSArray *kxExportMenuItems;
+    NSArray *kxActionsMenuItems;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -76,7 +80,76 @@
     
     self.textArea.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
+    [self initKxMenus];
+    
     [self reloadCard];
+}
+
+- (void)initKxMenus {
+    
+    // Init save menu items
+    kxSaveMenuItems =
+    @[
+      [KxMenuItem menuItem:@"Save and exit"
+                     image:nil
+                    target:self
+                    action:@selector(saveAndExit)],
+      
+      [KxMenuItem menuItem:@"Save as..."
+                     image:nil
+                    target:self
+                    action:@selector(saveAs)],
+      
+      [KxMenuItem menuItem:@"Export..."
+                     image:nil
+                    target:self
+                    action:@selector(exportCards)],
+      ];
+    
+    // Init export menu items
+    UIImage *drive   = [UIImage imageNamed:@"drive.png"];
+    UIImage *dropbox = [UIImage imageNamed:@"dropbox.png"];
+    UIImage *custom  = [UIImage imageNamed:@"custom.png"];
+    
+    //scale 4.0 = 1/4 original image size
+    //makes assumptions about original image sizes
+    drive = [[LibraryAPI sharedInstance] scaleImage:drive withScale:16.0];
+    dropbox=[[LibraryAPI sharedInstance] scaleImage:dropbox withScale:16.0];
+    custom =[[LibraryAPI sharedInstance] scaleImage:custom withScale:8.0];
+    
+    kxExportMenuItems =
+    @[
+      
+      [KxMenuItem menuItem:@"Export To..."
+                     image:nil
+                    target:nil
+                    action:NULL],
+      
+      [KxMenuItem menuItem:@"Google Drive"
+                     image:drive
+                    target:self
+                    action:@selector(exportCardsToDestination:)],
+      
+      [KxMenuItem menuItem:@"Dropbox"
+                     image:dropbox
+                    target:self
+                    action:@selector(exportCardsToDestination:)],
+      ];
+    
+    // Init actions menu items
+    kxActionsMenuItems =
+    @[
+      [KxMenuItem menuItem:@"Insert New Card"
+                     image:nil
+                    target:self
+                    action:@selector(insertCard)],
+      
+      [KxMenuItem menuItem:@"Delete Current Card"
+                     image:nil
+                    target:self
+                    action:@selector(deleteCard)],
+      
+      ];
 }
 
 - (void) hideKeyboard {
@@ -110,33 +183,10 @@
     
     [self.textArea resignFirstResponder];
     
-    NSArray *menuItems =
-    @[
-      
-      [KxMenuItem menuItem:@"Options"
-                     image:nil
-                    target:nil
-                    action:NULL],
-      
-      [KxMenuItem menuItem:@"Insert New Card"
-                     image:nil
-                    target:self
-                    action:@selector(insertCard)],
-      
-      [KxMenuItem menuItem:@"Delete Current Card"
-                     image:nil
-                    target:self
-                    action:@selector(deleteCard)],
-      
-      ];
-    
-    KxMenuItem *first = menuItems[0];
-    first.foreColor = [[[LibraryAPI sharedInstance] designManager] kxMenuTextColor];
-    first.alignment = NSTextAlignmentCenter;
-    
     [KxMenu showMenuInView:self.view
-                  fromRect:self.view.frame//fromRect:sender.frame
-                 menuItems:menuItems];
+                  fromRect:CGRectMake(self.view.frame.size.width * 3/4, self.navigationController.navigationBar.frame.size.height / 2,
+                                      75, self.navigationController.navigationBar.frame.size.height)
+                 menuItems:kxActionsMenuItems];
 }
 
 - (void)insertCard {
@@ -206,37 +256,10 @@
 
 - (void)showSaveMenu:(UIButton *)sender {
     
-    NSArray *menuItems =
-    @[
-      
-      [KxMenuItem menuItem:@"Save"
-                     image:nil
-                    target:nil
-                    action:NULL],
-      
-      [KxMenuItem menuItem:@"Save and exit"
-                     image:nil
-                    target:self
-                    action:@selector(saveAndExit)],
-      
-      [KxMenuItem menuItem:@"Save as..."
-                     image:nil
-                    target:self
-                    action:@selector(saveAs)],
-      
-      [KxMenuItem menuItem:@"Export..."
-                     image:nil
-                    target:self
-                    action:@selector(exportCards)],
-      ];
-    
-    KxMenuItem *first = menuItems[0];
-    first.foreColor = [[[LibraryAPI sharedInstance] designManager] kxMenuTextColor];
-    first.alignment = NSTextAlignmentCenter;
-    
     [KxMenu showMenuInView:self.view
-                  fromRect:self.view.frame//fromRect:sender.frame
-                 menuItems:menuItems];
+                  fromRect:CGRectMake(0  , self.navigationController.navigationBar.frame.size.height / 2,
+                                      75, self.navigationController.navigationBar.frame.size.height)
+                 menuItems:kxSaveMenuItems];
 }
 
 - (void)saveAndExit {
@@ -303,42 +326,13 @@
 
 - (void)exportCards {
     
-    UIImage *drive   = [UIImage imageNamed:@"drive.png"];
-    UIImage *dropbox = [UIImage imageNamed:@"dropbox.png"];
-    UIImage *custom  = [UIImage imageNamed:@"custom.png"];
-    
-    //scale 4.0 = 1/4 original image size
-    //makes assumptions about original image sizes
-    drive = [[LibraryAPI sharedInstance] scaleImage:drive withScale:16.0];
-    dropbox=[[LibraryAPI sharedInstance] scaleImage:dropbox withScale:16.0];
-    custom =[[LibraryAPI sharedInstance] scaleImage:custom withScale:8.0];
-    
-    NSArray *menuItems =
-    @[
-      
-      [KxMenuItem menuItem:@"Export Notecards"
-                     image:nil
-                    target:nil
-                    action:NULL],
-      
-      [KxMenuItem menuItem:@"Google Drive"
-                     image:drive
-                    target:self
-                    action:@selector(exportCardsToDestination:)],
-      
-      [KxMenuItem menuItem:@"Dropbox"
-                     image:dropbox
-                    target:self
-                    action:@selector(exportCardsToDestination:)],
-      ];
-    
-    KxMenuItem *first = menuItems[0];
+    KxMenuItem *first = kxExportMenuItems[0];
     first.foreColor = [[[LibraryAPI sharedInstance] designManager] kxMenuTextColor];
     first.alignment = NSTextAlignmentCenter;
     
     [KxMenu showMenuInView:self.view
-                  fromRect:self.textArea.frame //sender.frame
-                 menuItems:menuItems];
+                  fromRect:self.navigationController.navigationBar.frame
+                 menuItems:kxExportMenuItems];
 }
 
 // This method is kind of useless.

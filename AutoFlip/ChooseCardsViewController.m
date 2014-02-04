@@ -57,8 +57,14 @@
     //Set table colors
     self.tableView.separatorColor = [designManager tableCellSeparatorColor];
     
-    [self.navigationController.navigationBar setHidden:NO];
-    self.view.backgroundColor = [UIColor cloudsColor];
+    [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] homeScreenBGColor]];
+    
+    if ([self.chooserType isEqualToString:@"present"]) {
+        self.navigationItem.title = @"Choose a Deck to Present";
+    }
+    else if ([self.chooserType isEqualToString:@"edit"]) {
+        self.navigationItem.title = @"Choose a Deck to Edit";
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -174,6 +180,12 @@
     cell.imageView.image = [UIImage imageNamed:[presentation.type stringByAppendingString:@".png"]];
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [UIColor clearColor];
+    cell.contentView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

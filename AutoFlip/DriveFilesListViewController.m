@@ -82,10 +82,15 @@ UIAlertView *loadingAlert;
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-  
+    
+    self.navigationController.navigationBar.tintColor = [[[LibraryAPI sharedInstance] designManager] primaryAccentColor];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.barTintColor = [[[LibraryAPI sharedInstance] designManager] navigationBarTintColor];
+    self.navigationController.toolbar.barTintColor = [[[LibraryAPI sharedInstance] designManager] navigationBarTintColor];
+    self.navigationController.toolbar.tintColor = [[[LibraryAPI sharedInstance] designManager] primaryAccentColor];
+
     [self checkAuthentication];
     [self loadDriveFiles];
-
 }
 
 - (void)checkAuthentication {

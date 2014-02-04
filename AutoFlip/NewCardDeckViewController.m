@@ -9,6 +9,7 @@
 #import "NewCardDeckViewController.h"
 #import "CreateCardsViewController.h"
 #import "DrEditUtilities.h"
+#import "LibraryAPI.h"
 
 @interface NewCardDeckViewController ()
 
@@ -40,7 +41,7 @@
     [self.navigationController.navigationBar setHidden:NO];
     self.view.backgroundColor = [UIColor cloudsColor];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"paper-portrait.png"]]];
+    [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] homeScreenBGColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

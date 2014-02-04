@@ -72,7 +72,12 @@
     [self resizeTextToFitScreen];
     
     //[self.textArea setBackgroundColor:[self.designManager cardDeckViewControllerBGColor]];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"paper-portrait.png"]]];
+    [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] homeScreenBGColor]];
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;//YES;
 }
 
 - (void)pinchGesture:(UIPinchGestureRecognizer *)recognizer {

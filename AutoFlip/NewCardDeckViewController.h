@@ -11,6 +11,7 @@
 
 @interface NewCardDeckViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet FUITextField *titleField;
 @property (weak, nonatomic) IBOutlet FUITextField *descriptionField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *createButton;

@@ -26,6 +26,7 @@
 @property UIColor *homeScreenBGColor;
 @property UIColor *cardDeckViewControllerBGColor;
 @property UIColor *kxMenuTextColor;
+@property UIColor *navigationBarTintColor;
 // Table colors
 @property UIColor *tableCellBGColorNormal;
 @property UIColor *tableCellBGColorSelected;

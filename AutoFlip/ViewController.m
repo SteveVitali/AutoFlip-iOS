@@ -79,9 +79,13 @@
     
     self.logoImageView.image = [self scaleImage:[UIImage imageNamed:@"autoflip.png"] withScale:2.0];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"paper-portrait.png"]]];
+    [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] homeScreenBGColor]];
     
+    self.navigationController.navigationBar.translucent = YES;
     self.navigationController.navigationBar.tintColor = [[[LibraryAPI sharedInstance] designManager] primaryAccentColor];
+    self.navigationController.navigationBar.barTintColor = [[[LibraryAPI sharedInstance] designManager] navigationBarTintColor];
+    self.navigationController.toolbar.barTintColor = [[[LibraryAPI sharedInstance] designManager] navigationBarTintColor];
+    self.navigationController.toolbar.tintColor = [[[LibraryAPI sharedInstance] designManager] primaryAccentColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
