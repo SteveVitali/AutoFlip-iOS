@@ -183,9 +183,14 @@
     
     [self.textArea resignFirstResponder];
     
+    float verticalPadding = 0.0;
+    if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        verticalPadding += 5;
+    }
+    
     [KxMenu showMenuInView:self.view
-                  fromRect:CGRectMake(self.view.frame.size.width * 3/4, self.navigationController.navigationBar.frame.size.height / 2,
-                                      75, self.navigationController.navigationBar.frame.size.height)
+                  fromRect:CGRectMake(self.view.frame.size.width * 7/8 - 32, self.navigationController.navigationBar.frame.size.height / 2,
+                                      75, self.navigationController.navigationBar.frame.size.height + verticalPadding)
                  menuItems:kxActionsMenuItems];
 }
 
@@ -256,9 +261,14 @@
 
 - (void)showSaveMenu:(UIButton *)sender {
     
+    float verticalPadding = 0.0;
+    if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        verticalPadding += 5;
+    }
+    
     [KxMenu showMenuInView:self.view
                   fromRect:CGRectMake(0  , self.navigationController.navigationBar.frame.size.height / 2,
-                                      75, self.navigationController.navigationBar.frame.size.height)
+                                      75, self.navigationController.navigationBar.frame.size.height + verticalPadding)
                  menuItems:kxSaveMenuItems];
 }
 
