@@ -33,4 +33,11 @@
     [button setTitleColor:[self buttonTextColorHighlighted] forState:UIControlStateHighlighted];
 }
 
+- (UIImage *)scaleImage:(UIImage *)image withScale:(float)scale {
+    
+    return [UIImage imageWithCGImage:[image CGImage]
+                               scale:(image.scale * scale)
+                         orientation:(image.imageOrientation)];
+}
+
 @end

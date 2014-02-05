@@ -60,11 +60,11 @@
     
     //scale 4.0 = 1/4 original image size
     //makes assumptions on image sizes, which is bad but this is just to test the menu thing.
-    drive = [self scaleImage:drive withScale:8.0];
-    dropbox=[self scaleImage:dropbox withScale:8.0];
-    custom =[self scaleImage:custom withScale:4.0];
-    edit   =[self scaleImage:edit withScale:4.0];
-    present=[self scaleImage:present withScale:4.0];
+    drive = [designManager scaleImage:drive withScale:8.0];
+    dropbox=[designManager scaleImage:dropbox withScale:8.0];
+    custom =[designManager scaleImage:custom withScale:4.0];
+    edit   =[designManager scaleImage:edit withScale:4.0];
+    present=[designManager scaleImage:present withScale:4.0];
     
     self.logoLabel.font = [UIFont flatFontOfSize:36];
     self.logoLabel.textColor = [UIColor midnightBlueColor];
@@ -77,7 +77,7 @@
     [designManager styleFlatUIButton:self.editButton];
     [designManager styleFlatUIButton:self.importButton];
     
-    self.logoImageView.image = [self scaleImage:[UIImage imageNamed:@"autoflip.png"] withScale:2.0];
+    self.logoImageView.image = [designManager scaleImage:[UIImage imageNamed:@"autoflip.png"] withScale:2.0];
     
     [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] homeScreenBGColor]];
     
@@ -92,13 +92,6 @@
     
     [self.navigationController.navigationBar setHidden:YES];
     [self.navigationController setToolbarHidden:YES];
-}
-
-- (UIImage *)scaleImage:(UIImage *)image withScale:(float)scale {
-    
-    return [UIImage imageWithCGImage:[image CGImage]
-                              scale:(image.scale * scale)
-                        orientation:(image.imageOrientation)];
 }
 
 - (IBAction)didPressStart:(id)sender {
@@ -151,12 +144,12 @@
     if ([segue.identifier isEqualToString:@"choosePresentationToPresent"]) {
         
         ChooseCardsViewController *controller = (ChooseCardsViewController *)[segue destinationViewController];
-        controller.chooserType = @"present";
+        //controller.chooserType = @"present";
     }
     else if ([segue.identifier isEqualToString:@"choosePresentationToEdit"]) {
         
         ChooseCardsViewController *controller = (ChooseCardsViewController *)[segue destinationViewController];
-        controller.chooserType = @"edit";
+        //controller.chooserType = @"edit";
     }
     else if ([segue.identifier isEqualToString:@"newCardDeck"]) {
         

@@ -576,8 +576,6 @@
 				11BA10B21881CC580093851B /* DriveFilesListViewController.h */,
 				11BA10B31881CC580093851B /* DriveFilesListViewController.m */,
 				11A4413B1873624F00FB5863 /* CardDeckViewControllers */,
-				11711FA51871F2CF00792D36 /* ViewController.h */,
-				11711FA61871F2CF00792D36 /* ViewController.m */,
 				11D0D113187202D1008CC7FD /* ChooseCardsViewController.h */,
 				11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */,
 				11DC90611874D39600C069D8 /* NewCardDeckViewController.h */,
@@ -602,6 +600,8 @@
 		11D0FBE718994CFA009D067F /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
+				11711FA51871F2CF00792D36 /* ViewController.h */,
+				11711FA61871F2CF00792D36 /* ViewController.m */,
 				11A44135187360EA00FB5863 /* OldCreateCardsViewController.h */,
 				11A44136187360EA00FB5863 /* OldCreateCardsViewController.m */,
 			);

@@ -40,5 +40,6 @@
 @property NSNumber *minNotecardFontSize;
 
 - (void)styleFlatUIButton:(FUIButton *)button;
+- (UIImage *)scaleImage:(UIImage *)image withScale:(float)scale;
 
 @end

@@ -8,20 +8,26 @@
 
 #import <UIKit/UIKit.h>
 #import "CardDeckTableCell.h"
+#import <DropboxSDK/DropboxSDK.h>
+#import "GTMOAuth2ViewControllerTouch.h"
+#import "GTLDrive.h"
+#import "SSZipArchive.h"
+#import "DriveFilesListViewController.h"
 
 @interface ChooseCardsViewController : UITableViewController
                                         <UITableViewDataSource,
                                          UITableViewDelegate,
                                          UISearchBarDelegate,
-                                         UISearchDisplayDelegate>
+                                         UISearchDisplayDelegate,
+                                         DBRestClientDelegate, SSZipArchiveDelegate, DriveFilePickerDelegate>
 
 @property (strong,nonatomic) NSMutableArray *searchResults;
 @property IBOutlet UISearchBar *searchBar;
 
 // Either "edit" or "present"
-@property NSString *chooserType;
+//@property NSString *chooserType;
 
 - (IBAction)toggleEditing;
-- (IBAction)chooseButtonPressed:(id)sender;
+- (IBAction)addButtonPressed:(id)sender;
 
 @end
