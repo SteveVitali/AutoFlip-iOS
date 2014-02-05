@@ -105,9 +105,9 @@
     [manager setButtonCornerRadius:4.0f];
     [manager setButtonFontSize:16];
     // Screen backgrounds
-    [manager setHomeScreenBGColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"paper-portrait.png"]]];
+    [manager setHomeScreenBGColor:[UIColor cloudsColor]];
     [manager setCardDeckTextViewBGColor:[[UIColor cloudsColor] colorWithAlphaComponent:0.3]];
-    [manager setCardDeckViewControllerBGColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"paper-portrait.png"]]];
+    [manager setCardDeckViewControllerBGColor:[UIColor cloudsColor]];
     // TableView colors for ChooseCardsViewController
     [manager setTableCellBGColorNormal:[UIColor clearColor]];
     [manager setTableCellBGColorSelected:[[UIColor concreteColor] colorWithAlphaComponent:0.3]];
@@ -119,7 +119,7 @@
     [manager setMaxNotecardFontSize:[NSNumber numberWithInt:36]];
     // Other
     [manager setKxMenuTextColor:[UIColor cloudsColor]];
-    [manager setNavigationBarTintColor:[UIColor cloudsColor]];
+    //[manager setNavigationBarTintColor:[UIColor cloudsColor]];
 }
 
 - (void)customLog:(NSString *)log {

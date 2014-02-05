@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AutoFlip/ViewController.m"
-            timestampString = "413168662.688439"
+            timestampString = "413264795.332484"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "@implementation ViewController"
             landmarkType = "3">
          </BreakpointContent>
