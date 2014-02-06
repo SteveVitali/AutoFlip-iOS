@@ -30,7 +30,7 @@
 
 @required
 
-- (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name;
+- (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name andMimeType:(NSString *)mimeType;
 - (void)didCancelDriveFileChooser:(id)sender;
 
 @end

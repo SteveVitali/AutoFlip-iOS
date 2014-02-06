@@ -27,7 +27,7 @@
 #import <DBChooser/DBChooser.h>
 #import "SSZipArchive.h"
 #import "Notecard.h"
-
+#import "ChooseCardsTableViewCell.h"
 
 @interface ChooseCardsViewController ()
 {
@@ -72,7 +72,9 @@
     self.searchResults = [NSMutableArray arrayWithCapacity:[presentations count]];
     
     //Set table colors
-    self.tableView.separatorColor = [designManager tableCellSeparatorColor];
+    [self.tableView setSeparatorColor:[designManager tableCellSeparatorColor]];
+    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    
     
     [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] homeScreenBGColor]];
     
@@ -218,144 +220,47 @@
     // Get the extension from the file name
     NSRange range = [result.name rangeOfString:@"."];
     NSString *extension = [result.name substringFromIndex:range.location];
-    //NSString *name = [result.name substringToIndex:range.location];
+    NSString *name = [result.name stringByDeletingPathExtension];
+    
+    // Download the data of the file w/ the URL
+    NSURL *url = result.link;
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
     
     if ([extension isEqualToString:@".pptx"]) {
         
-        // As it turns out, this sweet method exists, so the above isn't necessary (I think).
-        NSString *name = [result.name stringByDeletingPathExtension];
+        importedPresentation = [Presentation getPresentationFromPPTXData:urlData withName:name fromService:@"dropbox"];
+    }
+    else if ([extension isEqualToString:@".txt"]) {
         
-        // Download the data of the file w/ the URL
-        NSURL *url = result.link;
-        NSData *urlData = [NSData dataWithContentsOfURL:url];
-        
-        [self createImportedPresentationWithData:urlData andName:name fromService:@"dropbox"];
-    } else {
+        importedPresentation = [Presentation getPresentationFromTextFileData:urlData andName:name fromService:@"dropbox"];
+    }
+    
+    else {
         [DrEditUtilities showErrorMessageWithTitle:@"Unsupported File Type"
                                            message:@"Try importing a .pptx file instead."
                                           delegate:self];
+        return;
     }
+    [self performSegueWithIdentifier:@"createImportedCards" sender:self];
 }
 
-- (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name {
+- (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name andMimeType:(NSString *)mimeType {
     
     [self dismissViewControllerAnimated:NO completion:^{
-        [self createImportedPresentationWithData:data andName:name fromService:@"drive"];
-    }];
-}
-
-- (void)createImportedPresentationWithData:(NSData *)data andName:(NSString *)name fromService:(NSString *)service {
-    
-    // If the file downloaded
-    if ( data ) {
         
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString  *documentsDirectory = [paths objectAtIndex:0];
-        
-        // Write dat file to a file whose name is the same as the imported file name
-        
-        // filePath = ~/DocumentsDirectory/name.zip
-        NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[name stringByAppendingString:@".zip"]];
-        // The .zip gets deleted after being unzipped, but not the unzipped folder of the same name (minus .zip extension),
-        // so we want to check if a file of the name w/o the extension exists so we don't overwrite it.
-        // Never mind the above comment.
-        NSString  *directoryPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,name];
-        
-        // Enforce unique file names on presentations
-        int count = 1;
-        NSString *originalName = [NSString stringWithString:name];
-        while ([[NSFileManager defaultManager] fileExistsAtPath:directoryPath]) {
-            NSLog(@"duplicate file at: %@",directoryPath);
-            name = [originalName stringByAppendingString:[NSString stringWithFormat:@"%d",count]];
-            directoryPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,name];
-            count++;
+        if ([mimeType isEqualToString:@"application/vnd.google-apps.presentation"]) {
+            
+            importedPresentation = [Presentation getPresentationFromPPTXData:data withName:name fromService:@"drive"];
         }
-        
-        // Write the .zip file
-        [data writeToFile:filePath atomically:YES];
-        
-        NSLog(@"documents directory");
-        [[LibraryAPI sharedInstance] listFilesAtPath:documentsDirectory];
-        
-        NSString *zipPath = filePath;
-        
-        [SSZipArchive unzipFileAtPath:zipPath toDestination:directoryPath delegate:self];
-        
-        NSString *slidesPath = [directoryPath stringByAppendingPathComponent:@"/ppt/slides"];
-        
-        NSLog(@"Files in unzipped powerpoint directory");
-        [[LibraryAPI sharedInstance] listFilesAtPath:directoryPath];
-        NSLog(@"Files in the ppt/slides directory %@ \n", slidesPath);
-        NSArray *slides = [[LibraryAPI sharedInstance] listFilesAtPath:slidesPath];
-        
-        // Notecards array to hold cards for newPresentation (below)
-        // i=1 to skip the blank slide at the beginning.
-        NSMutableArray *notecards = [[NSMutableArray alloc] init];
-        for(int i=1; i<slides.count; i++) {
-            
-            // Load the slide and get its data as a string
-            NSString *slidePath = [slidesPath stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",[slides objectAtIndex:i]]];
-            NSString *xml = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:slidePath] encoding:NSUTF8StringEncoding];
-            
-            NSLog(@"\t SLIDE %d: \n",i);
-            NSMutableArray *slideBullets = [self getTextFromXML:xml BetweenTag:@"a:t"];
-            
-            [notecards addObject:[[Notecard alloc] initWithBullets:slideBullets]];
-            
-            // Output bullets
-            for (NSString *bullet in slideBullets) NSLog(@"    - %@", bullet);
+        else if ([mimeType isEqualToString:@"text/plain"]) {
+            NSLog(@"kinda made it");
+            importedPresentation = [Presentation getPresentationFromTextFileData:data andName:name fromService:@"drive"];
         }
-        importedPresentation = [[Presentation alloc] init];
-        importedPresentation.title = name;
-        importedPresentation.notecards = notecards;
-        importedPresentation.type = service;
-        //Capitalize first letter of "service" type
-        importedPresentation.description = [NSString stringWithFormat:@"%@ imported from %@",name,
-                                            [service stringByReplacingCharactersInRange:NSMakeRange(0,1)
-                                                                             withString:[[service substringToIndex:1] capitalizedString]]];
-        importedPresentation.pathToUnzippedPPTX = directoryPath;
-        
-        NSLog(@"directoryPath: %@", importedPresentation.pathToUnzippedPPTX);
-        
-        // Remove the files, since they're not needed anymore.
-        [[LibraryAPI sharedInstance] deleteFileAtPath:zipPath];
-        
+        else {
+            return;
+        }
         [self performSegueWithIdentifier:@"createImportedCards" sender:self];
-        
-    } else {
-        NSLog(@"no datas");
-    }
-}
-
-// Takes a tag where <p> tag would be NSString "p"
-- (NSMutableArray *)getTextFromXML:(NSString *)xml BetweenTag:(NSString *)tag {
-    
-    //NSLog(@"\n\n XML:\n %@", xml);
-    
-    // @"<badgeCount>([^<]+)</badgeCount>";
-    // Example of what the pattern should look like^
-    NSString *pattern = [NSString stringWithFormat:@"<%@>([^<]+)</%@>",tag,tag];
-    //NSLog(@"\nRegular expression: %@ \n",pattern);
-    
-    NSRegularExpression *regex = [NSRegularExpression
-                                  regularExpressionWithPattern:pattern
-                                  options:NSRegularExpressionCaseInsensitive
-                                  error:nil];
-    //NSTextCheckingResult *textCheckingResult = [regex firstMatchInString:xml options:0 range:NSMakeRange(0, xml.length)];
-    NSArray *textCheckingResults = [regex matchesInString:xml options:0 range:NSMakeRange(0, xml.length)];
-    
-    NSMutableArray *results = [[NSMutableArray alloc] init];
-    NSRange matchRange;
-    NSString *match;
-    
-    // Stick the search results in the results array
-    for(NSTextCheckingResult *textCheckingResult in textCheckingResults) {
-        matchRange = [textCheckingResult rangeAtIndex:1];
-        match = [xml substringWithRange:matchRange];
-        [results addObject:match];
-    }
-    
-    return results;
+    }];
 }
 
 - (void)returnToRoot {
@@ -389,35 +294,15 @@
     static NSString *CellIdentifier = @"Cell";
     Presentation *presentation;
 
-    UITableViewCell *cell =
+    ChooseCardsTableViewCell *cell =
         [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[ChooseCardsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                         reuseIdentifier:CellIdentifier];
     }
-    // Configure cell design
-    [cell configureFlatCellWithColor:[UIColor cloudsColor] selectedColor:[designManager tableCellBGColorSelected]];
-    
-    [cell.textLabel setTextColor:[designManager tableCellTextColor]];
-    
-    // Both of these BGColors need to be specified because of the accessory in the UITableViewCell
-    [cell.contentView setBackgroundColor:[designManager tableCellBGColorNormal]];
-    [cell.backgroundView setBackgroundColor:[designManager tableCellBGColorNormal]];
-    [cell.detailTextLabel setTextColor:[designManager tableCellDetailColor]];
-    [cell setBackgroundColor:[designManager tableCellBGColorNormal]];
-    
-    [self.tableView setSeparatorColor:[designManager tableCellSeparatorColor]];
-    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-    
-    cell.cornerRadius = 5.f; //Optional
-    if (self.tableView.style == UITableViewStyleGrouped) {
-        cell.separatorHeight = 2.f; //Optional
-    } else {
-        cell.separatorHeight = 0.;
-    }
-    
+
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         presentation = [self.searchResults objectAtIndex:indexPath.row];
     } else {
@@ -509,7 +394,13 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         // Delete the presentation, maintaining the integrity of the arrayIndex values.
-        [[LibraryAPI sharedInstance] deletePresentationAtIndex:indexPath.row];
+        Presentation *deletedPresentation;
+        if (tableView == self.searchDisplayController.searchResultsTableView) {
+            deletedPresentation = [self.searchResults objectAtIndex:indexPath.row];
+        } else {
+            deletedPresentation = [presentations objectAtIndex:indexPath.row];
+        }
+        [[LibraryAPI sharedInstance] deletePresentationAtIndex:deletedPresentation.arrayIndex.intValue];
         [[LibraryAPI sharedInstance] savePresentations];
         presentations = [[LibraryAPI sharedInstance] getPresentations];
 

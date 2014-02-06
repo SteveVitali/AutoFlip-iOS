@@ -51,6 +51,7 @@
 		1194B23618772DB8008AD3AE /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194B23518772DB8008AD3AE /* KxMenu.m */; };
 		11A44137187360EA00FB5863 /* OldCreateCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A44136187360EA00FB5863 /* OldCreateCardsViewController.m */; };
 		11A4413A1873620400FB5863 /* CardDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A441391873620400FB5863 /* CardDeckViewController.m */; };
+		11AF41A918A2BE0D001B0AEC /* ChooseCardsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AF41A818A2BE0D001B0AEC /* ChooseCardsTableViewCell.m */; };
 		11BA10AD1881C4460093851B /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BA10AB1881C3690093851B /* GTMOAuth2ViewTouch.xib */; };
 		11BA10B41881CC580093851B /* DriveFilesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BA10B31881CC580093851B /* DriveFilesListViewController.m */; };
 		11BA10B71881CCE50093851B /* DrEditUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BA10B61881CCE50093851B /* DrEditUtilities.m */; };
@@ -174,6 +175,8 @@
 		11A44136187360EA00FB5863 /* OldCreateCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldCreateCardsViewController.m; sourceTree = "<group>"; };
 		11A441381873620400FB5863 /* CardDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDeckViewController.h; sourceTree = "<group>"; };
 		11A441391873620400FB5863 /* CardDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDeckViewController.m; sourceTree = "<group>"; };
+		11AF41A718A2BE0D001B0AEC /* ChooseCardsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCardsTableViewCell.h; sourceTree = "<group>"; };
+		11AF41A818A2BE0D001B0AEC /* ChooseCardsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCardsTableViewCell.m; sourceTree = "<group>"; };
 		11BA10A71881C2E20093851B /* GTLDrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLDrive.h; path = Drive/GTLDrive.h; sourceTree = "<group>"; };
 		11BA10AB1881C3690093851B /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = AutoFlip/GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
 		11BA10B11881CB320093851B /* DrEditFileEditDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrEditFileEditDelegate.h; sourceTree = "<group>"; };
@@ -566,6 +569,8 @@
 			isa = PBXGroup;
 			children = (
 				11711FA21871F2CF00792D36 /* Main.storyboard */,
+				11AF41A718A2BE0D001B0AEC /* ChooseCardsTableViewCell.h */,
+				11AF41A818A2BE0D001B0AEC /* ChooseCardsTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -981,6 +986,7 @@
 				118C19651891D152007EB10E /* ioapi.c in Sources */,
 				BC456928189E105500C65F8B /* GTLDrive_Sources.m in Sources */,
 				11D0D12118720421008CC7FD /* Presentation.m in Sources */,
+				11AF41A918A2BE0D001B0AEC /* ChooseCardsTableViewCell.m in Sources */,
 				11D11F851878F0510081B1CB /* FUIAlertView.m in Sources */,
 				11DC90631874D39600C069D8 /* NewCardDeckViewController.m in Sources */,
 				11D11F441878A6620081B1CB /* MZFormSheetController.m in Sources */,
@@ -1060,6 +1066,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Steve Vitali (TPRF6598SX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1078,6 +1085,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "68BBE691-1D3E-43EE-AAFC-8F38559D779F";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1099,6 +1107,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Steve Vitali (TPRF6598SX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1111,6 +1120,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "68BBE691-1D3E-43EE-AAFC-8F38559D779F";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

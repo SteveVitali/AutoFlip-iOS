@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SSZipArchive.h"
 
-@interface Presentation : NSObject <NSCoding>
+@interface Presentation : NSObject <NSCoding, SSZipArchiveDelegate>
 
 @property NSMutableArray *notecards;
 @property NSString *title;
@@ -28,5 +29,7 @@
 - (id)initWithRandomNotes:(int)num;
 
 - (NSString *)getPresentationInTextFormat;
++ (Presentation *)getPresentationFromPPTXData:(NSData *)data withName:(NSString *)name fromService:(NSString *)service;
++ (Presentation *)getPresentationFromTextFileData:(NSData *)data andName:(NSString *)name fromService:(NSString *)service;
 
 @end

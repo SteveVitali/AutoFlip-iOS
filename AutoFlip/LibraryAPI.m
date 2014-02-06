@@ -112,8 +112,8 @@
     [manager setTableCellBGColorNormal:[UIColor clearColor]];
     [manager setTableCellBGColorSelected:[[UIColor concreteColor] colorWithAlphaComponent:0.3]];
     [manager setTableCellSeparatorColor:[UIColor concreteColor]];
-    [manager setTableCellTextColor:[UIColor midnightBlueColor]];
-    [manager setTableCellDetailColor:[UIColor wetAsphaltColor]];
+    [manager setTableCellTextColor:[UIColor blackColor]];
+    [manager setTableCellDetailColor:[UIColor asbestosColor]];
     // Text sizes
     [manager setMinNotecardFontSize:[NSNumber numberWithInt:16]];
     [manager setMaxNotecardFontSize:[NSNumber numberWithInt:36]];

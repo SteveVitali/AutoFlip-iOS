@@ -30,4 +30,6 @@
 - (IBAction)toggleEditing;
 - (IBAction)addButtonPressed:(id)sender;
 
+- (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name andMimeType:(NSString *)mimeType;
+
 @end

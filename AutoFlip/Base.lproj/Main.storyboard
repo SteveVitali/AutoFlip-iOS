@@ -268,7 +268,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="b1h-Da-b6x" detailTextLabel="0ci-jh-pzy" imageView="d1f-pq-53A" rowHeight="56" style="IBUITableViewCellStyleSubtitle" id="A0Q-NN-jI4">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="b1h-Da-b6x" detailTextLabel="0ci-jh-pzy" imageView="d1f-pq-53A" rowHeight="56" style="IBUITableViewCellStyleSubtitle" id="A0Q-NN-jI4" customClass="ChooseCardsTableViewCell">
                                 <rect key="frame" x="0.0" y="130" width="320" height="56"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A0Q-NN-jI4" id="Q5C-xV-l68">
@@ -393,7 +393,7 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="DrEdit" id="U54-aL-6RU">
+                    <navigationItem key="navigationItem" title="Google Drive" id="U54-aL-6RU">
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="h3l-Q8-bhT">
                             <connections>
                                 <action selector="didPressCancel:" destination="3IS-gk-RA2" id="jcL-bh-BW7"/>

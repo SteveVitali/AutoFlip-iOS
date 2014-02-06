@@ -237,11 +237,27 @@ UIAlertView *loadingAlert;
     // Technically runs 2 seconds faster (maybe more), so I'm going to export as pptx, then unzip and extract text
     // The same way I do for the Dropbox download.
     // We should probably change this at some point, but I really don't feel like doing it now.
-
-    NSString *exportFormat = @"application/vnd.openxmlformats-officedocument.presentationml.presentation";
     
-    NSString *exportURLStr = [file.exportLinks JSONValueForKey:exportFormat];
-    NSString *extn = [self extensionForMIMEType:exportFormat];
+    // ****UPDATE REGARDING THE ABOVE COMMENTS****
+    // The time has come to change it, so that is what will happen, probably, at some point.
+
+    NSString *exportFormat;
+    NSString *exportURLStr;
+    NSString *extn;
+    
+    if ([file.mimeType isEqualToString:@"asdf"]) {
+        
+        exportFormat = @"application/vnd.openxmlformats-officedocument.presentationml.presentation";
+        exportURLStr = [file.exportLinks JSONValueForKey:exportFormat];
+    }
+    else if ([file.mimeType isEqualToString:@"text/plain"]) {
+        
+        exportFormat = @"text/plain";
+        exportURLStr = file.downloadUrl;
+    }
+    
+    extn = [self extensionForMIMEType:exportFormat];
+
     // Use a GTMHTTPFetcher object to download the file with authorization.
     NSURL *url = [NSURL URLWithString:exportURLStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -269,7 +285,7 @@ UIAlertView *loadingAlert;
         } else {
             NSLog(@"%@ downloaded successfully!", file.title);
             [loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
-            [self driveFileDidDownloadWithData:data andName:file.title];
+            [self driveFileDidDownloadWithData:data andName:file.title andMimeType:file.mimeType];
         }
     }];
 }
@@ -285,13 +301,12 @@ UIAlertView *loadingAlert;
         }
         CFRelease(uti);
     }
-
     return result;
 }
 
-- (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name {
+- (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name andMimeType:(NSString *)mimeType {
 
-    [self.delegate driveFileDidDownloadWithData:data andName:name];
+    [self.delegate driveFileDidDownloadWithData:data andName:name andMimeType:mimeType];
 }
 
 - (void)displayAlert:(NSString *)title format:(NSString *)format, ... {
@@ -452,30 +467,52 @@ UIAlertView *loadingAlert;
 
 - (void)loadDriveFiles {
     
-  GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
-  //query.q = @"mimeType = 'text/plain'";
-  query.q = @"mimeType = 'application/vnd.google-apps.presentation'";
-  UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading files"
-                                                           delegate:self];
-  [self.driveService executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
-                                                            GTLDriveFileList *files,
-                                                            NSError *error) {
-    [alert dismissWithClickedButtonIndex:0 animated:YES];
-    if (error == nil) {
-      if (self.driveFiles == nil) {
+    GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
+    //query.q = @"mimeType = 'text/plain'";
+    query.q = @"mimeType = 'application/vnd.google-apps.presentation'";
+    UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading presentations..."
+                                                             delegate:self];
+    if (self.driveFiles == nil) {
         self.driveFiles = [[NSMutableArray alloc] init];
-      }
-      [self.driveFiles removeAllObjects];
-      [self.driveFiles addObjectsFromArray:files.items];
-      [self.tableView reloadData];
-        NSLog(@"num items: %d",self.driveFiles.count);
-    } else {
-      NSLog(@"An error occurred: %@", error);
-      [DrEditUtilities showErrorMessageWithTitle:@"Unable to load files"
-                                         message:[error description]
-                                        delegate:self];
     }
-  }];
+    [self.driveFiles removeAllObjects];
+    
+    [self.driveService executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
+                                                              GTLDriveFileList *files,
+                                                              NSError *error) {
+        [alert dismissWithClickedButtonIndex:0 animated:YES];
+        if (error == nil) {
+            [self.driveFiles addObjectsFromArray:files.items];
+            [self.tableView reloadData];
+            NSLog(@"num items: %d",self.driveFiles.count);
+        } else {
+            NSLog(@"An error occurred: %@", error);
+            [DrEditUtilities showErrorMessageWithTitle:@"Unable to load files"
+                                               message:[error description]
+                                              delegate:self];
+        }
+    }];
+    
+    // Not sure how to tell the query I want to download two MIME types, so I'm just executing it twice for now
+    GTLQueryDrive *query1 = [GTLQueryDrive queryForFilesList];
+    query1.q = @"mimeType = 'text/plain'";
+    UIAlertView *alert1 = [DrEditUtilities showLoadingMessageWithTitle:@"Loading text documents"
+                                                             delegate:self];
+    [self.driveService executeQuery:query1 completionHandler:^(GTLServiceTicket *ticket,
+                                                              GTLDriveFileList *files,
+                                                              NSError *error) {
+        [alert1 dismissWithClickedButtonIndex:0 animated:YES];
+        if (error == nil) {
+            [self.driveFiles addObjectsFromArray:files.items];
+            [self.tableView reloadData];
+            NSLog(@"num items: %d",self.driveFiles.count);
+        } else {
+            NSLog(@"An error occurred: %@", error);
+            [DrEditUtilities showErrorMessageWithTitle:@"Unable to load files"
+                                               message:[error description]
+                                              delegate:self];
+        }
+    }];
 }
 
 - (IBAction)didPressCancel:(id)sender {
