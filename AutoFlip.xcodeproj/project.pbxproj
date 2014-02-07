@@ -55,6 +55,15 @@
 		11BA10AD1881C4460093851B /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BA10AB1881C3690093851B /* GTMOAuth2ViewTouch.xib */; };
 		11BA10B41881CC580093851B /* DriveFilesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BA10B31881CC580093851B /* DriveFilesListViewController.m */; };
 		11BA10B71881CCE50093851B /* DrEditUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BA10B61881CCE50093851B /* DrEditUtilities.m */; };
+		11CE2C7B18A4B13B006DC341 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2C7018A4B13B006DC341 /* RECommonFunctions.m */; };
+		11CE2C7C18A4B13B006DC341 /* REFrostedContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2C7218A4B13B006DC341 /* REFrostedContainerViewController.m */; };
+		11CE2C7D18A4B13B006DC341 /* REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2C7418A4B13B006DC341 /* REFrostedViewController.m */; };
+		11CE2C7E18A4B13B006DC341 /* UIImage+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2C7618A4B13B006DC341 /* UIImage+REFrostedViewController.m */; };
+		11CE2C7F18A4B13B006DC341 /* UIView+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2C7818A4B13B006DC341 /* UIView+REFrostedViewController.m */; };
+		11CE2C8018A4B13B006DC341 /* UIViewController+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2C7A18A4B13B006DC341 /* UIViewController+REFrostedViewController.m */; };
+		11CE2C8F18A4B2F1006DC341 /* SidebarRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2C8618A4B2F1006DC341 /* SidebarRootViewController.m */; };
+		11CE2C9018A4B2F1006DC341 /* SidebarNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2C8818A4B2F1006DC341 /* SidebarNavigationController.m */; };
+		11CE2C9118A4B2F1006DC341 /* SidebarMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2C8A18A4B2F1006DC341 /* SidebarMenuViewController.m */; };
 		11D0D115187202D1008CC7FD /* ChooseCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */; };
 		11D0D11E18720412008CC7FD /* Notecard.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D11D18720412008CC7FD /* Notecard.m */; };
 		11D0D12118720421008CC7FD /* Presentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D12018720421008CC7FD /* Presentation.m */; };
@@ -184,6 +193,24 @@
 		11BA10B31881CC580093851B /* DriveFilesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveFilesListViewController.m; sourceTree = "<group>"; };
 		11BA10B51881CCE50093851B /* DrEditUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrEditUtilities.h; sourceTree = "<group>"; };
 		11BA10B61881CCE50093851B /* DrEditUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrEditUtilities.m; sourceTree = "<group>"; };
+		11CE2C6F18A4B13B006DC341 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		11CE2C7018A4B13B006DC341 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		11CE2C7118A4B13B006DC341 /* REFrostedContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REFrostedContainerViewController.h; sourceTree = "<group>"; };
+		11CE2C7218A4B13B006DC341 /* REFrostedContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REFrostedContainerViewController.m; sourceTree = "<group>"; };
+		11CE2C7318A4B13B006DC341 /* REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REFrostedViewController.h; sourceTree = "<group>"; };
+		11CE2C7418A4B13B006DC341 /* REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REFrostedViewController.m; sourceTree = "<group>"; };
+		11CE2C7518A4B13B006DC341 /* UIImage+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+REFrostedViewController.h"; sourceTree = "<group>"; };
+		11CE2C7618A4B13B006DC341 /* UIImage+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+REFrostedViewController.m"; sourceTree = "<group>"; };
+		11CE2C7718A4B13B006DC341 /* UIView+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+REFrostedViewController.h"; sourceTree = "<group>"; };
+		11CE2C7818A4B13B006DC341 /* UIView+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+REFrostedViewController.m"; sourceTree = "<group>"; };
+		11CE2C7918A4B13B006DC341 /* UIViewController+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+REFrostedViewController.h"; sourceTree = "<group>"; };
+		11CE2C7A18A4B13B006DC341 /* UIViewController+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+REFrostedViewController.m"; sourceTree = "<group>"; };
+		11CE2C8618A4B2F1006DC341 /* SidebarRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarRootViewController.m; sourceTree = "<group>"; };
+		11CE2C8718A4B2F1006DC341 /* SidebarRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarRootViewController.h; sourceTree = "<group>"; };
+		11CE2C8818A4B2F1006DC341 /* SidebarNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarNavigationController.m; sourceTree = "<group>"; };
+		11CE2C8918A4B2F1006DC341 /* SidebarNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarNavigationController.h; sourceTree = "<group>"; };
+		11CE2C8A18A4B2F1006DC341 /* SidebarMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarMenuViewController.m; sourceTree = "<group>"; };
+		11CE2C8B18A4B2F1006DC341 /* SidebarMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarMenuViewController.h; sourceTree = "<group>"; };
 		11D0D113187202D1008CC7FD /* ChooseCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCardsViewController.h; sourceTree = "<group>"; };
 		11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCardsViewController.m; sourceTree = "<group>"; };
 		11D0D11C18720412008CC7FD /* Notecard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notecard.h; sourceTree = "<group>"; };
@@ -453,8 +480,6 @@
 				11D0D11918720339008CC7FD /* Models */,
 				11711F9F1871F2CF00792D36 /* AppDelegate.h */,
 				11711FA01871F2CF00792D36 /* AppDelegate.m */,
-				116BFBF3189D620F008663CE /* UITextView+AutoResizeFont.h */,
-				116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */,
 				11711FA81871F2CF00792D36 /* Images.xcassets */,
 				11711F971871F2CF00792D36 /* Supporting Files */,
 			);
@@ -554,6 +579,38 @@
 			name = CardDeckViewControllers;
 			sourceTree = "<group>";
 		};
+		11CE2C6E18A4B13B006DC341 /* REFrostedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				11CE2C6F18A4B13B006DC341 /* RECommonFunctions.h */,
+				11CE2C7018A4B13B006DC341 /* RECommonFunctions.m */,
+				11CE2C7118A4B13B006DC341 /* REFrostedContainerViewController.h */,
+				11CE2C7218A4B13B006DC341 /* REFrostedContainerViewController.m */,
+				11CE2C7318A4B13B006DC341 /* REFrostedViewController.h */,
+				11CE2C7418A4B13B006DC341 /* REFrostedViewController.m */,
+				11CE2C7518A4B13B006DC341 /* UIImage+REFrostedViewController.h */,
+				11CE2C7618A4B13B006DC341 /* UIImage+REFrostedViewController.m */,
+				11CE2C7718A4B13B006DC341 /* UIView+REFrostedViewController.h */,
+				11CE2C7818A4B13B006DC341 /* UIView+REFrostedViewController.m */,
+				11CE2C7918A4B13B006DC341 /* UIViewController+REFrostedViewController.h */,
+				11CE2C7A18A4B13B006DC341 /* UIViewController+REFrostedViewController.m */,
+			);
+			path = REFrostedViewController;
+			sourceTree = "<group>";
+		};
+		11CE2C9318A4B2FC006DC341 /* SidebarViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				11CE2C8618A4B2F1006DC341 /* SidebarRootViewController.m */,
+				11CE2C8718A4B2F1006DC341 /* SidebarRootViewController.h */,
+				11CE2C8818A4B2F1006DC341 /* SidebarNavigationController.m */,
+				11CE2C8918A4B2F1006DC341 /* SidebarNavigationController.h */,
+				11CE2C8A18A4B2F1006DC341 /* SidebarMenuViewController.m */,
+				11CE2C8B18A4B2F1006DC341 /* SidebarMenuViewController.h */,
+			);
+			name = SidebarViewControllers;
+			sourceTree = "<group>";
+		};
 		11D0D11918720339008CC7FD /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -568,6 +625,8 @@
 		11D0D11A18720342008CC7FD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				116BFBF3189D620F008663CE /* UITextView+AutoResizeFont.h */,
+				116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */,
 				11711FA21871F2CF00792D36 /* Main.storyboard */,
 				11AF41A718A2BE0D001B0AEC /* ChooseCardsTableViewCell.h */,
 				11AF41A818A2BE0D001B0AEC /* ChooseCardsTableViewCell.m */,
@@ -578,6 +637,7 @@
 		11D0D11B18720345008CC7FD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				11CE2C9318A4B2FC006DC341 /* SidebarViewControllers */,
 				11BA10B21881CC580093851B /* DriveFilesListViewController.h */,
 				11BA10B31881CC580093851B /* DriveFilesListViewController.m */,
 				11A4413B1873624F00FB5863 /* CardDeckViewControllers */,
@@ -658,6 +718,7 @@
 		11D11F5A1878EFF80081B1CB /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				11CE2C6E18A4B13B006DC341 /* REFrostedViewController */,
 				BC456929189E11CE00C65F8B /* GTL/Drive */,
 				118C19581891D152007EB10E /* SSZipArchive */,
 				11BA10B51881CCE50093851B /* DrEditUtilities.h */,
@@ -949,9 +1010,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				11D11F901878F0510081B1CB /* UINavigationBar+FlatUI.m in Sources */,
+				11CE2C7C18A4B13B006DC341 /* REFrostedContainerViewController.m in Sources */,
 				11D0D12418720431008CC7FD /* LibraryAPI.m in Sources */,
 				11A44137187360EA00FB5863 /* OldCreateCardsViewController.m in Sources */,
 				11D0D1281872075A008CC7FD /* PersistencyManager.m in Sources */,
+				11CE2C7F18A4B13B006DC341 /* UIView+REFrostedViewController.m in Sources */,
 				11D11F431878A6620081B1CB /* MZFormSheetBackgroundWindow.m in Sources */,
 				11D11F881878F0510081B1CB /* FUIPopoverBackgroundView.m in Sources */,
 				118C19681891D152007EB10E /* zip.c in Sources */,
@@ -961,14 +1024,19 @@
 				11D11F8F1878F0510081B1CB /* UIImage+FlatUI.m in Sources */,
 				11D11F4D1878A74E0081B1CB /* MZAppearance.m in Sources */,
 				11D11F961878F0510081B1CB /* UITableViewCell+FlatUI.m in Sources */,
+				11CE2C7B18A4B13B006DC341 /* RECommonFunctions.m in Sources */,
 				11D11F8D1878F0510081B1CB /* UIColor+FlatUI.m in Sources */,
 				1194B23618772DB8008AD3AE /* KxMenu.m in Sources */,
+				11CE2C9118A4B2F1006DC341 /* SidebarMenuViewController.m in Sources */,
+				11CE2C9018A4B2F1006DC341 /* SidebarNavigationController.m in Sources */,
 				11D0D11E18720412008CC7FD /* Notecard.m in Sources */,
 				11D11F8A1878F0510081B1CB /* FUISwitch.m in Sources */,
+				11CE2C8018A4B13B006DC341 /* UIViewController+REFrostedViewController.m in Sources */,
 				11D11F931878F0510081B1CB /* UISlider+FlatUI.m in Sources */,
 				11D11F461878A6620081B1CB /* MZTransition.m in Sources */,
 				11D11F8E1878F0510081B1CB /* UIFont+FlatUI.m in Sources */,
 				118C19691891D152007EB10E /* SSZipArchive.m in Sources */,
+				11CE2C7E18A4B13B006DC341 /* UIImage+REFrostedViewController.m in Sources */,
 				11D11F971878F0510081B1CB /* UIToolbar+FlatUI.m in Sources */,
 				11D11F871878F0510081B1CB /* FUICellBackgroundView.m in Sources */,
 				11D11F951878F0510081B1CB /* UITabBar+FlatUI.m in Sources */,
@@ -990,11 +1058,13 @@
 				11D11F851878F0510081B1CB /* FUIAlertView.m in Sources */,
 				11DC90631874D39600C069D8 /* NewCardDeckViewController.m in Sources */,
 				11D11F441878A6620081B1CB /* MZFormSheetController.m in Sources */,
+				11CE2C8F18A4B2F1006DC341 /* SidebarRootViewController.m in Sources */,
 				11711FA11871F2CF00792D36 /* AppDelegate.m in Sources */,
 				11BA10B71881CCE50093851B /* DrEditUtilities.m in Sources */,
 				11D0D12B18721356008CC7FD /* PresentationViewController.m in Sources */,
 				11711F9D1871F2CF00792D36 /* main.m in Sources */,
 				11D208871895760A00345BD3 /* DesignManager.m in Sources */,
+				11CE2C7D18A4B13B006DC341 /* REFrostedViewController.m in Sources */,
 				11D11F4E1878A74E0081B1CB /* NSInvocation+Copy.m in Sources */,
 				11D11F581878AE910081B1CB /* SaveAsViewController.m in Sources */,
 				11D11F941878F0510081B1CB /* UIStepper+FlatUI.m in Sources */,
