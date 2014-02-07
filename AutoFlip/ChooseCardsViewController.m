@@ -28,6 +28,7 @@
 #import "SSZipArchive.h"
 #import "Notecard.h"
 #import "ChooseCardsTableViewCell.h"
+#import "REFrostedViewController.h"
 
 @interface ChooseCardsViewController ()
 {
@@ -94,6 +95,12 @@
     [self.navigationController.navigationBar setHidden:NO];
     [self.navigationController setToolbarHidden:YES];
     [self.tableView reloadData];
+}
+
+// For the sidebar
+- (IBAction)showMenu {
+    
+    [self.frostedViewController presentMenuViewController];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

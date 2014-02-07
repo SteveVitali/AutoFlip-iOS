@@ -32,4 +32,7 @@
 
 - (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name andMimeType:(NSString *)mimeType;
 
+// For the sidebar
+- (IBAction)showMenu;
+
 @end
