@@ -10,6 +10,8 @@
 		111A0C7D1895B5E5009D5E58 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 118C196A1891D162007EB10E /* libz.dylib */; };
 		11229DF118A0143600B6F1C3 /* autoflip.png in Resources */ = {isa = PBXBuildFile; fileRef = 11229DF018A0143600B6F1C3 /* autoflip.png */; };
 		11229DF418A03BF400B6F1C3 /* paper-portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 11229DF218A03BF400B6F1C3 /* paper-portrait.png */; };
+		115A929618A541130002353D /* FMMoveTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A929318A541130002353D /* FMMoveTableView.m */; };
+		115A929718A541130002353D /* FMMoveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A929518A541130002353D /* FMMoveTableViewCell.m */; };
 		116BFBF5189D620F008663CE /* UITextView+AutoResizeFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */; };
 		116FD85A187B53B900BC4643 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD858187B53B900BC4643 /* AudioToolbox.framework */; };
 		116FD85B187B53B900BC4643 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD859187B53B900BC4643 /* AVFoundation.framework */; };
@@ -127,6 +129,10 @@
 /* Begin PBXFileReference section */
 		11229DF018A0143600B6F1C3 /* autoflip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoflip.png; sourceTree = "<group>"; };
 		11229DF218A03BF400B6F1C3 /* paper-portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paper-portrait.png"; sourceTree = "<group>"; };
+		115A929218A541130002353D /* FMMoveTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMMoveTableView.h; sourceTree = "<group>"; };
+		115A929318A541130002353D /* FMMoveTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMMoveTableView.m; sourceTree = "<group>"; };
+		115A929418A541130002353D /* FMMoveTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMMoveTableViewCell.h; sourceTree = "<group>"; };
+		115A929518A541130002353D /* FMMoveTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMMoveTableViewCell.m; sourceTree = "<group>"; };
 		116BFBF3189D620F008663CE /* UITextView+AutoResizeFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+AutoResizeFont.h"; sourceTree = "<group>"; };
 		116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+AutoResizeFont.m"; sourceTree = "<group>"; };
 		116FD858187B53B900BC4643 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -417,6 +423,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		115A929118A541130002353D /* FMFramework */ = {
+			isa = PBXGroup;
+			children = (
+				115A929218A541130002353D /* FMMoveTableView.h */,
+				115A929318A541130002353D /* FMMoveTableView.m */,
+				115A929418A541130002353D /* FMMoveTableViewCell.h */,
+				115A929518A541130002353D /* FMMoveTableViewCell.m */,
+			);
+			path = FMFramework;
+			sourceTree = "<group>";
+		};
 		116AE53F1874AD7E008EE410 /* iPad */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,8 +622,8 @@
 				11CE2C8718A4B2F1006DC341 /* SidebarRootViewController.h */,
 				11CE2C8818A4B2F1006DC341 /* SidebarNavigationController.m */,
 				11CE2C8918A4B2F1006DC341 /* SidebarNavigationController.h */,
-				11CE2C8A18A4B2F1006DC341 /* SidebarMenuViewController.m */,
 				11CE2C8B18A4B2F1006DC341 /* SidebarMenuViewController.h */,
+				11CE2C8A18A4B2F1006DC341 /* SidebarMenuViewController.m */,
 			);
 			name = SidebarViewControllers;
 			sourceTree = "<group>";
@@ -718,6 +735,7 @@
 		11D11F5A1878EFF80081B1CB /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				115A929118A541130002353D /* FMFramework */,
 				11CE2C6E18A4B13B006DC341 /* REFrostedViewController */,
 				BC456929189E11CE00C65F8B /* GTL/Drive */,
 				118C19581891D152007EB10E /* SSZipArchive */,
@@ -1042,12 +1060,14 @@
 				11D11F951878F0510081B1CB /* UITabBar+FlatUI.m in Sources */,
 				11D11F471878A6620081B1CB /* UIImage+Additional.m in Sources */,
 				11D11F921878F0510081B1CB /* UIProgressView+FlatUI.m in Sources */,
+				115A929618A541130002353D /* FMMoveTableView.m in Sources */,
 				11BA10B41881CC580093851B /* DriveFilesListViewController.m in Sources */,
 				11D11F891878F0510081B1CB /* FUISegmentedControl.m in Sources */,
 				11D0FBE618994CF6009D067F /* CreateCardsViewController.m in Sources */,
 				11A4413A1873620400FB5863 /* CardDeckViewController.m in Sources */,
 				11D11F861878F0510081B1CB /* FUIButton.m in Sources */,
 				11D11F8B1878F0510081B1CB /* FUITextField.m in Sources */,
+				115A929718A541130002353D /* FMMoveTableViewCell.m in Sources */,
 				116BFBF5189D620F008663CE /* UITextView+AutoResizeFont.m in Sources */,
 				118C19661891D152007EB10E /* mztools.c in Sources */,
 				11D11F911878F0510081B1CB /* UIPopoverController+FlatUI.m in Sources */,

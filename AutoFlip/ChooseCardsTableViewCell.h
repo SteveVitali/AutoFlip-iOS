@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FMMoveTableViewCell.h"
 
-@interface ChooseCardsTableViewCell : UITableViewCell
+@interface ChooseCardsTableViewCell : FMMoveTableViewCell
 
 @end

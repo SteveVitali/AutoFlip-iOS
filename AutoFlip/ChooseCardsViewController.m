@@ -284,7 +284,7 @@
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(FMMoveTableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // Return the number of rows in the section.
     if (tableView == self.searchDisplayController.searchResultsTableView) {
@@ -295,8 +295,7 @@
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(FMMoveTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
     Presentation *presentation;
@@ -420,25 +419,44 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     [tableView reloadData];
 }
 
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
-      toIndexPath:(NSIndexPath *)toIndexPath {
-    
+#pragma mark - FMMoveTableView methods
+
+- (void)moveTableView:(FMMoveTableView *)tableView moveRowFromIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+
     Presentation *presentation = [presentations objectAtIndex:fromIndexPath.row];
     // This will ensure integrity of arrayIndex values.
     [[LibraryAPI sharedInstance] deletePresentationAtIndex:fromIndexPath.row];
     [[LibraryAPI sharedInstance] addPresentation:presentation atIndex:toIndexPath.row];
     [[LibraryAPI sharedInstance] savePresentations];
+    NSLog(@"it wasn't actually deleted; it's arrayIndex is %d", presentation.arrayIndex.integerValue);
     
     [self.tableView reloadData];
 }
 
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)moveTableView:(FMMoveTableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
+
+- (NSIndexPath *)moveTableView:(FMMoveTableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
+    
+	//	Uncomment these lines to enable moving a row just within it's current section
+	//	if ([sourceIndexPath section] != [proposedDestinationIndexPath section]) {
+	//		proposedDestinationIndexPath = sourceIndexPath;
+	//	}
+    
+	return proposedDestinationIndexPath;
+}
+
+//// Override to support conditional rearranging of the table view.
+// Not using anymore because of FMMoveTableView
+//- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    // Return NO if you do not want the item to be re-orderable.
+//    return YES;
+//}
+
+// Not sure if implementing this means I can get rid of the one above;
 
 #pragma mark - UISearchBarDelegate methods
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
