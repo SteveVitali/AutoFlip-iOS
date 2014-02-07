@@ -8,12 +8,13 @@
 
 #import "CreateCardsViewController.h"
 #import "SaveAsViewController.h"
+#import "SidebarNavigationController.h"
+#import "ChooseCardsViewController.h"
 #import "Notecard.h"
-#import "MZFormSheetController.h"
-#import "KxMenu.h"
-#import "ViewController.h"
 #import "LibraryAPI.h"
 #import "DesignManager.h"
+#import "MZFormSheetController.h"
+#import "KxMenu.h"
 #import "UITextView+AutoResizeFont.h"
 
 @interface CreateCardsViewController () {
@@ -374,8 +375,12 @@
 
 - (void) popToRoot {
     
-    UINavigationController *nav = (UINavigationController*) self.view.window.rootViewController;
-    ViewController *root = [nav.viewControllers objectAtIndex:0];
+// Code from before the sidebar was added; kind of the same as the new code.
+//    UINavigationController *nav = (UINavigationController*) self.view.window.rootViewController;
+//    ViewController *root = [nav.viewControllers objectAtIndex:0];
+//    [root returnToRoot];
+    
+    ChooseCardsViewController *root = self.navigationController.viewControllers[0];
     [root returnToRoot];
 }
 

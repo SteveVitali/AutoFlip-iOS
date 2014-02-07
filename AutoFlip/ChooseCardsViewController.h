@@ -13,13 +13,17 @@
 #import "GTLDrive.h"
 #import "SSZipArchive.h"
 #import "DriveFilesListViewController.h"
+#import "FMMoveTableView.h"
 
 @interface ChooseCardsViewController : UITableViewController
                                         <UITableViewDataSource,
                                          UITableViewDelegate,
                                          UISearchBarDelegate,
                                          UISearchDisplayDelegate,
-                                         DBRestClientDelegate, SSZipArchiveDelegate, DriveFilePickerDelegate>
+                                         DBRestClientDelegate,
+                                         SSZipArchiveDelegate,
+                                         DriveFilePickerDelegate,
+                                         FMMoveTableViewDelegate, FMMoveTableViewDataSource>
 
 @property (strong,nonatomic) NSMutableArray *searchResults;
 @property IBOutlet UISearchBar *searchBar;
@@ -34,5 +38,6 @@
 
 // For the sidebar
 - (IBAction)showMenu;
+- (void)returnToRoot;
 
 @end
