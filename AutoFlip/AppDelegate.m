@@ -17,7 +17,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // Override point for customization after application launch.
-    
+    // Register NSUserDefaults
+    NSDictionary *userDefaultsDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          [NSNumber numberWithBool:YES], @"speechRecognition",
+                                          nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
     return YES;
 }
 

@@ -7,6 +7,8 @@
 //
 
 #import "SettingsViewController.h"
+#import "LibraryAPI.h"
+#import "RESideMenu.h"
 
 @interface SettingsViewController ()
 
@@ -15,6 +17,7 @@
 @implementation SettingsViewController {
     
     NSMutableArray *cellViews;
+    BOOL recognitionOn;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -35,6 +38,35 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] viewControllerBGColor]];
+    [self.tableView setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] tableViewBGColor]];
+    
+    NSUserDefaults *fetchDefaults = [NSUserDefaults standardUserDefaults];
+    recognitionOn = [[fetchDefaults objectForKey:@"speechRecognition"] boolValue];
+    
+    // I think this gets overridden in the table view delegate methods
+    self.toggleRecognitionSwitch.on = recognitionOn;
+    NSString *onOff = self.toggleRecognitionSwitch.on ? @"ON" : @"OFF";
+    NSLog(@"switch loaded from defaults as:  %@", onOff);
+    [self.tableView reloadData];
+}
+
+// For the sidebar
+- (IBAction)showMenu {
+    
+    [self.sideMenuViewController presentMenuViewController];
+}
+
+- (IBAction)didToggleRecognitionSwitch:(id)sender {
+    
+    NSLog(@"switch toggled!");
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:[NSNumber numberWithBool:self.toggleRecognitionSwitch.on] forKey:@"speechRecognition"];
+    [defaults synchronize];
+    
+    NSString *onOff = self.toggleRecognitionSwitch.on ? @"ON" : @"OFF";
+    NSLog(@"switch was turned %@", onOff);
 }
 
 - (IBAction)didPressCalibrate:(id)sender {
@@ -85,7 +117,12 @@
     	NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellNib owner:self options:nil];
     	cell = (UITableViewCell *)[nib objectAtIndex:0];
     }
-
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    // This seems to have fixed the issue of the switch not loading with the right value.
+    self.toggleRecognitionSwitch.on = recognitionOn;
+    
     return cell;
 }
 

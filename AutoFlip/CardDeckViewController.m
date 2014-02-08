@@ -72,7 +72,8 @@
     [self resizeTextToFitScreen];
     
     [self.textArea setBackgroundColor:[self.designManager cardDeckTextViewBGColor]];
-    [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] homeScreenBGColor]];
+    [self.textArea setTextColor:[self.designManager textAreaFontColor]];
+    [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] viewControllerBGColor]];
 }
 
 - (BOOL)prefersStatusBarHidden

@@ -41,7 +41,7 @@
     [self.navigationController.navigationBar setHidden:NO];
     self.view.backgroundColor = [UIColor cloudsColor];
     
-    [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] homeScreenBGColor]];
+    [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] viewControllerBGColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

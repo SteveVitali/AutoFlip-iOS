@@ -73,14 +73,6 @@
     presentations = [[LibraryAPI sharedInstance] getPresentations];
     self.searchResults = [NSMutableArray arrayWithCapacity:[presentations count]];
     
-    //Set table colors
-    [self.tableView setSeparatorColor:[designManager tableCellSeparatorColor]];
-    //[self.tableView setSeparatorInset:UIEdgeInsetsZero];
-    [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"medium blue paper.png"]]];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"medium blue paper.png"]]];
-
-    //[self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] homeScreenBGColor]];
-    
     self.navigationItem.title = @"Choose a Presentation";
     
     //scale 4.0 = 1/4 original image size
@@ -89,6 +81,15 @@
     custom =[designManager scaleImage:[UIImage imageNamed:@"custom.png"] withScale:5.0];
     present=[designManager scaleImage:[UIImage imageNamed:@"present.png"] withScale:5.0];
     edit   =[designManager scaleImage:[UIImage imageNamed:@"edit.png"] withScale:5.0];
+    
+    //Set table colors
+    [self.tableView setSeparatorColor:[designManager tableCellSeparatorColor]];
+    //[self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    
+    // Somehow, if you change the view background, BEFORE the tableView background
+    // it will look different than if you set the tableView background and THEN the view background
+    [self.view setBackgroundColor:[designManager viewControllerBGColor]];
+    [self.tableView setBackgroundColor:[designManager tableViewBGColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -285,7 +286,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-
 #pragma mark - Table view data source and table view delegate methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
@@ -329,11 +329,24 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     cell.textLabel.text = presentation.title;
     cell.detailTextLabel.text = presentation.description;
     //Assuming the icon is a .png and is named the same as the "type"
-    cell.imageView.image = [UIImage imageNamed:[presentation.type stringByAppendingString:@".png"]];
     
-    cell.backgroundColor = [designManager tableCellBGColorNormal];
-    cell.textLabel.backgroundColor = [UIColor clearColor];
+    // With this line, the image will be autofitted to the cell
+    //cell.imageView.image = [UIImage imageNamed:[presentation.type stringByAppendingString:@".png"]];
+
+    // With these lines it uses the image resized earlier in viewDidLoad:
+    if ([presentation.type isEqualToString:@"drive"]) {
+        cell.imageView.image = drive;
+    } else if ([presentation.type isEqualToString:@"dropbox"]) {
+        cell.imageView.image = dropbox;
+    } else if ([presentation.type isEqualToString:@"custom"]) {
+        cell.imageView.image = custom;
+    }
+    
+    //cell.backgroundColor = [designManager tableCellBGColorNormal];
+    //cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+    cell.textLabel.textColor = [designManager tableCellTextColor];
+    cell.detailTextLabel.textColor = [designManager tableCellDetailColor];
     
     return cell;
 }

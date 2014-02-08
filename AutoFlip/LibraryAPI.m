@@ -105,15 +105,18 @@
     [manager setButtonCornerRadius:4.0f];
     [manager setButtonFontSize:16];
     // Screen backgrounds
-    [manager setHomeScreenBGColor:[UIColor cloudsColor]];
-    [manager setCardDeckTextViewBGColor:[[UIColor cloudsColor] colorWithAlphaComponent:0.5]];
-    [manager setCardDeckViewControllerBGColor:[UIColor cloudsColor]];
+    [manager setViewControllerBGColor:[UIColor cloudsColor]];
     // TableView colors for ChooseCardsViewController
-    [manager setTableCellBGColorNormal:[[UIColor cloudsColor] colorWithAlphaComponent:0.5]];
-    [manager setTableCellBGColorSelected:[[UIColor concreteColor] colorWithAlphaComponent:0.5]];
+    [manager setTableViewBGColor:[[UIColor cloudsColor] colorWithAlphaComponent:.6]];
+    [manager setTableCellBGColorNormal:[UIColor clearColor]];
+    [manager setTableCellBGColorSelected:[[UIColor concreteColor] colorWithAlphaComponent:0.6]];
     [manager setTableCellSeparatorColor:[UIColor concreteColor]];
     [manager setTableCellTextColor:[UIColor blackColor]];
     [manager setTableCellDetailColor:[UIColor asbestosColor]];
+    // CardDeckViewController styling
+    [manager setTextAreaFontColor:[UIColor blackColor]];
+    [manager setCardDeckTextViewBGColor:[[UIColor cloudsColor] colorWithAlphaComponent:0.6]];
+    [manager setCardDeckViewControllerBGColor:[UIColor cloudsColor]];
     // Text sizes
     [manager setMinNotecardFontSize:[NSNumber numberWithInt:16]];
     [manager setMaxNotecardFontSize:[NSNumber numberWithInt:36]];

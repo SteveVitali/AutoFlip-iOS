@@ -59,7 +59,7 @@
             [self.sideMenuViewController hideMenuViewController];
             break;
         case 3:
-            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"helpController"]];
+            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"aboutController"]];
             [self.sideMenuViewController hideMenuViewController];
             break;
         default:

@@ -70,6 +70,7 @@
 		1192497E1878F53100BD6868 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 119249741878F53100BD6868 /* Lato-Light.ttf */; };
 		1192497F1878F53100BD6868 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 119249751878F53100BD6868 /* Lato-LightItalic.ttf */; };
 		119249801878F53100BD6868 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 119249761878F53100BD6868 /* Lato-Regular.ttf */; };
+		1193DFF318A6A79F00390295 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193DFF218A6A79F00390295 /* AboutViewController.m */; };
 		11946E0D1894D20900A4D17A /* present.png in Resources */ = {isa = PBXBuildFile; fileRef = 11946E0B1894D20900A4D17A /* present.png */; };
 		11946E0E1894D20900A4D17A /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 11946E0C1894D20900A4D17A /* edit.png */; };
 		1194B23618772DB8008AD3AE /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194B23518772DB8008AD3AE /* KxMenu.m */; };
@@ -230,6 +231,8 @@
 		119249741878F53100BD6868 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		119249751878F53100BD6868 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		119249761878F53100BD6868 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		1193DFF118A6A79F00390295 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		1193DFF218A6A79F00390295 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		11946E0B1894D20900A4D17A /* present.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = present.png; sourceTree = "<group>"; };
 		11946E0C1894D20900A4D17A /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		1194B23418772DB8008AD3AE /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KxMenu.h; path = AutoFlip/KxMenu.h; sourceTree = "<group>"; };
@@ -696,6 +699,17 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		1193DFF018A6A77700390295 /* InfoControllers */ = {
+			isa = PBXGroup;
+			children = (
+				115A92AE18A58E9E0002353D /* HelpViewController.h */,
+				115A92AF18A58E9E0002353D /* HelpViewController.m */,
+				1193DFF118A6A79F00390295 /* AboutViewController.h */,
+				1193DFF218A6A79F00390295 /* AboutViewController.m */,
+			);
+			name = InfoControllers;
+			sourceTree = "<group>";
+		};
 		11A4413B1873624F00FB5863 /* CardDeckViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -765,6 +779,7 @@
 		11D0D11B18720345008CC7FD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1193DFF018A6A77700390295 /* InfoControllers */,
 				11BA10B21881CC580093851B /* DriveFilesListViewController.h */,
 				11BA10B31881CC580093851B /* DriveFilesListViewController.m */,
 				11CE2C9318A4B2FC006DC341 /* SidebarViewControllers */,
@@ -773,8 +788,6 @@
 				11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */,
 				11DC90611874D39600C069D8 /* NewCardDeckViewController.h */,
 				11DC90621874D39600C069D8 /* NewCardDeckViewController.m */,
-				115A92AE18A58E9E0002353D /* HelpViewController.h */,
-				115A92AF18A58E9E0002353D /* HelpViewController.m */,
 				115A92B118A593AF0002353D /* SettingsViewController.h */,
 				115A92B218A593AF0002353D /* SettingsViewController.m */,
 			);
@@ -1185,6 +1198,7 @@
 				11D11F931878F0510081B1CB /* UISlider+FlatUI.m in Sources */,
 				11D11F461878A6620081B1CB /* MZTransition.m in Sources */,
 				11D11F8E1878F0510081B1CB /* UIFont+FlatUI.m in Sources */,
+				1193DFF318A6A79F00390295 /* AboutViewController.m in Sources */,
 				118C19691891D152007EB10E /* SSZipArchive.m in Sources */,
 				11CE2C7E18A4B13B006DC341 /* UIImage+REFrostedViewController.m in Sources */,
 				115A92B018A58E9E0002353D /* HelpViewController.m in Sources */,

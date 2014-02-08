@@ -70,7 +70,7 @@
     self.logoLabel.textColor = [UIColor midnightBlueColor];
   //  self.logoLabel.font = [UIFont systemFontOfSize:36];
     
-    self.view.backgroundColor = [designManager homeScreenBGColor];
+    self.view.backgroundColor = [designManager viewControllerBGColor];
     
     [designManager styleFlatUIButton:self.startButton];
     [designManager styleFlatUIButton:self.createButton];
@@ -79,7 +79,7 @@
     
     self.logoImageView.image = [designManager scaleImage:[UIImage imageNamed:@"autoflip.png"] withScale:2.0];
     
-    [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] homeScreenBGColor]];
+    [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] viewControllerBGColor]];
     
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.navigationBar.tintColor = [[[LibraryAPI sharedInstance] designManager] primaryAccentColor];

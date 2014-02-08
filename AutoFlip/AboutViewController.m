@@ -1,20 +1,20 @@
 //
-//  HelpViewController.m
+//  AboutViewController.m
 //  AutoFlip
 //
-//  Created by Steve John Vitali on 2/7/14.
+//  Created by Steve John Vitali on 2/8/14.
 //  Copyright (c) 2014 Steve John Vitali. All rights reserved.
 //
 
-#import "HelpViewController.h"
+#import "AboutViewController.h"
 #import "RESideMenu.h"
 #import "LibraryAPI.h"
 
-@interface HelpViewController ()
+@interface AboutViewController ()
 
 @end
 
-@implementation HelpViewController
+@implementation AboutViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

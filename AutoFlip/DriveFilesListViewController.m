@@ -95,7 +95,7 @@ UIAlertView *loadingAlert;
     designManager = [[LibraryAPI sharedInstance] designManager];
 
     //Set table colors
-    [self.view setBackgroundColor:[designManager homeScreenBGColor]];
+    [self.view setBackgroundColor:[designManager viewControllerBGColor]];
     
     [self checkAuthentication];
     [self loadDriveFiles];

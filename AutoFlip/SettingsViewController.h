@@ -13,5 +13,8 @@
 @property (weak, nonatomic) IBOutlet UISwitch *toggleRecognitionSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *calibrateButton;
 
+- (IBAction)showMenu;
+
 - (IBAction)didPressCalibrate:(id)sender;
+- (IBAction)didToggleRecognitionSwitch:(id)sender;
 @end
