@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UISwitch *toggleRecognitionSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *calibrateButton;
+@property (weak, nonatomic) IBOutlet UIButton *resetDefaultsButton;
 
 // For transparent modal view controller
 @property (nonatomic, strong) TransitionDelegate *transitionController;
@@ -21,4 +22,5 @@
 
 - (IBAction)didPressCalibrate:(id)sender;
 - (IBAction)didToggleRecognitionSwitch:(id)sender;
+- (IBAction)didPressResetDefaults:(id)sender;
 @end

@@ -84,6 +84,17 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
+- (IBAction)didPressResetDefaults:(id)sender {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithBool:YES] forKey:@"speechRecognition"];
+    [defaults setObject:[NSNumber numberWithFloat:.3] forKey:@"pointOneConstant"];
+    
+    [self.toggleRecognitionSwitch setOn:[[defaults objectForKey:@"speechRecognition"] boolValue] animated:YES];
+    
+    NSLog(@"point one constant: %f", [[defaults objectForKey:@"pointOneConstant"] floatValue]);
+}
+
 - (BOOL)shouldAutorotate {
     return NO;
 }
@@ -99,13 +110,19 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // Return the number of rows in the section.
-    return 2;
+    if ( section == 0 ) {
+        return 2;
+    }
+    else if ( section ==1 ) {
+        return 1;
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -113,30 +130,38 @@
     static NSString *CellIdentifier;
     static NSString *CellNib;
     
-    // This should probably get refactored at some point,
-    // But I didn't know how else to do the static cells
-    switch (indexPath.row) {
-        case 0:
-            CellIdentifier = @"Cell1";
-            CellNib = @"SettingsSpeechToggleCell";
-            break;
-        case 1:
-            CellIdentifier = @"Cell2";
-            CellNib = @"SettingsCalibrationCell";
-            break;
+    // Not sure this is the right way to do this, but it works, damnit.
+    if (indexPath.section == 0) {
+        // This should probably get refactored at some point,
+        // But I didn't know how else to do the static cells
+        switch (indexPath.row) {
+            case 0:
+                CellIdentifier = @"Cell1";
+                CellNib = @"SettingsSpeechToggleCell";
+                break;
+            case 1:
+                CellIdentifier = @"Cell2";
+                CellNib = @"SettingsCalibrationCell";
+                break;
+        }
     }
     
+    else if (indexPath.section == 1) {
+        CellIdentifier = @"Cell3";
+        CellNib = @"ResetDefaultsCell";
+    }
+
     UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-    	NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellNib owner:self options:nil];
-    	cell = (UITableViewCell *)[nib objectAtIndex:0];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellNib owner:self options:nil];
+        cell = (UITableViewCell *)[nib objectAtIndex:0];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     // This seems to have fixed the issue of the switch not loading with the right value.
     self.toggleRecognitionSwitch.on = recognitionOn;
-    
+
     return cell;
 }
 

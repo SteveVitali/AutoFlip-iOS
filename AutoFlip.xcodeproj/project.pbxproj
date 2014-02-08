@@ -75,6 +75,7 @@
 		1193E00318A6CA6600390295 /* AnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E00018A6CA6600390295 /* AnimatedTransitioning.m */; };
 		1193E00418A6CA6600390295 /* TransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E00218A6CA6600390295 /* TransitionDelegate.m */; };
 		1193E00718A6DD3C00390295 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E00618A6DD3C00390295 /* MBProgressHUD.m */; };
+		1193E00918A6F0FE00390295 /* ResetDefaultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1193E00818A6F0FE00390295 /* ResetDefaultsCell.xib */; };
 		11946E0D1894D20900A4D17A /* present.png in Resources */ = {isa = PBXBuildFile; fileRef = 11946E0B1894D20900A4D17A /* present.png */; };
 		11946E0E1894D20900A4D17A /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 11946E0C1894D20900A4D17A /* edit.png */; };
 		1194B23618772DB8008AD3AE /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194B23518772DB8008AD3AE /* KxMenu.m */; };
@@ -245,6 +246,7 @@
 		1193E00218A6CA6600390295 /* TransitionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionDelegate.m; sourceTree = "<group>"; };
 		1193E00518A6DD3C00390295 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		1193E00618A6DD3C00390295 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		1193E00818A6F0FE00390295 /* ResetDefaultsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetDefaultsCell.xib; sourceTree = "<group>"; };
 		11946E0B1894D20900A4D17A /* present.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = present.png; sourceTree = "<group>"; };
 		11946E0C1894D20900A4D17A /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		1194B23418772DB8008AD3AE /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KxMenu.h; path = AutoFlip/KxMenu.h; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 		115A92B418A5A5540002353D /* SettingsTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				1193E00818A6F0FE00390295 /* ResetDefaultsCell.xib */,
 				115A92B618A5A5910002353D /* SettingsSpeechToggleCell.xib */,
 				115A92B818A5A5D50002353D /* SettingsCalibrationCell.xib */,
 			);
@@ -1184,6 +1187,7 @@
 				11D0D13B18722DD6008CC7FD /* drive.png in Resources */,
 				115A92D318A602110002353D /* about@2x.png in Resources */,
 				11229DF418A03BF400B6F1C3 /* paper-portrait.png in Resources */,
+				1193E00918A6F0FE00390295 /* ResetDefaultsCell.xib in Resources */,
 				115A92BF18A5E0E10002353D /* IconSettings@2x.png in Resources */,
 				11711FA41871F2CF00792D36 /* Main.storyboard in Resources */,
 				11946E0E1894D20900A4D17A /* edit.png in Resources */,
