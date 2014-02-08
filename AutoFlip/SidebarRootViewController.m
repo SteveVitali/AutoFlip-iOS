@@ -7,6 +7,7 @@
 //
 
 #import "SidebarRootViewController.h"
+#import "SidebarMenuViewController.h"
 
 @interface SidebarRootViewController ()
 
@@ -18,6 +19,8 @@
 {
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentController"];
     self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuController"];
+    self.backgroundImage = [UIImage imageNamed:@"Stars"];
+    self.delegate = (SidebarMenuViewController *)self.menuViewController;
 }
 
 @end

@@ -1,15 +1,13 @@
 //
 //  DEMOMenuViewController.m
-//  REFrostedViewControllerStoryboards
+//  RESideMenuStoryboards
 //
 //  Created by Roman Efimov on 10/9/13.
 //  Copyright (c) 2013 Roman Efimov. All rights reserved.
 //
 
 #import "SidebarMenuViewController.h"
-#import "UIViewController+REFrostedViewController.h"
-#import "SidebarNavigationController.h"
-#import "ChooseCardsViewController.h"
+#import "UIViewController+RESideMenu.h"
 
 @interface SidebarMenuViewController ()
 
@@ -20,84 +18,49 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.opaque = NO;
-    self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 0, 24)];
-        label.text = @"AutoFlip";
-        label.font = [UIFont systemFontOfSize:21.0f];
-        label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
-        [label sizeToFit];
-        label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    self.tableView = ({
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 5) / 2.0f, self.view.frame.size.width, 54 * 5) style:UITableViewStylePlain];
+        tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        tableView.opaque = NO;
+        tableView.backgroundColor = [UIColor clearColor];
         
-        [view addSubview:label];
-        view;
+        tableView.backgroundView = nil;
+        tableView.backgroundColor = [UIColor clearColor];
+        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        tableView.bounces = NO;
+        tableView.scrollsToTop = NO;
+        tableView;
     });
+    [self.view addSubview:self.tableView];
+    [self.view setBackgroundColor:[UIColor clearColor]];
 }
 
 #pragma mark -
 #pragma mark UITableView Delegate
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
-    cell.textLabel.font = [UIFont systemFontOfSize:17.0f];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex
-{
-    if (sectionIndex == 0)
-        return nil;
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 34)];
-    view.backgroundColor = [UIColor colorWithRed:167/255.0f green:167/255.0f blue:167/255.0f alpha:0.6f];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 0, 0)];
-    label.text = @"Friends Online";
-    label.font = [UIFont systemFontOfSize:15];
-    label.textColor = [UIColor whiteColor];
-    label.backgroundColor = [UIColor clearColor];
-    [label sizeToFit];
-    [view addSubview:label];
-    
-    return view;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex
-{
-    if (sectionIndex == 0)
-        return 0;
-    
-    return 34;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    SidebarNavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentController"];
+    UINavigationController *navigationController = (UINavigationController *)self.sideMenuViewController.contentViewController;
     
-    if (indexPath.section == 0 && indexPath.row == 0) {
-         ChooseCardsViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];
-        navigationController.viewControllers = @[homeViewController];
+    switch (indexPath.row) {
+        case 0:
+            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"homeController"]];
+            [self.sideMenuViewController hideMenuViewController];
+            break;
+        case 1:
+            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"settingsController"]];
+            [self.sideMenuViewController hideMenuViewController];
+            break;
+        case 2:
+            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"helpController"]];
+            [self.sideMenuViewController hideMenuViewController];
+            break;
+        default:
+            break;
     }
-//    else if (indexPath.section == 0 && indexPath.row == 1) {
-//        DEMOSecondViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"secondController"];
-//        navigationController.viewControllers = @[secondViewController];
-//    }
-//    else if (indexPath.section == 0 && indexPath.row == 2) {
-//        DEMOSecondViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"secondController"];
-//        navigationController.viewControllers = @[secondViewController];
-//    }
-    
-    self.frostedViewController.contentViewController = navigationController;
-    [self.frostedViewController hideMenuViewController];
 }
 
 #pragma mark -
@@ -105,17 +68,17 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 256;
+    return 54;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;//2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 1;//3;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -126,18 +89,47 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.highlightedTextColor = [UIColor lightGrayColor];
+        cell.selectedBackgroundView = [[UIView alloc] init];
     }
     
-    if (indexPath.section == 0) {
-        NSArray *titles = @[@"Home"];
-        cell.textLabel.text = titles[indexPath.row];
-    }
-//    else {
-//        NSArray *titles = @[@"John Appleseed", @"John Doe", @"Test User"];
-//        cell.textLabel.text = titles[indexPath.row];
-//    }
+    NSArray *titles = @[@"Home", @"Settings", @"Help"];
+    NSArray *images = @[@"IconHome", @"IconSettings", @"IconHelp"];
+    cell.textLabel.text = titles[indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     
     return cell;
 }
- 
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark -
+#pragma mark RESideMenu Delegate
+
+- (void)sideMenu:(RESideMenu *)sideMenu willShowMenuViewController:(UIViewController *)menuViewController
+{
+    NSLog(@"willShowMenuViewController");
+}
+
+- (void)sideMenu:(RESideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController
+{
+    NSLog(@"didShowMenuViewController");
+}
+
+- (void)sideMenu:(RESideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController
+{
+    NSLog(@"willHideMenuViewController");
+}
+
+- (void)sideMenu:(RESideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController
+{
+    NSLog(@"didHideMenuViewController");
+}
+
 @end

@@ -12,6 +12,17 @@
 		11229DF418A03BF400B6F1C3 /* paper-portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 11229DF218A03BF400B6F1C3 /* paper-portrait.png */; };
 		115A929618A541130002353D /* FMMoveTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A929318A541130002353D /* FMMoveTableView.m */; };
 		115A929718A541130002353D /* FMMoveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A929518A541130002353D /* FMMoveTableViewCell.m */; };
+		115A929A18A551720002353D /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A929818A551720002353D /* menu-icon.png */; };
+		115A929B18A551720002353D /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A929918A551720002353D /* menu-icon@2x.png */; };
+		115A92A318A55D3E0002353D /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A929E18A55D3E0002353D /* RECommonFunctions.m */; };
+		115A92A418A55D3E0002353D /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A92A018A55D3E0002353D /* RESideMenu.m */; };
+		115A92A518A55D3E0002353D /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A92A218A55D3E0002353D /* UIViewController+RESideMenu.m */; };
+		115A92A718A55F940002353D /* Stars@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92A618A55F940002353D /* Stars@2x.png */; };
+		115A92AA18A55FD00002353D /* SidebarMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A92A918A55FD00002353D /* SidebarMenuViewController.m */; };
+		115A92B018A58E9E0002353D /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A92AF18A58E9E0002353D /* HelpViewController.m */; };
+		115A92B318A593AF0002353D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A92B218A593AF0002353D /* SettingsViewController.m */; };
+		115A92B718A5A5910002353D /* SettingsSpeechToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115A92B618A5A5910002353D /* SettingsSpeechToggleCell.xib */; };
+		115A92B918A5A5D50002353D /* SettingsCalibrationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115A92B818A5A5D50002353D /* SettingsCalibrationCell.xib */; };
 		116BFBF5189D620F008663CE /* UITextView+AutoResizeFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */; };
 		116FD85A187B53B900BC4643 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD858187B53B900BC4643 /* AudioToolbox.framework */; };
 		116FD85B187B53B900BC4643 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD859187B53B900BC4643 /* AVFoundation.framework */; };
@@ -64,8 +75,6 @@
 		11CE2C7F18A4B13B006DC341 /* UIView+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2C7818A4B13B006DC341 /* UIView+REFrostedViewController.m */; };
 		11CE2C8018A4B13B006DC341 /* UIViewController+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2C7A18A4B13B006DC341 /* UIViewController+REFrostedViewController.m */; };
 		11CE2C8F18A4B2F1006DC341 /* SidebarRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2C8618A4B2F1006DC341 /* SidebarRootViewController.m */; };
-		11CE2C9018A4B2F1006DC341 /* SidebarNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2C8818A4B2F1006DC341 /* SidebarNavigationController.m */; };
-		11CE2C9118A4B2F1006DC341 /* SidebarMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2C8A18A4B2F1006DC341 /* SidebarMenuViewController.m */; };
 		11D0D115187202D1008CC7FD /* ChooseCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */; };
 		11D0D11E18720412008CC7FD /* Notecard.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D11D18720412008CC7FD /* Notecard.m */; };
 		11D0D12118720421008CC7FD /* Presentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D0D12018720421008CC7FD /* Presentation.m */; };
@@ -133,6 +142,23 @@
 		115A929318A541130002353D /* FMMoveTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMMoveTableView.m; sourceTree = "<group>"; };
 		115A929418A541130002353D /* FMMoveTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMMoveTableViewCell.h; sourceTree = "<group>"; };
 		115A929518A541130002353D /* FMMoveTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMMoveTableViewCell.m; sourceTree = "<group>"; };
+		115A929818A551720002353D /* menu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon.png"; sourceTree = "<group>"; };
+		115A929918A551720002353D /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
+		115A929D18A55D3E0002353D /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		115A929E18A55D3E0002353D /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		115A929F18A55D3E0002353D /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		115A92A018A55D3E0002353D /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		115A92A118A55D3E0002353D /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		115A92A218A55D3E0002353D /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		115A92A618A55F940002353D /* Stars@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stars@2x.png"; sourceTree = "<group>"; };
+		115A92A818A55FD00002353D /* SidebarMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarMenuViewController.h; sourceTree = "<group>"; };
+		115A92A918A55FD00002353D /* SidebarMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarMenuViewController.m; sourceTree = "<group>"; };
+		115A92AE18A58E9E0002353D /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		115A92AF18A58E9E0002353D /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		115A92B118A593AF0002353D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		115A92B218A593AF0002353D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		115A92B618A5A5910002353D /* SettingsSpeechToggleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsSpeechToggleCell.xib; sourceTree = "<group>"; };
+		115A92B818A5A5D50002353D /* SettingsCalibrationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsCalibrationCell.xib; sourceTree = "<group>"; };
 		116BFBF3189D620F008663CE /* UITextView+AutoResizeFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+AutoResizeFont.h"; sourceTree = "<group>"; };
 		116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+AutoResizeFont.m"; sourceTree = "<group>"; };
 		116FD858187B53B900BC4643 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -213,10 +239,6 @@
 		11CE2C7A18A4B13B006DC341 /* UIViewController+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+REFrostedViewController.m"; sourceTree = "<group>"; };
 		11CE2C8618A4B2F1006DC341 /* SidebarRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarRootViewController.m; sourceTree = "<group>"; };
 		11CE2C8718A4B2F1006DC341 /* SidebarRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarRootViewController.h; sourceTree = "<group>"; };
-		11CE2C8818A4B2F1006DC341 /* SidebarNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarNavigationController.m; sourceTree = "<group>"; };
-		11CE2C8918A4B2F1006DC341 /* SidebarNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarNavigationController.h; sourceTree = "<group>"; };
-		11CE2C8A18A4B2F1006DC341 /* SidebarMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarMenuViewController.m; sourceTree = "<group>"; };
-		11CE2C8B18A4B2F1006DC341 /* SidebarMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarMenuViewController.h; sourceTree = "<group>"; };
 		11D0D113187202D1008CC7FD /* ChooseCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCardsViewController.h; sourceTree = "<group>"; };
 		11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCardsViewController.m; sourceTree = "<group>"; };
 		11D0D11C18720412008CC7FD /* Notecard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notecard.h; sourceTree = "<group>"; };
@@ -434,6 +456,28 @@
 			path = FMFramework;
 			sourceTree = "<group>";
 		};
+		115A929C18A55D3E0002353D /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				115A929D18A55D3E0002353D /* RECommonFunctions.h */,
+				115A929E18A55D3E0002353D /* RECommonFunctions.m */,
+				115A929F18A55D3E0002353D /* RESideMenu.h */,
+				115A92A018A55D3E0002353D /* RESideMenu.m */,
+				115A92A118A55D3E0002353D /* UIViewController+RESideMenu.h */,
+				115A92A218A55D3E0002353D /* UIViewController+RESideMenu.m */,
+			);
+			path = RESideMenu;
+			sourceTree = "<group>";
+		};
+		115A92B418A5A5540002353D /* SettingsTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				115A92B618A5A5910002353D /* SettingsSpeechToggleCell.xib */,
+				115A92B818A5A5D50002353D /* SettingsCalibrationCell.xib */,
+			);
+			name = SettingsTableViewCells;
+			sourceTree = "<group>";
+		};
 		116AE53F1874AD7E008EE410 /* iPad */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,8 +490,8 @@
 			children = (
 				11711F961871F2CF00792D36 /* AutoFlip */,
 				11711FB51871F2CF00792D36 /* AutoFlipTests */,
-				11D11F5A1878EFF80081B1CB /* vendor */,
 				1192496C1878F53100BD6868 /* Resources */,
+				11D11F5A1878EFF80081B1CB /* vendor */,
 				11711F8F1871F2CF00792D36 /* Frameworks */,
 				11711F8E1871F2CF00792D36 /* Products */,
 			);
@@ -563,6 +607,9 @@
 		1192496C1878F53100BD6868 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				115A92A618A55F940002353D /* Stars@2x.png */,
+				115A929818A551720002353D /* menu-icon.png */,
+				115A929918A551720002353D /* menu-icon@2x.png */,
 				11229DF218A03BF400B6F1C3 /* paper-portrait.png */,
 				11229DF018A0143600B6F1C3 /* autoflip.png */,
 				11946E0B1894D20900A4D17A /* present.png */,
@@ -618,12 +665,10 @@
 		11CE2C9318A4B2FC006DC341 /* SidebarViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				11CE2C8618A4B2F1006DC341 /* SidebarRootViewController.m */,
+				115A92A818A55FD00002353D /* SidebarMenuViewController.h */,
+				115A92A918A55FD00002353D /* SidebarMenuViewController.m */,
 				11CE2C8718A4B2F1006DC341 /* SidebarRootViewController.h */,
-				11CE2C8818A4B2F1006DC341 /* SidebarNavigationController.m */,
-				11CE2C8918A4B2F1006DC341 /* SidebarNavigationController.h */,
-				11CE2C8B18A4B2F1006DC341 /* SidebarMenuViewController.h */,
-				11CE2C8A18A4B2F1006DC341 /* SidebarMenuViewController.m */,
+				11CE2C8618A4B2F1006DC341 /* SidebarRootViewController.m */,
 			);
 			name = SidebarViewControllers;
 			sourceTree = "<group>";
@@ -642,6 +687,7 @@
 		11D0D11A18720342008CC7FD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				115A92B418A5A5540002353D /* SettingsTableViewCells */,
 				116BFBF3189D620F008663CE /* UITextView+AutoResizeFont.h */,
 				116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */,
 				11711FA21871F2CF00792D36 /* Main.storyboard */,
@@ -654,14 +700,18 @@
 		11D0D11B18720345008CC7FD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				11CE2C9318A4B2FC006DC341 /* SidebarViewControllers */,
 				11BA10B21881CC580093851B /* DriveFilesListViewController.h */,
 				11BA10B31881CC580093851B /* DriveFilesListViewController.m */,
+				11CE2C9318A4B2FC006DC341 /* SidebarViewControllers */,
 				11A4413B1873624F00FB5863 /* CardDeckViewControllers */,
 				11D0D113187202D1008CC7FD /* ChooseCardsViewController.h */,
 				11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */,
 				11DC90611874D39600C069D8 /* NewCardDeckViewController.h */,
 				11DC90621874D39600C069D8 /* NewCardDeckViewController.m */,
+				115A92AE18A58E9E0002353D /* HelpViewController.h */,
+				115A92AF18A58E9E0002353D /* HelpViewController.m */,
+				115A92B118A593AF0002353D /* SettingsViewController.h */,
+				115A92B218A593AF0002353D /* SettingsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -735,6 +785,7 @@
 		11D11F5A1878EFF80081B1CB /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				115A929C18A55D3E0002353D /* RESideMenu */,
 				115A929118A541130002353D /* FMFramework */,
 				11CE2C6E18A4B13B006DC341 /* REFrostedViewController */,
 				BC456929189E11CE00C65F8B /* GTL/Drive */,
@@ -986,8 +1037,10 @@
 			files = (
 				11BA10AD1881C4460093851B /* GTMOAuth2ViewTouch.xib in Resources */,
 				1192497E1878F53100BD6868 /* Lato-Light.ttf in Resources */,
+				115A92A718A55F940002353D /* Stars@2x.png in Resources */,
 				11711FA91871F2CF00792D36 /* Images.xcassets in Resources */,
 				11229DF118A0143600B6F1C3 /* autoflip.png in Resources */,
+				115A92B918A5A5D50002353D /* SettingsCalibrationCell.xib in Resources */,
 				116FD862187B53F400BC4643 /* AcousticModelSpanish.bundle in Resources */,
 				119249791878F53100BD6868 /* Lato-Bold.ttf in Resources */,
 				1192497B1878F53100BD6868 /* Lato-Hairline.ttf in Resources */,
@@ -1001,14 +1054,17 @@
 				116FD861187B53F400BC4643 /* AcousticModelEnglish.bundle in Resources */,
 				1192497D1878F53100BD6868 /* Lato-Italic.ttf in Resources */,
 				119249771878F53100BD6868 /* Lato-Black.ttf in Resources */,
+				115A929A18A551720002353D /* menu-icon.png in Resources */,
 				1192497F1878F53100BD6868 /* Lato-LightItalic.ttf in Resources */,
 				119249781878F53100BD6868 /* Lato-BlackItalic.ttf in Resources */,
+				115A929B18A551720002353D /* menu-icon@2x.png in Resources */,
 				11D0D13D18722E34008CC7FD /* dropbox.png in Resources */,
 				11D0D13B18722DD6008CC7FD /* drive.png in Resources */,
 				11229DF418A03BF400B6F1C3 /* paper-portrait.png in Resources */,
 				11711FA41871F2CF00792D36 /* Main.storyboard in Resources */,
 				11946E0E1894D20900A4D17A /* edit.png in Resources */,
 				119249801878F53100BD6868 /* Lato-Regular.ttf in Resources */,
+				115A92B718A5A5910002353D /* SettingsSpeechToggleCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1037,6 +1093,7 @@
 				11D11F881878F0510081B1CB /* FUIPopoverBackgroundView.m in Sources */,
 				118C19681891D152007EB10E /* zip.c in Sources */,
 				11711FA71871F2CF00792D36 /* ViewController.m in Sources */,
+				115A92B318A593AF0002353D /* SettingsViewController.m in Sources */,
 				11D0D115187202D1008CC7FD /* ChooseCardsViewController.m in Sources */,
 				11D11F451878A6620081B1CB /* MZFormSheetSegue.m in Sources */,
 				11D11F8F1878F0510081B1CB /* UIImage+FlatUI.m in Sources */,
@@ -1045,8 +1102,7 @@
 				11CE2C7B18A4B13B006DC341 /* RECommonFunctions.m in Sources */,
 				11D11F8D1878F0510081B1CB /* UIColor+FlatUI.m in Sources */,
 				1194B23618772DB8008AD3AE /* KxMenu.m in Sources */,
-				11CE2C9118A4B2F1006DC341 /* SidebarMenuViewController.m in Sources */,
-				11CE2C9018A4B2F1006DC341 /* SidebarNavigationController.m in Sources */,
+				115A92A418A55D3E0002353D /* RESideMenu.m in Sources */,
 				11D0D11E18720412008CC7FD /* Notecard.m in Sources */,
 				11D11F8A1878F0510081B1CB /* FUISwitch.m in Sources */,
 				11CE2C8018A4B13B006DC341 /* UIViewController+REFrostedViewController.m in Sources */,
@@ -1055,6 +1111,7 @@
 				11D11F8E1878F0510081B1CB /* UIFont+FlatUI.m in Sources */,
 				118C19691891D152007EB10E /* SSZipArchive.m in Sources */,
 				11CE2C7E18A4B13B006DC341 /* UIImage+REFrostedViewController.m in Sources */,
+				115A92B018A58E9E0002353D /* HelpViewController.m in Sources */,
 				11D11F971878F0510081B1CB /* UIToolbar+FlatUI.m in Sources */,
 				11D11F871878F0510081B1CB /* FUICellBackgroundView.m in Sources */,
 				11D11F951878F0510081B1CB /* UITabBar+FlatUI.m in Sources */,
@@ -1066,6 +1123,7 @@
 				11D0FBE618994CF6009D067F /* CreateCardsViewController.m in Sources */,
 				11A4413A1873620400FB5863 /* CardDeckViewController.m in Sources */,
 				11D11F861878F0510081B1CB /* FUIButton.m in Sources */,
+				115A92A318A55D3E0002353D /* RECommonFunctions.m in Sources */,
 				11D11F8B1878F0510081B1CB /* FUITextField.m in Sources */,
 				115A929718A541130002353D /* FMMoveTableViewCell.m in Sources */,
 				116BFBF5189D620F008663CE /* UITextView+AutoResizeFont.m in Sources */,
@@ -1090,6 +1148,8 @@
 				11D11F941878F0510081B1CB /* UIStepper+FlatUI.m in Sources */,
 				118C19671891D152007EB10E /* unzip.c in Sources */,
 				11D11F8C1878F0510081B1CB /* UIBarButtonItem+FlatUI.m in Sources */,
+				115A92AA18A55FD00002353D /* SidebarMenuViewController.m in Sources */,
+				115A92A518A55D3E0002353D /* UIViewController+RESideMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
