@@ -8,7 +8,6 @@
 
 #import "CreateCardsViewController.h"
 #import "SaveAsViewController.h"
-#import "SidebarNavigationController.h"
 #import "ChooseCardsViewController.h"
 #import "Notecard.h"
 #import "LibraryAPI.h"

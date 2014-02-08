@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "REFrostedViewController.h"
+//#import "REFrostedViewController.h"
+#import "RESideMenu.h"
 
-@interface SidebarRootViewController : REFrostedViewController
+@interface SidebarRootViewController : RESideMenu
 
 @end

@@ -28,7 +28,8 @@
 #import "SSZipArchive.h"
 #import "Notecard.h"
 #import "ChooseCardsTableViewCell.h"
-#import "REFrostedViewController.h"
+//#import "REFrostedViewController.h"
+#import "RESideMenu.h"
 
 @interface ChooseCardsViewController ()
 {
@@ -76,31 +77,37 @@
     [self.tableView setSeparatorColor:[designManager tableCellSeparatorColor]];
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
-    
     [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] homeScreenBGColor]];
     
     self.navigationItem.title = @"Choose a Presentation";
     
     //scale 4.0 = 1/4 original image size
-    drive = [designManager scaleImage:[UIImage imageNamed:@"drive.png"] withScale:8.0];
-    dropbox=[designManager scaleImage:[UIImage imageNamed:@"dropbox.png"] withScale:8.0];
-    custom =[designManager scaleImage:[UIImage imageNamed:@"custom.png"] withScale:4.0];
-    present=[designManager scaleImage:[UIImage imageNamed:@"present.png"] withScale:4.0];
-    edit   =[designManager scaleImage:[UIImage imageNamed:@"edit.png"] withScale:4.0];
-
+    drive = [designManager scaleImage:[UIImage imageNamed:@"drive.png"] withScale:10.0];
+    dropbox=[designManager scaleImage:[UIImage imageNamed:@"dropbox.png"] withScale:10.0];
+    custom =[designManager scaleImage:[UIImage imageNamed:@"custom.png"] withScale:5.0];
+    present=[designManager scaleImage:[UIImage imageNamed:@"present.png"] withScale:5.0];
+    edit   =[designManager scaleImage:[UIImage imageNamed:@"edit.png"] withScale:5.0];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     [self.navigationController.navigationBar setHidden:NO];
-    [self.navigationController setToolbarHidden:YES];
+    [self.navigationController setToolbarHidden:NO];
     [self.tableView reloadData];
 }
 
 // For the sidebar
 - (IBAction)showMenu {
     
-    [self.frostedViewController presentMenuViewController];
+    //[self.frostedViewController presentMenuViewController];
+    [self.sideMenuViewController presentMenuViewController];
+}
+
+// Trying to get the pan gesture for the sidebar and the gestures in the tableview to both work
+- (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    
+    return YES;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -114,7 +121,7 @@
         
         CreateCardsViewController *controller = (CreateCardsViewController *)[segue destinationViewController];
         controller.presentation = chosenPresentation;
-        // This should be changed at some point.
+        // This should be changed/refactored at some point.
         controller.presentationTitle = chosenPresentation.title;
         controller.presentationDescription = chosenPresentation.description;
     }

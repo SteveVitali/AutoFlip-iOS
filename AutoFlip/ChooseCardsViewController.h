@@ -23,7 +23,8 @@
                                          DBRestClientDelegate,
                                          SSZipArchiveDelegate,
                                          DriveFilePickerDelegate,
-                                         FMMoveTableViewDelegate, FMMoveTableViewDataSource>
+                                         FMMoveTableViewDelegate, FMMoveTableViewDataSource,
+                                         UIGestureRecognizerDelegate>
 
 @property (strong,nonatomic) NSMutableArray *searchResults;
 @property IBOutlet UISearchBar *searchBar;
