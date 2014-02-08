@@ -21,7 +21,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IQ1-6F-V5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-231" y="356"/>
+            <point key="canvasLocation" x="166" y="646"/>
         </scene>
         <!--View Controller - createImportedCards-->
         <scene sceneID="ufC-wZ-h7g">
@@ -102,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="187" y="356"/>
+            <point key="canvasLocation" x="619" y="646"/>
         </scene>
         <!--New Card Deck View Controller - New Cards Deck-->
         <scene sceneID="FHF-wb-GdN">
@@ -150,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f5o-X9-sIZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="960" y="276"/>
+            <point key="canvasLocation" x="1607" y="-4"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="K6a-Re-zqZ">
@@ -166,7 +166,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5c9-BM-1lB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="580" y="1014"/>
+            <point key="canvasLocation" x="1607" y="674"/>
         </scene>
         <!--Old Create Cards View Controller - Presentation Title-->
         <scene sceneID="5Y0-3c-EHN">
@@ -234,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31d-IR-njV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1482" y="276"/>
+            <point key="canvasLocation" x="2089" y="-702"/>
         </scene>
         <!--Sidebar Root View Controller-->
         <scene sceneID="YOY-ht-O14">
@@ -248,7 +248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GaT-bJ-dSG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-155" y="-530"/>
+            <point key="canvasLocation" x="-33" y="-530"/>
         </scene>
         <!--Sidebar Menu View Controller-->
         <scene sceneID="KIw-8S-LHd">
@@ -262,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXe-K4-2Yq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="308" y="-530"/>
+            <point key="canvasLocation" x="362" y="-530"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2kH-ff-3M2">
@@ -280,7 +280,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ov8-8K-HYa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="308" y="-1212"/>
+            <point key="canvasLocation" x="362" y="-1212"/>
         </scene>
         <!--Help View Controller - Help-->
         <scene sceneID="Gho-7H-u7E">
@@ -351,10 +351,70 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hnu-uo-oBa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="960" y="-1212"/>
+        </scene>
+        <!--Calibration View Controller - Speech Calibration-->
+        <scene sceneID="lyX-uR-fim">
+            <objects>
+                <viewController storyboardIdentifier="calibrationViewController" id="rr8-5a-1uG" customClass="CalibrationViewController" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="n59-DM-kLi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" id="oNR-bQ-QOB">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Speech Calibration" id="0gp-1o-4Di">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="EnC-e0-ZlZ">
+                                            <connections>
+                                                <action selector="didPressCancel:" destination="rr8-5a-1uG" id="nLG-IF-8aU"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="RkC-hx-3Re">
+                                <rect key="frame" x="30" y="217" width="260" height="149"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IwS-oJ-z4H">
+                                <rect key="frame" x="60" y="374" width="200" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressRecord:" destination="rr8-5a-1uG" eventType="touchUpInside" id="6gh-Fc-tdt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Speech Calibration" id="g2j-gk-bU4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="GSb-HH-hGm">
+                            <connections>
+                                <action selector="didPressCancel:" destination="rr8-5a-1uG" id="pYP-2k-ia1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="recordButton" destination="IwS-oJ-z4H" id="dPD-Po-b9D"/>
+                        <outlet property="textView" destination="RkC-hx-3Re" id="yDt-A1-6g5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4X8-jd-5jz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1607" y="-1356"/>
         </scene>
         <!--Choose Cards View Controller - Deck Library-->
         <scene sceneID="f8r-UC-uJa">
@@ -533,7 +593,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1046" y="1014"/>
+            <point key="canvasLocation" x="2089" y="674"/>
         </scene>
         <!--Create Cards View Controller - Presentation Title-->
         <scene sceneID="f1m-CY-4Po">
@@ -594,7 +654,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDo-1v-D3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1482" y="1014"/>
+            <point key="canvasLocation" x="2089" y="-4"/>
         </scene>
         <!--Presentation View Controller - Presentation Title-->
         <scene sceneID="Vee-Zl-6At">
@@ -642,7 +702,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTg-D1-Coz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1509" y="-530"/>
+            <point key="canvasLocation" x="1607" y="-702"/>
         </scene>
         <!--About View Controller - About-->
         <scene sceneID="2Ge-Qa-uG7">
@@ -665,7 +725,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z8n-Km-JGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="960" y="-2534"/>
+            <point key="canvasLocation" x="960" y="-2522"/>
         </scene>
     </scenes>
     <resources>
@@ -680,8 +740,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="cVP-sD-z9C"/>
-        <segue reference="68o-6F-g8T"/>
-        <segue reference="Lp7-11-OHQ"/>
+        <segue reference="sQh-Ct-Sgu"/>
         <segue reference="7zJ-Ch-EAJ"/>
+        <segue reference="Lp7-11-OHQ"/>
     </inferredMetricsTieBreakers>
 </document>

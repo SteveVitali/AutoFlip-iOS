@@ -44,11 +44,14 @@
     NSUserDefaults *fetchDefaults = [NSUserDefaults standardUserDefaults];
     recognitionOn = [[fetchDefaults objectForKey:@"speechRecognition"] boolValue];
     
+    NSNumber *constant = [fetchDefaults objectForKey:@"pointOneConstant"];
+    NSLog(@"current constant: %f",[constant floatValue]);
+    
     // I think this gets overridden in the table view delegate methods
     self.toggleRecognitionSwitch.on = recognitionOn;
-    NSString *onOff = self.toggleRecognitionSwitch.on ? @"ON" : @"OFF";
-    NSLog(@"switch loaded from defaults as:  %@", onOff);
     [self.tableView reloadData];
+    
+    self.transitionController = [[TransitionDelegate alloc] init];
 }
 
 // For the sidebar
@@ -71,7 +74,18 @@
 
 - (IBAction)didPressCalibrate:(id)sender {
     
-    NSLog(@"calibrating...");
+    // Code taken from https://github.com/hightech/iOS-7-Custom-ModalViewController-Transitions
+    // The TransitionDelegate stuff is in /vendor/Transition Delegate
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"calibrationViewController"];
+    vc.view.backgroundColor = [[UIColor cloudsColor] colorWithAlphaComponent:.8];
+    [vc setTransitioningDelegate:self.transitionController];
+    vc.modalPresentationStyle= UIModalPresentationCustom;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (BOOL)shouldAutorotate {
+    return NO;
 }
 
 - (void)didReceiveMemoryWarning {

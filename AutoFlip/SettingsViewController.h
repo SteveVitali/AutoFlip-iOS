@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TransitionDelegate.h"
 
 @interface SettingsViewController : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UISwitch *toggleRecognitionSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *calibrateButton;
+
+// For transparent modal view controller
+@property (nonatomic, strong) TransitionDelegate *transitionController;
 
 - (IBAction)showMenu;
 

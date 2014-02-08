@@ -71,6 +71,10 @@
 		1192497F1878F53100BD6868 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 119249751878F53100BD6868 /* Lato-LightItalic.ttf */; };
 		119249801878F53100BD6868 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 119249761878F53100BD6868 /* Lato-Regular.ttf */; };
 		1193DFF318A6A79F00390295 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193DFF218A6A79F00390295 /* AboutViewController.m */; };
+		1193DFFD18A6C1F100390295 /* CalibrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193DFFC18A6C1F100390295 /* CalibrationViewController.m */; };
+		1193E00318A6CA6600390295 /* AnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E00018A6CA6600390295 /* AnimatedTransitioning.m */; };
+		1193E00418A6CA6600390295 /* TransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E00218A6CA6600390295 /* TransitionDelegate.m */; };
+		1193E00718A6DD3C00390295 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E00618A6DD3C00390295 /* MBProgressHUD.m */; };
 		11946E0D1894D20900A4D17A /* present.png in Resources */ = {isa = PBXBuildFile; fileRef = 11946E0B1894D20900A4D17A /* present.png */; };
 		11946E0E1894D20900A4D17A /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 11946E0C1894D20900A4D17A /* edit.png */; };
 		1194B23618772DB8008AD3AE /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194B23518772DB8008AD3AE /* KxMenu.m */; };
@@ -233,6 +237,14 @@
 		119249761878F53100BD6868 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		1193DFF118A6A79F00390295 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		1193DFF218A6A79F00390295 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		1193DFFB18A6C1F100390295 /* CalibrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationViewController.h; sourceTree = "<group>"; };
+		1193DFFC18A6C1F100390295 /* CalibrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationViewController.m; sourceTree = "<group>"; };
+		1193DFFF18A6CA6600390295 /* AnimatedTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedTransitioning.h; sourceTree = "<group>"; };
+		1193E00018A6CA6600390295 /* AnimatedTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedTransitioning.m; sourceTree = "<group>"; };
+		1193E00118A6CA6600390295 /* TransitionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionDelegate.h; sourceTree = "<group>"; };
+		1193E00218A6CA6600390295 /* TransitionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionDelegate.m; sourceTree = "<group>"; };
+		1193E00518A6DD3C00390295 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		1193E00618A6DD3C00390295 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		11946E0B1894D20900A4D17A /* present.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = present.png; sourceTree = "<group>"; };
 		11946E0C1894D20900A4D17A /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		1194B23418772DB8008AD3AE /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KxMenu.h; path = AutoFlip/KxMenu.h; sourceTree = "<group>"; };
@@ -710,6 +722,28 @@
 			name = InfoControllers;
 			sourceTree = "<group>";
 		};
+		1193DFFA18A6C19A00390295 /* SettingsControllers */ = {
+			isa = PBXGroup;
+			children = (
+				115A92B118A593AF0002353D /* SettingsViewController.h */,
+				115A92B218A593AF0002353D /* SettingsViewController.m */,
+				1193DFFB18A6C1F100390295 /* CalibrationViewController.h */,
+				1193DFFC18A6C1F100390295 /* CalibrationViewController.m */,
+			);
+			name = SettingsControllers;
+			sourceTree = "<group>";
+		};
+		1193DFFE18A6CA6600390295 /* Transition Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				1193DFFF18A6CA6600390295 /* AnimatedTransitioning.h */,
+				1193E00018A6CA6600390295 /* AnimatedTransitioning.m */,
+				1193E00118A6CA6600390295 /* TransitionDelegate.h */,
+				1193E00218A6CA6600390295 /* TransitionDelegate.m */,
+			);
+			path = "Transition Delegate";
+			sourceTree = "<group>";
+		};
 		11A4413B1873624F00FB5863 /* CardDeckViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -766,10 +800,11 @@
 		11D0D11A18720342008CC7FD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				11711FA21871F2CF00792D36 /* Main.storyboard */,
 				115A92B418A5A5540002353D /* SettingsTableViewCells */,
+				11D11F571878AE910081B1CB /* SaveAsView.xib */,
 				116BFBF3189D620F008663CE /* UITextView+AutoResizeFont.h */,
 				116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */,
-				11711FA21871F2CF00792D36 /* Main.storyboard */,
 				11AF41A718A2BE0D001B0AEC /* ChooseCardsTableViewCell.h */,
 				11AF41A818A2BE0D001B0AEC /* ChooseCardsTableViewCell.m */,
 			);
@@ -779,17 +814,16 @@
 		11D0D11B18720345008CC7FD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1193DFFA18A6C19A00390295 /* SettingsControllers */,
 				1193DFF018A6A77700390295 /* InfoControllers */,
-				11BA10B21881CC580093851B /* DriveFilesListViewController.h */,
-				11BA10B31881CC580093851B /* DriveFilesListViewController.m */,
 				11CE2C9318A4B2FC006DC341 /* SidebarViewControllers */,
 				11A4413B1873624F00FB5863 /* CardDeckViewControllers */,
 				11D0D113187202D1008CC7FD /* ChooseCardsViewController.h */,
 				11D0D114187202D1008CC7FD /* ChooseCardsViewController.m */,
 				11DC90611874D39600C069D8 /* NewCardDeckViewController.h */,
 				11DC90621874D39600C069D8 /* NewCardDeckViewController.m */,
-				115A92B118A593AF0002353D /* SettingsViewController.h */,
-				115A92B218A593AF0002353D /* SettingsViewController.m */,
+				11BA10B21881CC580093851B /* DriveFilesListViewController.h */,
+				11BA10B31881CC580093851B /* DriveFilesListViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -855,7 +889,6 @@
 				11D0FBE518994CF6009D067F /* CreateCardsViewController.m */,
 				11D11F551878AE910081B1CB /* SaveAsViewController.h */,
 				11D11F561878AE910081B1CB /* SaveAsViewController.m */,
-				11D11F571878AE910081B1CB /* SaveAsView.xib */,
 			);
 			name = CreateCardsViewControllers;
 			sourceTree = "<group>";
@@ -863,6 +896,9 @@
 		11D11F5A1878EFF80081B1CB /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				1193E00518A6DD3C00390295 /* MBProgressHUD.h */,
+				1193E00618A6DD3C00390295 /* MBProgressHUD.m */,
+				1193DFFE18A6CA6600390295 /* Transition Delegate */,
 				115A929C18A55D3E0002353D /* RESideMenu */,
 				115A929118A541130002353D /* FMFramework */,
 				11CE2C6E18A4B13B006DC341 /* REFrostedViewController */,
@@ -1181,6 +1217,7 @@
 				11D11F431878A6620081B1CB /* MZFormSheetBackgroundWindow.m in Sources */,
 				11D11F881878F0510081B1CB /* FUIPopoverBackgroundView.m in Sources */,
 				118C19681891D152007EB10E /* zip.c in Sources */,
+				1193DFFD18A6C1F100390295 /* CalibrationViewController.m in Sources */,
 				11711FA71871F2CF00792D36 /* ViewController.m in Sources */,
 				115A92B318A593AF0002353D /* SettingsViewController.m in Sources */,
 				11D0D115187202D1008CC7FD /* ChooseCardsViewController.m in Sources */,
@@ -1202,6 +1239,7 @@
 				118C19691891D152007EB10E /* SSZipArchive.m in Sources */,
 				11CE2C7E18A4B13B006DC341 /* UIImage+REFrostedViewController.m in Sources */,
 				115A92B018A58E9E0002353D /* HelpViewController.m in Sources */,
+				1193E00718A6DD3C00390295 /* MBProgressHUD.m in Sources */,
 				11D11F971878F0510081B1CB /* UIToolbar+FlatUI.m in Sources */,
 				11D11F871878F0510081B1CB /* FUICellBackgroundView.m in Sources */,
 				11D11F951878F0510081B1CB /* UITabBar+FlatUI.m in Sources */,
@@ -1212,6 +1250,7 @@
 				11D11F891878F0510081B1CB /* FUISegmentedControl.m in Sources */,
 				11D0FBE618994CF6009D067F /* CreateCardsViewController.m in Sources */,
 				11A4413A1873620400FB5863 /* CardDeckViewController.m in Sources */,
+				1193E00418A6CA6600390295 /* TransitionDelegate.m in Sources */,
 				11D11F861878F0510081B1CB /* FUIButton.m in Sources */,
 				115A92A318A55D3E0002353D /* RECommonFunctions.m in Sources */,
 				11D11F8B1878F0510081B1CB /* FUITextField.m in Sources */,
@@ -1223,6 +1262,7 @@
 				BC456928189E105500C65F8B /* GTLDrive_Sources.m in Sources */,
 				11D0D12118720421008CC7FD /* Presentation.m in Sources */,
 				11AF41A918A2BE0D001B0AEC /* ChooseCardsTableViewCell.m in Sources */,
+				1193E00318A6CA6600390295 /* AnimatedTransitioning.m in Sources */,
 				11D11F851878F0510081B1CB /* FUIAlertView.m in Sources */,
 				11DC90631874D39600C069D8 /* NewCardDeckViewController.m in Sources */,
 				11D11F441878A6620081B1CB /* MZFormSheetController.m in Sources */,
