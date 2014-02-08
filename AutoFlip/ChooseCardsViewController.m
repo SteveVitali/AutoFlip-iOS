@@ -75,9 +75,11 @@
     
     //Set table colors
     [self.tableView setSeparatorColor:[designManager tableCellSeparatorColor]];
-    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-    
-    [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] homeScreenBGColor]];
+    //[self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"medium blue paper.png"]]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"medium blue paper.png"]]];
+
+    //[self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] homeScreenBGColor]];
     
     self.navigationItem.title = @"Choose a Presentation";
     
@@ -328,6 +330,10 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     cell.detailTextLabel.text = presentation.description;
     //Assuming the icon is a .png and is named the same as the "type"
     cell.imageView.image = [UIImage imageNamed:[presentation.type stringByAppendingString:@".png"]];
+    
+    cell.backgroundColor = [designManager tableCellBGColorNormal];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     
     return cell;
 }

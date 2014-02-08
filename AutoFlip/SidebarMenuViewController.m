@@ -58,6 +58,10 @@
             navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"helpController"]];
             [self.sideMenuViewController hideMenuViewController];
             break;
+        case 3:
+            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"helpController"]];
+            [self.sideMenuViewController hideMenuViewController];
+            break;
         default:
             break;
     }
@@ -78,7 +82,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -96,8 +100,8 @@
         cell.selectedBackgroundView = [[UIView alloc] init];
     }
     
-    NSArray *titles = @[@"Home", @"Settings", @"Help"];
-    NSArray *images = @[@"IconHome", @"IconSettings", @"IconHelp"];
+    NSArray *titles = @[@"Home", @"Settings", @"Help", @"About"];
+    NSArray *images = @[@"home", @"settings", @"help", @"about"];
     cell.textLabel.text = titles[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     

@@ -23,6 +23,17 @@
 		115A92B318A593AF0002353D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A92B218A593AF0002353D /* SettingsViewController.m */; };
 		115A92B718A5A5910002353D /* SettingsSpeechToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115A92B618A5A5910002353D /* SettingsSpeechToggleCell.xib */; };
 		115A92B918A5A5D50002353D /* SettingsCalibrationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115A92B818A5A5D50002353D /* SettingsCalibrationCell.xib */; };
+		115A92BB18A5E0B70002353D /* MenuBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92BA18A5E0B70002353D /* MenuBackground@2x.png */; };
+		115A92BD18A5E0D60002353D /* IconHome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92BC18A5E0D60002353D /* IconHome@2x.png */; };
+		115A92BF18A5E0E10002353D /* IconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92BE18A5E0E10002353D /* IconSettings@2x.png */; };
+		115A92C118A5E0F50002353D /* IconEmpty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92C018A5E0F50002353D /* IconEmpty@2x.png */; };
+		115A92C318A5F2EC0002353D /* blue paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92C218A5F2EC0002353D /* blue paper.png */; };
+		115A92C518A5F3FC0002353D /* dark blue paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92C418A5F3FC0002353D /* dark blue paper.png */; };
+		115A92C718A5F9D70002353D /* medium blue paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92C618A5F9D70002353D /* medium blue paper.png */; };
+		115A92CD18A5FF490002353D /* help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92CC18A5FF490002353D /* help@2x.png */; };
+		115A92CF18A5FF530002353D /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92CE18A5FF530002353D /* settings@2x.png */; };
+		115A92D118A5FF720002353D /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92D018A5FF720002353D /* home@2x.png */; };
+		115A92D318A602110002353D /* about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92D218A602110002353D /* about@2x.png */; };
 		116BFBF5189D620F008663CE /* UITextView+AutoResizeFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */; };
 		116FD85A187B53B900BC4643 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD858187B53B900BC4643 /* AudioToolbox.framework */; };
 		116FD85B187B53B900BC4643 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD859187B53B900BC4643 /* AVFoundation.framework */; };
@@ -159,6 +170,17 @@
 		115A92B218A593AF0002353D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		115A92B618A5A5910002353D /* SettingsSpeechToggleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsSpeechToggleCell.xib; sourceTree = "<group>"; };
 		115A92B818A5A5D50002353D /* SettingsCalibrationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsCalibrationCell.xib; sourceTree = "<group>"; };
+		115A92BA18A5E0B70002353D /* MenuBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuBackground@2x.png"; sourceTree = "<group>"; };
+		115A92BC18A5E0D60002353D /* IconHome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconHome@2x.png"; sourceTree = "<group>"; };
+		115A92BE18A5E0E10002353D /* IconSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconSettings@2x.png"; sourceTree = "<group>"; };
+		115A92C018A5E0F50002353D /* IconEmpty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconEmpty@2x.png"; sourceTree = "<group>"; };
+		115A92C218A5F2EC0002353D /* blue paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue paper.png"; sourceTree = "<group>"; };
+		115A92C418A5F3FC0002353D /* dark blue paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dark blue paper.png"; sourceTree = "<group>"; };
+		115A92C618A5F9D70002353D /* medium blue paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "medium blue paper.png"; sourceTree = "<group>"; };
+		115A92CC18A5FF490002353D /* help@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help@2x.png"; sourceTree = "<group>"; };
+		115A92CE18A5FF530002353D /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		115A92D018A5FF720002353D /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
+		115A92D218A602110002353D /* about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about@2x.png"; sourceTree = "<group>"; };
 		116BFBF3189D620F008663CE /* UITextView+AutoResizeFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+AutoResizeFont.h"; sourceTree = "<group>"; };
 		116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+AutoResizeFont.m"; sourceTree = "<group>"; };
 		116FD858187B53B900BC4643 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -478,6 +500,57 @@
 			name = SettingsTableViewCells;
 			sourceTree = "<group>";
 		};
+		115A92C818A5FCED0002353D /* Possible Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				115A92A618A55F940002353D /* Stars@2x.png */,
+				115A92BA18A5E0B70002353D /* MenuBackground@2x.png */,
+				115A92C218A5F2EC0002353D /* blue paper.png */,
+				115A92C418A5F3FC0002353D /* dark blue paper.png */,
+			);
+			name = "Possible Backgrounds";
+			sourceTree = "<group>";
+		};
+		115A92C918A5FCFD0002353D /* Sidebar Icons */ = {
+			isa = PBXGroup;
+			children = (
+				115A92D218A602110002353D /* about@2x.png */,
+				115A92D018A5FF720002353D /* home@2x.png */,
+				115A92CE18A5FF530002353D /* settings@2x.png */,
+				115A92CC18A5FF490002353D /* help@2x.png */,
+				115A92CA18A5FD290002353D /* Old */,
+			);
+			name = "Sidebar Icons";
+			sourceTree = "<group>";
+		};
+		115A92CA18A5FD290002353D /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				115A92C618A5F9D70002353D /* medium blue paper.png */,
+				115A92C018A5E0F50002353D /* IconEmpty@2x.png */,
+				115A92BE18A5E0E10002353D /* IconSettings@2x.png */,
+				115A92BC18A5E0D60002353D /* IconHome@2x.png */,
+			);
+			name = Old;
+			sourceTree = "<group>";
+		};
+		115A92CB18A5FD550002353D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1192496D1878F53100BD6868 /* Lato-Black.ttf */,
+				1192496E1878F53100BD6868 /* Lato-BlackItalic.ttf */,
+				1192496F1878F53100BD6868 /* Lato-Bold.ttf */,
+				119249701878F53100BD6868 /* Lato-BoldItalic.ttf */,
+				119249711878F53100BD6868 /* Lato-Hairline.ttf */,
+				119249721878F53100BD6868 /* Lato-HairlineItalic.ttf */,
+				119249731878F53100BD6868 /* Lato-Italic.ttf */,
+				119249741878F53100BD6868 /* Lato-Light.ttf */,
+				119249751878F53100BD6868 /* Lato-LightItalic.ttf */,
+				119249761878F53100BD6868 /* Lato-Regular.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		116AE53F1874AD7E008EE410 /* iPad */ = {
 			isa = PBXGroup;
 			children = (
@@ -607,7 +680,9 @@
 		1192496C1878F53100BD6868 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				115A92A618A55F940002353D /* Stars@2x.png */,
+				115A92CB18A5FD550002353D /* Fonts */,
+				115A92C918A5FCFD0002353D /* Sidebar Icons */,
+				115A92C818A5FCED0002353D /* Possible Backgrounds */,
 				115A929818A551720002353D /* menu-icon.png */,
 				115A929918A551720002353D /* menu-icon@2x.png */,
 				11229DF218A03BF400B6F1C3 /* paper-portrait.png */,
@@ -617,16 +692,6 @@
 				11E8F76318903EE300A6DF5C /* custom.png */,
 				11D0D13C18722E34008CC7FD /* dropbox.png */,
 				11D0D13A18722DD6008CC7FD /* drive.png */,
-				1192496D1878F53100BD6868 /* Lato-Black.ttf */,
-				1192496E1878F53100BD6868 /* Lato-BlackItalic.ttf */,
-				1192496F1878F53100BD6868 /* Lato-Bold.ttf */,
-				119249701878F53100BD6868 /* Lato-BoldItalic.ttf */,
-				119249711878F53100BD6868 /* Lato-Hairline.ttf */,
-				119249721878F53100BD6868 /* Lato-HairlineItalic.ttf */,
-				119249731878F53100BD6868 /* Lato-Italic.ttf */,
-				119249741878F53100BD6868 /* Lato-Light.ttf */,
-				119249751878F53100BD6868 /* Lato-LightItalic.ttf */,
-				119249761878F53100BD6868 /* Lato-Regular.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1044,9 +1109,12 @@
 				116FD862187B53F400BC4643 /* AcousticModelSpanish.bundle in Resources */,
 				119249791878F53100BD6868 /* Lato-Bold.ttf in Resources */,
 				1192497B1878F53100BD6868 /* Lato-Hairline.ttf in Resources */,
+				115A92C318A5F2EC0002353D /* blue paper.png in Resources */,
 				11711F9B1871F2CF00792D36 /* InfoPlist.strings in Resources */,
+				115A92BB18A5E0B70002353D /* MenuBackground@2x.png in Resources */,
 				1192497A1878F53100BD6868 /* Lato-BoldItalic.ttf in Resources */,
 				11D11F591878AE910081B1CB /* SaveAsView.xib in Resources */,
+				115A92C518A5F3FC0002353D /* dark blue paper.png in Resources */,
 				11E8F76418903EE300A6DF5C /* custom.png in Resources */,
 				11946E0D1894D20900A4D17A /* present.png in Resources */,
 				11F0C8801880AE710056CD66 /* DBChooser.bundle in Resources */,
@@ -1054,16 +1122,24 @@
 				116FD861187B53F400BC4643 /* AcousticModelEnglish.bundle in Resources */,
 				1192497D1878F53100BD6868 /* Lato-Italic.ttf in Resources */,
 				119249771878F53100BD6868 /* Lato-Black.ttf in Resources */,
+				115A92CD18A5FF490002353D /* help@2x.png in Resources */,
 				115A929A18A551720002353D /* menu-icon.png in Resources */,
+				115A92CF18A5FF530002353D /* settings@2x.png in Resources */,
+				115A92C118A5E0F50002353D /* IconEmpty@2x.png in Resources */,
 				1192497F1878F53100BD6868 /* Lato-LightItalic.ttf in Resources */,
 				119249781878F53100BD6868 /* Lato-BlackItalic.ttf in Resources */,
+				115A92C718A5F9D70002353D /* medium blue paper.png in Resources */,
 				115A929B18A551720002353D /* menu-icon@2x.png in Resources */,
+				115A92D118A5FF720002353D /* home@2x.png in Resources */,
 				11D0D13D18722E34008CC7FD /* dropbox.png in Resources */,
 				11D0D13B18722DD6008CC7FD /* drive.png in Resources */,
+				115A92D318A602110002353D /* about@2x.png in Resources */,
 				11229DF418A03BF400B6F1C3 /* paper-portrait.png in Resources */,
+				115A92BF18A5E0E10002353D /* IconSettings@2x.png in Resources */,
 				11711FA41871F2CF00792D36 /* Main.storyboard in Resources */,
 				11946E0E1894D20900A4D17A /* edit.png in Resources */,
 				119249801878F53100BD6868 /* Lato-Regular.ttf in Resources */,
+				115A92BD18A5E0D60002353D /* IconHome@2x.png in Resources */,
 				115A92B718A5A5910002353D /* SettingsSpeechToggleCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
