@@ -15,6 +15,7 @@
 #import "DriveFilesListViewController.h"
 #import "FMMoveTableView.h"
 #import "REMenu.h"
+#import "MBProgressHUD.h"
 
 @interface ChooseCardsViewController : UITableViewController
                                         <UITableViewDataSource,
@@ -25,7 +26,7 @@
                                          SSZipArchiveDelegate,
                                          DriveFilePickerDelegate,
                                          FMMoveTableViewDelegate, FMMoveTableViewDataSource,
-                                         UIGestureRecognizerDelegate>
+                                         UIGestureRecognizerDelegate, MBProgressHUDDelegate>
 
 @property (strong,nonatomic) NSMutableArray *searchResults;
 @property IBOutlet UISearchBar *searchBar;

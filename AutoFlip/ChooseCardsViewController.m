@@ -135,9 +135,9 @@
                                               highlightedImage:nil
                                                         action:^(REMenuItem *item) {
                                                             // Kind of bad practice, but this
-                                                            // Has to go here.
-                                                            [dummyView removeFromSuperview];
+                                                            // removeFromSuperview has to go here.
                                                             [self didPressPresent:nil];
+                                                            [dummyView removeFromSuperview];
                                                         }];
     
     REMenuItem *editItem = [[REMenuItem alloc] initWithTitle:@"Edit"
@@ -147,13 +147,13 @@
                                                        action:^(REMenuItem *item) {
                                                            // Kind of bad practice, but this
                                                            // Has to go here.
-                                                           [dummyView removeFromSuperview];
                                                            [self didPressEdit:nil];
+                                                           [dummyView removeFromSuperview];
                                                        }];
     // REMenu *deleteItem???
 
-    self.presentOrEditDropdown = [[REMenu alloc] initWithItems:@[presentItem, editItem]];
     self.addDropdown           = [[REMenu alloc] initWithItems:@[createItem, driveItem, dropboxItem]];
+    self.presentOrEditDropdown = [[REMenu alloc] initWithItems:@[presentItem, editItem]];
     
     [self styleDropdownMenu:self.addDropdown];
     [self styleDropdownMenu:self.presentOrEditDropdown];
@@ -162,20 +162,23 @@
 - (void)styleDropdownMenu:(REMenu *)dropdown {
     
     dropdown.imageOffset     = CGSizeMake(36, 0);
+    dropdown.textOffset      = CGSizeMake(0, dropdown.imageOffset.height);
     dropdown.shadowColor     = [UIColor clearColor];
     dropdown.borderColor     = [UIColor clearColor];
     dropdown.textShadowColor = [UIColor clearColor];
-    dropdown.separatorColor  = [UIColor clearColor];
+    dropdown.separatorColor  = [UIColor cloudsColor];
     dropdown.textColor       = [UIColor blackColor];
     dropdown.font            = [UIFont systemFontOfSize:20];
     dropdown.backgroundColor = [UIColor clearColor];
-    dropdown.separatorHeight = 2.0f;
+    dropdown.separatorHeight = 1.0;
+    dropdown.itemHeight     += 16.0;
     dropdown.liveBlur        = YES;
     dropdown.bounce          = NO;
     dropdown.highlightedBackgroundColor = [UIColor clearColor];
     dropdown.highlightedSeparatorColor  = [UIColor clearColor];
     dropdown.highlightedTextColor       = [UIColor silverColor];
     dropdown.highlightedTextShadowColor = [UIColor clearColor];
+    dropdown.waitUntilAnimationIsComplete = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -511,7 +514,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     dummyView = [[UIView alloc] initWithFrame:CGRectMake(cell.frame.origin.x,
                                                          cell.frame.origin.y + cell.frame.size.height,
                                                          cell.frame.size.width,
-                                                         self.presentOrEditDropdown.itemHeight * self.presentOrEditDropdown.items.count)];
+                                                         self.presentOrEditDropdown.itemHeight * self.presentOrEditDropdown.items.count + 16)];
     [self.view addSubview:dummyView];
     [self.presentOrEditDropdown showInView:dummyView];
 }
@@ -554,11 +557,11 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"speechRecognition"] boolValue]) {
         
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"Initializing presentation...";
+        
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeIndeterminate;
-            hud.labelText = @"Initializing presentation...";
             
             [controller initSpeechRecognition];
             
@@ -585,7 +588,10 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    // Return NO if you do not want the specified item to be editable.
+    // If the dropdown is open on the cell at this indexPath
+    if (self.presentOrEditDropdown.isOpen && indexPath.row == selectedCellIndex) {
+        return NO;
+    }
     return YES;
 }
 
@@ -632,6 +638,9 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 
 - (BOOL)moveTableView:(FMMoveTableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if (self.presentOrEditDropdown.isOpen) {
+        return NO;
+    }
     return YES;
 }
 
