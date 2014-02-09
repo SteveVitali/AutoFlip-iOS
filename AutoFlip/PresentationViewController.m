@@ -36,6 +36,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.pocketSphinxCalibrated = NO;
     }
     return self;
 }
@@ -54,17 +55,21 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideShowNavigation)];
     tap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tap];
-    
+
     speechRecognitionOn = [[[NSUserDefaults standardUserDefaults] objectForKey:@"speechRecognition"] boolValue];
     
-    if (speechRecognitionOn) {
-        self.allWords = [NSMutableSet setWithSet:[self.presentation getAllWordsInPresentation]];
-        [self initSpeechRecognition];
-    }
+    // Commenting out, since right now it's getting initialized from the Chooser's prepareForSegue
+//    if (speechRecognitionOn && !self.pocketSphinxCalibrated) {
+//        [self initSpeechRecognition];
+//    }
 }
 
 - (void)initSpeechRecognition {
     
+    self.pocketSphinxCalibrated = NO;
+
+    self.allWords = [NSMutableSet setWithSet:[self.presentation getAllWordsInPresentation]];
+
     // init language model
     LanguageModelGenerator *lmGenerator = [[LanguageModelGenerator alloc] init];
     
@@ -226,6 +231,7 @@
 - (void) pocketsphinxDidCompleteCalibration {
     
 	NSLog(@"Pocketsphinx calibration is complete.");
+    self.pocketSphinxCalibrated = YES;
 }
 
 - (void) pocketsphinxDidStartListening {

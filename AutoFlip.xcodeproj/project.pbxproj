@@ -76,6 +76,7 @@
 		1193E00418A6CA6600390295 /* TransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E00218A6CA6600390295 /* TransitionDelegate.m */; };
 		1193E00718A6DD3C00390295 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E00618A6DD3C00390295 /* MBProgressHUD.m */; };
 		1193E00918A6F0FE00390295 /* ResetDefaultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1193E00818A6F0FE00390295 /* ResetDefaultsCell.xib */; };
+		1193E00D18A7030D00390295 /* MyUIStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E00C18A7030D00390295 /* MyUIStoryboardSegue.m */; };
 		11946E0D1894D20900A4D17A /* present.png in Resources */ = {isa = PBXBuildFile; fileRef = 11946E0B1894D20900A4D17A /* present.png */; };
 		11946E0E1894D20900A4D17A /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 11946E0C1894D20900A4D17A /* edit.png */; };
 		1194B23618772DB8008AD3AE /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194B23518772DB8008AD3AE /* KxMenu.m */; };
@@ -247,6 +248,8 @@
 		1193E00518A6DD3C00390295 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		1193E00618A6DD3C00390295 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		1193E00818A6F0FE00390295 /* ResetDefaultsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetDefaultsCell.xib; sourceTree = "<group>"; };
+		1193E00B18A7030D00390295 /* MyUIStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUIStoryboardSegue.h; sourceTree = "<group>"; };
+		1193E00C18A7030D00390295 /* MyUIStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUIStoryboardSegue.m; sourceTree = "<group>"; };
 		11946E0B1894D20900A4D17A /* present.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = present.png; sourceTree = "<group>"; };
 		11946E0C1894D20900A4D17A /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		1194B23418772DB8008AD3AE /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KxMenu.h; path = AutoFlip/KxMenu.h; sourceTree = "<group>"; };
@@ -634,6 +637,8 @@
 				11711FA01871F2CF00792D36 /* AppDelegate.m */,
 				11711FA81871F2CF00792D36 /* Images.xcassets */,
 				11711F971871F2CF00792D36 /* Supporting Files */,
+				1193E00B18A7030D00390295 /* MyUIStoryboardSegue.h */,
+				1193E00C18A7030D00390295 /* MyUIStoryboardSegue.m */,
 			);
 			path = AutoFlip;
 			sourceTree = "<group>";
@@ -1223,6 +1228,7 @@
 				118C19681891D152007EB10E /* zip.c in Sources */,
 				1193DFFD18A6C1F100390295 /* CalibrationViewController.m in Sources */,
 				11711FA71871F2CF00792D36 /* ViewController.m in Sources */,
+				1193E00D18A7030D00390295 /* MyUIStoryboardSegue.m in Sources */,
 				115A92B318A593AF0002353D /* SettingsViewController.m in Sources */,
 				11D0D115187202D1008CC7FD /* ChooseCardsViewController.m in Sources */,
 				11D11F451878A6620081B1CB /* MZFormSheetSegue.m in Sources */,

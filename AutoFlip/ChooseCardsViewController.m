@@ -30,6 +30,8 @@
 #import "ChooseCardsTableViewCell.h"
 //#import "REFrostedViewController.h"
 #import "RESideMenu.h"
+#import "MBProgressHUD.h"
+#import "MyUIStoryboardSegue.h"
 
 @interface ChooseCardsViewController ()
 {
@@ -117,8 +119,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     
     if ([segue.identifier isEqualToString:@"startPresentation"]) {
         
-        PresentationViewController *controller = (PresentationViewController *)[segue destinationViewController];
-        controller.presentation = chosenPresentation;
+        // done elsewhere
     }
     else if ([segue.identifier isEqualToString:@"editPresentation"]) {
         
@@ -402,9 +403,33 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 
 - (void)didPressPresent:(id)sender {
     
-    [self performSegueWithIdentifier:@"startPresentation" sender:sender];
+    PresentationViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"presentationController"];
+    MyUIStoryboardSegue *segue = [[MyUIStoryboardSegue alloc] initWithIdentifier:@"startPresentation" source:self destination:controller];
+    
+    controller.presentation = chosenPresentation;
+    
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"speechRecognition"] boolValue]) {
+        
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeIndeterminate;
+            hud.labelText = @"Initializing presentation...";
+            
+            [controller initSpeechRecognition];
+            
+            while (!controller.pocketSphinxCalibrated) {
+                // Not sure if bad practice
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [segue perform];
+                NSLog(@"%@", controller.allWords);
+            });
+        });
+    }
 }
-
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     

@@ -16,9 +16,11 @@
 
 @property (strong, nonatomic) PocketsphinxController *pocketsphinxController;
 @property (strong, nonatomic) OpenEarsEventsObserver *openEarsEventsObserver;
-
+@property BOOL pocketSphinxCalibrated;
 @property NSMutableSet *slideWords;
 @property NSMutableSet *spokenWords;
 @property NSMutableSet *allWords;
+
+- (void)initSpeechRecognition;
 
 @end

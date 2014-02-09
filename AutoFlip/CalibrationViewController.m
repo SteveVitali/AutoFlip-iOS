@@ -13,12 +13,16 @@
 #import <OpenEars/LanguageModelGenerator.h>
 #import <OpenEars/AcousticModel.h>
 #import "DrEditUtilities.h"
+#import "MBProgressHUD.h"
 
 @interface CalibrationViewController ()
 
 @end
 
-@implementation CalibrationViewController
+@implementation CalibrationViewController {
+    
+    BOOL pocketSphinxCalibrated;
+}
 
 @synthesize pocketsphinxController;
 @synthesize openEarsEventsObserver;
@@ -85,12 +89,28 @@
     }
     else {
         [self.recordButton setTitle:@"Finish Calibration" forState:UIControlStateNormal];
-        [self initSpeechRecognition];
+        
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"Initializing speech recognition...";
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            
+            [self initSpeechRecognition];
+            
+            while (!pocketSphinxCalibrated) {
+                // Not sure if bad practice
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        });
     }
     self.isRecording = !self.isRecording;
 }
 
 - (void)initSpeechRecognition {
+    
+    pocketSphinxCalibrated = NO;
     
     NSString *uppercaseText = [self.textView.text uppercaseString];
     self.allWords = [NSMutableSet setWithArray:[uppercaseText componentsSeparatedByString:@" "]];
@@ -190,6 +210,7 @@
 - (void) pocketsphinxDidCompleteCalibration {
     
 	NSLog(@"Pocketsphinx calibration is complete.");
+    pocketSphinxCalibrated = YES;
 }
 
 - (void) pocketsphinxDidStartListening {

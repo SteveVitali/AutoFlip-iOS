@@ -86,7 +86,20 @@
     for (Notecard *card in self.notecards) {
         allText = [allText stringByAppendingString:card.getTextFromBulletFormat];
     }
-    NSArray *words = [allText componentsSeparatedByString:@" "];
+    //NSMutableArray *words = [NSMutableArray arrayWithArray:[allText componentsSeparatedByString:@" "]];
+    // The below method works much better.
+    NSMutableArray *words = [NSMutableArray arrayWithArray:[[allText uppercaseString] componentsSeparatedByCharactersInSet:[[NSCharacterSet letterCharacterSet] invertedSet]]];
+
+    for (int i=0; i<[words count]; i++) {
+        // I could shorten this line into several smaller ones, but I think it looks pretty sweet this way.
+        // Actually, not even using it anymore, but will leave here anyway.
+        //  NSString *word = [[[[[words objectAtIndex:i] stringByReplacingOccurrencesOfString:@"\n" withString:@""] uppercaseString] componentsSeparatedByCharactersInSet:[[NSCharacterSet letterCharacterSet] invertedSet]] componentsJoinedByString:@""];
+        
+        if ([[words objectAtIndex:i] isEqualToString:@""]) {
+            [words removeObjectAtIndex:i];
+            i--;
+        }
+    }
     NSSet *allWords = [NSSet setWithArray:words];
     
     return allWords;
