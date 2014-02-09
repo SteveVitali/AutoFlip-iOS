@@ -14,6 +14,7 @@
 #import <OpenEars/AcousticModel.h>
 #import "DrEditUtilities.h"
 #import "MBProgressHUD.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface CalibrationViewController ()
 
@@ -47,7 +48,9 @@
     
     self.textView.text = @"By reading this sample text, I will help calibrate speech recognition for this app. The quick brown fox jumped over the lazy dog.";
     self.textView.font = [UIFont systemFontOfSize:20];
-    self.textView.backgroundColor = [[UIColor cloudsColor] colorWithAlphaComponent:.7];
+    self.textView.backgroundColor = [[UIColor cloudsColor] colorWithAlphaComponent:.8];
+    self.textView.clipsToBounds = YES;
+    self.textView.layer.cornerRadius = 2.0f;
     
     [self.activityIndicator setHidden:YES];
 }
@@ -61,6 +64,7 @@
 
 - (IBAction)didPressCancel:(id)sender {
     
+    [self deconstructVoiceRecognition];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

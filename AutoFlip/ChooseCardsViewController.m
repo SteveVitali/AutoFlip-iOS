@@ -30,8 +30,10 @@
 #import "ChooseCardsTableViewCell.h"
 //#import "REFrostedViewController.h"
 #import "RESideMenu.h"
+#import "REMenu.h"
 #import "MBProgressHUD.h"
 #import "MyUIStoryboardSegue.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ChooseCardsViewController ()
 {
@@ -75,7 +77,7 @@
     presentations = [[LibraryAPI sharedInstance] getPresentations];
     self.searchResults = [NSMutableArray arrayWithCapacity:[presentations count]];
     
-    self.navigationItem.title = @"Choose a Presentation";
+    self.navigationItem.title = @"Deck Library";
     
     //scale 4.0 = 1/4 original image size
     drive = [designManager scaleImage:[UIImage imageNamed:@"drive.png"] withScale:10.0];
@@ -86,12 +88,54 @@
     
     //Set table colors
     [self.tableView setSeparatorColor:[designManager tableCellSeparatorColor]];
-    //[self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
     // Somehow, if you change the view background, BEFORE the tableView background
     // it will look different than if you set the tableView background and THEN the view background
     [self.view setBackgroundColor:[designManager viewControllerBGColor]];
     [self.tableView setBackgroundColor:[designManager tableViewBGColor]];
+    
+    [self initDropdownMenu];
+}
+
+- (void)initDropdownMenu {
+    
+    REMenuItem *createItem = [[REMenuItem alloc] initWithTitle:@"Create Cards"
+                                                    subtitle:@""
+                                                       image:custom
+                                            highlightedImage:nil
+                                                      action:^(REMenuItem *item) {
+                                                          [self pushCreateCardsView:nil];
+                                                      }];
+    
+    REMenuItem *driveItem = [[REMenuItem alloc] initWithTitle:@"Google Drive"
+                                                       subtitle:@""
+                                                          image:drive
+                                               highlightedImage:nil
+                                                         action:^(REMenuItem *item) {
+                                                             [self pushDriveView:nil];
+                                                         }];
+    
+    REMenuItem *dropboxItem = [[REMenuItem alloc] initWithTitle:@"Dropbox"
+                                                        subtitle:@""
+                                                           image:dropbox
+                                                highlightedImage:nil
+                                                          action:^(REMenuItem *item) {
+                                                              [self pushDropboxView:nil];
+                                                          }];
+    
+    self.dropdown = [[REMenu alloc] initWithItems:@[createItem, driveItem, dropboxItem]];
+    self.dropdown.imageOffset     = CGSizeMake(36, 0);
+    self.dropdown.shadowColor     = [UIColor clearColor];
+    self.dropdown.borderColor     = [UIColor clearColor];
+    self.dropdown.textShadowColor = [UIColor clearColor];
+    self.dropdown.separatorColor  = [UIColor clearColor];
+    self.dropdown.textColor       = [UIColor blackColor];
+    self.dropdown.font            = [UIFont systemFontOfSize:20];
+    self.dropdown.backgroundColor = [[UIColor cloudsColor] colorWithAlphaComponent:.5];
+    self.dropdown.separatorHeight = 8.0f;
+    //self.dropdown.liveBlur        = YES;
+    self.dropdown.bounce          = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -119,7 +163,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     
     if ([segue.identifier isEqualToString:@"startPresentation"]) {
         
-        // done elsewhere
     }
     else if ([segue.identifier isEqualToString:@"editPresentation"]) {
         
@@ -160,7 +203,24 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     }
 }
 
+#pragma mark - addButton methods
+
 - (IBAction)addButtonPressed:(id)sender {
+    
+    //[self showAddButtonKxMenu];
+    [self showAddButtonREMenu];
+}
+
+- (void)showAddButtonREMenu {
+    
+    if (self.dropdown.isOpen) {
+        return [self.dropdown close];
+    }
+    
+    [self.dropdown showFromNavigationController:self.navigationController];
+}
+
+- (void)showAddButtonKxMenu {
     
     NSArray *menuItems =
     @[
@@ -318,7 +378,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
         cell = [[ChooseCardsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                         reuseIdentifier:CellIdentifier];
     }
-
+    
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         presentation = [self.searchResults objectAtIndex:indexPath.row];
     } else {
@@ -348,6 +408,11 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [designManager tableCellTextColor];
     cell.detailTextLabel.textColor = [designManager tableCellDetailColor];
+    
+    [cell.layer setCornerRadius:2.0f];
+    [cell.layer setMasksToBounds:YES];
+    [cell.layer setBorderWidth:2.0f];
+    [cell.layer setBorderColor:[UIColor clearColor].CGColor];
     
     return cell;
 }
@@ -425,9 +490,11 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                 [segue perform];
-                NSLog(@"%@", controller.allWords);
             });
         });
+    }
+    else {
+        [segue perform];
     }
 }
 

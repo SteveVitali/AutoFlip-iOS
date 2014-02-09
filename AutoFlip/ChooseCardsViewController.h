@@ -14,6 +14,7 @@
 #import "SSZipArchive.h"
 #import "DriveFilesListViewController.h"
 #import "FMMoveTableView.h"
+#import "REMenu.h"
 
 @interface ChooseCardsViewController : UITableViewController
                                         <UITableViewDataSource,
@@ -28,6 +29,8 @@
 
 @property (strong,nonatomic) NSMutableArray *searchResults;
 @property IBOutlet UISearchBar *searchBar;
+
+@property REMenu *dropdown;
 
 // Either "edit" or "present"
 //@property NSString *chooserType;

@@ -245,7 +245,7 @@ UIAlertView *loadingAlert;
     NSString *exportURLStr;
     NSString *extn;
     
-    if ([file.mimeType isEqualToString:@"asdf"]) {
+    if ([file.mimeType isEqualToString:@"application/vnd.google-apps.presentation"]) {
         
         exportFormat = @"application/vnd.openxmlformats-officedocument.presentationml.presentation";
         exportURLStr = [file.exportLinks JSONValueForKey:exportFormat];

@@ -19,7 +19,7 @@
 {
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentController"];
     self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuController"];
-    self.backgroundImage = [UIImage imageNamed:@"medium blue paper"];
+    self.backgroundImage = [UIImage imageNamed:@"blue1"];
     self.delegate = (SidebarMenuViewController *)self.menuViewController;
 }
 

@@ -159,6 +159,11 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+//    [cell.layer setCornerRadius:2.0f];
+//    [cell.layer setMasksToBounds:YES];
+//    [cell.layer setBorderWidth:2.0f];
+//    [cell.layer setBorderColor:[UIColor clearColor].CGColor];
+    
     // This seems to have fixed the issue of the switch not loading with the right value.
     self.toggleRecognitionSwitch.on = recognitionOn;
 

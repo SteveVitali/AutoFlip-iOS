@@ -77,6 +77,13 @@
 		1193E00718A6DD3C00390295 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E00618A6DD3C00390295 /* MBProgressHUD.m */; };
 		1193E00918A6F0FE00390295 /* ResetDefaultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1193E00818A6F0FE00390295 /* ResetDefaultsCell.xib */; };
 		1193E00D18A7030D00390295 /* MyUIStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E00C18A7030D00390295 /* MyUIStoryboardSegue.m */; };
+		1193E01918A7367700390295 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E01018A7367700390295 /* RECommonFunctions.m */; };
+		1193E01A18A7367700390295 /* REMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E01218A7367700390295 /* REMenu.m */; };
+		1193E01B18A7367700390295 /* REMenuContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E01418A7367700390295 /* REMenuContainerView.m */; };
+		1193E01C18A7367700390295 /* REMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E01618A7367700390295 /* REMenuItem.m */; };
+		1193E01D18A7367700390295 /* REMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1193E01818A7367700390295 /* REMenuItemView.m */; };
+		1193E02718A7588100390295 /* blue1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193E02518A7588100390295 /* blue1.png */; };
+		1193E02818A7588100390295 /* blue2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193E02618A7588100390295 /* blue2.png */; };
 		11946E0D1894D20900A4D17A /* present.png in Resources */ = {isa = PBXBuildFile; fileRef = 11946E0B1894D20900A4D17A /* present.png */; };
 		11946E0E1894D20900A4D17A /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 11946E0C1894D20900A4D17A /* edit.png */; };
 		1194B23618772DB8008AD3AE /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194B23518772DB8008AD3AE /* KxMenu.m */; };
@@ -250,6 +257,18 @@
 		1193E00818A6F0FE00390295 /* ResetDefaultsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetDefaultsCell.xib; sourceTree = "<group>"; };
 		1193E00B18A7030D00390295 /* MyUIStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUIStoryboardSegue.h; sourceTree = "<group>"; };
 		1193E00C18A7030D00390295 /* MyUIStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUIStoryboardSegue.m; sourceTree = "<group>"; };
+		1193E00F18A7367700390295 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		1193E01018A7367700390295 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		1193E01118A7367700390295 /* REMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenu.h; sourceTree = "<group>"; };
+		1193E01218A7367700390295 /* REMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenu.m; sourceTree = "<group>"; };
+		1193E01318A7367700390295 /* REMenuContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenuContainerView.h; sourceTree = "<group>"; };
+		1193E01418A7367700390295 /* REMenuContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenuContainerView.m; sourceTree = "<group>"; };
+		1193E01518A7367700390295 /* REMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenuItem.h; sourceTree = "<group>"; };
+		1193E01618A7367700390295 /* REMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenuItem.m; sourceTree = "<group>"; };
+		1193E01718A7367700390295 /* REMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenuItemView.h; sourceTree = "<group>"; };
+		1193E01818A7367700390295 /* REMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenuItemView.m; sourceTree = "<group>"; };
+		1193E02518A7588100390295 /* blue1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue1.png; sourceTree = "<group>"; };
+		1193E02618A7588100390295 /* blue2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue2.png; sourceTree = "<group>"; };
 		11946E0B1894D20900A4D17A /* present.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = present.png; sourceTree = "<group>"; };
 		11946E0C1894D20900A4D17A /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		1194B23418772DB8008AD3AE /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KxMenu.h; path = AutoFlip/KxMenu.h; sourceTree = "<group>"; };
@@ -524,6 +543,8 @@
 		115A92C818A5FCED0002353D /* Possible Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				1193E02518A7588100390295 /* blue1.png */,
+				1193E02618A7588100390295 /* blue2.png */,
 				115A92A618A55F940002353D /* Stars@2x.png */,
 				115A92BA18A5E0B70002353D /* MenuBackground@2x.png */,
 				115A92C218A5F2EC0002353D /* blue paper.png */,
@@ -752,6 +773,51 @@
 			path = "Transition Delegate";
 			sourceTree = "<group>";
 		};
+		1193E00E18A7367700390295 /* REMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1193E00F18A7367700390295 /* RECommonFunctions.h */,
+				1193E01018A7367700390295 /* RECommonFunctions.m */,
+				1193E01118A7367700390295 /* REMenu.h */,
+				1193E01218A7367700390295 /* REMenu.m */,
+				1193E01318A7367700390295 /* REMenuContainerView.h */,
+				1193E01418A7367700390295 /* REMenuContainerView.m */,
+				1193E01518A7367700390295 /* REMenuItem.h */,
+				1193E01618A7367700390295 /* REMenuItem.m */,
+				1193E01718A7367700390295 /* REMenuItemView.h */,
+				1193E01818A7367700390295 /* REMenuItemView.m */,
+			);
+			path = REMenu;
+			sourceTree = "<group>";
+		};
+		1193E01E18A7368000390295 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				1193E00518A6DD3C00390295 /* MBProgressHUD.h */,
+				1193E00618A6DD3C00390295 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		1193E01F18A7369300390295 /* KxMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1194B23418772DB8008AD3AE /* KxMenu.h */,
+				1194B23518772DB8008AD3AE /* KxMenu.m */,
+			);
+			name = KxMenu;
+			sourceTree = "<group>";
+		};
+		1193E02018A737DB00390295 /* DriveUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				11BA10B51881CCE50093851B /* DrEditUtilities.h */,
+				11BA10B61881CCE50093851B /* DrEditUtilities.m */,
+				11BA10B11881CB320093851B /* DrEditFileEditDelegate.h */,
+			);
+			name = DriveUtilities;
+			sourceTree = "<group>";
+		};
 		11A4413B1873624F00FB5863 /* CardDeckViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -904,20 +970,17 @@
 		11D11F5A1878EFF80081B1CB /* vendor */ = {
 			isa = PBXGroup;
 			children = (
-				1193E00518A6DD3C00390295 /* MBProgressHUD.h */,
-				1193E00618A6DD3C00390295 /* MBProgressHUD.m */,
+				1193E01E18A7368000390295 /* MBProgressHUD */,
+				1193E00E18A7367700390295 /* REMenu */,
 				1193DFFE18A6CA6600390295 /* Transition Delegate */,
 				115A929C18A55D3E0002353D /* RESideMenu */,
 				115A929118A541130002353D /* FMFramework */,
-				11CE2C6E18A4B13B006DC341 /* REFrostedViewController */,
 				BC456929189E11CE00C65F8B /* GTL/Drive */,
 				118C19581891D152007EB10E /* SSZipArchive */,
-				11BA10B51881CCE50093851B /* DrEditUtilities.h */,
-				11BA10B61881CCE50093851B /* DrEditUtilities.m */,
-				11BA10B11881CB320093851B /* DrEditFileEditDelegate.h */,
-				1194B23418772DB8008AD3AE /* KxMenu.h */,
-				1194B23518772DB8008AD3AE /* KxMenu.m */,
+				1193E02018A737DB00390295 /* DriveUtilities */,
+				1193E01F18A7369300390295 /* KxMenu */,
 				11D11F381878A6620081B1CB /* MZFormSheetController */,
+				11CE2C6E18A4B13B006DC341 /* REFrostedViewController */,
 				11D11F5B1878F0430081B1CB /* FlatUIKit */,
 			);
 			name = vendor;
@@ -1171,6 +1234,7 @@
 				115A92BB18A5E0B70002353D /* MenuBackground@2x.png in Resources */,
 				1192497A1878F53100BD6868 /* Lato-BoldItalic.ttf in Resources */,
 				11D11F591878AE910081B1CB /* SaveAsView.xib in Resources */,
+				1193E02818A7588100390295 /* blue2.png in Resources */,
 				115A92C518A5F3FC0002353D /* dark blue paper.png in Resources */,
 				11E8F76418903EE300A6DF5C /* custom.png in Resources */,
 				11946E0D1894D20900A4D17A /* present.png in Resources */,
@@ -1196,6 +1260,7 @@
 				115A92BF18A5E0E10002353D /* IconSettings@2x.png in Resources */,
 				11711FA41871F2CF00792D36 /* Main.storyboard in Resources */,
 				11946E0E1894D20900A4D17A /* edit.png in Resources */,
+				1193E02718A7588100390295 /* blue1.png in Resources */,
 				119249801878F53100BD6868 /* Lato-Regular.ttf in Resources */,
 				115A92BD18A5E0D60002353D /* IconHome@2x.png in Resources */,
 				115A92B718A5A5910002353D /* SettingsSpeechToggleCell.xib in Resources */,
@@ -1236,6 +1301,7 @@
 				11D11F4D1878A74E0081B1CB /* MZAppearance.m in Sources */,
 				11D11F961878F0510081B1CB /* UITableViewCell+FlatUI.m in Sources */,
 				11CE2C7B18A4B13B006DC341 /* RECommonFunctions.m in Sources */,
+				1193E01C18A7367700390295 /* REMenuItem.m in Sources */,
 				11D11F8D1878F0510081B1CB /* UIColor+FlatUI.m in Sources */,
 				1194B23618772DB8008AD3AE /* KxMenu.m in Sources */,
 				115A92A418A55D3E0002353D /* RESideMenu.m in Sources */,
@@ -1252,9 +1318,12 @@
 				1193E00718A6DD3C00390295 /* MBProgressHUD.m in Sources */,
 				11D11F971878F0510081B1CB /* UIToolbar+FlatUI.m in Sources */,
 				11D11F871878F0510081B1CB /* FUICellBackgroundView.m in Sources */,
+				1193E01918A7367700390295 /* RECommonFunctions.m in Sources */,
 				11D11F951878F0510081B1CB /* UITabBar+FlatUI.m in Sources */,
+				1193E01A18A7367700390295 /* REMenu.m in Sources */,
 				11D11F471878A6620081B1CB /* UIImage+Additional.m in Sources */,
 				11D11F921878F0510081B1CB /* UIProgressView+FlatUI.m in Sources */,
+				1193E01D18A7367700390295 /* REMenuItemView.m in Sources */,
 				115A929618A541130002353D /* FMMoveTableView.m in Sources */,
 				11BA10B41881CC580093851B /* DriveFilesListViewController.m in Sources */,
 				11D11F891878F0510081B1CB /* FUISegmentedControl.m in Sources */,
@@ -1285,6 +1354,7 @@
 				11CE2C7D18A4B13B006DC341 /* REFrostedViewController.m in Sources */,
 				11D11F4E1878A74E0081B1CB /* NSInvocation+Copy.m in Sources */,
 				11D11F581878AE910081B1CB /* SaveAsViewController.m in Sources */,
+				1193E01B18A7367700390295 /* REMenuContainerView.m in Sources */,
 				11D11F941878F0510081B1CB /* UIStepper+FlatUI.m in Sources */,
 				118C19671891D152007EB10E /* unzip.c in Sources */,
 				11D11F8C1878F0510081B1CB /* UIBarButtonItem+FlatUI.m in Sources */,
