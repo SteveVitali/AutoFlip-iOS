@@ -107,7 +107,7 @@
     // Screen backgrounds
     [manager setViewControllerBGColor:[UIColor cloudsColor]];
     // TableView colors for ChooseCardsViewController
-    [manager setTableViewBGColor:[[UIColor cloudsColor] colorWithAlphaComponent:.6]];
+    [manager setTableViewBGColor:[[UIColor cloudsColor] colorWithAlphaComponent:0]];
     [manager setTableCellBGColorNormal:[UIColor clearColor]];
     [manager setTableCellBGColorSelected:[[UIColor concreteColor] colorWithAlphaComponent:0.6]];
     [manager setTableCellSeparatorColor:[UIColor concreteColor]];

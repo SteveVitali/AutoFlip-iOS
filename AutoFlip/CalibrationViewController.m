@@ -43,10 +43,11 @@
     self.isRecording = NO;
     
     [self.recordButton setTitle:@"Begin Calibration" forState:UIControlStateNormal];
+    [self.recordButton.titleLabel setFont:[UIFont systemFontOfSize:20]];
     
     self.textView.text = @"By reading this sample text, I will help calibrate speech recognition for this app. The quick brown fox jumped over the lazy dog.";
     self.textView.font = [UIFont systemFontOfSize:20];
-    self.textView.backgroundColor = [[UIColor cloudsColor] colorWithAlphaComponent:.5];
+    self.textView.backgroundColor = [[UIColor cloudsColor] colorWithAlphaComponent:.7];
     
     [self.activityIndicator setHidden:YES];
 }
