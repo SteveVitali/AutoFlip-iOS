@@ -49,6 +49,9 @@
     UIImage *dropbox;
     UIImage *present;
     UIImage *edit;
+    
+    NSInteger selectedCellIndex;
+    UIView *dummyView;
 }
 @end
 
@@ -95,10 +98,12 @@
     [self.view setBackgroundColor:[designManager viewControllerBGColor]];
     [self.tableView setBackgroundColor:[designManager tableViewBGColor]];
     
-    [self initDropdownMenu];
+    selectedCellIndex = -1;
+    
+    [self initDropdownMenus];
 }
 
-- (void)initDropdownMenu {
+- (void)initDropdownMenus {
     
     REMenuItem *createItem = [[REMenuItem alloc] initWithTitle:@"Create Cards"
                                                     subtitle:@""
@@ -124,18 +129,53 @@
                                                               [self pushDropboxView:nil];
                                                           }];
     
-    self.dropdown = [[REMenu alloc] initWithItems:@[createItem, driveItem, dropboxItem]];
-    self.dropdown.imageOffset     = CGSizeMake(36, 0);
-    self.dropdown.shadowColor     = [UIColor clearColor];
-    self.dropdown.borderColor     = [UIColor clearColor];
-    self.dropdown.textShadowColor = [UIColor clearColor];
-    self.dropdown.separatorColor  = [UIColor clearColor];
-    self.dropdown.textColor       = [UIColor blackColor];
-    self.dropdown.font            = [UIFont systemFontOfSize:20];
-    self.dropdown.backgroundColor = [[UIColor cloudsColor] colorWithAlphaComponent:.5];
-    self.dropdown.separatorHeight = 8.0f;
-    //self.dropdown.liveBlur        = YES;
-    self.dropdown.bounce          = NO;
+    REMenuItem *presentItem = [[REMenuItem alloc] initWithTitle:@"Present"
+                                                      subtitle:@""
+                                                         image:present
+                                              highlightedImage:nil
+                                                        action:^(REMenuItem *item) {
+                                                            // Kind of bad practice, but this
+                                                            // Has to go here.
+                                                            [dummyView removeFromSuperview];
+                                                            [self didPressPresent:nil];
+                                                        }];
+    
+    REMenuItem *editItem = [[REMenuItem alloc] initWithTitle:@"Edit"
+                                                     subtitle:@""
+                                                        image:edit
+                                             highlightedImage:nil
+                                                       action:^(REMenuItem *item) {
+                                                           // Kind of bad practice, but this
+                                                           // Has to go here.
+                                                           [dummyView removeFromSuperview];
+                                                           [self didPressEdit:nil];
+                                                       }];
+    // REMenu *deleteItem???
+
+    self.presentOrEditDropdown = [[REMenu alloc] initWithItems:@[presentItem, editItem]];
+    self.addDropdown           = [[REMenu alloc] initWithItems:@[createItem, driveItem, dropboxItem]];
+    
+    [self styleDropdownMenu:self.addDropdown];
+    [self styleDropdownMenu:self.presentOrEditDropdown];
+}
+
+- (void)styleDropdownMenu:(REMenu *)dropdown {
+    
+    dropdown.imageOffset     = CGSizeMake(36, 0);
+    dropdown.shadowColor     = [UIColor clearColor];
+    dropdown.borderColor     = [UIColor clearColor];
+    dropdown.textShadowColor = [UIColor clearColor];
+    dropdown.separatorColor  = [UIColor clearColor];
+    dropdown.textColor       = [UIColor blackColor];
+    dropdown.font            = [UIFont systemFontOfSize:20];
+    dropdown.backgroundColor = [UIColor clearColor];
+    dropdown.separatorHeight = 2.0f;
+    dropdown.liveBlur        = YES;
+    dropdown.bounce          = NO;
+    dropdown.highlightedBackgroundColor = [UIColor clearColor];
+    dropdown.highlightedSeparatorColor  = [UIColor clearColor];
+    dropdown.highlightedTextColor       = [UIColor silverColor];
+    dropdown.highlightedTextShadowColor = [UIColor clearColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -213,11 +253,10 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 
 - (void)showAddButtonREMenu {
     
-    if (self.dropdown.isOpen) {
-        return [self.dropdown close];
+    if (self.addDropdown.isOpen) {
+        return [self.addDropdown close];
     }
-    
-    [self.dropdown showFromNavigationController:self.navigationController];
+    [self.addDropdown showFromNavigationController:self.navigationController];
 }
 
 - (void)showAddButtonKxMenu {
@@ -430,6 +469,55 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
         chosenPresentation = [presentations objectAtIndex:indexPath.row];
     }
     
+    //[self showPresentOrEditKxMenu];
+    [self showPresentOrEditREMenuFromCellAtIndexPath:indexPath];
+    
+    // Below: code from when the home screen was the ViewController class, which had
+    // edit and present buttons, which took you to this controller but with a different "chooserType"
+//    if ([self.chooserType isEqualToString:@"present"]) {
+//        [self performSegueWithIdentifier:@"startPresentation" sender:self];
+//    }
+//    else if ([self.chooserType isEqualToString:@"edit"]) {
+//        [self performSegueWithIdentifier:@"openPresentationEditor" sender:self];
+//    }
+}
+
+- (void)showPresentOrEditREMenuFromCellAtIndexPath:(NSIndexPath *)indexPath {
+
+    if (self.presentOrEditDropdown.isOpen) {
+        // If they're clicking the same cell that was selected before, just close it and return
+        if (selectedCellIndex == indexPath.row) {
+            [self.presentOrEditDropdown closeWithCompletion:^{
+                [dummyView removeFromSuperview];
+            }];
+            return;
+        }
+        // If they're clicking somewhere else, also close the dropdown
+        // Separate else here in case we want to have it do something else later
+        else {
+            [self.presentOrEditDropdown closeWithCompletion:^{
+                [dummyView removeFromSuperview];
+            }];
+            return;
+        }
+    }
+    // Reset the selectedCellIndex
+    selectedCellIndex = indexPath.row;
+    
+    ChooseCardsTableViewCell *cell = (ChooseCardsTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    
+    // Initialize a dummy view of the cell width and some number of pixels in height.
+    // Position it directly below the bottom of the cell being selected
+    dummyView = [[UIView alloc] initWithFrame:CGRectMake(cell.frame.origin.x,
+                                                         cell.frame.origin.y + cell.frame.size.height,
+                                                         cell.frame.size.width,
+                                                         self.presentOrEditDropdown.itemHeight * self.presentOrEditDropdown.items.count)];
+    [self.view addSubview:dummyView];
+    [self.presentOrEditDropdown showInView:dummyView];
+}
+
+- (void)showPresentOrEditKxMenu {
+    
     NSArray *menuItems =
     @[
       [KxMenuItem menuItem:@"Present"
@@ -450,15 +538,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     [KxMenu showMenuInView:self.view
                   fromRect:self.view.frame
                  menuItems:menuItems];
-    
-    // Below: code from when the home screen was the ViewController class, which had
-    // edit and present buttons, which took you to this controller but with a different "chooserType"
-//    if ([self.chooserType isEqualToString:@"present"]) {
-//        [self performSegueWithIdentifier:@"startPresentation" sender:self];
-//    }
-//    else if ([self.chooserType isEqualToString:@"edit"]) {
-//        [self performSegueWithIdentifier:@"openPresentationEditor" sender:self];
-//    }
 }
 
 - (void)didPressEdit:(id)sender {

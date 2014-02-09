@@ -228,7 +228,7 @@
     [self.containerView addSubview:self.backgroundButton];
     [self.containerView addSubview:self.menuWrapperView];
     [view addSubview:self.containerView];
-    
+        
     // Animate appearance
     //
     if (self.bounce)

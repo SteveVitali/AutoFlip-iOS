@@ -10,6 +10,8 @@
 
 @interface AboutViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+
 - (IBAction)showMenu;
 
 @end

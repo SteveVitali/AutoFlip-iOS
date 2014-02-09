@@ -30,7 +30,8 @@
 @property (strong,nonatomic) NSMutableArray *searchResults;
 @property IBOutlet UISearchBar *searchBar;
 
-@property REMenu *dropdown;
+@property REMenu *addDropdown;
+@property REMenu *presentOrEditDropdown;
 
 // Either "edit" or "present"
 //@property NSString *chooserType;
