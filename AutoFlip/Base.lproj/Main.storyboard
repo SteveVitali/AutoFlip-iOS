@@ -234,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31d-IR-njV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2089" y="-702"/>
+            <point key="canvasLocation" x="2333" y="-668"/>
         </scene>
         <!--Sidebar Root View Controller-->
         <scene sceneID="YOY-ht-O14">
@@ -493,10 +493,11 @@
                         <outlet property="searchBar" destination="wDy-z2-Kgq" id="9xw-W2-O7s"/>
                         <outlet property="searchDisplayController" destination="KIa-bJ-qyc" id="Vz3-1z-ZoT"/>
                         <segue destination="LHR-qD-Y6Y" kind="push" identifier="editPresentation" id="Lp7-11-OHQ"/>
-                        <segue destination="Dms-y9-cwR" kind="push" identifier="startPresentation" id="r6e-Bp-ius"/>
+                        <segue destination="Dms-y9-cwR" kind="push" identifier="startPresentation1" id="r6e-Bp-ius"/>
                         <segue destination="pdT-Q6-8Jf" kind="push" identifier="newCardDeck" id="cVP-sD-z9C"/>
                         <segue destination="BI9-0p-ewz" kind="modal" identifier="driveFileChooser" id="7zJ-Ch-EAJ"/>
                         <segue destination="LHR-qD-Y6Y" kind="push" identifier="createImportedCards" id="4FG-d4-0lg"/>
+                        <segue destination="3V4-vR-6Sg" kind="push" identifier="startPresentation" id="dWe-xL-RRm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyb-Qx-K6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -659,7 +660,7 @@
         <!--Presentation View Controller - Presentation Title-->
         <scene sceneID="Vee-Zl-6At">
             <objects>
-                <viewController storyboardIdentifier="presentationController" id="Dms-y9-cwR" customClass="PresentationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="presentationController1" id="Dms-y9-cwR" customClass="PresentationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KDj-bz-1mo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -693,16 +694,16 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="currentTextView" destination="pAN-rL-TvW" id="Fle-VY-ivc"/>
                         <outlet property="nextCard" destination="vkh-vw-jMD" id="Ng6-bB-1bO"/>
                         <outlet property="presentationTitleNavBar" destination="Ysx-aG-KVk" id="JMd-nC-93k"/>
                         <outlet property="previousCard" destination="cEJ-SU-g5x" id="DIB-CA-WEz"/>
                         <outlet property="progressBarBarButton" destination="UIb-aU-NpS" id="ma2-JD-osN"/>
-                        <outlet property="textArea" destination="pAN-rL-TvW" id="cRe-3S-MbU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTg-D1-Coz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1607" y="-702"/>
+            <point key="canvasLocation" x="1584" y="-710"/>
         </scene>
         <!--About View Controller - About-->
         <scene sceneID="2Ge-Qa-uG7">
@@ -736,6 +737,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z8n-Km-JGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="960" y="-2522"/>
+        </scene>
+        <!--Presentation View Controller - Presentation Title-->
+        <scene sceneID="rEq-t6-VOr">
+            <objects>
+                <viewController storyboardIdentifier="presentationController" id="3V4-vR-6Sg" customClass="PresentationViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OhF-Vu-TSA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem systemItem="rewind" id="D0B-Z7-3dv">
+                            <connections>
+                                <action selector="previousCard:" destination="3V4-vR-6Sg" id="PGB-SY-6pa"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="3z1-NF-ohn"/>
+                        <barButtonItem title="Progress Bar" id="yyZ-SX-amK"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="NYd-GM-eWZ"/>
+                        <barButtonItem systemItem="fastForward" id="uZH-oZ-23l">
+                            <connections>
+                                <action selector="nextCard:" destination="3V4-vR-6Sg" id="ahH-o6-FKj"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Presentation Title" id="AgM-Vp-N8P"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="nextCard" destination="uZH-oZ-23l" id="Wcn-He-sEd"/>
+                        <outlet property="presentationTitleNavBar" destination="AgM-Vp-N8P" id="it6-2H-6j5"/>
+                        <outlet property="previousCard" destination="D0B-Z7-3dv" id="lH6-Ly-OrE"/>
+                        <outlet property="progressBarBarButton" destination="yyZ-SX-amK" id="9Ib-WD-anE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kri-ds-boU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1948" y="-710"/>
         </scene>
     </scenes>
     <resources>

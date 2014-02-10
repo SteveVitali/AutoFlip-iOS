@@ -115,7 +115,7 @@
     [manager setTableCellDetailColor:[UIColor asbestosColor]];
     // CardDeckViewController styling
     [manager setTextAreaFontColor:[UIColor blackColor]];
-    [manager setCardDeckTextViewBGColor:[[UIColor cloudsColor] colorWithAlphaComponent:0.6]];
+    [manager setCardDeckTextViewBGColor:[[UIColor cloudsColor] colorWithAlphaComponent:0.9]];
     [manager setCardDeckViewControllerBGColor:[UIColor cloudsColor]];
     // Text sizes
     [manager setMinNotecardFontSize:[NSNumber numberWithInt:16]];

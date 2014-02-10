@@ -46,7 +46,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self.navigationItem setTitle:[self.presentation title]];
+    //[self.navigationItem setTitle:[self.presentation title]];
     
     // Don't run [self resetSpeechRecognition] here because it will get run in [self reloadCard];
     //[self resetSpeechRecognition];
@@ -147,10 +147,7 @@
 
 - (void) hideShowNavigation {
     
-    [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
-    [self.navigationController setToolbarHidden:!self.navigationController.toolbarHidden animated:YES];
-    
-    [self resizeTextToFitScreen];
+    [super hideShowNavigation];
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
