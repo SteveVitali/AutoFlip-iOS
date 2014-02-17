@@ -3,37 +3,37 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "settings lowres.png",
+      "filename" : "AppIcon29x29.png",
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "settings highres.png",
+      "filename" : "AppIcon29x29@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "spotlight highres.png",
+      "filename" : "AppIcon40x40@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "highres 5-5.png",
+      "filename" : "AppIcon57x57.png",
       "scale" : "1x"
     },
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "highres 5-6.png",
+      "filename" : "AppIcon57x57@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "highres 5.png",
+      "filename" : "AppIcon60x60@2x.png",
       "scale" : "2x"
     },
     {
@@ -51,7 +51,7 @@
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "spotlight lowres.png",
+      "filename" : "AppIcon40x40.png",
       "scale" : "1x"
     },
     {
@@ -63,13 +63,13 @@
     {
       "size" : "50x50",
       "idiom" : "ipad",
-      "filename" : "highres 5-3.png",
+      "filename" : "AppIcon50x50.png",
       "scale" : "1x"
     },
     {
       "size" : "50x50",
       "idiom" : "ipad",
-      "filename" : "highres 5-4.png",
+      "filename" : "AppIcon50x50@2x.png",
       "scale" : "2x"
     },
     {
@@ -81,19 +81,31 @@
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "highres 5-2.png",
+      "filename" : "AppIcon72x72@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "std res.png",
+      "filename" : "AppIcon76x76.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "highres mini.png",
+      "filename" : "AppIcon76x76@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "512x512",
+      "idiom" : "mac",
+      "filename" : "iTunesArtwork.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "512x512",
+      "idiom" : "mac",
+      "filename" : "iTunesArtwork@2x.png",
       "scale" : "2x"
     }
   ],
