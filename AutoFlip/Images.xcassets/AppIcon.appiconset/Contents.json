@@ -39,7 +39,7 @@
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "settings lowres-1.png",
+      "filename" : "AppIcon29x29-1.png",
       "scale" : "1x"
     },
     {
@@ -57,7 +57,7 @@
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "spotlight highres-1.png",
+      "filename" : "AppIcon40x40@2x-1.png",
       "scale" : "2x"
     },
     {
@@ -75,7 +75,7 @@
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "highres 5-1.png",
+      "filename" : "AppIcon72x72-1.png",
       "scale" : "1x"
     },
     {
