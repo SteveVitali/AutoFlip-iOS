@@ -17,10 +17,10 @@
 // just going to make it a property here for convenience.
 // The only difference is that now we have to run [[[LibraryAPI sharedInstance] designManager] someMethod:];
 // instead of [[LibraryAPI sharedInstance] someDesignManagerMethod:];
-@property DesignManager *designManager;
+@property (strong, nonatomic) DesignManager *designManager;
 - (void)setDesignManagerConstantsFromManager:(DesignManager *)manager;
 
-@property NSString *debuggingResults;
+@property (strong, nonatomic) NSString *debuggingResults;
 
 + (LibraryAPI *)sharedInstance;
 

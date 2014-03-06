@@ -62,12 +62,7 @@
     
     [self initPagedScrollView];
     
-    // Because nextCard will increment cardIndex
-    self.cardIndex = -1;
-    [self nextCard];
-    
-    [self resizeCardsBasedOnVisibleSpace];
-    [self resizeTextToFitScreen];
+    [self reloadCard];
 }
 
 - (void)initPagedScrollView {
@@ -126,8 +121,7 @@
     [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
     [self.navigationController setToolbarHidden:!self.navigationController.toolbarHidden animated:YES];
     
-    [self resizeCardsBasedOnVisibleSpace];
-    [self resizeTextToFitScreen];
+    [self reloadCard];
 }
 
 - (void)resizeCardsBasedOnVisibleSpace {
@@ -181,8 +175,7 @@
     } else {
         self.progressBar.frame = CGRectMake(-64, 0, 128, 0);
     }
-    [self resizeCardsBasedOnVisibleSpace];
-    [self resizeTextToFitScreen];}
+}
 
 - (void)reloadCard {
     
@@ -240,6 +233,7 @@
 
 - (IBAction)nextCard:(id)sender {
     
+    NSLog(@"card indexxx: %d", self.cardIndex);
     self.cardIndex++;
     CGRect pageRect = [self getPageRectOfPage:self.cardIndex];
     [self.pagedScrollView scrollRectToVisible:pageRect animated:YES];

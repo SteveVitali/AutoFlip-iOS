@@ -12,12 +12,12 @@
 
 @interface PagedCardDeckViewController : UIViewController <UIScrollViewDelegate>
 
-@property Presentation *presentation;
-@property NSInteger cardIndex;
-@property DesignManager *designManager;
+@property (strong, nonatomic) Presentation *presentation;
+@property (nonatomic) NSInteger cardIndex;
+@property (strong, nonatomic) DesignManager *designManager;
 
-@property BOOL hasNextCard;
-@property BOOL hasPreviousCard;
+@property (nonatomic) BOOL hasNextCard;
+@property (nonatomic) BOOL hasPreviousCard;
 
 @property (strong, nonatomic) IBOutlet UIView *masterView;
 @property (weak, nonatomic) IBOutlet UINavigationItem *presentationTitleNavBar;
@@ -28,18 +28,19 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextCard;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previousCard;
 
-@property UIPinchGestureRecognizer *pinchRecognizer;
+@property (strong, nonatomic) UIPinchGestureRecognizer *pinchRecognizer;
 
 - (IBAction)nextCard:(id)sender;
 - (IBAction)previousCard:(id)sender;
 - (void)reloadCard;
+- (void)resizeCardsBasedOnVisibleSpace;
 - (void)resizeTextToFitScreen;
 
 - (void)hideShowNavigation;
 
 // Stuff added for new paged scroll view
-@property UITextView *currentTextView; // use to be "textArea"; took out of Storyboard
-@property UIScrollView *pagedScrollView;
-@property NSMutableArray *textViews;
+@property (strong, nonatomic) UITextView *currentTextView; // use to be "textArea"; took out of Storyboard
+@property (strong, nonatomic) UIScrollView *pagedScrollView;
+@property (strong, nonatomic) NSMutableArray *textViews;
 
 @end

@@ -20,8 +20,8 @@
 
 @property (weak) id<SaveAsViewControllerDelegate> delegate;
 
-@property NSString *titleText;
-@property NSString *descriptionText;
+@property (strong, nonatomic) NSString *titleText;
+@property (strong, nonatomic) NSString *descriptionText;
 
 @property (weak, nonatomic) IBOutlet FUITextField *titleField;
 @property (weak, nonatomic) IBOutlet FUITextField *descriptionField;

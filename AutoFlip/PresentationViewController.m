@@ -156,12 +156,18 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     
+    [self resizeCardsBasedOnVisibleSpace];
     [self resizeTextToFitScreen];
 }
 
 - (void)resizeTextToFitScreen {
     
     [super resizeTextToFitScreen];
+}
+
+- (void)resizeCardsBasedOnVisibleSpace {
+    
+    [super resizeCardsBasedOnVisibleSpace];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

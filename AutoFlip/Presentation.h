@@ -11,14 +11,14 @@
 
 @interface Presentation : NSObject <NSCoding, SSZipArchiveDelegate>
 
-@property NSMutableArray *notecards;
-@property NSString *title;
-@property NSString *description;
-@property NSString *type;
+@property (strong, nonatomic) NSMutableArray *notecards;
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *type;
 
-@property NSNumber *arrayIndex;
+@property (strong, nonatomic) NSNumber *arrayIndex;
 
-@property NSString *pathToUnzippedPPTX;
+@property (strong, nonatomic) NSString *pathToUnzippedPPTX;
 
 - (void)insertCardAtIndex:(NSInteger)index;
 - (void)addCard;

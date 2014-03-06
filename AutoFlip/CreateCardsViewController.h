@@ -17,8 +17,8 @@
 
 // Technically this is redundant, since these values are stored by sinstance variable presentation
 // But I need to pass the values from the UITextFields through the segue somehow
-@property NSString *presentationTitle;
-@property NSString *presentationDescription;
+@property (strong, nonatomic) NSString *presentationTitle;
+@property (strong, nonatomic) NSString *presentationDescription;
 
 - (void)saveDataAs:(SaveAsViewController *)saveAsViewController;
 - (void)cancelSave:(SaveAsViewController *)saveasViewController;

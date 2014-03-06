@@ -10,8 +10,8 @@
 
 @interface Notecard : NSObject <NSCoding>
 
-@property NSMutableArray *bullets;
-@property NSString *text;
+@property (strong, nonatomic) NSMutableArray *bullets;
+@property (strong, nonatomic) NSString *text;
 
 - (id)initWithBullets:(NSMutableArray *)bullets;
 - (id)initWithEmptyCard;
