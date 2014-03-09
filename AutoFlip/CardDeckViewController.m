@@ -76,11 +76,6 @@
     [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] viewControllerBGColor]];
 }
 
-- (BOOL)prefersStatusBarHidden
-{
-    return NO;//YES;
-}
-
 - (void)pinchGesture:(UIPinchGestureRecognizer *)recognizer {
     
     NSLog(@"Pinch: Scale: %f Velocity: %f", recognizer.scale, recognizer.velocity);
