@@ -23,6 +23,7 @@
     MZFormSheetController *saveAsFormSheet;
     SaveAsViewController  *saveAsViewController;
 
+    UIToolbar *toolbar;
 }
 - (void)saveAndExit;
 - (void)saveAs;
@@ -89,6 +90,7 @@
     // despite the text getting set above to a bullet and a space,
     // since the reloadCard method reloads the text to be the notecard text which is null.
     //[self reloadCard];
+    [self.toolbar setHidden:YES];
 }
 
 - (void)initKxMenus {
@@ -161,7 +163,6 @@
 - (void) hideKeyboard {
     
     [self.textArea resignFirstResponder];
-    
 }
 
 - (void)registerForNotifications {
@@ -196,9 +197,33 @@
     // These values are completely hardcoded, which is probably bad
     // But scumbag apple didn't give UIBarButtonItems a frame or bounds property
     [KxMenu showMenuInView:self.view
-                  fromRect:CGRectMake(self.view.frame.size.width * 7/8 - 32, self.navigationController.navigationBar.frame.size.height / 2,
+                  fromRect:CGRectMake(self.view.frame.size.width * 7/8 - 32, self.navigationController.navigationBar.frame.size.height / 2 - 20,
                                       75, self.navigationController.navigationBar.frame.size.height + verticalPadding)
                  menuItems:kxActionsMenuItems];
+}
+
+- (IBAction)didPressActionsButtonNew:(id)sender {
+    
+    toolbar = [self createToolbar];
+    [self.view addSubview:toolbar];
+}
+
+- (UIToolbar*)createToolbar {
+    
+    UIToolbar* bar = [[UIToolbar alloc] init];
+    
+    bar.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height, self.view.frame.size.width, self.navigationController.navigationBar.frame.size.height);
+    
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add Card" style:UIBarButtonItemStylePlain target:self action:@selector(insertCard)];
+    
+    UIBarButtonItem *removeButton = [[UIBarButtonItem alloc] initWithTitle:@"Remove Card" style:UIBarButtonItemStylePlain target:self action:@selector(deleteCard)];
+    
+    UIBarButtonItem *exportButton = [[UIBarButtonItem alloc] initWithTitle:@"Export Cards" style:UIBarButtonItemStylePlain target:self action:@selector(exportCards)];
+    
+    NSArray *buttonItems = [NSArray arrayWithObjects:addButton, removeButton, exportButton, nil];
+    [bar setItems:buttonItems];
+    
+    return bar;
 }
 
 - (void)insertCard {
@@ -276,7 +301,7 @@
     // These values are completely hardcoded, which is probably bad
     // But scumbag apple didn't give UIBarButtonItems a frame or bounds property
     [KxMenu showMenuInView:self.view
-                  fromRect:CGRectMake(0  , self.navigationController.navigationBar.frame.size.height / 2,
+                  fromRect:CGRectMake(0  , self.navigationController.navigationBar.frame.size.height / 2 - 20,
                                       75, self.navigationController.navigationBar.frame.size.height + verticalPadding)
                  menuItems:kxSaveMenuItems];
 }
