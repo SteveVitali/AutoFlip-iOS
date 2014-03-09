@@ -54,11 +54,11 @@
             navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"settingsController"]];
             [self.sideMenuViewController hideMenuViewController];
             break;
+//        case 2:
+//            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"helpController"]];
+//            [self.sideMenuViewController hideMenuViewController];
+//            break;
         case 2:
-            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"helpController"]];
-            [self.sideMenuViewController hideMenuViewController];
-            break;
-        case 3:
             navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"aboutController"]];
             [self.sideMenuViewController hideMenuViewController];
             break;
@@ -82,7 +82,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 4;
+    return 3; // Without the help page
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -101,8 +101,8 @@
         cell.selectedBackgroundView = [[UIView alloc] init];
     }
     
-    NSArray *titles = @[@"Home", @"Settings", @"Help", @"About"];
-    NSArray *images = @[@"home", @"settings", @"help", @"about"];
+    NSArray *titles = @[@"Home", @"Settings", @"About"];
+    NSArray *images = @[@"home", @"settings", @"about"];
     cell.textLabel.text = titles[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     

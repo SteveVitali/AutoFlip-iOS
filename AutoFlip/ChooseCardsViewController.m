@@ -487,12 +487,15 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 }
 
 - (void)showPresentOrEditREMenuFromCellAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CGSize table = self.tableView.contentSize;
 
     if (self.presentOrEditDropdown.isOpen) {
         // If they're clicking the same cell that was selected before, just close it and return
         if (selectedCellIndex == indexPath.row) {
             [self.presentOrEditDropdown closeWithCompletion:^{
                 [dummyView removeFromSuperview];
+                self.tableView.contentSize = CGSizeMake(table.width, table.height - dummyView.frame.size.height);
             }];
             return;
         }
@@ -501,6 +504,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
         else {
             [self.presentOrEditDropdown closeWithCompletion:^{
                 [dummyView removeFromSuperview];
+                self.tableView.contentSize = CGSizeMake(table.width, table.height - dummyView.frame.size.height);
             }];
             return;
         }
@@ -516,8 +520,11 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
                                                          cell.frame.origin.y + cell.frame.size.height,
                                                          cell.frame.size.width,
                                                          self.presentOrEditDropdown.itemHeight * self.presentOrEditDropdown.items.count + 16)];
-    [self.view addSubview:dummyView];
+    [self.tableView addSubview:dummyView];
     [self.presentOrEditDropdown showInView:dummyView];
+    
+    self.tableView.contentSize = CGSizeMake(table.width, table.height + dummyView.frame.size.height);
+    [self.tableView scrollRectToVisible:dummyView.frame animated:YES];
 }
 
 - (void)showPresentOrEditKxMenu {
