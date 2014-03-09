@@ -15,7 +15,7 @@
 - (IBAction)didPressCancel:(id)sender;
 - (IBAction)didPressRecord:(id)sender;
 
-@property BOOL isRecording;
+@property (nonatomic) BOOL isRecording;
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
@@ -25,7 +25,7 @@
 @property (strong, nonatomic) PocketsphinxController *pocketsphinxController;
 @property (strong, nonatomic) OpenEarsEventsObserver *openEarsEventsObserver;
 
-@property NSMutableSet *spokenWords;
-@property NSMutableSet *allWords;
+@property (strong, nonatomic) NSMutableSet *spokenWords;
+@property (strong, nonatomic) NSMutableSet *allWords;
 
 @end

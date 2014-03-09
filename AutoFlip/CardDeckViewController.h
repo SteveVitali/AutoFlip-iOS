@@ -14,12 +14,12 @@
 
 @interface CardDeckViewController : UIViewController
 
-@property Presentation *presentation;
-@property NSInteger cardIndex;
-@property DesignManager *designManager;
+@property (strong, nonatomic) Presentation *presentation;
+@property (nonatomic) NSInteger cardIndex;
+@property (strong, nonatomic) DesignManager *designManager;
 
-@property BOOL hasNextCard;
-@property BOOL hasPreviousCard;
+@property (nonatomic) BOOL hasNextCard;
+@property (nonatomic) BOOL hasPreviousCard;
 
 @property (strong, nonatomic) IBOutlet UIView *masterView;
 @property (weak, nonatomic) IBOutlet UITextView *textArea;
@@ -31,11 +31,13 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextCard;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previousCard;
 
-@property UIPinchGestureRecognizer *pinchRecognizer; 
+@property (strong, nonatomic) UIPinchGestureRecognizer *pinchRecognizer;
 
 - (IBAction)nextCard:(id)sender;
 - (IBAction)previousCard:(id)sender;
 - (void)reloadCard;
 - (void)resizeTextToFitScreen;
+
+- (void)hideShowNavigation;
 
 @end

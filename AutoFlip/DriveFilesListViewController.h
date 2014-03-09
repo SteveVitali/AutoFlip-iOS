@@ -18,7 +18,7 @@
 @property (weak) id<DriveFilePickerDelegate> delegate;
 
 @property (strong,nonatomic) NSMutableArray *searchResults;
-@property IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 - (IBAction)didPressCancel:(id)sender;
 

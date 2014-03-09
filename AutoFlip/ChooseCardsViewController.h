@@ -29,10 +29,10 @@
                                          UIGestureRecognizerDelegate, MBProgressHUDDelegate>
 
 @property (strong,nonatomic) NSMutableArray *searchResults;
-@property IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
-@property REMenu *addDropdown;
-@property REMenu *presentOrEditDropdown;
+@property (strong, nonatomic) REMenu *addDropdown;
+@property (strong, nonatomic) REMenu *presentOrEditDropdown;
 
 // Either "edit" or "present"
 //@property NSString *chooserType;

@@ -11,7 +11,7 @@
 
 @interface PersistencyManager : NSObject
 
-@property NSMutableArray *presentations;
+@property (strong, nonatomic) NSMutableArray *presentations;
 
 - (NSMutableArray *)getPresentations;
 

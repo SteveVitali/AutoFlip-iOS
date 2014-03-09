@@ -128,6 +128,13 @@
     }
 }
 
+- (void)hideShowNavigation {
+    
+    [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
+    [self.navigationController setToolbarHidden:!self.navigationController.toolbarHidden animated:YES];
+    
+    [self resizeTextToFitScreen];
+}
 
 - (void)reloadCard {
     

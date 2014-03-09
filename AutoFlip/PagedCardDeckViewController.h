@@ -9,17 +9,17 @@
 #import "REMenu.h"
 #import "Presentation.h"
 #import "DesignManager.h"
+#import "NotecardTextView.h"
 
 @interface PagedCardDeckViewController : UIViewController <UIScrollViewDelegate>
 
-@property Presentation *presentation;
-@property NSInteger cardIndex;
-@property DesignManager *designManager;
+@property (strong, nonatomic) Presentation *presentation;
+@property (nonatomic) NSInteger cardIndex;
+@property (strong, nonatomic) DesignManager *designManager;
 
-@property BOOL hasNextCard;
-@property BOOL hasPreviousCard;
+@property (nonatomic) BOOL hasNextCard;
+@property (nonatomic) BOOL hasPreviousCard;
 
-@property (strong, nonatomic) IBOutlet UIView *masterView;
 @property (weak, nonatomic) IBOutlet UINavigationItem *presentationTitleNavBar;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 
@@ -28,18 +28,18 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextCard;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previousCard;
 
-@property UIPinchGestureRecognizer *pinchRecognizer;
-
 - (IBAction)nextCard:(id)sender;
 - (IBAction)previousCard:(id)sender;
 - (void)reloadCard;
+- (void)resizeCardsBasedOnVisibleSpace;
 - (void)resizeTextToFitScreen;
 
 - (void)hideShowNavigation;
 
 // Stuff added for new paged scroll view
-@property UITextView *currentTextView; // use to be "textArea"; took out of Storyboard
-@property UIScrollView *pagedScrollView;
-@property NSMutableArray *textViews;
+// Maybe the weak/strong properties have something to do with the random crashes.
+@property (weak, nonatomic) NotecardTextView *currentTextView; // use to be "textArea"; took out of Storyboard
+@property (weak, nonatomic) UIScrollView *pagedScrollView;
+@property (strong, nonatomic) NSMutableArray *textViews;
 
 @end

@@ -15,32 +15,32 @@
 @property UIColor *primaryAccentColor;
 
 // Button and text colors
-@property UIColor *buttonBGColor;
-@property UIColor *buttonShadowColor;
-@property UIColor *buttonTextColorNormal;
-@property UIColor *buttonTextColorHighlighted;
-@property float buttonShadowHeight;
-@property float buttonCornerRadius;
-@property float buttonFontSize;
+@property (strong, nonatomic) UIColor *buttonBGColor;
+@property (strong, nonatomic) UIColor *buttonShadowColor;
+@property (strong, nonatomic) UIColor *buttonTextColorNormal;
+@property (strong, nonatomic) UIColor *buttonTextColorHighlighted;
+@property (nonatomic) float buttonShadowHeight;
+@property (nonatomic) float buttonCornerRadius;
+@property (nonatomic) float buttonFontSize;
 // Other colors
-@property UIColor *viewControllerBGColor;
-@property UIColor *kxMenuTextColor;
-@property UIColor *navigationBarTintColor;
+@property (strong, nonatomic) UIColor *viewControllerBGColor;
+@property (strong, nonatomic) UIColor *kxMenuTextColor;
+@property (strong, nonatomic) UIColor *navigationBarTintColor;
 // CardDeckViewController styling
-@property UIColor *cardDeckViewControllerBGColor;
-@property UIColor *cardDeckTextViewBGColor;
-@property UIColor *textAreaFontColor;
+@property (strong, nonatomic) UIColor *cardDeckViewControllerBGColor;
+@property (strong, nonatomic) UIColor *cardDeckTextViewBGColor;
+@property (strong, nonatomic) UIColor *textAreaFontColor;
 // Table colors
-@property UIColor *tableViewBGColor;
-@property UIColor *tableCellBGColorNormal;
-@property UIColor *tableCellBGColorSelected;
-@property UIColor *tableCellTextColor;
-@property UIColor *tableCellSeparatorColor;
-@property UIColor *tableCellDetailColor;
+@property (strong, nonatomic) UIColor *tableViewBGColor;
+@property (strong, nonatomic) UIColor *tableCellBGColorNormal;
+@property (strong, nonatomic) UIColor *tableCellBGColorSelected;
+@property (strong, nonatomic) UIColor *tableCellTextColor;
+@property (strong, nonatomic) UIColor *tableCellSeparatorColor;
+@property (strong, nonatomic) UIColor *tableCellDetailColor;
 
 // Text Sizes
-@property NSNumber *maxNotecardFontSize;
-@property NSNumber *minNotecardFontSize;
+@property (strong, nonatomic) NSNumber *maxNotecardFontSize;
+@property (strong, nonatomic) NSNumber *minNotecardFontSize;
 
 - (void)styleFlatUIButton:(FUIButton *)button;
 - (UIImage *)scaleImage:(UIImage *)image withScale:(float)scale;

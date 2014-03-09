@@ -46,8 +46,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    //[self.navigationItem setTitle:[self.presentation title]];
-    
     // Don't run [self resetSpeechRecognition] here because it will get run in [self reloadCard];
     //[self resetSpeechRecognition];
     
@@ -62,6 +60,7 @@
 //    if (speechRecognitionOn && !self.pocketSphinxCalibrated) {
 //        [self initSpeechRecognition];
 //    }
+    [self.navigationItem setTitle:[self.presentation title]];
 }
 
 - (void)initSpeechRecognition {
@@ -152,16 +151,25 @@
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     
+    
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     
-    [self resizeTextToFitScreen];
+//    [self resizeCardsBasedOnVisibleSpace];
+//    [self resizeTextToFitScreen];
+    NSLog(@"what about this");
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
 
 - (void)resizeTextToFitScreen {
     
     [super resizeTextToFitScreen];
+}
+
+- (void)resizeCardsBasedOnVisibleSpace {
+    
+    [super resizeCardsBasedOnVisibleSpace];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
