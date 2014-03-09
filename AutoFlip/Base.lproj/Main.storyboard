@@ -116,13 +116,13 @@
                                 <rect key="frame" x="33" y="88" width="254" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brief description... " minimumFontSize="17" id="xMQ-VF-7aa" customClass="FUITextField">
                                 <rect key="frame" x="33" y="126" width="254" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qee-tX-1Ws">
                                 <rect key="frame" x="33" y="64" width="254" height="24"/>
@@ -787,9 +787,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="68o-6F-g8T"/>
         <segue reference="cVP-sD-z9C"/>
-        <segue reference="sQh-Ct-Sgu"/>
         <segue reference="7zJ-Ch-EAJ"/>
-        <segue reference="Lp7-11-OHQ"/>
+        <segue reference="1Dd-mx-Ee7"/>
     </inferredMetricsTieBreakers>
 </document>
