@@ -85,7 +85,10 @@
     
     [self initKxMenus];
     
-    [self reloadCard];
+    // I suspect this is the reason the first character wasn't getting registered
+    // despite the text getting set above to a bullet and a space,
+    // since the reloadCard method reloads the text to be the notecard text which is null.
+    //[self reloadCard];
 }
 
 - (void)initKxMenus {
