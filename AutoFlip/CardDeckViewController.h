@@ -38,4 +38,6 @@
 - (void)reloadCard;
 - (void)resizeTextToFitScreen;
 
+- (void)hideShowNavigation;
+
 @end

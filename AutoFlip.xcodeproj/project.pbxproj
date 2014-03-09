@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1102AA6F18C8EF65000390D1 /* NotecardTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1102AA6E18C8EF65000390D1 /* NotecardTextView.m */; };
 		111A0C7D1895B5E5009D5E58 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 118C196A1891D162007EB10E /* libz.dylib */; };
 		11229DF118A0143600B6F1C3 /* autoflip.png in Resources */ = {isa = PBXBuildFile; fileRef = 11229DF018A0143600B6F1C3 /* autoflip.png */; };
 		11229DF418A03BF400B6F1C3 /* paper-portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 11229DF218A03BF400B6F1C3 /* paper-portrait.png */; };
@@ -162,6 +163,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1102AA6D18C8EF65000390D1 /* NotecardTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotecardTextView.h; sourceTree = "<group>"; };
+		1102AA6E18C8EF65000390D1 /* NotecardTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotecardTextView.m; sourceTree = "<group>"; };
 		11229DF018A0143600B6F1C3 /* autoflip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoflip.png; sourceTree = "<group>"; };
 		11229DF218A03BF400B6F1C3 /* paper-portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paper-portrait.png"; sourceTree = "<group>"; };
 		115A929218A541130002353D /* FMMoveTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMMoveTableView.h; sourceTree = "<group>"; };
@@ -879,6 +882,8 @@
 		11D0D11A18720342008CC7FD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1102AA6D18C8EF65000390D1 /* NotecardTextView.h */,
+				1102AA6E18C8EF65000390D1 /* NotecardTextView.m */,
 				11711FA21871F2CF00792D36 /* Main.storyboard */,
 				115A92B418A5A5540002353D /* SettingsTableViewCells */,
 				11D11F571878AE910081B1CB /* SaveAsView.xib */,
@@ -1364,6 +1369,7 @@
 				11D11F941878F0510081B1CB /* UIStepper+FlatUI.m in Sources */,
 				118C19671891D152007EB10E /* unzip.c in Sources */,
 				11D11F8C1878F0510081B1CB /* UIBarButtonItem+FlatUI.m in Sources */,
+				1102AA6F18C8EF65000390D1 /* NotecardTextView.m in Sources */,
 				115A92AA18A55FD00002353D /* SidebarMenuViewController.m in Sources */,
 				115A92A518A55D3E0002353D /* UIViewController+RESideMenu.m in Sources */,
 			);

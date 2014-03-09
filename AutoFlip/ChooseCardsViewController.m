@@ -550,8 +550,9 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 
 - (void)didPressPresent:(id)sender {
     
-    PresentationViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"presentationController"];
-    MyUIStoryboardSegue *segue = [[MyUIStoryboardSegue alloc] initWithIdentifier:@"startPresentation" source:self destination:controller];
+    // The "1" is for the PagedCardDeckViewController inherited PresentationViewController
+    PresentationViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"presentationController1"];
+    MyUIStoryboardSegue *segue = [[MyUIStoryboardSegue alloc] initWithIdentifier:@"startPresentation1" source:self destination:controller];
     
     controller.presentation = chosenPresentation;
     

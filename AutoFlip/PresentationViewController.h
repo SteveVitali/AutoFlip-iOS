@@ -14,7 +14,7 @@
 #import "PagedCardDeckViewController.h"
 
 //@interface PresentationViewController : CardDeckViewController <OpenEarsEventsObserverDelegate>
-@interface PresentationViewController : PagedCardDeckViewController <OpenEarsEventsObserverDelegate>
+ @interface PresentationViewController : PagedCardDeckViewController <OpenEarsEventsObserverDelegate>
 
 @property (strong, nonatomic) PocketsphinxController *pocketsphinxController;
 @property (strong, nonatomic) OpenEarsEventsObserver *openEarsEventsObserver;
