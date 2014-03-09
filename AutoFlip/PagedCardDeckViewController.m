@@ -63,31 +63,17 @@
     [self.navigationController setNavigationBarHidden:YES];
     [self.navigationController setToolbarHidden:YES];
     
-    [self hideTheStatusBar];
-    
     [self initPagedScrollView];
     
     [self reloadCard];
     
     self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.pagedScrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-}
 
-- (void)hideTheStatusBar {
+    [self setNeedsStatusBarAppearanceUpdate];
+    [self prefersStatusBarHidden];
     
-    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
-        // iOS 7
-        [self prefersStatusBarHidden];
-        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
-    } else {
-        // iOS 6
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-    }
-}
-
-- (BOOL)prefersStatusBarHidden {
-    
-    return YES;
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 }
 
 - (void)initPagedScrollView {

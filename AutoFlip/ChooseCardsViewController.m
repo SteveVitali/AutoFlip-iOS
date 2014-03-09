@@ -183,6 +183,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     [self.navigationController.navigationBar setHidden:NO];
     [self.navigationController setToolbarHidden:NO];
     [self.tableView reloadData];

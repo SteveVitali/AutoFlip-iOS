@@ -23,9 +23,4 @@
     self.delegate = (SidebarMenuViewController *)self.menuViewController;
 }
 
-- (BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
-
 @end

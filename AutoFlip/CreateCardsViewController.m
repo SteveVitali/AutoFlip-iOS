@@ -48,6 +48,9 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    
 	// Do any additional setup after loading the view.
     
     // If it's not an imported presentation
@@ -277,6 +280,7 @@
 
 - (void)saveAndExit {
     
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     [self popToRoot];
 }
 

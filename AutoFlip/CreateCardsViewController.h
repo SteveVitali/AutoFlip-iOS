@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CardDeckViewController.h"
 #import "SaveAsViewController.h"
+#import "CardDeckViewController.h"
+#import "PagedCardDeckViewController.h"
 
 @interface CreateCardsViewController : CardDeckViewController <UITextViewDelegate,
                                                                     UIScrollViewDelegate,
