@@ -118,7 +118,6 @@
     
     [UIApplication sharedApplication].statusBarHidden = NO;
     [self setNeedsStatusBarAppearanceUpdate];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
