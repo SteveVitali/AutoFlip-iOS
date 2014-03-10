@@ -53,6 +53,7 @@
     NSInteger selectedCellIndex;
     UIView *dummyView;
 }
+
 @end
 
 @implementation ChooseCardsViewController
@@ -69,6 +70,8 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    [self setNeedsStatusBarAppearanceUpdate];
     
     designManager = [[LibraryAPI sharedInstance] designManager];
 
@@ -183,10 +186,17 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     [self.navigationController.navigationBar setHidden:NO];
     [self.navigationController setToolbarHidden:NO];
+   // [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     [self.tableView reloadData];
+    [UIApplication sharedApplication].statusBarHidden = YES;
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    
+    return YES;
 }
 
 // For the sidebar
@@ -206,7 +216,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:@"startPresentation"]) {
-        
+   
     }
     else if ([segue.identifier isEqualToString:@"editPresentation"]) {
         

@@ -50,7 +50,7 @@
     
     [super viewDidLoad];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     
 	// Do any additional setup after loading the view.
     
@@ -235,6 +235,7 @@
         self.cardIndex++;
         [self.presentation insertCardAtIndex:self.cardIndex];
         [self reloadCard];
+        [self.textArea setText:@"\u2022 "];
     }
 }
 
@@ -308,7 +309,7 @@
 
 - (void)saveAndExit {
     
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    //[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     [self popToRoot];
 }
 
