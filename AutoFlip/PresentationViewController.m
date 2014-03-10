@@ -66,6 +66,8 @@
     pointOneConstant = [[[NSUserDefaults standardUserDefaults] objectForKey:@"pointOneConstant"] floatValue] ?
                        [[[NSUserDefaults standardUserDefaults] objectForKey:@"pointOneConstant"] floatValue] : 0.3;
     NSLog(@"PointOneConstant: %f", pointOneConstant);
+    
+    [self reloadCard];
 }
 
 - (void)initSpeechRecognition {
@@ -123,7 +125,6 @@
     
     NSLog(@"All words: %@", self.allWords);
     
-    [self resetSpeechRecognitionForNewSlide];
 }
 
 - (void)resetSpeechRecognitionForNewSlide {
@@ -301,6 +302,7 @@
 
 - (IBAction)nextCard:(id)sender {
     
+    NSLog(@"card index: %d", self.cardIndex);
     [super nextCard:sender];
 }
 
