@@ -122,6 +122,8 @@
     [self.pocketsphinxController startListeningWithLanguageModelAtPath:lmPath dictionaryAtPath:dicPath acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:NO]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" to perform Spanish recognition instead of English.
     
     NSLog(@"All words: %@", self.allWords);
+    
+    [self resetSpeechRecognitionForNewSlide];
 }
 
 - (void)resetSpeechRecognitionForNewSlide {

@@ -14,7 +14,8 @@
 @interface CreateCardsViewController : CardDeckViewController <UITextViewDelegate,
                                                                     UIScrollViewDelegate,
                                                                     UIAlertViewDelegate,
-                                                                    SaveAsViewControllerDelegate>
+                                                                    SaveAsViewControllerDelegate,
+                                                                    UIGestureRecognizerDelegate>
 
 // Technically this is redundant, since these values are stored by sinstance variable presentation
 // But I need to pass the values from the UITextFields through the segue somehow
