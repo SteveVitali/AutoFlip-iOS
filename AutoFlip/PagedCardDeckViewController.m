@@ -33,9 +33,15 @@
     return self;
 }
 
+- (BOOL)prefersStatusBarHidden {
+    
+    return YES;
+}
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    [self setNeedsStatusBarAppearanceUpdate];
     
     self.designManager = [[LibraryAPI sharedInstance] designManager];
     
@@ -63,17 +69,8 @@
     [self.navigationController setNavigationBarHidden:YES];
     [self.navigationController setToolbarHidden:YES];
     
-    [self initPagedScrollView];
-    
-    [self reloadCard];
-    
     self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.pagedScrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-
-    [self setNeedsStatusBarAppearanceUpdate];
-    [self prefersStatusBarHidden];
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 }
 
 - (void)initPagedScrollView {
@@ -109,6 +106,11 @@
     }
     
     [self setContentSizeOfPagedScrollView];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [self initPagedScrollView];
 }
 
 - (void)setContentSizeOfPagedScrollView {
