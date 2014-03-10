@@ -105,6 +105,27 @@
     return allWords;
 }
 
+// This should be used in the getAllWordsInPresentation
++ (NSSet *)getAllWordsFromCard:(Notecard *)card {
+    
+    NSString *allText = @"";
+    
+    allText = [allText stringByAppendingString:card.getTextFromBulletFormat];
+    
+    NSMutableArray *words = [NSMutableArray arrayWithArray:[[allText uppercaseString] componentsSeparatedByCharactersInSet:[[NSCharacterSet letterCharacterSet] invertedSet]]];
+    
+    for (int i=0; i<[words count]; i++) {
+
+        if ([[words objectAtIndex:i] isEqualToString:@""]) {
+            [words removeObjectAtIndex:i];
+            i--;
+        }
+    }
+    NSSet *allWords = [NSSet setWithArray:words];
+    
+    return allWords;
+}
+
 - (NSString *)getPresentationInTextFormat {
     
     NSString *allText = @"";

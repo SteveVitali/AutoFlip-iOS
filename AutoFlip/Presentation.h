@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SSZipArchive.h"
+#import "Notecard.h"
 
 @interface Presentation : NSObject <NSCoding, SSZipArchiveDelegate>
 
@@ -24,6 +25,7 @@
 - (void)addCard;
 
 - (NSSet *)getAllWordsInPresentation;
++ (NSSet *)getAllWordsFromCard:(Notecard *)card;
 
 - (id) initWithNotes:(NSMutableArray *)notecards;
 - (id)initWithRandomNotes:(int)num;

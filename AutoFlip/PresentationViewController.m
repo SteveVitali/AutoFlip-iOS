@@ -26,6 +26,7 @@
 @implementation PresentationViewController {
     
     BOOL speechRecognitionOn;
+    float pointOneConstant;
 }
 
 @synthesize pocketsphinxController;
@@ -61,6 +62,10 @@
 //        [self initSpeechRecognition];
 //    }
     [self.navigationItem setTitle:[self.presentation title]];
+    
+    pointOneConstant = [[[NSUserDefaults standardUserDefaults] objectForKey:@"pointOneConstant"] floatValue] ?
+                       [[[NSUserDefaults standardUserDefaults] objectForKey:@"pointOneConstant"] floatValue] : 0.3;
+    NSLog(@"PointOneConstant: %f", pointOneConstant);
 }
 
 - (void)initSpeechRecognition {
@@ -115,33 +120,40 @@
     [self.pocketsphinxController setSecondsOfSilenceToDetect:.2];
     
     [self.pocketsphinxController startListeningWithLanguageModelAtPath:lmPath dictionaryAtPath:dicPath acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:NO]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" to perform Spanish recognition instead of English.
+    
+    NSLog(@"All words: %@", self.allWords);
 }
 
 - (void)resetSpeechRecognitionForNewSlide {
     
-    NSString *slideText = [[self.presentation.notecards objectAtIndex:self.cardIndex] getTextFromBulletFormat];
-    slideText = [slideText uppercaseString];
-    
-    if ([slideText isEqualToString:@""]) {
-        // So the app doesn't crash, and so the slide essentially gets skipped.
-        slideText = @"THE";
-    }
-    
+    // // // // // // // All the stuff is commented out below because the new method in the Presentaiton model takes care of it.
+//    NSString *slideText = [[self.presentation.notecards objectAtIndex:self.cardIndex] getTextFromBulletFormat];
+//    slideText = [slideText uppercaseString];
+//    
+//    if ([slideText isEqualToString:@""]) {
+//        // So the app doesn't crash, and so the slide essentially gets skipped.
+//        slideText = @"THE";
+//    }
+//    
     // Set the set of all words, and also prepare the words array to be put into the language
     // model by removing duplicate words.
-    NSMutableArray *words = [NSMutableArray arrayWithArray:[slideText componentsSeparatedByString:@" "]];
+//    NSMutableArray *words = [NSMutableArray arrayWithArray:[slideText componentsSeparatedByString:@" "]];
+//    
+//    for (int i=0; i<words.count; i++) {
+//        NSString *word = [words objectAtIndex:i];
+//        if ([word isEqualToString:@""]) {
+//            [words removeObjectAtIndex:i];
+//            i--;
+//        }
+//    }
+//    self.slideWords = [NSMutableSet setWithArray:words];
     
-    for (int i=0; i<words.count; i++) {
-        NSString *word = [words objectAtIndex:i];
-        if ([word isEqualToString:@""]) {
-            [words removeObjectAtIndex:i];
-            i--;
-        }
-    }
-    self.slideWords = [NSMutableSet setWithArray:words];
+    self.slideWords = [[NSMutableSet alloc] initWithSet:[Presentation getAllWordsFromCard:[self.presentation.notecards objectAtIndex:self.cardIndex]]];
     
     // Reset the spoken words array
     self.spokenWords = [[NSMutableSet alloc] init];
+    
+    NSLog(@"Slide words: %@", self.slideWords);
 }
 
 - (void) hideShowNavigation {
@@ -218,9 +230,10 @@
         }
     }
     
-    NSLog(@"Spoken words: %d of %d: %@", self.spokenWords.count, self.slideWords.count, portionOfCardSpoken);
     float progress = (float)[self.spokenWords count]/(float)[self.slideWords count];
-    if (progress >= .3) {
+    NSLog(@"Spoken words: %d of %d: [%f] %@", self.spokenWords.count, self.slideWords.count, progress, portionOfCardSpoken);
+
+    if (progress >= pointOneConstant) {
         if (self.hasNextCard) {
             [self nextCard:nil];
         }

@@ -33,7 +33,7 @@
         stringSize = [text sizeWithFont:self.font constrainedToSize:tallerSize lineBreakMode:NSLineBreakByWordWrapping];
     }
     
-    NSLog(@"padY: %f; font: %f; string: %@; string height: %f", padY, fontSize, self.text, stringSize.height);
+    //NSLog(@"padY: %f; font: %f; string: %@; string height: %f", padY, fontSize, self.text, stringSize.height);
     
     return YES; 
 }
