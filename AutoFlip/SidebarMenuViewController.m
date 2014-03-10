@@ -38,6 +38,12 @@
     [self.view setBackgroundColor:[UIColor clearColor]];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [self.navigationController setNavigationBarHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+}
+
 #pragma mark -
 #pragma mark UITableView Delegate
 
