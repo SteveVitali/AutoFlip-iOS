@@ -33,15 +33,9 @@
     return self;
 }
 
-- (BOOL)prefersStatusBarHidden {
-    
-    return YES;
-}
-
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    [self setNeedsStatusBarAppearanceUpdate];
     
     self.designManager = [[LibraryAPI sharedInstance] designManager];
     
@@ -71,6 +65,9 @@
     
     self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.pagedScrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    
+    [UIApplication sharedApplication].statusBarHidden = YES;
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)initPagedScrollView {
@@ -138,6 +135,9 @@
 }
 
 - (void)hideShowNavigation {
+    
+    [UIApplication sharedApplication].statusBarHidden = ![UIApplication sharedApplication].statusBarHidden;
+    [self setNeedsStatusBarAppearanceUpdate];
     
     [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
     [self.navigationController setToolbarHidden:!self.navigationController.toolbarHidden animated:YES];
