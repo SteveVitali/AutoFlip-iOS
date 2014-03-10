@@ -5,14 +5,14 @@
       "idiom" : "iphone",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
-      "filename" : "iphone launch image-2.png",
+      "filename" : "AutoFlip Launch - iPhone 5 Portrait.png",
       "scale" : "2x"
     },
     {
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "retina4",
-      "filename" : "iphone launch image-1.png",
+      "filename" : "AutoFlip Launch - iPhone 5 Portrait-1.png",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
       "scale" : "2x"
@@ -67,7 +67,7 @@
       "orientation" : "portrait",
       "idiom" : "iphone",
       "extent" : "full-screen",
-      "filename" : "iphone launch image.png",
+      "filename" : "AutoFlip Launch - iPhone 5 Portrait-2.png",
       "subtype" : "retina4",
       "scale" : "2x"
     },
