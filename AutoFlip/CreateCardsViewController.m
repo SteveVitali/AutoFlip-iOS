@@ -197,7 +197,7 @@
     // These values are completely hardcoded, which is probably bad
     // But scumbag apple didn't give UIBarButtonItems a frame or bounds property
     [KxMenu showMenuInView:self.view
-                  fromRect:CGRectMake(self.view.frame.size.width * 7/8 - 32, self.navigationController.navigationBar.frame.size.height / 2 - 20,
+                  fromRect:CGRectMake(self.view.frame.size.width * 7/8 - 32, self.navigationController.navigationBar.frame.size.height / 2,
                                       75, self.navigationController.navigationBar.frame.size.height + verticalPadding)
                  menuItems:kxActionsMenuItems];
 }
@@ -302,7 +302,7 @@
     // These values are completely hardcoded, which is probably bad
     // But scumbag apple didn't give UIBarButtonItems a frame or bounds property
     [KxMenu showMenuInView:self.view
-                  fromRect:CGRectMake(0  , self.navigationController.navigationBar.frame.size.height / 2 - 20,
+                  fromRect:CGRectMake(0  , self.navigationController.navigationBar.frame.size.height / 2,
                                       75, self.navigationController.navigationBar.frame.size.height + verticalPadding)
                  menuItems:kxSaveMenuItems];
 }
