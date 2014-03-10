@@ -91,6 +91,9 @@
     // since the reloadCard method reloads the text to be the notecard text which is null.
     //[self reloadCard];
     [self.toolbar setHidden:YES];
+    
+    [UIApplication sharedApplication].statusBarHidden = YES;
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)initKxMenus {

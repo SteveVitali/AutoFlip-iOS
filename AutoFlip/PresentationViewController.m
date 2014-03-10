@@ -41,15 +41,9 @@
     return self;
 }
 
-- (BOOL)prefersStatusBarHidden {
-    
-    return YES;
-}
-
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    [self setNeedsStatusBarAppearanceUpdate];
 	// Do any additional setup after loading the view.
     
     // Don't run [self resetSpeechRecognition] here because it will get run in [self reloadCard];
@@ -67,9 +61,6 @@
 //        [self initSpeechRecognition];
 //    }
     [self.navigationItem setTitle:[self.presentation title]];
-    
-    [UIApplication sharedApplication].statusBarHidden = YES;
-    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)initSpeechRecognition {

@@ -104,6 +104,26 @@
     selectedCellIndex = -1;
     
     [self initDropdownMenus];
+    
+    [UIApplication sharedApplication].statusBarHidden = YES;
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [self.navigationController.navigationBar setHidden:NO];
+    [self.navigationController setToolbarHidden:NO];
+    // [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    [self.tableView reloadData];
+    
+    [UIApplication sharedApplication].statusBarHidden = NO;
+    [self setNeedsStatusBarAppearanceUpdate];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+
+    NSLog(@"%f, %f", self.searchBar.frame.origin.x, self.searchBar.frame.origin.y);
 }
 
 - (void)initDropdownMenus {
@@ -182,21 +202,6 @@
     dropdown.highlightedTextColor       = [UIColor silverColor];
     dropdown.highlightedTextShadowColor = [UIColor clearColor];
     dropdown.waitUntilAnimationIsComplete = YES;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    
-    [self.navigationController.navigationBar setHidden:NO];
-    [self.navigationController setToolbarHidden:NO];
-   // [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
-    [self.tableView reloadData];
-    [UIApplication sharedApplication].statusBarHidden = YES;
-    [self setNeedsStatusBarAppearanceUpdate];
-}
-
-- (BOOL)prefersStatusBarHidden {
-    
-    return YES;
 }
 
 // For the sidebar
