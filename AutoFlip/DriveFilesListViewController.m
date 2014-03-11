@@ -96,21 +96,19 @@ UIAlertView *loadingAlert;
 
     //Set table colors
     [self.view setBackgroundColor:[designManager viewControllerBGColor]];
-    
+
+    // Moving to viewDidAppear
     [self checkAuthentication];
-    [self loadDriveFiles];
+//    [self loadDriveFiles];
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    //[self.tableView addSubview:refreshControl];
 }
 
-- (void)checkAuthentication {
+- (void)refresh:(UIRefreshControl *)refreshControl {
     
-    // Check for authorization.
-    GTMOAuth2Authentication *auth =
-    [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
-                                                          clientID:kClientId
-                                                      clientSecret:kClientSecret];
-    if ([auth canAuthorize]) {
-        [self isAuthorizedWithAuthentication:auth];
-    }
+    //[refreshControl endRefreshing];
 }
 
 - (void)viewDidUnload {
@@ -131,12 +129,34 @@ UIAlertView *loadingAlert;
 - (void)viewDidAppear:(BOOL)animated {
     
   [super viewDidAppear:animated];
-  // Sort Drive Files by modified date (descending order).
-  [self.driveFiles sortUsingComparator:^NSComparisonResult(GTLDriveFile *lhs,
-                                                           GTLDriveFile *rhs) {
-    return [rhs.modifiedDate.date compare:lhs.modifiedDate.date];
-  }];
-  [self.tableView reloadData];
+    
+    if (self.isAuthorized) {
+        
+//        // Sort Drive Files by modified date (descending order).
+//        [self.driveFiles sortUsingComparator:^NSComparisonResult(GTLDriveFile *lhs,
+//                                                               GTLDriveFile *rhs) {
+//          return [rhs.modifiedDate.date compare:lhs.modifiedDate.date];
+//        }];
+//        [self.tableView reloadData];
+        
+        // Just going to call loadDriveFiles instead
+        [self loadDriveFiles];
+    }
+    else {
+        [self authButtonClicked:nil];
+    }
+}
+
+- (void)checkAuthentication {
+    
+    // Check for authorization.
+    GTMOAuth2Authentication *auth =
+    [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
+                                                          clientID:kClientId
+                                                      clientSecret:kClientSecret];
+    if ([auth canAuthorize]) {
+        [self isAuthorizedWithAuthentication:auth];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -328,7 +348,6 @@ UIAlertView *loadingAlert;
     NSData *fileContent = [fileText dataUsingEncoding:NSUTF8StringEncoding];
     GTLUploadParameters *uploadParameters = [GTLUploadParameters uploadParametersWithData:fileContent
                                                                                  MIMEType:@"text/plain"];
-    
     driveFile.title = title;
     
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesInsertWithObject:driveFile
@@ -453,7 +472,8 @@ UIAlertView *loadingAlert;
     
   [self dismissModalViewControllerAnimated:YES];
   if (error == nil) {
-    [self isAuthorizedWithAuthentication:auth];
+      [self isAuthorizedWithAuthentication:auth];
+      [self loadDriveFiles];
   }
 }
 
