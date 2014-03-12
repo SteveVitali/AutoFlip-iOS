@@ -10,12 +10,14 @@
 #import "SaveAsViewController.h"
 #import "CardDeckViewController.h"
 #import "PagedCardDeckViewController.h"
+#import <DropboxSDK/DBRestClient.h>
 
 @interface CreateCardsViewController : CardDeckViewController <UITextViewDelegate,
                                                                     UIScrollViewDelegate,
                                                                     UIAlertViewDelegate,
                                                                     SaveAsViewControllerDelegate,
-                                                                    UIGestureRecognizerDelegate>
+                                                                    UIGestureRecognizerDelegate,
+                                                                    DBRestClientDelegate>
 
 // Technically this is redundant, since these values are stored by sinstance variable presentation
 // But I need to pass the values from the UITextFields through the segue somehow

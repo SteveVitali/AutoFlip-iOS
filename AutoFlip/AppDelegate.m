@@ -23,18 +23,32 @@
                                           [NSNumber numberWithFloat:0.5f], @"pointOneConstant",
                                           nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
+    
+    //Dropbox
+    DBSession *dbSession = [[DBSession alloc]
+                            initWithAppKey:@"bq6mrrr7dinh2si"
+                            appSecret:@"oo4jwvush1fzufw"
+                            root:kDBRootDropbox]; // either kDBRootAppFolder or kDBRootDropbox
+    [DBSession setSharedSession:dbSession];
     return YES;
 }
 
 #pragma mark - Dropbox Drop-ins Chooser hook
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
-  sourceApplication:(NSString *)source annotation:(id)annotation
-{
+  sourceApplication:(NSString *)source annotation:(id)annotation {
     
     if ([[DBChooser defaultChooser] handleOpenURL:url]) {
         // This was a Chooser response and handleOpenURL automatically ran the
         // completion block
+        return YES;
+    }
+    
+    if ([[DBSession sharedSession] handleOpenURL:url]) {
+        if ([[DBSession sharedSession] isLinked]) {
+            NSLog(@"App linked successfully!");
+            // At this point you can start making API calls
+        }
         return YES;
     }
     

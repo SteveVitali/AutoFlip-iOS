@@ -353,7 +353,7 @@ UIAlertView *loadingAlert;
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesInsertWithObject:driveFile
                                                        uploadParameters:uploadParameters];
     
-    UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Saving file"
+    UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Saving file to Drive..."
                                                              delegate:self];
     
     [self.driveService executeQuery:query

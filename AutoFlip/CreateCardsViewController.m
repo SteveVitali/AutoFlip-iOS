@@ -15,16 +15,11 @@
 #import "MZFormSheetController.h"
 #import "KxMenu.h"
 #import "UITextView+AutoResizeFont.h"
+#import "DrEditUtilities.h"
 
-@interface CreateCardsViewController () {
-    
-    float kbHeight;
-    // For the saving as
-    MZFormSheetController *saveAsFormSheet;
-    SaveAsViewController  *saveAsViewController;
+@interface CreateCardsViewController ()
 
-    UIToolbar *toolbar;
-}
+@property (strong, nonatomic) DBRestClient *restClient;
 - (void)saveAndExit;
 - (void)saveAs;
 - (void)exportCards;
@@ -35,6 +30,14 @@
     NSArray *kxSaveMenuItems;
     NSArray *kxExportMenuItems;
     NSArray *kxActionsMenuItems;
+    
+    float kbHeight;
+    // For the saving as
+    MZFormSheetController *saveAsFormSheet;
+    SaveAsViewController  *saveAsViewController;
+    
+    UIToolbar *toolbar;
+    UIAlertView *alert;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -95,6 +98,11 @@
 //    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedDown)];
 //    swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
 //    [self.textArea addGestureRecognizer:swipeDown];
+    
+    self.restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
+    self.restClient.delegate = self;
+    
+    NSLog(@"%@", [DBSession sharedSession]);
 }
 
 - (void)swipedDown {
@@ -417,6 +425,38 @@
 
 - (void)exportPresentationToDropbox {
     
+    if (![[DBSession sharedSession] isLinked]) {
+        [[DBSession sharedSession] linkFromController:self];
+    }
+    
+    // Write a file to the local documents directory
+    NSString *text = [self.presentation getPresentationInTextFormat];
+    NSString *filename = [NSString stringWithFormat:@"%@.txt", self.presentation.title];
+    NSString *localDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *localPath = [localDir stringByAppendingPathComponent:filename];
+    [text writeToFile:localPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    
+    // Upload file to Dropbox
+    NSString *destDir = @"/";
+    [self.restClient uploadFile:filename toPath:destDir withParentRev:nil fromPath:localPath];
+    
+    alert = [DrEditUtilities showLoadingMessageWithTitle:@"Saving file to Dropbox..."
+                                                             delegate:self];
+}
+
+- (void)restClient:(DBRestClient *)client uploadedFile:(NSString *)destPath
+              from:(NSString *)srcPath metadata:(DBMetadata *)metadata {
+    
+    [alert dismissWithClickedButtonIndex:0 animated:YES];
+    
+    destPath = [destPath stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+    [DrEditUtilities showErrorMessageWithTitle:[NSString stringWithFormat:@"'%@' successfully uploaded to Dropbox!",destPath] message:nil delegate:self];
+}
+
+- (void)restClient:(DBRestClient *)client uploadFileFailedWithError:(NSError *)error {
+    
+    [alert dismissWithClickedButtonIndex:0 animated:YES];
+    [DrEditUtilities showErrorMessageWithTitle:@"Upload failed :(" message:nil delegate:self];
 }
 
 - (void) popToRoot {
