@@ -26,6 +26,7 @@
 #import <MobileCoreServices/UTType.h>
 #import "LibraryAPI.h"
 #import "UITableViewCell+FlatUI.h"
+#import "MBProgressHUD.h"
 
 // Constants used for OAuth 2.0 authorization.
 static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
@@ -341,7 +342,7 @@ UIAlertView *loadingAlert;
     NSLog(@"%@",result);
 }
 
-- (void)uploadTextFileToGoogleDrive:(NSString*)fileText title:(NSString *)title {
+- (void)uploadTextFileToGoogleDrive:(NSString*)fileText title:(NSString *)title fromController:(UIViewController *)controller {
     
     GTLDriveFile *driveFile = [[GTLDriveFile alloc] init];
     
@@ -353,12 +354,16 @@ UIAlertView *loadingAlert;
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesInsertWithObject:driveFile
                                                        uploadParameters:uploadParameters];
     
-    UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Saving file to Drive..."
-                                                             delegate:self];
+    //UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Saving file to Drive..."
+    //                                                         delegate:self];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:controller.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Uploading to Drive..";
     
     [self.driveService executeQuery:query
                   completionHandler:^(GTLServiceTicket *ticket, GTLDriveFile *updatedFile, NSError *error) {
-        [alert dismissWithClickedButtonIndex:0 animated:YES];
+        //[alert dismissWithClickedButtonIndex:0 animated:YES];
+        [MBProgressHUD hideHUDForView:controller.view animated:YES];
 
         if (error == nil) {
             NSLog(@"File uploaded successfully!");
@@ -487,11 +492,41 @@ UIAlertView *loadingAlert;
 
 - (void)loadDriveFiles {
     
+    // Not sure how to tell the query I want to download two MIME types, so I'm just executing it twice for now
+    GTLQueryDrive *query1 = [GTLQueryDrive queryForFilesList];
+    query1.q = @"mimeType = 'text/plain'";
+    
+    //UIAlertView *alert1 = [DrEditUtilities showLoadingMessageWithTitle:@"Loading text documents" delegate:self];
+    // Replace with MBProgressHUD
+    MBProgressHUD *hud2 = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud2.mode = MBProgressHUDModeIndeterminate;
+    hud2.labelText = @"Loading text files...";
+    
+    [self.driveService executeQuery:query1 completionHandler:^(GTLServiceTicket *ticket,
+                                                               GTLDriveFileList *files,
+                                                               NSError *error) {
+        //[alert1 dismissWithClickedButtonIndex:0 animated:YES];
+        hud2.labelText = @"Loading presentations...";
+        
+        if (error == nil) {
+            [self.driveFiles addObjectsFromArray:files.items];
+            [self.tableView reloadData];
+            NSLog(@"num items: %d",self.driveFiles.count);
+        } else {
+            NSLog(@"An error occurred: %@", error);
+            [DrEditUtilities showErrorMessageWithTitle:@"Unable to load files"
+                                               message:[error description]
+                                              delegate:self];
+        }
+    }];
+    
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
     //query.q = @"mimeType = 'text/plain'";
     query.q = @"mimeType = 'application/vnd.google-apps.presentation'";
-    UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading presentations..."
-                                                             delegate:self];
+    
+//    UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading presentations..."
+//                                                             delegate:self];
+    
     if (self.driveFiles == nil) {
         self.driveFiles = [[NSMutableArray alloc] init];
     }
@@ -500,7 +535,9 @@ UIAlertView *loadingAlert;
     [self.driveService executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
                                                               GTLDriveFileList *files,
                                                               NSError *error) {
-        [alert dismissWithClickedButtonIndex:0 animated:YES];
+        //[alert dismissWithClickedButtonIndex:0 animated:YES];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
         if (error == nil) {
             [self.driveFiles addObjectsFromArray:files.items];
             [self.tableView reloadData];
@@ -513,26 +550,7 @@ UIAlertView *loadingAlert;
         }
     }];
     
-    // Not sure how to tell the query I want to download two MIME types, so I'm just executing it twice for now
-    GTLQueryDrive *query1 = [GTLQueryDrive queryForFilesList];
-    query1.q = @"mimeType = 'text/plain'";
-    UIAlertView *alert1 = [DrEditUtilities showLoadingMessageWithTitle:@"Loading text documents"
-                                                             delegate:self];
-    [self.driveService executeQuery:query1 completionHandler:^(GTLServiceTicket *ticket,
-                                                              GTLDriveFileList *files,
-                                                              NSError *error) {
-        [alert1 dismissWithClickedButtonIndex:0 animated:YES];
-        if (error == nil) {
-            [self.driveFiles addObjectsFromArray:files.items];
-            [self.tableView reloadData];
-            NSLog(@"num items: %d",self.driveFiles.count);
-        } else {
-            NSLog(@"An error occurred: %@", error);
-            [DrEditUtilities showErrorMessageWithTitle:@"Unable to load files"
-                                               message:[error description]
-                                              delegate:self];
-        }
-    }];
+
 }
 
 - (IBAction)didPressCancel:(id)sender {

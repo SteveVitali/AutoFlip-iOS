@@ -22,7 +22,7 @@
 
 - (IBAction)didPressCancel:(id)sender;
 
-- (void)uploadTextFileToGoogleDrive:(NSString*)fileText title:(NSString *)title;
+- (void)uploadTextFileToGoogleDrive:(NSString*)fileText title:(NSString *)title fromController:(UIViewController *)controller;
 
 @end
 

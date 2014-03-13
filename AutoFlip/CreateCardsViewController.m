@@ -420,7 +420,7 @@
     NSString *fileText = [self.presentation getPresentationInTextFormat];
     
     DriveFilesListViewController *testController = [[DriveFilesListViewController alloc] init];
-    [testController uploadTextFileToGoogleDrive:fileText title:self.presentation.title];
+    [testController uploadTextFileToGoogleDrive:fileText title:self.presentation.title fromController:self];
 }
 
 - (void)exportPresentationToDropbox {
@@ -439,23 +439,30 @@
     // Upload file to Dropbox
     NSString *destDir = @"/";
     [self.restClient uploadFile:filename toPath:destDir withParentRev:nil fromPath:localPath];
+
     
-    alert = [DrEditUtilities showLoadingMessageWithTitle:@"Saving file to Dropbox..."
-                                                             delegate:self];
+//    alert = [DrEditUtilities showLoadingMessageWithTitle:@"Saving file to Dropbox..."
+//                                                             delegate:self];
+    // Replace Drive utility alert with MBProgressHUD
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Uploading to Dropbox...";
 }
 
 - (void)restClient:(DBRestClient *)client uploadedFile:(NSString *)destPath
               from:(NSString *)srcPath metadata:(DBMetadata *)metadata {
     
-    [alert dismissWithClickedButtonIndex:0 animated:YES];
-    
-    destPath = [destPath stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+    //[alert dismissWithClickedButtonIndex:0 animated:YES];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+    destPath = [destPath stringByReplacingOccurrencesOfString:@"/" withString:@""];
     [DrEditUtilities showErrorMessageWithTitle:[NSString stringWithFormat:@"'%@' successfully uploaded to Dropbox!",destPath] message:nil delegate:self];
 }
 
 - (void)restClient:(DBRestClient *)client uploadFileFailedWithError:(NSError *)error {
     
-    [alert dismissWithClickedButtonIndex:0 animated:YES];
+    //[alert dismissWithClickedButtonIndex:0 animated:YES];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     [DrEditUtilities showErrorMessageWithTitle:@"Upload failed :(" message:nil delegate:self];
 }
 
