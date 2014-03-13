@@ -64,7 +64,7 @@
     [self.navigationItem setTitle:[self.presentation title]];
     
     pointOneConstant = [[[NSUserDefaults standardUserDefaults] objectForKey:@"pointOneConstant"] floatValue] ?
-                       [[[NSUserDefaults standardUserDefaults] objectForKey:@"pointOneConstant"] floatValue] : 0.3;
+                       [[[NSUserDefaults standardUserDefaults] objectForKey:@"pointOneConstant"] floatValue] : 0.4;
     NSLog(@"PointOneConstant: %f", pointOneConstant);
     
     [self reloadCard];

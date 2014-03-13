@@ -105,6 +105,8 @@ UIAlertView *loadingAlert;
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     //[self.tableView addSubview:refreshControl];
+    
+    [self.tableView setSeparatorColor:[designManager tableCellSeparatorColor]];
 }
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
@@ -207,7 +209,7 @@ UIAlertView *loadingAlert;
     [cell.backgroundView setBackgroundColor:[designManager tableCellBGColorNormal]];
     [cell.contentView setBackgroundColor:[designManager tableCellBGColorNormal]];
     
-    [self.tableView setSeparatorColor:[designManager tableCellSeparatorColor]];
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
     cell.cornerRadius = 5.f; //Optional
     if (self.tableView.style == UITableViewStyleGrouped) {
@@ -225,8 +227,11 @@ UIAlertView *loadingAlert;
     
     GTLDriveFile *file = [self.driveFiles objectAtIndex:indexPath.row];
     
-    loadingAlert = [DrEditUtilities showLoadingMessageWithTitle:@"Importing presentation..." delegate:self];
-
+    //loadingAlert = [DrEditUtilities showLoadingMessageWithTitle:@"Importing presentation..." delegate:self];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Importing presentation...";
+    
     [self downloadFileContent:file];
 }
 
@@ -305,7 +310,9 @@ UIAlertView *loadingAlert;
                         format:@"%@", error];
         } else {
             NSLog(@"%@ downloaded successfully!", file.title);
-            [loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
+            //[loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
             [self driveFileDidDownloadWithData:data andName:file.title andMimeType:file.mimeType];
         }
     }];
@@ -498,15 +505,15 @@ UIAlertView *loadingAlert;
     
     //UIAlertView *alert1 = [DrEditUtilities showLoadingMessageWithTitle:@"Loading text documents" delegate:self];
     // Replace with MBProgressHUD
-    MBProgressHUD *hud2 = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud2.mode = MBProgressHUDModeIndeterminate;
-    hud2.labelText = @"Loading text files...";
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Loading text files...";
     
     [self.driveService executeQuery:query1 completionHandler:^(GTLServiceTicket *ticket,
                                                                GTLDriveFileList *files,
                                                                NSError *error) {
         //[alert1 dismissWithClickedButtonIndex:0 animated:YES];
-        hud2.labelText = @"Loading presentations...";
+        hud.labelText = @"Loading presentations...";
         
         if (error == nil) {
             [self.driveFiles addObjectsFromArray:files.items];
@@ -520,9 +527,9 @@ UIAlertView *loadingAlert;
         }
     }];
     
-    GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
+    GTLQueryDrive *query2 = [GTLQueryDrive queryForFilesList];
     //query.q = @"mimeType = 'text/plain'";
-    query.q = @"mimeType = 'application/vnd.google-apps.presentation'";
+    query2.q = @"mimeType = 'application/vnd.google-apps.presentation'";
     
 //    UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading presentations..."
 //                                                             delegate:self];
@@ -532,7 +539,7 @@ UIAlertView *loadingAlert;
     }
     [self.driveFiles removeAllObjects];
     
-    [self.driveService executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
+    [self.driveService executeQuery:query2 completionHandler:^(GTLServiceTicket *ticket,
                                                               GTLDriveFileList *files,
                                                               NSError *error) {
         //[alert dismissWithClickedButtonIndex:0 animated:YES];

@@ -52,6 +52,9 @@
     
     NSInteger selectedCellIndex;
     UIView *dummyView;
+    
+    int kREMenuItemHeightNormal;
+    int kREMenuItemHeightSearch;
 }
 
 @end
@@ -201,6 +204,10 @@
     dropdown.highlightedTextColor       = [UIColor silverColor];
     dropdown.highlightedTextShadowColor = [UIColor clearColor];
     dropdown.waitUntilAnimationIsComplete = YES;
+    
+    // Init constants to keep track of item height for switching between search results and normal tableview
+    kREMenuItemHeightNormal = dropdown.itemHeight;
+    kREMenuItemHeightSearch = dropdown.itemHeight - 16;
 }
 
 // For the sidebar
@@ -422,7 +429,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     }
 }
 
-- (UITableViewCell *)tableView:(FMMoveTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (ChooseCardsTableViewCell *)tableView:(FMMoveTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
     Presentation *presentation;
@@ -488,7 +495,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     }
     
     //[self showPresentOrEditKxMenu];
-    [self showPresentOrEditREMenuFromCellAtIndexPath:indexPath];
+    [self showPresentOrEditREMenuFromCellAtIndexPath:indexPath fromTableView:tableView];
     
     // Below: code from when the home screen was the ViewController class, which had
     // edit and present buttons, which took you to this controller but with a different "chooserType"
@@ -500,16 +507,16 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 //    }
 }
 
-- (void)showPresentOrEditREMenuFromCellAtIndexPath:(NSIndexPath *)indexPath {
+- (void)showPresentOrEditREMenuFromCellAtIndexPath:(NSIndexPath *)indexPath fromTableView:(UITableView *)tableView{
     
-    CGSize table = self.tableView.contentSize;
+    CGSize table = tableView.contentSize;
 
     if (self.presentOrEditDropdown.isOpen) {
         // If they're clicking the same cell that was selected before, just close it and return
         if (selectedCellIndex == indexPath.row) {
             [self.presentOrEditDropdown closeWithCompletion:^{
                 [dummyView removeFromSuperview];
-                self.tableView.contentSize = CGSizeMake(table.width, table.height - dummyView.frame.size.height);
+                tableView.contentSize = CGSizeMake(table.width, table.height - dummyView.frame.size.height);
             }];
             return;
         }
@@ -518,7 +525,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
         else {
             [self.presentOrEditDropdown closeWithCompletion:^{
                 [dummyView removeFromSuperview];
-                self.tableView.contentSize = CGSizeMake(table.width, table.height - dummyView.frame.size.height);
+                tableView.contentSize = CGSizeMake(table.width, table.height - dummyView.frame.size.height);
             }];
             return;
         }
@@ -526,7 +533,14 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     // Reset the selectedCellIndex
     selectedCellIndex = indexPath.row;
     
-    ChooseCardsTableViewCell *cell = (ChooseCardsTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    ChooseCardsTableViewCell *cell = (ChooseCardsTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    
+    //
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        self.presentOrEditDropdown.itemHeight = kREMenuItemHeightSearch;
+    } else {
+        self.presentOrEditDropdown.itemHeight = kREMenuItemHeightNormal;
+    }
     
     // Initialize a dummy view of the cell width and some number of pixels in height.
     // Position it directly below the bottom of the cell being selected
@@ -534,11 +548,11 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
                                                          cell.frame.origin.y + cell.frame.size.height,
                                                          cell.frame.size.width,
                                                          self.presentOrEditDropdown.itemHeight * self.presentOrEditDropdown.items.count + 16)];
-    [self.tableView addSubview:dummyView];
+    [tableView addSubview:dummyView];
     [self.presentOrEditDropdown showInView:dummyView];
     
-    self.tableView.contentSize = CGSizeMake(table.width, table.height + dummyView.frame.size.height);
-    [self.tableView scrollRectToVisible:dummyView.frame animated:YES];
+    tableView.contentSize = CGSizeMake(table.width, table.height + dummyView.frame.size.height);
+    [tableView scrollRectToVisible:dummyView.frame animated:YES];
 }
 
 - (void)showPresentOrEditKxMenu {
