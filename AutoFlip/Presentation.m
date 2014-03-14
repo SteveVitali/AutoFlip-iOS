@@ -146,6 +146,7 @@
     for (NSString *slide in slides) {
         
         NSMutableArray *bullets = [NSMutableArray arrayWithArray:[slide componentsSeparatedByString:@"\n"]];
+        
         Notecard *notecard = [[Notecard alloc] initWithBullets:bullets];
         // Fix glitch that causes extra card with just a bullet, a space, and a return character in it
         if (![notecard.text isEqualToString:@"\u2022 \n"]) {

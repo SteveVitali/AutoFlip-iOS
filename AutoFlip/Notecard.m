@@ -82,10 +82,14 @@
 
 - (NSString *)getTextInBulletFormat {
     
-    for (int i=0; i<[self.bullets count]; i++) {
+    for (int i=0; i<[self.bullets count]-1; i++) {
         [self.bullets setObject:[NSString stringWithFormat:@"\u2022 %@\n",
                                  [self.bullets objectAtIndex:i]] atIndexedSubscript:i];
     }
+    // The last bullet shouldn't have a "\n" at the end
+    [self.bullets setObject:[NSString stringWithFormat:@"\u2022 %@",
+                             [self.bullets objectAtIndex:[self.bullets count]-1]] atIndexedSubscript:[self.bullets count]-1];
+    
     return [self.bullets componentsJoinedByString:@""];
 }
 
