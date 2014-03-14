@@ -33,5 +33,6 @@
 - (NSString *)getPresentationInTextFormat;
 + (Presentation *)getPresentationFromPPTXData:(NSData *)data withName:(NSString *)name fromService:(NSString *)service;
 + (Presentation *)getPresentationFromTextFileData:(NSData *)data andName:(NSString *)name fromService:(NSString *)service;
++ (Presentation *)getPresentationFromText:(NSString *)text name:(NSString *)name description:(NSString *)description service:(NSString *)service;
 
 @end

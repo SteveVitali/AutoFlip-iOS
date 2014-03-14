@@ -143,12 +143,12 @@
     
     if ([segue.identifier isEqualToString:@"choosePresentationToPresent"]) {
         
-        ChooseCardsViewController *controller = (ChooseCardsViewController *)[segue destinationViewController];
+        //ChooseCardsViewController *controller = (ChooseCardsViewController *)[segue destinationViewController];
         //controller.chooserType = @"present";
     }
     else if ([segue.identifier isEqualToString:@"choosePresentationToEdit"]) {
         
-        ChooseCardsViewController *controller = (ChooseCardsViewController *)[segue destinationViewController];
+        //ChooseCardsViewController *controller = (ChooseCardsViewController *)[segue destinationViewController];
         //controller.chooserType = @"edit";
     }
     else if ([segue.identifier isEqualToString:@"newCardDeck"]) {
@@ -259,6 +259,11 @@
                                            message:@"Try importing a .pptx file instead."
                                           delegate:self];
     }
+}
+
+// Putting this here to get rid of the yellow issue alerts
+- (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name andMimeType:(NSString *)mimeType {
+    
 }
 
 - (void)driveFileDidDownloadWithData:(NSData *)data andName:(NSString *)name {

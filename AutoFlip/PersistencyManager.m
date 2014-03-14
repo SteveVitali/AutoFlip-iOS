@@ -32,14 +32,33 @@
             //we need some motherfuckin' presentations
             //going to initialize dummy presentation for now
             self.presentations = [[NSMutableArray alloc] init];
-            for(int i=0; i<24; i++) {
-                [self addPresentation:[[Presentation alloc] initWithRandomNotes:i+1] atIndex:i];
-            }
+//            for(int i=0; i<24; i++) {
+//                [self addPresentation:[[Presentation alloc] initWithRandomNotes:i+1] atIndex:i];
+//            }
+            
+            [self addPresentation:[self getAutoFlipTourPresentation] atIndex:0];
+            
             [self savePresentations];
         }
         //NSLog(@"%@",[[[[presentations objectAtIndex:0] notecards] objectAtIndex:0] text]);
     }
     return self;
+}
+
+- (Presentation *)getAutoFlipTourPresentation {
+    
+    Presentation *tour = [Presentation getPresentationFromText:@"Tap the \"Present\" option to present a deck of notecards.\nBy default, AutoFlip will use speech recognition to flip your cards automatically.\nIn the settings page, you can calibrate the speech recognition, or turn it off altogether.\n\nTap the \"Edit\" option to open the card editor.\nThere you can edit, insert, or delete cards from the deck.\nDouble tap to hide the keyboard, and swipe left or right to navigate between cards.\n\nYou can export your cards to Google Drive or Dropbox from the card editor.\nYou can also import existing presentations or text files from Drive or Dropbox, and AutoFlip will automatically convert them to decks of notecards for you." name:@"AutoFlip Tour" description:@"Learn how to use AutoFlip" service:@"custom"];
+    
+    // Hardcoding becuase w/o it it will save twice.
+    tour.arrayIndex = [NSNumber numberWithInt:1];
+    
+    return tour;
+}
+
+- (Presentation *)getTestPresentation {
+    
+    Presentation *test = [Presentation getPresentationFromText:@"" name:@"Test Presentation" description:@"Empty Test Presentation" service:@"custom"];
+    return test;
 }
 
 - (NSMutableArray *)getPresentations {

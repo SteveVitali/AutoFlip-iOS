@@ -28,8 +28,6 @@
 - (void)cancelSave:(SaveAsViewController *)saveasViewController;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
-@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
-
 - (IBAction)saveCards:(id)sender;
 - (IBAction)didPressActionsButton:(id)sender;
 

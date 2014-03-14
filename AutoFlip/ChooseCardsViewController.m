@@ -89,11 +89,11 @@
     self.navigationItem.title = @"Deck Library";
     
     //scale 4.0 = 1/4 original image size
-    drive = [designManager scaleImage:[UIImage imageNamed:@"drive.png"] withScale:10.0];
-    dropbox=[designManager scaleImage:[UIImage imageNamed:@"dropbox.png"] withScale:10.0];
-    custom =[designManager scaleImage:[UIImage imageNamed:@"custom.png"] withScale:5.0];
-    present=[designManager scaleImage:[UIImage imageNamed:@"present.png"] withScale:5.0];
-    edit   =[designManager scaleImage:[UIImage imageNamed:@"edit.png"] withScale:5.0];
+    drive = [designManager scaleImage:[UIImage imageNamed:@"drive.png"] withScale:12.0];
+    dropbox=[designManager scaleImage:[UIImage imageNamed:@"dropbox.png"] withScale:12.0];
+    custom =[designManager scaleImage:[UIImage imageNamed:@"custom.png"] withScale:6.0];
+    present=[designManager scaleImage:[UIImage imageNamed:@"present.png"] withScale:6.0];
+    edit   =[designManager scaleImage:[UIImage imageNamed:@"edit.png"] withScale:6.0];
     
     //Set table colors
     [self.tableView setSeparatorColor:[designManager tableCellSeparatorColor]];
@@ -110,6 +110,14 @@
     
     [UIApplication sharedApplication].statusBarHidden = YES;
     [self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    if ([self.addDropdown isOpen]) {
+        
+        [self.addDropdown close];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -204,6 +212,7 @@
     dropdown.highlightedTextColor       = [UIColor silverColor];
     dropdown.highlightedTextShadowColor = [UIColor clearColor];
     dropdown.waitUntilAnimationIsComplete = YES;
+    //dropdown.animationDuration = .3;
     
     // Init constants to keep track of item height for switching between search results and normal tableview
     kREMenuItemHeightNormal = dropdown.itemHeight;

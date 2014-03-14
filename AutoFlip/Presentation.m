@@ -131,9 +131,33 @@
     NSString *allText = @"";
     
     for (Notecard *card in self.notecards) {
-        allText = [allText stringByAppendingString:[NSString stringWithFormat:@"%@\n",card.getTextFromBulletFormat]];
+        allText = [allText stringByAppendingString:[NSString stringWithFormat:@"%@\n\n",card.getTextFromBulletFormat]];
     }
     return allText;
+}
+
++ (Presentation *)getPresentationFromText:(NSString *)text name:(NSString *)name description:(NSString *)description service:(NSString *)service {
+    
+    Presentation *presentation = [[Presentation alloc] init];
+    
+    NSMutableArray *slides = [NSMutableArray arrayWithArray:[text componentsSeparatedByString:@"\n\n"]];
+    
+    NSMutableArray *notecards = [[NSMutableArray alloc] init];
+    for (NSString *slide in slides) {
+        
+        NSMutableArray *bullets = [NSMutableArray arrayWithArray:[slide componentsSeparatedByString:@"\n"]];
+        Notecard *notecard = [[Notecard alloc] initWithBullets:bullets];
+        // Fix glitch that causes extra card with just a bullet, a space, and a return character in it
+        if (![notecard.text isEqualToString:@"\u2022 \n"]) {
+            [notecards addObject:notecard];
+        }
+    }
+    presentation.notecards = notecards;
+    presentation.title = name;
+    presentation.description = description;
+    presentation.type = service;
+    
+    return presentation;
 }
 
 + (Presentation *)getPresentationFromTextFileData:(NSData *)data andName:(NSString *)name fromService:(NSString *)service {
@@ -210,7 +234,7 @@
         
         NSString *zipPath = filePath;
         
-        [SSZipArchive unzipFileAtPath:zipPath toDestination:directoryPath delegate:self];
+        [SSZipArchive unzipFileAtPath:zipPath toDestination:directoryPath delegate:(id<SSZipArchiveDelegate>)self];
         
         NSString *slidesPath = [directoryPath stringByAppendingPathComponent:@"/ppt/slides"];
         

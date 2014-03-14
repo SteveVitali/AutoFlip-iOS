@@ -93,7 +93,7 @@
     // despite the text getting set above to a bullet and a space,
     // since the reloadCard method reloads the text to be the notecard text which is null.
     //[self reloadCard];
-    [self.toolbar setHidden:YES];
+    [toolbar setHidden:YES];
     
 //    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedDown)];
 //    swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
