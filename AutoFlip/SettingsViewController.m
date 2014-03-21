@@ -9,6 +9,7 @@
 #import "SettingsViewController.h"
 #import "LibraryAPI.h"
 #import "RESideMenu.h"
+#import <iAd/iAd.h>
 
 @interface SettingsViewController ()
 
@@ -52,6 +53,8 @@
     [self.tableView reloadData];
     
     self.transitionController = [[TransitionDelegate alloc] init];
+    
+    self.canDisplayBannerAds = YES;
 }
 
 // For the sidebar

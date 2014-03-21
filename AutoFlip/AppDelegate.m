@@ -19,7 +19,7 @@
     // Override point for customization after application launch.
     // Register NSUserDefaults
     NSDictionary *userDefaultsDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-                                          [NSNumber numberWithBool:YES], @"speechRecognition",
+                                          [NSNumber numberWithBool:NO], @"speechRecognition",
                                           [NSNumber numberWithFloat:0.5f], @"pointOneConstant",
                                           nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];

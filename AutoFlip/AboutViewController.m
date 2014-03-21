@@ -10,6 +10,7 @@
 #import "RESideMenu.h"
 #import "LibraryAPI.h"
 #import "MBProgressHUD.h"
+#import <iAd/iAd.h>
 
 @interface AboutViewController () {
     
@@ -58,6 +59,8 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapScreen)];
     tapGesture.numberOfTapsRequired = 1;
     tapGesture.delegate = self;
+    
+    self.canDisplayBannerAds = YES;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {

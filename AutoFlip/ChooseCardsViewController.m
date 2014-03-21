@@ -34,6 +34,7 @@
 #import "MBProgressHUD.h"
 #import "MyUIStoryboardSegue.h"
 #import <QuartzCore/QuartzCore.h>
+#import <iAd/iAd.h>
 
 @interface ChooseCardsViewController ()
 {
@@ -110,6 +111,8 @@
     
     [UIApplication sharedApplication].statusBarHidden = YES;
     [self setNeedsStatusBarAppearanceUpdate];
+    
+    self.canDisplayBannerAds = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

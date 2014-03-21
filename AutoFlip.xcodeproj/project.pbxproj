@@ -11,6 +11,7 @@
 		111A0C7D1895B5E5009D5E58 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 118C196A1891D162007EB10E /* libz.dylib */; };
 		11229DF118A0143600B6F1C3 /* autoflip.png in Resources */ = {isa = PBXBuildFile; fileRef = 11229DF018A0143600B6F1C3 /* autoflip.png */; };
 		11229DF418A03BF400B6F1C3 /* paper-portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 11229DF218A03BF400B6F1C3 /* paper-portrait.png */; };
+		1152F2BE18DCF478001D6506 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1152F2BD18DCF478001D6506 /* iAd.framework */; };
 		115A929618A541130002353D /* FMMoveTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A929318A541130002353D /* FMMoveTableView.m */; };
 		115A929718A541130002353D /* FMMoveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A929518A541130002353D /* FMMoveTableViewCell.m */; };
 		115A929A18A551720002353D /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A929818A551720002353D /* menu-icon.png */; };
@@ -20,7 +21,6 @@
 		115A92A518A55D3E0002353D /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A92A218A55D3E0002353D /* UIViewController+RESideMenu.m */; };
 		115A92A718A55F940002353D /* Stars@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92A618A55F940002353D /* Stars@2x.png */; };
 		115A92AA18A55FD00002353D /* SidebarMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A92A918A55FD00002353D /* SidebarMenuViewController.m */; };
-		115A92B018A58E9E0002353D /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A92AF18A58E9E0002353D /* HelpViewController.m */; };
 		115A92B318A593AF0002353D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 115A92B218A593AF0002353D /* SettingsViewController.m */; };
 		115A92B718A5A5910002353D /* SettingsSpeechToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115A92B618A5A5910002353D /* SettingsSpeechToggleCell.xib */; };
 		115A92B918A5A5D50002353D /* SettingsCalibrationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115A92B818A5A5D50002353D /* SettingsCalibrationCell.xib */; };
@@ -167,6 +167,7 @@
 		1102AA6E18C8EF65000390D1 /* NotecardTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotecardTextView.m; sourceTree = "<group>"; };
 		11229DF018A0143600B6F1C3 /* autoflip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoflip.png; sourceTree = "<group>"; };
 		11229DF218A03BF400B6F1C3 /* paper-portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paper-portrait.png"; sourceTree = "<group>"; };
+		1152F2BD18DCF478001D6506 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		115A929218A541130002353D /* FMMoveTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMMoveTableView.h; sourceTree = "<group>"; };
 		115A929318A541130002353D /* FMMoveTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMMoveTableView.m; sourceTree = "<group>"; };
 		115A929418A541130002353D /* FMMoveTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMMoveTableViewCell.h; sourceTree = "<group>"; };
@@ -182,8 +183,6 @@
 		115A92A618A55F940002353D /* Stars@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stars@2x.png"; sourceTree = "<group>"; };
 		115A92A818A55FD00002353D /* SidebarMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarMenuViewController.h; sourceTree = "<group>"; };
 		115A92A918A55FD00002353D /* SidebarMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarMenuViewController.m; sourceTree = "<group>"; };
-		115A92AE18A58E9E0002353D /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
-		115A92AF18A58E9E0002353D /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		115A92B118A593AF0002353D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		115A92B218A593AF0002353D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		115A92B618A5A5910002353D /* SettingsSpeechToggleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsSpeechToggleCell.xib; sourceTree = "<group>"; };
@@ -482,6 +481,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1152F2BE18DCF478001D6506 /* iAd.framework in Frameworks */,
 				111A0C7D1895B5E5009D5E58 /* libz.dylib in Frameworks */,
 				11F0C9C71880F82E0056CD66 /* MobileCoreServices.framework in Frameworks */,
 				11F0C9C51880F81E0056CD66 /* SystemConfiguration.framework in Frameworks */,
@@ -630,6 +630,7 @@
 		11711F8F1871F2CF00792D36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1152F2BD18DCF478001D6506 /* iAd.framework */,
 				BC45697D189E123A00C65F8B /* libGTLTouchStaticLib.a */,
 				118C196A1891D162007EB10E /* libz.dylib */,
 				11F0C9C61880F82E0056CD66 /* MobileCoreServices.framework */,
@@ -749,8 +750,6 @@
 		1193DFF018A6A77700390295 /* InfoControllers */ = {
 			isa = PBXGroup;
 			children = (
-				115A92AE18A58E9E0002353D /* HelpViewController.h */,
-				115A92AF18A58E9E0002353D /* HelpViewController.m */,
 				1193DFF118A6A79F00390295 /* AboutViewController.h */,
 				1193DFF218A6A79F00390295 /* AboutViewController.m */,
 			);
@@ -1325,7 +1324,6 @@
 				1193DFF318A6A79F00390295 /* AboutViewController.m in Sources */,
 				118C19691891D152007EB10E /* SSZipArchive.m in Sources */,
 				11CE2C7E18A4B13B006DC341 /* UIImage+REFrostedViewController.m in Sources */,
-				115A92B018A58E9E0002353D /* HelpViewController.m in Sources */,
 				1193E00718A6DD3C00390295 /* MBProgressHUD.m in Sources */,
 				11D11F971878F0510081B1CB /* UIToolbar+FlatUI.m in Sources */,
 				11D11F871878F0510081B1CB /* FUICellBackgroundView.m in Sources */,

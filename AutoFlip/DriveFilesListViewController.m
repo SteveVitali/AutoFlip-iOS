@@ -27,6 +27,7 @@
 #import "LibraryAPI.h"
 #import "UITableViewCell+FlatUI.h"
 #import "MBProgressHUD.h"
+#import <iAd/iAd.h>
 
 // Constants used for OAuth 2.0 authorization.
 static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
@@ -107,6 +108,8 @@ UIAlertView *loadingAlert;
     //[self.tableView addSubview:refreshControl];
     
     [self.tableView setSeparatorColor:[designManager tableCellSeparatorColor]];
+    
+    self.canDisplayBannerAds = YES;
 }
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
