@@ -60,7 +60,7 @@
     tapGesture.numberOfTapsRequired = 1;
     tapGesture.delegate = self;
     
-    self.canDisplayBannerAds = YES;
+    self.canDisplayBannerAds = [[[NSUserDefaults standardUserDefaults] objectForKey:@"showAds"] boolValue];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {

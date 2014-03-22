@@ -94,7 +94,7 @@
     if ([words count] ==0) {
         lmWords = @[@"THE"];
     } else {
-        lmWords = words;
+        lmWords = [self removeUnimportantWords:words];
     }
     
     NSString *name = @"NameIWantForMyLanguageModelFiles";
@@ -122,9 +122,29 @@
     [self.pocketsphinxController setSecondsOfSilenceToDetect:.2];
     
     [self.pocketsphinxController startListeningWithLanguageModelAtPath:lmPath dictionaryAtPath:dicPath acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:NO]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" to perform Spanish recognition instead of English.
+}
+
+- (NSArray *)removeUnimportantWords:(NSArray *)words {
     
-    NSLog(@"All words: %@", self.allWords);
+    NSMutableArray *newWords = [[NSMutableArray alloc] initWithArray:words];
+
+    NSString *wordsToRemove = @"A all also an and are as at back be but by can come could day do even for from get give go have he her him his how I if in into it its just know like make me most my new no not now of on one or our out she since so some take than that the their them then there these they think this time to too two um up us use want way we well what when which who will with work would you your";
+    wordsToRemove = [wordsToRemove uppercaseString];
+    NSLog(@"remove these: %@", wordsToRemove);
+    NSArray *unimportantWords = [wordsToRemove componentsSeparatedByString:@" "];
     
+    NSLog(@"Before filter: %@", newWords);
+    for (int i=0; i<[newWords count]; i++) {
+        
+        if ([unimportantWords containsObject:[NSString stringWithString:[newWords objectAtIndex:i]]]) {
+            
+            [newWords removeObjectAtIndex:i];
+            i--;
+        }
+    }
+    NSLog(@"After filter: %@", newWords);
+    
+    return [[NSArray alloc] initWithArray:newWords];
 }
 
 - (void)resetSpeechRecognitionForNewSlide {
@@ -151,7 +171,12 @@
 //    }
 //    self.slideWords = [NSMutableSet setWithArray:words];
     
-    self.slideWords = [[NSMutableSet alloc] initWithSet:[Presentation getAllWordsFromCard:[self.presentation.notecards objectAtIndex:self.cardIndex]]];
+    NSSet *wordsSet = [Presentation getAllWordsFromCard:[self.presentation.notecards objectAtIndex:self.cardIndex]];
+
+    NSArray *wordsArray = [wordsSet allObjects];
+    NSArray *filteredWords = [self removeUnimportantWords:wordsArray];
+    
+    self.slideWords = [[NSMutableSet alloc] initWithArray:filteredWords];
     
     // Reset the spoken words array
     self.spokenWords = [[NSMutableSet alloc] init];

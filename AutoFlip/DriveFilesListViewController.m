@@ -109,7 +109,7 @@ UIAlertView *loadingAlert;
     
     [self.tableView setSeparatorColor:[designManager tableCellSeparatorColor]];
     
-    self.canDisplayBannerAds = YES;
+    self.canDisplayBannerAds = [[[NSUserDefaults standardUserDefaults] objectForKey:@"showAds"] boolValue];
 }
 
 - (void)refresh:(UIRefreshControl *)refreshControl {

@@ -10,6 +10,7 @@
 #import "CreateCardsViewController.h"
 #import "DrEditUtilities.h"
 #import "LibraryAPI.h"
+#import <iAd/iAd.h>
 
 @interface NewCardDeckViewController ()
 
@@ -42,6 +43,8 @@
     self.view.backgroundColor = [UIColor cloudsColor];
     
     [self.view setBackgroundColor:[[[LibraryAPI sharedInstance] designManager] viewControllerBGColor]];
+    
+    self.canDisplayBannerAds = [[[NSUserDefaults standardUserDefaults] objectForKey:@"showAds"] boolValue];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

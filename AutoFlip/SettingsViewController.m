@@ -54,7 +54,7 @@
     
     self.transitionController = [[TransitionDelegate alloc] init];
     
-    self.canDisplayBannerAds = YES;
+    self.canDisplayBannerAds = [[[NSUserDefaults standardUserDefaults] objectForKey:@"showAds"] boolValue];
 }
 
 // For the sidebar
@@ -101,7 +101,7 @@
 -(IBAction)didPressRemoveAds:(id)sender {
     
     SKProductsRequest *request= [[SKProductsRequest alloc]
-                                 initWithProductIdentifiers: [NSSet setWithObject: @"RemoveAdsProductID"]];
+                                 initWithProductIdentifiers: [NSSet setWithObject: @"RemoveAds"]];
     request.delegate = self;
     [request start];
 }

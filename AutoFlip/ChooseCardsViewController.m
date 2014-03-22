@@ -112,7 +112,7 @@
     [UIApplication sharedApplication].statusBarHidden = YES;
     [self setNeedsStatusBarAppearanceUpdate];
     
-    self.canDisplayBannerAds = YES;
+    self.canDisplayBannerAds = [[[NSUserDefaults standardUserDefaults] objectForKey:@"showAds"] boolValue];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
