@@ -100,7 +100,7 @@
 
 -(IBAction)didPressRemoveAds:(id)sender {
     
-    SKProductsRequest *request= [[SKProductsRequest alloc]
+    SKProductsRequest *request = [[SKProductsRequest alloc]
                                  initWithProductIdentifiers: [NSSet setWithObject: @"RemoveAds"]];
     request.delegate = self;
     [request start];
@@ -187,10 +187,11 @@
 
 - (void)provideContent:(NSString *)productIdentifier {
     
-    if ([productIdentifier isEqualToString:@"RemoveAdsProductID"]) {
+    if ([productIdentifier isEqualToString:@"RemoveAds"]) {
         
         // Set NSUserDefault "showAds" to false
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"showAds"];
+        self.canDisplayBannerAds = NO;
     }
     
     //[[[NSUserDefaults standardUserDefaults] objectForKey:@"speechRecognition"] boolValue]
