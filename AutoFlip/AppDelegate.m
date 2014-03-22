@@ -11,6 +11,7 @@
 #import <DBChooser/DBChooser.h>
 #import "LibraryAPI.h"
 #import "UIColor+FlatUI.h"
+#import <iAd/iAd.h>
 
 @implementation AppDelegate
 
@@ -21,6 +22,7 @@
     NSDictionary *userDefaultsDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                           [NSNumber numberWithBool:NO], @"speechRecognition",
                                           [NSNumber numberWithFloat:0.5f], @"pointOneConstant",
+                                          [NSNumber numberWithBool:YES], @"showAds",
                                           nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
     
@@ -30,6 +32,9 @@
                             appSecret:@"oo4jwvush1fzufw"
                             root:kDBRootDropbox]; // either kDBRootAppFolder or kDBRootDropbox
     [DBSession setSharedSession:dbSession];
+    
+    [UIViewController prepareInterstitialAds];
+    
     return YES;
 }
 

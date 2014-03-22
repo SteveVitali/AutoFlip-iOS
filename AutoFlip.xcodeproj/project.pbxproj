@@ -148,6 +148,9 @@
 		11F0C9C31880F8130056CD66 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C9C21880F8130056CD66 /* Security.framework */; };
 		11F0C9C51880F81E0056CD66 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C9C41880F81E0056CD66 /* SystemConfiguration.framework */; };
 		11F0C9C71880F82E0056CD66 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0C9C61880F82E0056CD66 /* MobileCoreServices.framework */; };
+		11F186BE18DDF46200192FF2 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F186BD18DDF46200192FF2 /* AssetsLibrary.framework */; };
+		11F186C018DDF46700192FF2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F186BF18DDF46700192FF2 /* StoreKit.framework */; };
+		11F186C218DDF9D000192FF2 /* RemoveAdsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11F186C118DDF9D000192FF2 /* RemoveAdsCell.xib */; };
 		BC456928189E105500C65F8B /* GTLDrive_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = BC456927189E105500C65F8B /* GTLDrive_Sources.m */; };
 		BC45697E189E123A00C65F8B /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC45697D189E123A00C65F8B /* libGTLTouchStaticLib.a */; };
 /* End PBXBuildFile section */
@@ -388,6 +391,9 @@
 		11F0C9C21880F8130056CD66 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		11F0C9C41880F81E0056CD66 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		11F0C9C61880F82E0056CD66 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		11F186BD18DDF46200192FF2 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		11F186BF18DDF46700192FF2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		11F186C118DDF9D000192FF2 /* RemoveAdsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemoveAdsCell.xib; sourceTree = "<group>"; };
 		11FC52711880F97300195730 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = "google-api-objectivec-client/Source/OAuth2/Touch/GTMOAuth2ViewTouch.xib"; sourceTree = SOURCE_ROOT; };
 		BC456927189E105500C65F8B /* GTLDrive_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLDrive_Sources.m; path = Drive/GTLDrive_Sources.m; sourceTree = "<group>"; };
 		BC45692A189E11F800C65F8B /* GTLBase64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GTLBase64.h; path = Drive/GTLBase64.h; sourceTree = "<group>"; };
@@ -481,6 +487,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11F186C018DDF46700192FF2 /* StoreKit.framework in Frameworks */,
+				11F186BE18DDF46200192FF2 /* AssetsLibrary.framework in Frameworks */,
 				1152F2BE18DCF478001D6506 /* iAd.framework in Frameworks */,
 				111A0C7D1895B5E5009D5E58 /* libz.dylib in Frameworks */,
 				11F0C9C71880F82E0056CD66 /* MobileCoreServices.framework in Frameworks */,
@@ -539,6 +547,7 @@
 		115A92B418A5A5540002353D /* SettingsTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				11F186C118DDF9D000192FF2 /* RemoveAdsCell.xib */,
 				1193E00818A6F0FE00390295 /* ResetDefaultsCell.xib */,
 				115A92B618A5A5910002353D /* SettingsSpeechToggleCell.xib */,
 				115A92B818A5A5D50002353D /* SettingsCalibrationCell.xib */,
@@ -630,6 +639,8 @@
 		11711F8F1871F2CF00792D36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11F186BF18DDF46700192FF2 /* StoreKit.framework */,
+				11F186BD18DDF46200192FF2 /* AssetsLibrary.framework */,
 				1152F2BD18DCF478001D6506 /* iAd.framework */,
 				BC45697D189E123A00C65F8B /* libGTLTouchStaticLib.a */,
 				118C196A1891D162007EB10E /* libz.dylib */,
@@ -1249,6 +1260,7 @@
 				11946E0D1894D20900A4D17A /* present.png in Resources */,
 				11F0C8801880AE710056CD66 /* DBChooser.bundle in Resources */,
 				1192497C1878F53100BD6868 /* Lato-HairlineItalic.ttf in Resources */,
+				11F186C218DDF9D000192FF2 /* RemoveAdsCell.xib in Resources */,
 				116FD861187B53F400BC4643 /* AcousticModelEnglish.bundle in Resources */,
 				1192497D1878F53100BD6868 /* Lato-Italic.ttf in Resources */,
 				119249771878F53100BD6868 /* Lato-Black.ttf in Resources */,

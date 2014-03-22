@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "TransitionDelegate.h"
+#import <StoreKit/StoreKit.h>
 
-@interface SettingsViewController : UITableViewController
+@interface SettingsViewController : UITableViewController <SKProductsRequestDelegate,SKPaymentTransactionObserver>
 
 @property (weak, nonatomic) IBOutlet UISwitch *toggleRecognitionSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *calibrateButton;
 @property (weak, nonatomic) IBOutlet UIButton *resetDefaultsButton;
+@property (weak, nonatomic) IBOutlet UIButton *removeAdsButton;
 
 // For transparent modal view controller
 @property (nonatomic, strong) TransitionDelegate *transitionController;
@@ -23,4 +25,6 @@
 - (IBAction)didPressCalibrate:(id)sender;
 - (IBAction)didToggleRecognitionSwitch:(id)sender;
 - (IBAction)didPressResetDefaults:(id)sender;
+
+-(IBAction)didPressRemoveAds:(id)sender;
 @end

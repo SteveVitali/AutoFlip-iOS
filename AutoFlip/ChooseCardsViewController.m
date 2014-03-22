@@ -238,12 +238,18 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([segue.identifier isEqualToString:@"startPresentation"]) {
-   
+    if ([segue.identifier isEqualToString:@"startPresentation1"]) {
+        
+        PresentationViewController *controller = (PresentationViewController *)[segue destinationViewController];
+        
+        controller.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
     }
     else if ([segue.identifier isEqualToString:@"editPresentation"]) {
         
         CreateCardsViewController *controller = (CreateCardsViewController *)[segue destinationViewController];
+        
+        controller.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
+        
         controller.presentation = chosenPresentation;
         // This should be changed/refactored at some point.
         controller.presentationTitle = chosenPresentation.title;
@@ -600,6 +606,9 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     
     // The "1" is for the PagedCardDeckViewController inherited PresentationViewController
     PresentationViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"presentationController1"];
+    
+    controller.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
+    
     MyUIStoryboardSegue *segue = [[MyUIStoryboardSegue alloc] initWithIdentifier:@"startPresentation1" source:self destination:controller];
     
     controller.presentation = chosenPresentation;

@@ -98,6 +98,104 @@
     NSLog(@"point one constant: %f", [[defaults objectForKey:@"pointOneConstant"] floatValue]);
 }
 
+-(IBAction)didPressRemoveAds:(id)sender {
+    
+    SKProductsRequest *request= [[SKProductsRequest alloc]
+                                 initWithProductIdentifiers: [NSSet setWithObject: @"RemoveAdsProductID"]];
+    request.delegate = self;
+    [request start];
+}
+
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+    
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    
+    NSArray *myProduct = response.products;
+    
+    if ([myProduct count]) {
+        NSLog(@"%@",[[myProduct objectAtIndex:0] productIdentifier]);
+        
+        //Since only one product, we do not need to choose from the array. Proceed directly to payment.
+        SKPayment *newPayment = [SKPayment paymentWithProduct:[myProduct objectAtIndex:0]];
+        
+        [[SKPaymentQueue defaultQueue] addPayment:newPayment];
+    } else {
+        NSLog(@"Something went wrong...");
+    }
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
+    
+    for (SKPaymentTransaction *transaction in transactions) {
+        
+        switch (transaction.transactionState) {
+                
+            case SKPaymentTransactionStatePurchased:
+                [self completeTransaction:transaction];
+                break;
+            case SKPaymentTransactionStateFailed:
+                [self failedTransaction:transaction];
+                break;
+            case SKPaymentTransactionStateRestored:
+                [self restoreTransaction:transaction];
+            default:
+                break;
+        }
+    }
+}
+
+- (void) completeTransaction: (SKPaymentTransaction *)transaction {
+    
+    NSLog(@"Transaction Completed");
+    // You can create a method to record the transaction.
+    // [self recordTransaction: transaction];
+    
+    // Make the update based on what was purchased and inform user.
+    [self provideContent: transaction.payment.productIdentifier];
+    
+    // Finally, remove the transaction from the payment queue.
+    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+}
+
+- (void) restoreTransaction: (SKPaymentTransaction *)transaction {
+    
+    NSLog(@"Transaction Restored");
+    
+    // Make the update based on what was purchased and inform user.
+    [self provideContent: transaction.payment.productIdentifier];
+    
+    // Finally, remove the transaction from the payment queue.
+    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+}
+
+- (void) failedTransaction: (SKPaymentTransaction *)transaction {
+    
+    //[activityIndicator stopAnimating];
+    if (transaction.error.code != SKErrorPaymentCancelled) {
+        
+        // Display an error here.
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Purchase Unsuccessful"
+                                                        message:@"Your purchase failed. Please try again."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    // Finally, remove the transaction from the payment queue.
+    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+}
+
+- (void)provideContent:(NSString *)productIdentifier {
+    
+    if ([productIdentifier isEqualToString:@"RemoveAdsProductID"]) {
+        
+        // Set NSUserDefault "showAds" to false
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"showAds"];
+    }
+    
+    //[[[NSUserDefaults standardUserDefaults] objectForKey:@"speechRecognition"] boolValue]
+}
+
 - (BOOL)shouldAutorotate {
     return NO;
 }
@@ -113,7 +211,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -122,7 +220,10 @@
     if ( section == 0 ) {
         return 2;
     }
-    else if ( section ==1 ) {
+    else if ( section == 1 ) {
+        return 1;
+    }
+    else if ( section == 2) {
         return 1;
     }
     return 0;
@@ -152,6 +253,10 @@
     else if (indexPath.section == 1) {
         CellIdentifier = @"Cell3";
         CellNib = @"ResetDefaultsCell";
+    }
+    else if (indexPath.section == 2) {
+        CellIdentifier = @"Cell4";
+        CellNib = @"RemoveAdsCell";
     }
 
     UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
