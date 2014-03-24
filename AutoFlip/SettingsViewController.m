@@ -98,6 +98,11 @@
     NSLog(@"point one constant: %f", [[defaults objectForKey:@"pointOneConstant"] floatValue]);
 }
 
+- (IBAction)didPressRestorePurchases:(id)sender {
+    
+    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}
+
 -(IBAction)didPressRemoveAds:(id)sender {
     
     SKProductsRequest *request = [[SKProductsRequest alloc]
@@ -197,6 +202,15 @@
     //[[[NSUserDefaults standardUserDefaults] objectForKey:@"speechRecognition"] boolValue]
 }
 
+- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue {
+    
+    NSLog(@"%d items restored", queue.transactions.count);
+
+    for (SKPaymentTransaction *transaction in queue.transactions) {
+        [self completeTransaction:transaction];
+    }
+}
+
 - (BOOL)shouldAutorotate {
     return NO;
 }
@@ -212,7 +226,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -222,7 +236,7 @@
         return 2;
     }
     else if ( section == 1 ) {
-        return 1;
+        return 2;
     }
     else if ( section == 2) {
         return 1;
@@ -252,12 +266,22 @@
     }
     
     else if (indexPath.section == 1) {
-        CellIdentifier = @"Cell3";
-        CellNib = @"ResetDefaultsCell";
+        
+        switch (indexPath.row) {
+            case 0:
+                CellIdentifier = @"Cell4";
+                CellNib = @"RemoveAdsCell";
+                break;
+            case 1:
+                CellIdentifier = @"Cell5";
+                CellNib = @"RestorePurchasesCell";
+                break;
+        }
     }
     else if (indexPath.section == 2) {
-        CellIdentifier = @"Cell4";
-        CellNib = @"RemoveAdsCell";
+
+        CellIdentifier = @"Cell3";
+        CellNib = @"ResetDefaultsCell";
     }
 
     UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];

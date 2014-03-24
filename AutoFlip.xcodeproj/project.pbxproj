@@ -35,6 +35,7 @@
 		115A92CF18A5FF530002353D /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92CE18A5FF530002353D /* settings@2x.png */; };
 		115A92D118A5FF720002353D /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92D018A5FF720002353D /* home@2x.png */; };
 		115A92D318A602110002353D /* about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115A92D218A602110002353D /* about@2x.png */; };
+		115E5C0F18E0E109003CD5CE /* RestorePurchasesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115E5C0E18E0E109003CD5CE /* RestorePurchasesCell.xib */; };
 		116BFBF5189D620F008663CE /* UITextView+AutoResizeFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */; };
 		116FD85A187B53B900BC4643 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD858187B53B900BC4643 /* AudioToolbox.framework */; };
 		116FD85B187B53B900BC4643 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD859187B53B900BC4643 /* AVFoundation.framework */; };
@@ -201,6 +202,7 @@
 		115A92CE18A5FF530002353D /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		115A92D018A5FF720002353D /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
 		115A92D218A602110002353D /* about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about@2x.png"; sourceTree = "<group>"; };
+		115E5C0E18E0E109003CD5CE /* RestorePurchasesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestorePurchasesCell.xib; sourceTree = "<group>"; };
 		116BFBF3189D620F008663CE /* UITextView+AutoResizeFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+AutoResizeFont.h"; sourceTree = "<group>"; };
 		116BFBF4189D620F008663CE /* UITextView+AutoResizeFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+AutoResizeFont.m"; sourceTree = "<group>"; };
 		116FD858187B53B900BC4643 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -547,6 +549,7 @@
 		115A92B418A5A5540002353D /* SettingsTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				115E5C0E18E0E109003CD5CE /* RestorePurchasesCell.xib */,
 				11F186C118DDF9D000192FF2 /* RemoveAdsCell.xib */,
 				1193E00818A6F0FE00390295 /* ResetDefaultsCell.xib */,
 				115A92B618A5A5910002353D /* SettingsSpeechToggleCell.xib */,
@@ -1257,6 +1260,7 @@
 				1193E02818A7588100390295 /* blue2.png in Resources */,
 				115A92C518A5F3FC0002353D /* dark blue paper.png in Resources */,
 				11E8F76418903EE300A6DF5C /* custom.png in Resources */,
+				115E5C0F18E0E109003CD5CE /* RestorePurchasesCell.xib in Resources */,
 				11946E0D1894D20900A4D17A /* present.png in Resources */,
 				11F0C8801880AE710056CD66 /* DBChooser.bundle in Resources */,
 				1192497C1878F53100BD6868 /* Lato-HairlineItalic.ttf in Resources */,
