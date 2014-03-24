@@ -502,7 +502,11 @@ typedef enum {
             titleLabel.text = menuItem.title;
             titleLabel.font = titleFont;
             titleLabel.textAlignment = menuItem.alignment;
-            titleLabel.textColor = menuItem.foreColor ? menuItem.foreColor : [UIColor whiteColor];
+            //titleLabel.textColor = menuItem.foreColor ? menuItem.foreColor : [UIColor grayColor];
+            
+            // Text color that I changed
+            titleLabel.textColor = menuItem.foreColor ? menuItem.foreColor : [UIColor blackColor];
+            
             titleLabel.backgroundColor = [UIColor clearColor];
             titleLabel.autoresizingMask = UIViewAutoresizingNone;
             //titleLabel.backgroundColor = [UIColor greenColor];
@@ -623,8 +627,12 @@ typedef enum {
 - (void)drawBackground:(CGRect)frame
              inContext:(CGContextRef) context
 {
-    CGFloat R0 = 0.267, G0 = 0.303, B0 = 0.335;
-    CGFloat R1 = 0.040, G1 = 0.040, B1 = 0.040;
+//    CGFloat R0 = 0.267, G0 = 0.303, B0 = 0.335;
+//    CGFloat R1 = 0.040, G1 = 0.040, B1 = 0.040;
+    
+    // New colors that I added in myself
+    CGFloat R0 = 1, G0 = 1, B0 = 1;
+    CGFloat R1 = 1, G1 = 1, B1 = 1;
     
     UIColor *tintColor = [KxMenu tintColor];
     if (tintColor) {

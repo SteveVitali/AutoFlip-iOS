@@ -72,6 +72,7 @@
                                    (CreateCardsViewController *)[segue destinationViewController];
         controller.presentationTitle = [self.titleField text];
         controller.presentationDescription = [self.descriptionField text];
+        controller.cardIndex = 0;
     }
 }
 

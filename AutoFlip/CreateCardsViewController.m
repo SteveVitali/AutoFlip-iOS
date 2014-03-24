@@ -60,9 +60,14 @@
     // If it's not an imported presentation
     if (!self.presentation) {
         self.presentation = [[Presentation alloc] init];
-        [self.presentation insertCardAtIndex:0];
-        [self.presentation setType:@"custom"];
+        
+        //[self.presentation insertCardAtIndex:0];
+        // Hopefully this fixes the crash that the line above caused.
+        [self.presentation insertCardAtIndex:self.cardIndex];
+        [self reloadCard];
         [self.textArea setText:@"\u2022 "];
+        
+        [self.presentation setType:@"custom"];
         // Set presentation title and description from stuff passed through segue
         // I understand this code looks hilarious, but it works, damnit.
         self.presentation.title = self.presentationTitle;
