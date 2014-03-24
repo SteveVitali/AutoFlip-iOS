@@ -244,7 +244,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
         
         if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"showAds"] boolValue]) {
         
-            controller.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
+            //controller.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
         }
     }
     else if ([segue.identifier isEqualToString:@"editPresentation"]) {
@@ -614,7 +614,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"showAds"] boolValue]) {
         
-        controller.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
+        //controller.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
     }
     
     MyUIStoryboardSegue *segue = [[MyUIStoryboardSegue alloc] initWithIdentifier:@"startPresentation1" source:self destination:controller];

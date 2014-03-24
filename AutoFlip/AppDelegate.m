@@ -35,6 +35,8 @@
     
     [UIViewController prepareInterstitialAds];
     
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    
     return YES;
 }
 
