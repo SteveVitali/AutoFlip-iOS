@@ -217,6 +217,10 @@
     dropdown.waitUntilAnimationIsComplete = YES;
     //dropdown.animationDuration = .3;
     
+    // Fix liveBlur glitch in 7.1
+    dropdown.liveBlur = NO;
+    dropdown.backgroundColor = [[UIColor cloudsColor] colorWithAlphaComponent:.96];
+    
     // Init constants to keep track of item height for switching between search results and normal tableview
     kREMenuItemHeightNormal = dropdown.itemHeight;
     kREMenuItemHeightSearch = dropdown.itemHeight - 16;
